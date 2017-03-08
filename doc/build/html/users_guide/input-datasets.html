@@ -1,0 +1,190 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Input Datasets &mdash; camdoc  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM User’s Guide" href="index.html" />
+    <link rel="next" title="6. Model Output:" href="model-output.html" />
+    <link rel="prev" title="4. Sample Interactive Session" href="sample-interactive-session.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="model-output.html" title="6. Model Output:"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sample-interactive-session.html" title="4. Sample Interactive Session"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Input Datasets</a><ul>
+<li><a class="reference internal" href="#sst-and-sea-ice-boundary-files">5.1. SST and Sea Ice Boundary Files</a><ul>
+<li><a class="reference internal" href="#pre-industrial-climatology-1870-1890">5.1.1. Pre-industrial climatology (1870 - 1890):</a></li>
+<li><a class="reference internal" href="#historical-time-series">5.1.2. Historical Time Series</a></li>
+<li><a class="reference internal" href="#present-day-climatology-1982-2001">5.1.3. Present day climatology (1982 - 2001):</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sample-interactive-session.html"
+                        title="previous chapter">4. Sample Interactive Session</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="model-output.html"
+                        title="next chapter">6. Model Output:</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/users_guide/input-datasets.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="input-datasets">
+<span id="id1"></span><h1>5. Input Datasets<a class="headerlink" href="#input-datasets" title="Permalink to this headline">¶</a></h1>
+<p>The minimal CAM configuration requires an initial conditions dataset. But most configurations require in addition to initial conditions a variety of boundary condition files. This chapter will provide an overview of CAM&#8217;s dataset requirements and some information on the provenance of the default datasets.</p>
+<div class="section" id="sst-and-sea-ice-boundary-files">
+<h2>5.1. SST and Sea Ice Boundary Files<a class="headerlink" href="#sst-and-sea-ice-boundary-files" title="Permalink to this headline">¶</a></h2>
+<p>The standard CAM standalone configuration (An F compset when using CESM scripts) uses prescribed sea surface temperatures (SST) and sea ice fractions from datasets containing either climatological or time series data. The source of this data for CAM&#8217;s default datasets is <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/bi01.html#hurrell2008">Hurrell et al. [2008].</a></p>
+<p>The default CAM datasets have been preconditioned to comply with the AMIP II requirement as described in <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/bi01.html#taylor2000">Taylor et al. [2000]</a>. The requirement is that the SST and sea-ice concentration boundary conditions should be specified such that the monthly means computed from model output precisely agree with the monthly means in the input dataset.</p>
+<p>The original Hurrell datasets are on a 1 degree grid. The AMIP II versions of these dataset are available as 1 degree datasets and have also been spatially interpolated to several spectral and finite volume grid resolutions. The currently available datasets are:</p>
+<div class="section" id="pre-industrial-climatology-1870-1890">
+<h3>5.1.1. Pre-industrial climatology (1870 - 1890):<a class="headerlink" href="#pre-industrial-climatology-1870-1890" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_1x1_clim_pi_c101029</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">23</span><span class="n">x0</span><span class="o">.</span><span class="mi">31</span><span class="n">_clim_pi_c091020</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">47</span><span class="n">x0</span><span class="o">.</span><span class="mi">63</span><span class="n">_clim_pi_c100128</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">9</span><span class="n">x1</span><span class="o">.</span><span class="mi">25</span><span class="n">_clim_pi_c100127</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_1</span><span class="o">.</span><span class="mi">9</span><span class="n">x2</span><span class="o">.</span><span class="mi">5</span><span class="n">_clim_pi_c100127</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_4x5_clim_pi_c100127</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_10x15_clim_pi_c100127</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_128x256_clim_pi_c100128</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_64x128_clim_pi_c100128</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_48x96_clim_pi_c100128</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_32x64_clim_pi_c100128</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_8x16_clim_pi_c100128</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="historical-time-series">
+<h3>5.1.2. Historical Time Series<a class="headerlink" href="#historical-time-series" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_1x1_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">23</span><span class="n">x0</span><span class="o">.</span><span class="mi">31</span><span class="n">_1850_2010_c110526</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">47</span><span class="n">x0</span><span class="o">.</span><span class="mi">63</span><span class="n">_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">9</span><span class="n">x1</span><span class="o">.</span><span class="mi">25</span><span class="n">_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_1</span><span class="o">.</span><span class="mi">9</span><span class="n">x2</span><span class="o">.</span><span class="mi">5</span><span class="n">_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_4x5_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_10x15_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_128x256_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_64x128_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_48x96_1850_2008_c100128</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_32x64_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_8x16_1850_2012_c130411</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="present-day-climatology-1982-2001">
+<h3>5.1.3. Present day climatology (1982 - 2001):<a class="headerlink" href="#present-day-climatology-1982-2001" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_1x1_clim_c101029</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">23</span><span class="n">x0</span><span class="o">.</span><span class="mi">31</span><span class="n">_clim_c061106</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">47</span><span class="n">x0</span><span class="o">.</span><span class="mi">63</span><span class="n">_clim_c061106</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_0</span><span class="o">.</span><span class="mi">9</span><span class="n">x1</span><span class="o">.</span><span class="mi">25</span><span class="n">_clim_c040926a</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_1</span><span class="o">.</span><span class="mi">9</span><span class="n">x2</span><span class="o">.</span><span class="mi">5</span><span class="n">_clim_c061031</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_4x5_clim_c061031</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_10x15_clim_c050526</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_256x512_clim_c031031</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_128x256_clim_c050526</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_64x128_clim_c050526</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_48x96_clim_c050526</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_32x64_clim_c050526</span><span class="o">.</span><span class="n">nc</span>
+<span class="n">atm</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">sst</span><span class="o">/</span><span class="n">sst_HadOIBl_bc_8x16_clim_c050526</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="model-output.html" title="6. Model Output:"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="sample-interactive-session.html" title="4. Sample Interactive Session"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017 UCAR.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+    </div>
+  </body>
+</html>

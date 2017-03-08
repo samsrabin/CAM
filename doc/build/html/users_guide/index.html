@@ -1,0 +1,195 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CAM User’s Guide &mdash; camdoc  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="next" title="1. Introduction" href="introduction.html" />
+    <link rel="prev" title="Welcome to the CAM documentation" href="../index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="introduction.html" title="1. Introduction"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to the CAM documentation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Welcome to the CAM documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="next chapter">1. Introduction</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/users_guide/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cam-user-s-guide">
+<span id="users-guide"></span><h1>CAM User&#8217;s Guide<a class="headerlink" href="#cam-user-s-guide" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-help.html">2. Getting Help</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-help.html#the-cam-web-page">2.1. The CAM Web Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-help.html#the-cesm-bulletin-board">2.2. The CESM Bulletin Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-help.html#reporting-bugs">2.3. Reporting bugs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building-and-running-cam.html">3. Building and Running CAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample-interactive-session.html">4. Sample Interactive Session</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#configuring-cam-for-serial-execution">4.1. Configuring CAM for serial execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#specifying-the-fortran-compiler">4.2. Specifying the Fortran compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#dealing-with-compiler-wrappers">4.3. Dealing with compiler wrappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#configuring-cam-for-parallel-execution">4.4. Configuring CAM for parallel execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#building-cam">4.5. Building CAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#building-the-namelist">4.6. Building the Namelist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sample-interactive-session.html#example-use-build-namelist-to-specify-a-dataset-in-a-non-default-location">4.6.1. Example: Use build-namelist to specify a dataset in a non-default location.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#acquiring-input-datasets">4.7. Acquiring Input Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sample-interactive-session.html#acquire-missing-dataset">4.7.1. Acquire missing dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sample-interactive-session.html#running-cam">4.8. Running CAM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input-datasets.html">5. Input Datasets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input-datasets.html#sst-and-sea-ice-boundary-files">5.1. SST and Sea Ice Boundary Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="input-datasets.html#pre-industrial-climatology-1870-1890">5.1.1. Pre-industrial climatology (1870 - 1890):</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input-datasets.html#historical-time-series">5.1.2. Historical Time Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input-datasets.html#present-day-climatology-1982-2001">5.1.3. Present day climatology (1982 - 2001):</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model-output.html">6. Model Output:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model-output.html#model-history-files">6.1. Model History Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-output.html#general-features-of-history-files">6.2. General Features of History Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-output.html#timestamps-and-time-intervals">6.3. Timestamps and time intervals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model-output.html#example-timestamps-for-a-year-of-monthly-averages">6.3.1. Example: Timestamps for a year of monthly averages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model-output.html#multiple-time-samples-in-a-single-file">6.4. Multiple time samples in a single file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model-output.html#example-timestamps-for-five-daily-averages">6.4.1. Example: Timestamps for five daily averages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="model-output.html#example-default-history-fields-and-master-field-lists">6.5. Example: Default History Fields and Master Field Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="physics-modifications-via-the-namelist.html">7. Physics modifications via the namelist</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#radiative-constituents">7.1. Radiative Constituents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics-modifications-via-the-namelist.html#default-rad-climate-for-cam4-physics">7.1.1. Default rad_climate for cam4 physics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics-modifications-via-the-namelist.html#default-rad-climate-for-cam5-physics">7.1.2. Default rad_climate for cam5 physics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-modify-a-radiatively-active-gas">7.2. Example - Modify a radiatively active gas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-diagnostic-radiative-forcing">7.3. Example - Diagnostic radiative forcing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-aerosol-radiative-forcing">7.4. Example - Aerosol radiative forcing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-black-carbon-radiative-forcing">7.5. Example - Black carbon radiative forcing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">8. Appendices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#the-configure-utility">8.1. The configure utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#how-configure-is-called-from-the-cesm-scripts">8.1.1. How configure is called from the CESM scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#arguments-to-configure">8.1.2. Arguments to configure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#the-build-namelist-utility">8.2. The build-namelist utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#options-to-build-namelist">8.2.1. Options to build namelist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#environment-variables-used-by-build-namelist">8.2.2. Environment variables used by build namelist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#cam-namelist-variables">8.2.3. CAM Namelist variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">9. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list-of-examples.html">10. List of Examples</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="introduction.html" title="1. Introduction"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to the CAM documentation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017 UCAR.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+    </div>
+  </body>
+</html>

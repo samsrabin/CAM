@@ -50,8 +50,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'camdoc'
-copyright = u'2017, ian Eaton, Steve Goldhaber'
-author = u'ian Eaton, Steve Goldhaber'
+copyright = u'2017 UCAR'
+author = u'Brian Eaton, Steve Goldhaber'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -104,7 +104,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'camdocdoc'
+htmlhelp_basename = 'camdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -132,7 +132,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'camdoc.tex', u'camdoc Documentation',
-     u'ian Eaton, Steve Goldhaber', 'manual'),
+     u'Brian Eaton, Steve Goldhaber', 'manual'),
 ]
 
 

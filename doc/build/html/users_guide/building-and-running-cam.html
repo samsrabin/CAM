@@ -1,0 +1,147 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Building and Running CAM &mdash; camdoc  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM User’s Guide" href="index.html" />
+    <link rel="next" title="4. Sample Interactive Session" href="sample-interactive-session.html" />
+    <link rel="prev" title="2. Getting Help" href="getting-help.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sample-interactive-session.html" title="4. Sample Interactive Session"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting-help.html" title="2. Getting Help"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting-help.html"
+                        title="previous chapter">2. Getting Help</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sample-interactive-session.html"
+                        title="next chapter">4. Sample Interactive Session</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/users_guide/building-and-running-cam.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="building-and-running-cam">
+<span id="id1"></span><h1>3. Building and Running CAM<a class="headerlink" href="#building-and-running-cam" title="Permalink to this headline">¶</a></h1>
+<p>The following describes how to build and run CAM in its standalone configuration.
+We do not provide scripts that are setup to work out of the box on a particular set of platforms.
+If you would like this level of support then consider running CAM from the CESM scripts (see <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/...">CESM-1.2 User&#8217;s Guide</a>). We do however provide some examples of simple run scripts which should provide a useful starting point for writing your own scripts (see <a class="reference external" href="CAM-2.2-Sample-Run-Scripts">Section 2.2, “Sample Run Scripts”</a>).</p>
+<p>In order to build and run CAM the following are required:</p>
+<ul class="simple">
+<li>The source tree. CAM-5.3 is distributed with CESM-1.2. To obtain the source code go to the section &#8220;Acquiring the Code&#8221; on the <a class="reference external" href="http://www.cesm.ucar.edu/">CESM Home Page</a>. When we refer to the root of the CAM source tree, this is the same directory as the root of the CESM source tree. This directory is referred to throughout this document as <code class="docutils literal"><span class="pre">$CAM_ROOT</span></code>.</li>
+<li>Perl (version 5.4 or later).</li>
+<li>A GNU version of the <code class="docutils literal"><span class="pre">make</span></code> utility.</li>
+<li>Fortran and C compilers. The Fortran compiler needs to support at least the Fortran95 standard.</li>
+<li>A NetCDF library (version 4.1.3 or later) that has the Fortran APIs built using the same Fortran compiler that is used to build the rest of the CAM code. This library is used extensively by CAM both to read input datasets and to write the output datasets. The NetCDF source code is available <a class="reference external" href="http://www.unidata.ucar.edu/downloads/netcdf/">here</a>. We have updated the required NetCDF library version from 3.6 to 4.1.3 due to a recently discovered bug which affects all previous versions of the NetCDF library. The bug only occurs in special circumstances that are not that easy to replicate, however the result is that corrupt files are silently created. A more complete description of the bug is here.</li>
+</ul>
+<p>Input datasets.
+The required datasets depend on the CAM configuration. Determining which datasets are required for any configuration is discussed in <a class="reference external" href="CAM-2.1-Sample-Interactive-Session#216-building-the-namelist">Section 2.1.6, “Building the Namelist”</a>. Acquiring those datasets is discussed in <a class="reference external" href="CAM-2.1-Sample-Interactive-Session#217-acquiring-input-datasets">Section 2.1.7, “Acquiring Input Datasets”</a>.</p>
+<p>To build CAM for SPMD execution it will also be necessary to have an MPI library (version 1 or later). As with the NetCDF library, the Fortran API should be build using the same Fortran compiler that is used to build the rest of CAM. Otherwise linking to the library may encounter difficulties, usually due to inconsistencies in Fortran name mangling.</p>
+<p>Building and running CAM takes place in the following steps:</p>
+<ol class="arabic simple">
+<li>Configure model</li>
+<li>Build model</li>
+<li>Build namelist</li>
+<li>Execute model</li>
+</ol>
+<p><strong>Configure model.</strong>  This step is accomplished by running the <code class="docutils literal"><span class="pre">configure</span></code> utility to set the compile-time parameters such as the dynamical core (Eulerian Spectral, Semi-Lagrangian Spectral, Finite Volume, or Spectral Element), horizontal grid resolution, and the type of parallelism to employ (shared-memory and/or distributed memory).
+The <code class="docutils literal"><span class="pre">configure</span></code> utility is discussed in <a class="reference external" href="CAM-6.1-The-configure-utility">Appendix A, The configure utility</a>.</p>
+<p><strong>Build model.</strong>  This step includes compiling and linking the executable using the GNU make command (<code class="docutils literal"><span class="pre">gmake</span></code>).
+<code class="docutils literal"><span class="pre">configure</span></code> creates a <code class="docutils literal"><span class="pre">Makefile</span></code> in the directory where the build is to take place. The user then need only change to this directory and execute the <code class="docutils literal"><span class="pre">gmake</span></code> command.</p>
+<p><strong>Build namelist.</strong>  This step is accomplished by running the <code class="docutils literal"><span class="pre">build-namelist</span></code> utility, which supports a variety of options to control the run-time behavior of the model.
+Any namelist variable recognized by CAM can be changed by the user via the <code class="docutils literal"><span class="pre">build-namelist</span></code> interface. There is also a high level &#8220;use case&#8221; functionality which makes it easy for the user to specify a consistent set of namelist variable settings for running particular types of experiments. The <code class="docutils literal"><span class="pre">build-namelist</span></code> utility is discussed in <a class="reference external" href="CAM-6.2-The-build-namelist-utility">Appendix B, The build-namelist utility</a>.</p>
+<p><strong>Execute model.</strong>  This step includes the actual invocation of the executable.
+When running using distributed memory parallelism this step requires knowledge of how your machine invokes (or &#8220;launches&#8221;) MPI executables. When running with shared-memory parallelism (using OpenMP) you may also set the number of OpenMP threads. On most HPC platforms access to the compute resource is through a batch queue system. The sample run scripts discussed in <a class="reference external" href="CAM-2.2-Sample-Run-Scripts">Section 2.2, “Sample Run Scripts”</a> show how to set the batch queue resources on several HPC platforms.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sample-interactive-session.html" title="4. Sample Interactive Session"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting-help.html" title="2. Getting Help"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017 UCAR.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+    </div>
+  </body>
+</html>

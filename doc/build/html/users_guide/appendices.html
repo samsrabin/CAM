@@ -1,0 +1,558 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>8. Appendices &mdash; camdoc  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM User’s Guide" href="index.html" />
+    <link rel="next" title="9. References" href="references.html" />
+    <link rel="prev" title="7. Physics modifications via the namelist" href="physics-modifications-via-the-namelist.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="references.html" title="9. References"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="physics-modifications-via-the-namelist.html" title="7. Physics modifications via the namelist"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. Appendices</a><ul>
+<li><a class="reference internal" href="#the-configure-utility">8.1. The configure utility</a><ul>
+<li><a class="reference internal" href="#how-configure-is-called-from-the-cesm-scripts">8.1.1. How configure is called from the CESM scripts</a></li>
+<li><a class="reference internal" href="#arguments-to-configure">8.1.2. Arguments to configure</a><ul>
+<li><a class="reference internal" href="#cam-configuration">8.1.2.1. CAM configuration</a></li>
+<li><a class="reference internal" href="#scam-configuration">8.1.2.2. SCAM configuration</a></li>
+<li><a class="reference internal" href="#cam-parallelization">8.1.2.3. CAM parallelization</a></li>
+<li><a class="reference internal" href="#cam-parallelization-when-running-standalone-with-cice">8.1.2.4. CAM parallelization when running standalone with CICE</a></li>
+<li><a class="reference internal" href="#general-options">8.1.2.5. General options</a></li>
+<li><a class="reference internal" href="#surface-components">8.1.2.6. Surface components</a></li>
+<li><a class="reference internal" href="#cam-standalone-build">8.1.2.7. CAM standalone build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-build-namelist-utility">8.2. The build-namelist utility</a><ul>
+<li><a class="reference internal" href="#options-to-build-namelist">8.2.1. Options to build namelist</a></li>
+<li><a class="reference internal" href="#environment-variables-used-by-build-namelist">8.2.2. Environment variables used by build namelist</a></li>
+<li><a class="reference internal" href="#cam-namelist-variables">8.2.3. CAM Namelist variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="physics-modifications-via-the-namelist.html"
+                        title="previous chapter">7. Physics modifications via the namelist</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="references.html"
+                        title="next chapter">9. References</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/users_guide/appendices.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendices">
+<span id="id1"></span><h1>8. Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-configure-utility">
+<h2>8.1. The configure utility<a class="headerlink" href="#the-configure-utility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-configure-is-called-from-the-cesm-scripts">
+<h3>8.1.1. How configure is called from the CESM scripts<a class="headerlink" href="#how-configure-is-called-from-the-cesm-scripts" title="Permalink to this headline">¶</a></h3>
+<p>The CESM scripts access CAM&#8217;s <code class="docutils literal"><span class="pre">configure</span></code> via the script
+<code class="docutils literal"><span class="pre">$CAM_ROOT/models/atm/cam/bld/cam.buildnml.csh</span></code>. The
+<code class="docutils literal"><span class="pre">cam.buildnml.csh</span></code> script acts as the interface between the CESM
+scripts and CAM&#8217;s <code class="docutils literal"><span class="pre">configure</span></code> and <code class="docutils literal"><span class="pre">build-namelist</span></code> utilities.</p>
+</div>
+<div class="section" id="arguments-to-configure">
+<h3>8.1.2. Arguments to configure<a class="headerlink" href="#arguments-to-configure" title="Permalink to this headline">¶</a></h3>
+<p>All configuration options can be specified using command line
+arguments to <code class="docutils literal"><span class="pre">configure</span></code> and this is the recommended
+practice. Options specified via command line arguments take precedence
+over options specified any other way.</p>
+<p>At the next level of precedence a few options can be specified by
+setting environment variables. And finally, at the lowest precedence,
+many options have hard-coded defaults. Most of these are located in
+the files
+<code class="docutils literal"><span class="pre">$CAM_ROOT/models/atm/cam/bld/config_files/defaults_*.xml</span></code>. A few
+that depend on the values of other options are set by logic contained
+in the <code class="docutils literal"><span class="pre">configure</span></code> script (a Perl script). The hard-coded defaults
+are designed to produce the standard production configurations of CAM.</p>
+<p>The configure script allows the user to specify compile time options
+such as model resolution, dynamical core type, additional compiler
+flags, and many other aspects. The user can type <code class="docutils literal"><span class="pre">configure</span> <span class="pre">--help</span></code>
+for a complete list of available options.</p>
+<p>The options may all be specified with either one or two leading
+dashes, e.g., <code class="docutils literal"><span class="pre">-help</span></code> or <code class="docutils literal"><span class="pre">--help</span></code>. The few options that can be
+expressed as single letter switches may not be clumped, e.g., <code class="docutils literal"><span class="pre">-h</span> <span class="pre">-s</span>
+<span class="pre">-v</span></code> may NOT be expressed as <code class="docutils literal"><span class="pre">-hsv</span></code>. When multiple options are
+listed separated by a vertical bar either version may be used.</p>
+<div class="section" id="cam-configuration">
+<h4>8.1.2.1. CAM configuration<a class="headerlink" href="#cam-configuration" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>These options will have an effect whether running CAM as part of CESM</dt>
+<dd>or running in a CAM standalone mode:</dd>
+<dt><code class="docutils literal"><span class="pre">-[no]age_of_air_trcs</span></code></dt>
+<dd>Switch on [off] age of air tracers. Default: on for waccm_phys, otherwise off.</dd>
+<dt><code class="docutils literal"><span class="pre">-carma</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Build CAM with specified CARMA microphysics model <code class="docutils literal"><span class="pre">[</span> <span class="pre">none</span> <span class="pre">|</span>
+<span class="pre">bc_strat</span> <span class="pre">|</span> <span class="pre">cirrus</span> <span class="pre">|</span> <span class="pre">dust</span> <span class="pre">|</span> <span class="pre">meteor_smoke</span> <span class="pre">|</span> <span class="pre">pmc</span> <span class="pre">|</span> <span class="pre">sea_salt</span> <span class="pre">|</span> <span class="pre">sulfate</span> <span class="pre">|</span>
+<span class="pre">test_detrain</span> <span class="pre">|</span> <span class="pre">test_growth</span> <span class="pre">|</span> <span class="pre">test_passive</span> <span class="pre">|</span> <span class="pre">test_radiative</span> <span class="pre">|</span>
+<span class="pre">test_swelling</span> <span class="pre">|</span> <span class="pre">test_tracers</span> <span class="pre">]</span></code>. Default: <code class="docutils literal"><span class="pre">none</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-chem</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Build CAM with specified prognostic chemistry package <code class="docutils literal"><span class="pre">[</span>
+<span class="pre">waccm_mozart</span> <span class="pre">|</span> <span class="pre">waccm_mozart_sulfur</span> <span class="pre">|</span> <span class="pre">waccm_ghg</span> <span class="pre">|</span> <span class="pre">trop_mozart</span> <span class="pre">|</span>
+<span class="pre">trop_mozart_mam3</span> <span class="pre">|</span> <span class="pre">trop_mozart_soa</span> <span class="pre">|</span> <span class="pre">trop_ghg</span> <span class="pre">|</span> <span class="pre">trop_bam</span> <span class="pre">|</span> <span class="pre">trop_mam3</span>
+<span class="pre">|</span> <span class="pre">trop_mam7</span> <span class="pre">|</span> <span class="pre">super_fast_llnl</span> <span class="pre">|</span> <span class="pre">super_fast_llnl_mam3</span> <span class="pre">|</span>
+<span class="pre">trop_strat_soa</span> <span class="pre">|</span> <span class="pre">trop_strat_mam3</span> <span class="pre">|</span> <span class="pre">trop_strat_mam7</span> <span class="pre">|</span> <span class="pre">none</span>
+<span class="pre">]</span></code>. Default: <code class="docutils literal"><span class="pre">trop_mam3</span></code> if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code>,
+otherwise default is <code class="docutils literal"><span class="pre">none</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-clubb_sgs</span></code></dt>
+<dd>Switch to turn on the CLUBB_SGS package. Default: Off.</dd>
+<dt><code class="docutils literal"><span class="pre">-co2_cycle</span></code></dt>
+<dd>This option is usually used with the <code class="docutils literal"><span class="pre">-ccsm_seq</span></code> option as part of
+the configuration for running biogeochemistry (BGC) compsets. It
+modifies the CAM configuration by increasing the number of advected
+constituents by 4. Default: not set.</dd>
+<dt><code class="docutils literal"><span class="pre">-comp_intf</span> <span class="pre">[mct</span> <span class="pre">|</span> <span class="pre">esmf]</span></code></dt>
+<dd>Specify the component interfaces Default: mct.</dd>
+<dt><code class="docutils literal"><span class="pre">-cosp</span></code></dt>
+<dd>Enable the COSP simulator package. Default: not set.</dd>
+<dt><code class="docutils literal"><span class="pre">-cppdefs</span> <span class="pre">&lt;string&gt;</span></code></dt>
+<dd>A string of user specified CPP defines appended to Makefile
+defaults. E.g. <code class="docutils literal"><span class="pre">-cppdefs</span> <span class="pre">'-DVAR1</span> <span class="pre">-DVAR2'</span></code>. Note that a string
+containing whitespace will need to be quoted.</dd>
+<dt><code class="docutils literal"><span class="pre">-dyn</span> <span class="pre">[eul</span> <span class="pre">|</span> <span class="pre">sld</span> <span class="pre">|</span> <span class="pre">fv</span> <span class="pre">|</span> <span class="pre">se</span> <span class="pre">]</span></code></dt>
+<dd>Build CAM with specified dynamical core. Default: fv.</dd>
+<dt><code class="docutils literal"><span class="pre">-edit_chem_mech</span></code></dt>
+<dd>Invokes <code class="docutils literal"><span class="pre">CAMCHEM_EDITOR</span></code> to allow the user to edit the chemistry mechanism file.</dd>
+<dt><code class="docutils literal"><span class="pre">-hgrid</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Specify horizontal grid. For spectral grids use <code class="docutils literal"><span class="pre">nlatxnlon</span></code> where
+<code class="docutils literal"><span class="pre">nlat</span></code> and <code class="docutils literal"><span class="pre">nlon</span></code> are the number of latitude and longitude grid
+points respectively in the global Gaussian grid (e.g.,
+<code class="docutils literal"><span class="pre">64x128</span></code>). For FV grids use <code class="docutils literal"><span class="pre">dlatxdlon</span></code> where <code class="docutils literal"><span class="pre">dlat</span></code> and
+<code class="docutils literal"><span class="pre">dlon</span></code> are the grid cell size in degrees for latitude and
+longitude respectively (e.g., <code class="docutils literal"><span class="pre">1.9x2.5</span></code>). For SE grids (cubed
+sphere) use <code class="docutils literal"><span class="pre">neNnpM</span></code> where <code class="docutils literal"><span class="pre">N</span></code> is the number of elements on an
+edge of the cube, and <code class="docutils literal"><span class="pre">M</span></code> is the number of Gauss points on the
+edge of an element (e.g., <code class="docutils literal"><span class="pre">ne30np4</span></code>).</dd>
+<dt><code class="docutils literal"><span class="pre">-microphys</span> <span class="pre">[mg1</span> <span class="pre">|</span> <span class="pre">mg1.5</span> <span class="pre">|</span> <span class="pre">rk]</span></code></dt>
+<dd>Specify the microphysics package. Default: mg1 if the physics package is cam5, otherwise rk.</dd>
+<dt><code class="docutils literal"><span class="pre">-nadv</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>Set total number of advected species to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. If <code class="docutils literal"><span class="pre">-nadv</span></code> is set
+to a larger number than is required by the selected physics and
+chemistry schemes, then the remainder will automatically be used for
+test tracers (N.B. the namelist variable <code class="docutils literal"><span class="pre">tracers_flag</span></code> must be
+set to <code class="docutils literal"><span class="pre">.true.</span></code> to enable the test tracer code.) Default: set to
+the number required by the selected physics and chemistry schemes.</dd>
+<dt><code class="docutils literal"><span class="pre">-nadv_tt</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>Set number of advected test tracers to &lt;n&gt;. Setting the number of
+test tracers explicitly with this option allows <code class="docutils literal"><span class="pre">build-namelist</span></code>
+to automatically enable the test tracer code by setting the
+<code class="docutils literal"><span class="pre">tracers_flag</span></code> namelist variable. Default: 0.</dd>
+<dt><code class="docutils literal"><span class="pre">-nlev</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>Set number of vertical layers to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. Default: <code class="docutils literal"><span class="pre">30</span></code> if the
+physics package is <code class="docutils literal"><span class="pre">cam5</span></code>, <code class="docutils literal"><span class="pre">ideal</span></code>, or <code class="docutils literal"><span class="pre">adiabatic</span></code>. <code class="docutils literal"><span class="pre">26</span></code> if
+the physics package is <code class="docutils literal"><span class="pre">cam4</span></code>. <code class="docutils literal"><span class="pre">66</span></code> if the chemistry package is
+<code class="docutils literal"><span class="pre">waccm_*.</span> <span class="pre">81</span></code> if the <code class="docutils literal"><span class="pre">-waccmx</span></code> is used.</dd>
+<dt><code class="docutils literal"><span class="pre">-offline_dyn</span></code></dt>
+<dd>Switch enables the use of offline driver for FV dycore. Default: not set.</dd>
+<dt><code class="docutils literal"><span class="pre">-pbl</span> <span class="pre">[uw</span> <span class="pre">|</span> <span class="pre">hb</span> <span class="pre">|</span> <span class="pre">hbr</span> <span class="pre">|</span> <span class="pre">clubb_sgs]</span></code></dt>
+<dd>PBL package. Default: uw if the physics package is cam5; clubb_sgs
+if the -clubb_sgs switch is set; otherwise hb.</dd>
+<dt><code class="docutils literal"><span class="pre">-pcols</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>Set maximum number of grid columns in a chunk to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. Default: 16.</dd>
+<dt><code class="docutils literal"><span class="pre">-pergro</span></code></dt>
+<dd>Switch enables building CAM for perturbation growth tests. Only
+valid with <code class="docutils literal"><span class="pre">cam3</span></code> and <code class="docutils literal"><span class="pre">cam4</span></code> physics packages.</dd>
+<dt><code class="docutils literal"><span class="pre">-phys</span> <span class="pre">[cam3</span> <span class="pre">|</span> <span class="pre">cam4</span> <span class="pre">|</span> <span class="pre">cam5</span> <span class="pre">|</span> <span class="pre">ideal</span> <span class="pre">|</span> <span class="pre">adiabatic]</span></code></dt>
+<dd>Physics package. Default: <code class="docutils literal"><span class="pre">cam5</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-prog_species</span> <span class="pre">&lt;list&gt;</span></code></dt>
+<dd>Comma separated list of prognostic mozart species
+packages. Currently available: <code class="docutils literal"><span class="pre">DST,SSLT,SO4,GHG,OC,BC,CARBON16</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">-psubcols</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>Set maximum number of subcolumns in a grid column to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. Default: 1.</dd>
+<dt><code class="docutils literal"><span class="pre">-rad</span> <span class="pre">[rrtmg</span> <span class="pre">|</span> <span class="pre">camrt]</span></code></dt>
+<dd>Radiation package. Default: <code class="docutils literal"><span class="pre">rrtmg</span></code> if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code>, otherwise <code class="docutils literal"><span class="pre">camrt</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-usr_mech_infile</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Pathname of the user supplied chemistry mechanism file.</dd>
+<dt><code class="docutils literal"><span class="pre">-waccm_phys</span></code></dt>
+<dd>Switch enables the use of WACCM physics in any chemistry
+configuration. Default: Off unless one of the waccm chemistry
+options is chosen then it&#8217;s automatically turned on.</dd>
+<dt><code class="docutils literal"><span class="pre">-waccmx</span></code></dt>
+<dd>Build CAM/WACCM with WACCM upper Thermosphere/Ionosphere extended package.</dd>
+</dl>
+</div>
+<div class="section" id="scam-configuration">
+<h4>8.1.2.2. SCAM configuration<a class="headerlink" href="#scam-configuration" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-camiop</span></code></dt>
+<dd>Configure CAM to generate an IOP file that can be used to drive SCAM. This switch only works with the Eulerian dycore.</dd>
+<dt><code class="docutils literal"><span class="pre">-scam</span></code></dt>
+<dd>Compiles model in single column mode. Only works with Eulerian dycore.</dd>
+</dl>
+</div>
+<div class="section" id="cam-parallelization">
+<h4>8.1.2.3. CAM parallelization<a class="headerlink" href="#cam-parallelization" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-[no]smp</span></code></dt>
+<dd>Switch on [off] SMP parallelism (OpenMP). This option can be used when building a model that doesn&#8217;t contain CICE. It allows building an executable whose thread count can be set at run time.</dd>
+<dt><code class="docutils literal"><span class="pre">-[no]spmd</span></code></dt>
+<dd>Switch on [off] SPMD parallelism (MPI). This option can be used when building a model that doesn&#8217;t contain CICE. It allows building an executable whose task count can be set at run time.</dd>
+</dl>
+</div>
+<div class="section" id="cam-parallelization-when-running-standalone-with-cice">
+<h4>8.1.2.4. CAM parallelization when running standalone with CICE<a class="headerlink" href="#cam-parallelization-when-running-standalone-with-cice" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-ntasks</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>This option must be used to specify SPMD parallelism when the CICE component is present. <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code> is the number of MPI tasks. Setting ntasks &gt; 0 implies <code class="docutils literal"><span class="pre">-spmd</span></code>. Use <code class="docutils literal"><span class="pre">-nospmd</span></code> to turn off linking with an MPI library. To configure for pure MPI specify <code class="docutils literal"><span class="pre">&quot;-ntasks</span> <span class="pre">N</span> <span class="pre">-nosmp&quot;.</span> <span class="pre">ntasks</span></code> is used by CICE to determine default grid decompositions which must be specified at build time.</dd>
+<dt><code class="docutils literal"><span class="pre">-nthreads</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>This option must be used to specify SMP parallelism when the CICE component is present. <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code> is the number of OpenMP threads per process. Setting nthreads &gt; 0 implies <code class="docutils literal"><span class="pre">-smp</span></code>. Use <code class="docutils literal"><span class="pre">-nosmp</span></code> to turn off compilation of OMP directives. For pure OpenMP set <code class="docutils literal"><span class="pre">&quot;-nthreads</span> <span class="pre">N</span> <span class="pre">-nospmd&quot;.</span> <span class="pre">nthreads</span></code> is used by CICE to determine default grid decomposition which must be specified at build time.</dd>
+</dl>
+<p><strong>NOTE:</strong>  When CAM is running standalone with CICE the default CICE decomposition is determined from the values of the <code class="docutils literal"><span class="pre">-ntasks</span></code> and <code class="docutils literal"><span class="pre">-nthreads</span></code> arguments. The user also has the ability to explicitly set the CICE decomposition using the following four arguments. If any of these arguments is set then <em>ALL FOUR</em> must be set.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-cice_bsizex</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>CICE block size in longitude dimension. This size must evenly divide the number of longitude points in the global grid.</dd>
+<dt><code class="docutils literal"><span class="pre">-cice_bsizey</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>CICE block size in latitude dimension. This size must evenly divide the number of latitude points in the global grid.</dd>
+<dt><code class="docutils literal"><span class="pre">-cice_maxblocks</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>Maximum number of CICE blocks per process.</dd>
+<dt><code class="docutils literal"><span class="pre">-cice_decomptype</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>CICE decomposition type <code class="docutils literal"><span class="pre">[</span> <span class="pre">cartesian</span> <span class="pre">|</span> <span class="pre">spacecurve</span> <span class="pre">|</span> <span class="pre">roundrobin</span> <span class="pre">]</span></code>.</dd>
+</dl>
+</div>
+<div class="section" id="general-options">
+<h4>8.1.2.5. General options<a class="headerlink" href="#general-options" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-cache</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Name of output cache file. Default: <code class="docutils literal"><span class="pre">config_cache.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-cachedir</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Name of directory where output cache file is written. Default: CAM build directory.</dd>
+<dt><code class="docutils literal"><span class="pre">-ccsm_seq</span></code></dt>
+<dd>Switch to specify that CAM is being built from within the CESM scripts. This produces Filepath and CCSM_cppdefs files that contains only the paths and CPP macros needed to build a library for the CAM component.</dd>
+<dt><code class="docutils literal"><span class="pre">-defaults</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Specify a configuration file which will be used to supply defaults instead of one of the <code class="docutils literal"><span class="pre">config_files/defaults_*.xml</span></code> files. This file is used to specify model configuration parameters only. Parameters relating to the build which are system dependent will be ignored.</dd>
+<dt><code class="docutils literal"><span class="pre">-help</span> <span class="pre">|</span> <span class="pre">-h</span></code></dt>
+<dd>Print usage to STDOUT.</dd>
+<dt><code class="docutils literal"><span class="pre">-silent</span> <span class="pre">|</span> <span class="pre">-s</span></code></dt>
+<dd>Turns on silent mode - only fatal messages printed to STDOUT.</dd>
+<dt><code class="docutils literal"><span class="pre">-test</span></code></dt>
+<dd>Switch on testing of Fortran compiler and linking to external libraries.</dd>
+<dt><code class="docutils literal"><span class="pre">-verbose</span> <span class="pre">|</span> <span class="pre">-v</span></code></dt>
+<dd>Turn on verbose echoing of settings made by configure.</dd>
+<dt><code class="docutils literal"><span class="pre">-version</span></code></dt>
+<dd>Echo the repository tag name used to check out this CAM source tree.</dd>
+</dl>
+</div>
+<div class="section" id="surface-components">
+<h4>8.1.2.6. Surface components<a class="headerlink" href="#surface-components" title="Permalink to this headline">¶</a></h4>
+<p>Options for surface components used in standalone CAM mode:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-ice</span> <span class="pre">[cice</span> <span class="pre">|</span> <span class="pre">sice</span> <span class="pre">]</span></code></dt>
+<dd>Specify the sea ice component. Default: <code class="docutils literal"><span class="pre">cice</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-lnd</span> <span class="pre">[clm</span> <span class="pre">|</span> <span class="pre">slnd</span> <span class="pre">]</span></code></dt>
+<dd>Specify the land component. Default: <code class="docutils literal"><span class="pre">clm</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-ocn</span> <span class="pre">[docn</span> <span class="pre">|</span> <span class="pre">socn</span> <span class="pre">|</span> <span class="pre">dom</span> <span class="pre">|</span> <span class="pre">aquaplanet</span> <span class="pre">]</span></code></dt>
+<dd>Specify ocean component. If set to <code class="docutils literal"><span class="pre">aquaplanet</span></code> then the stub ice (<code class="docutils literal"><span class="pre">sice</span></code>) and stubb land (<code class="docutils literal"><span class="pre">slnd</span></code>) components are implied. Default: <code class="docutils literal"><span class="pre">docn</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-rof</span> <span class="pre">[rtm</span> <span class="pre">|</span> <span class="pre">srof</span> <span class="pre">]</span></code></dt>
+<dd>Specify the river runoff component. Default: <code class="docutils literal"><span class="pre">rtm</span></code>.</dd>
+</dl>
+</div>
+<div class="section" id="cam-standalone-build">
+<h4>8.1.2.7. CAM standalone build<a class="headerlink" href="#cam-standalone-build" title="Permalink to this headline">¶</a></h4>
+<p>Options for building CAM via standalone scripts:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-cam_bld</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory where CAM will be built. This is where configure will write the output files it generates (Makefile, Filepath, etc...). Default: ./</dd>
+<dt><code class="docutils literal"><span class="pre">-cam_exe</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Name of the CAM executable. Default: <code class="docutils literal"><span class="pre">cam</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-cam_exedir</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory where CAM executable will be created. Default: CAM build directory.</dd>
+<dt><code class="docutils literal"><span class="pre">-cc</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>User specified C compiler. Default: Depends on the OS and the Fortran compiler.</dd>
+<dt><code class="docutils literal"><span class="pre">-cflags</span> <span class="pre">&lt;string&gt;</span></code></dt>
+<dd>A string of user specified C compiler options appended to the default options set in Makefile.</dd>
+<dt><code class="docutils literal"><span class="pre">-debug</span></code></dt>
+<dd>Switch to turn on building CAM with compiler options for debugging. The specific options are compiler dependent. These flags are set in the <code class="docutils literal"><span class="pre">Makefile.in</span></code> template file.</dd>
+<dt><code class="docutils literal"><span class="pre">-esmf_libdir</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing ESMF library and the <code class="docutils literal"><span class="pre">esmf.mk</span></code> file. If this option is specified then the external ESMF library will be used in place of the ESMF-WRF time manager code which is provided in the CESM source distribution.</dd>
+<dt><code class="docutils literal"><span class="pre">-fc</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>User specified Fortran compiler. Default: Depends on the OS and whether MPI is enabled.</dd>
+<dt><code class="docutils literal"><span class="pre">-fc_type</span> <span class="pre">[pgi</span> <span class="pre">|</span> <span class="pre">lahey</span> <span class="pre">|</span> <span class="pre">intel</span> <span class="pre">|</span> <span class="pre">pathscale</span> <span class="pre">|</span> <span class="pre">gnu</span> <span class="pre">|</span> <span class="pre">xlf]</span></code></dt>
+<dd>Type of the Fortran compiler. This argument is used in conjunction with the <code class="docutils literal"><span class="pre">-fc</span></code> argument when the name of the fortran compiler refers to a wrapper script (e.g., <code class="docutils literal"><span class="pre">mpif90</span></code> or <code class="docutils literal"><span class="pre">ftn</span></code>). In this case the user needs to specify the type of Fortran compiler that is being invoked by the wrapper script. Default: Depends on the name of the Fortran compiler.</dd>
+<dt><code class="docutils literal"><span class="pre">-fflags</span> <span class="pre">&lt;string&gt;</span></code></dt>
+<dd>A string of user specified Fortran compiler options appended to the default options set in the Makefile. See <code class="docutils literal"><span class="pre">-fopt</span></code> to override optimization flags.</dd>
+<dt><code class="docutils literal"><span class="pre">-fopt</span> <span class="pre">&lt;string&gt;</span></code></dt>
+<dd>A string of user specified Fortran compiler optimization flags. Overrides Makefile defaults.</dd>
+<dt><code class="docutils literal"><span class="pre">-gmake</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Name of the GNU make program on your system. Supply the absolute pathname if the program is not in your path (or fix your path). This is only needed by configure for running tests via the <code class="docutils literal"><span class="pre">-test</span></code> option.</dd>
+<dt><code class="docutils literal"><span class="pre">-lapack_libdir</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing LAPACK library.</dd>
+<dt><code class="docutils literal"><span class="pre">-ldflags</span> <span class="pre">&lt;string&gt;</span></code></dt>
+<dd>A string of user specified load options. Appended to Makefile defaults.</dd>
+<dt><code class="docutils literal"><span class="pre">-linker</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>User specified linker. Default: use the Fortran compiler.</dd>
+<dt><code class="docutils literal"><span class="pre">-mpi_inc</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing MPI include files.</dd>
+<dt><code class="docutils literal"><span class="pre">-mpi_lib</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing MPI library.</dd>
+<dt><code class="docutils literal"><span class="pre">-nc_inc</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing NetCDF include files.</dd>
+<dt><code class="docutils literal"><span class="pre">-nc_lib</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing NetCDF library.</dd>
+<dt><code class="docutils literal"><span class="pre">-nc_mod</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing NetCDF module files.</dd>
+<dt><code class="docutils literal"><span class="pre">-pnc_inc</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing PnetCDF include files.</dd>
+<dt><code class="docutils literal"><span class="pre">-pnc_lib</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory containing PnetCDF library.</dd>
+<dt><code class="docutils literal"><span class="pre">-rad_driver</span></code></dt>
+<dd>Build CAM with the offline radiation driver. This produces an executable that can only be used for offline radiation calculations.</dd>
+<dt><code class="docutils literal"><span class="pre">-target_os</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Override the OS setting for cross platform compilation from the following list <code class="docutils literal"><span class="pre">[aix|irix|linux|</span> <span class="pre">bgl|bgp</span> <span class="pre">]</span></code>. Default: OS on which configure is executed as defined by the Perl $OSNAME variable.</dd>
+<dt><code class="docutils literal"><span class="pre">-usr_src</span> <span class="pre">&lt;dir1&gt;[,&lt;dir2&gt;[,&lt;dir3&gt;[...]]]</span></code></dt>
+<dd>Directories containing user source code. Note that these directories will also be searched for modified versions of the files needed by the <code class="docutils literal"><span class="pre">build-namelist</span></code> script, e.g., the namelist definition and use case files.</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="the-build-namelist-utility">
+<h2>8.2. The build-namelist utility<a class="headerlink" href="#the-build-namelist-utility" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">build-namelist</span></code> utility builds namelists (and on occasion other
+types of input files) which specify run-time details for CAM and the
+components it&#8217;s running with in standalone mode. When executed from
+the CESM scripts it only produces a namelist file for the CAM
+component (in the file <code class="docutils literal"><span class="pre">atm_in</span></code>), and a namelist file for control of
+dry deposition which is shared by CAM and CLM (in the file
+<code class="docutils literal"><span class="pre">drv_flds_in</span></code>).</p>
+<p>The task of constructing a correct namelist has become extremely
+complex due to the large number of configurations supported by
+CAM. Editing namelists by hand is an extremely fragile process due to
+the number of variables that need to be set, and to the many
+interdependencies among them. <em>We strongly discourage editing
+namelists by hand.</em> All customizations of the CAM namelist are
+possible by making use of the <code class="docutils literal"><span class="pre">build-namelist</span></code> command line options.</p>
+<p>Some of the important features of <code class="docutils literal"><span class="pre">build-namelist</span></code> are:</p>
+<ul class="simple">
+<li>All valid namelist variables are known to <code class="docutils literal"><span class="pre">build-namelist</span></code>. So an
+invalid variable specified by the user (supplied either by the
+<code class="docutils literal"><span class="pre">-infile</span></code> or <code class="docutils literal"><span class="pre">-namelist</span></code> options) will cause <code class="docutils literal"><span class="pre">build-namelist</span></code> to
+fail with an error message telling which namelist variable is
+invalid. This is a big improvement over a runtime failure caused by an
+invalid variable which typically gives no hint as to which variable
+caused the problem.</li>
+<li>In addition to knowing all valid variable names and their types,
+<code class="docutils literal"><span class="pre">build-namelist</span></code> also knows which namelist group each variable
+belongs to. This means that the user only needs to specify variable
+names to <code class="docutils literal"><span class="pre">build-namelist</span></code> and not the group names. The <code class="docutils literal"><span class="pre">-infile</span></code>
+and <code class="docutils literal"><span class="pre">-namelist</span></code> options still require valid namelist syntax as
+input, but the group name is ignored. So all variables can be put in
+a single group with an arbitrary name, for example, &#8220;&amp;xxx ... /&#8221;
+where &#8220;xxx&#8221; is the namelist group name.</li>
+<li>Since <code class="docutils literal"><span class="pre">build-namelist</span></code> knows all namelist variables specified by
+the user it is able to do consistency checking. In general however,
+<code class="docutils literal"><span class="pre">build-namelist</span></code> assumes that the user is the expert and will not
+override a user specification unless there is a major inconsistency,
+for example if variables have been set to use parameterizations
+which can not be run at the same time.</li>
+<li>All configurations have namelist variables that must be specified,
+and <code class="docutils literal"><span class="pre">build-namelist</span></code> has a mechanism to provide default values for
+these variables. When an appropriate default value cannot be found
+then <code class="docutils literal"><span class="pre">build-namelist</span></code> will fail with an informative message.</li>
+<li>When running a configuration for the first time there are often many
+input datasets that may not be in the local input data directory. In
+order to facilitate getting the required datasets <code class="docutils literal"><span class="pre">build-namelist</span></code>
+has an option, <code class="docutils literal"><span class="pre">-test</span></code>, that can be used to produce a complete
+list of required datasets and report status of whether or not they
+are present in the local directory. This list can then be used to
+obtain the needed datasets from the CESM SVN input data repository.</li>
+<li>One required input for <code class="docutils literal"><span class="pre">build-namelist</span></code> is a configuration cache
+file produced by a previous invocation of <code class="docutils literal"><span class="pre">configure</span></code>
+(<code class="docutils literal"><span class="pre">config_cache.xml</span></code> by default). <code class="docutils literal"><span class="pre">build-namelist</span></code> looks at this
+file to determine the features of the CAM executable, such as the
+dynamical core and horizontal resolution, that affect the default
+specifications for namelist variables. The default values themselves
+are specified in the file
+<code class="docutils literal"><span class="pre">$CAM_ROOT/models/atm/cam/bld/namelist_files/namelist_defaults_cam.xml</span></code>,
+and in the use case files located in the directory
+<code class="docutils literal"><span class="pre">$CAM_ROOT/models/atm/cam/bld/namelist_files/use_cases/</span></code>.</li>
+<li>The other required input for <code class="docutils literal"><span class="pre">build-namelist</span></code> is the root
+directory for the input datasets. This is required since nearly all
+input files must be specified using absolute filepaths, but the
+defaults are stored as filepaths which are relative to the root
+directory. It is expected that the actual location of the root
+directory is something that will be resolved at runtime. The way
+this is done is to either specify it using the <code class="docutils literal"><span class="pre">-csmdata</span></code>
+argument, or to set the environment variable <code class="docutils literal"><span class="pre">CSMDATA</span></code>.</li>
+</ul>
+<p>The methods for setting the values of namelist variables, listed from highest to lowest precedence, are:</p>
+<ol class="arabic simple">
+<li>using specific command-line options, e.g., <code class="docutils literal"><span class="pre">-case</span></code> and <code class="docutils literal"><span class="pre">-runtype</span></code>,</li>
+<li>using the <code class="docutils literal"><span class="pre">-namelist</span></code> option,</li>
+<li>setting values in a file specified by <code class="docutils literal"><span class="pre">-infile</span></code>,</li>
+<li>specifying a <code class="docutils literal"><span class="pre">-use_case</span></code> option,</li>
+<li>setting values in the namelist defaults file.</li>
+</ol>
+<ul class="simple">
+<li>The first four of these methods for specifying namelist variables
+are the ones available to the user without requiring code
+modification. Any namelist variable recognized by CAM can be
+modified using method 2 or 3. The final two methods represent
+defaults that are hard coded as part of the code base.</li>
+</ul>
+<div class="section" id="options-to-build-namelist">
+<h3>8.2.1. Options to build namelist<a class="headerlink" href="#options-to-build-namelist" title="Permalink to this headline">¶</a></h3>
+<p>To get a list of all available options, type <code class="docutils literal"><span class="pre">build-namelist</span> <span class="pre">--help</span></code>. Available options are also listed just below.</p>
+<p>The following options may all be specified with either one or two leading dashes, e.g., <code class="docutils literal"><span class="pre">-help</span></code> or <code class="docutils literal"><span class="pre">--help</span></code>. The few options that can be expressed as single letter switches may not be clumped, e.g., <code class="docutils literal"><span class="pre">-h</span> <span class="pre">-s</span> <span class="pre">-v</span></code> may NOT be expressed as <code class="docutils literal"><span class="pre">-hsv</span></code>. When multiple options are listed separated by a vertical bar either version may be used.</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">-case</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Case identifier up to 80 characters. This value is used to set the case_name variable in the driver namelist. Default: <code class="docutils literal"><span class="pre">camrun</span></code></dd>
+<dt>-cice_nl &lt;namelist&gt;</dt>
+<dd>Specify namelist settings for CICE directly on the commandline by supplying a string containing FORTRAN namelist syntax, e.g., <code class="docutils literal"><span class="pre">-cice_nl`</span> <span class="pre">&quot;&amp;ice</span> <span class="pre">histfreq=1</span> <span class="pre">/&quot;</span></code>. This namelist will be passed to the invocation of the CICE build-namelist via its -<code class="docutils literal"><span class="pre">namelist</span></code> argument.</dd>
+<dt><code class="docutils literal"><span class="pre">-config</span> <span class="pre">&lt;filepath&gt;</span></code></dt>
+<dd>Read the specified configuration cache file to determine the configuration of the CAM executable. Default: <code class="docutils literal"><span class="pre">config_cache.xml</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-config_cice</span> <span class="pre">&lt;filepath&gt;</span></code></dt>
+<dd>Filepath of the CICE config_cache file. This filepath is passed to the invocation of the CICE <code class="docutils literal"><span class="pre">build-namelist</span></code>. Only specify this to override the default filepath which was set when the CICE <code class="docutils literal"><span class="pre">configure</span></code> was invoked by the CAM <code class="docutils literal"><span class="pre">configure</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-csmdata</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Root directory of CESM input data. Can also be set by using the <code class="docutils literal"><span class="pre">CSMDATA</span></code> environment variable.</dd>
+<dt><code class="docutils literal"><span class="pre">-dir</span> <span class="pre">&lt;dir&gt;</span></code></dt>
+<dd>Directory where output namelist files for each component will be written, i.e., <code class="docutils literal"><span class="pre">atm_in</span></code>, <code class="docutils literal"><span class="pre">drv_in</span></code>, <code class="docutils literal"><span class="pre">ice_in</span></code>, <code class="docutils literal"><span class="pre">lnd_in</span></code> and <code class="docutils literal"><span class="pre">ocn_in</span></code>. Default: current working directory.</dd>
+<dt><code class="docutils literal"><span class="pre">-help</span> <span class="pre">|</span> <span class="pre">-h</span></code></dt>
+<dd>Print usage to STDOUT.</dd>
+<dt><code class="docutils literal"><span class="pre">-ignore_ic_date</span></code></dt>
+<dd>Ignore the date attribute of the initial condition files when determining the default.</dd>
+<dt><code class="docutils literal"><span class="pre">-ignore_ic_year</span></code></dt>
+<dd>Ignore just the year part of the date attribute of the initial condition files when determining the default.</dd>
+<dt><code class="docutils literal"><span class="pre">-infile</span> <span class="pre">&lt;filepath&gt;</span></code></dt>
+<dd>Specify a file containing namelists to read values from.</dd>
+<dt><code class="docutils literal"><span class="pre">-inputdata</span> <span class="pre">&lt;filepath&gt;</span></code></dt>
+<dd>Writes out a list of pathnames for required input datasets to the specified file.</dd>
+<dt><code class="docutils literal"><span class="pre">-namelist</span> <span class="pre">&lt;namelist&gt;</span></code></dt>
+<dd>Specify namelist settings directly on the commandline by supplying a string containing FORTRAN namelist syntax, e.g., -<code class="docutils literal"><span class="pre">namelist</span> <span class="pre">&quot;&amp;atm</span> <span class="pre">stop_option='ndays'</span> <span class="pre">stop_n=10</span> <span class="pre">/&quot;</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">-ntasks</span> <span class="pre">&lt;n&gt;</span></code></dt>
+<dd>Specify the number of MPI tasks to be used by the run. This is only used to set a default decomposition for the FV dycore, i.e., the npr_yz variable.</dd>
+<dt><code class="docutils literal"><span class="pre">-runtype</span> <span class="pre">[startup|continue|branch]</span></code></dt>
+<dd>Type of simulation. Default: startup.</dd>
+<dt><code class="docutils literal"><span class="pre">-silent</span> <span class="pre">|</span> <span class="pre">-s</span></code></dt>
+<dd>Turns on silent mode - only fatal messages issued.</dd>
+<dt><code class="docutils literal"><span class="pre">-test</span></code></dt>
+<dd>Enable checking that input datasets exist on local filesystem. This is also a convenient way to generate a list of the required input datasets for a model run.</dd>
+<dt><code class="docutils literal"><span class="pre">-use_case</span> <span class="pre">&lt;name&gt;</span></code></dt>
+<dd>Specify a use case.</dd>
+<dt><code class="docutils literal"><span class="pre">-verbose</span> <span class="pre">|</span> <span class="pre">-v</span></code></dt>
+<dd>Turn on verbose echoing of informational messages.</dd>
+<dt><code class="docutils literal"><span class="pre">-version</span></code></dt>
+<dd>Echo the source code repository tag name used to check out this CAM distribution.</dd>
+</dl>
+</div>
+<div class="section" id="environment-variables-used-by-build-namelist">
+<h3>8.2.2. Environment variables used by build namelist<a class="headerlink" href="#environment-variables-used-by-build-namelist" title="Permalink to this headline">¶</a></h3>
+<p>The environment variables recognized by <code class="docutils literal"><span class="pre">build-namelist</span></code> are presented below.</p>
+<p><code class="docutils literal"><span class="pre">CSMDATA</span></code></p>
+<p>Root directory of CESM input data. Note that the commandline argument
+<code class="docutils literal"><span class="pre">-csmdata</span></code> takes precedence over the environment variable.</p>
+<p><code class="docutils literal"><span class="pre">OMP_NUM_THREADS</span></code></p>
+<p>If values of the specific variables that set the thread count for each
+component, i.e., <code class="docutils literal"><span class="pre">atm_nthreads</span></code>, <code class="docutils literal"><span class="pre">cpl_nthreads</span></code>, <code class="docutils literal"><span class="pre">ice_nthreads</span></code>,
+<code class="docutils literal"><span class="pre">lnd_nthreads</span></code>, or <code class="docutils literal"><span class="pre">ocn_nthreads</span></code>, are set via the <code class="docutils literal"><span class="pre">-namelist</span></code>,
+or <code class="docutils literal"><span class="pre">-infile</span></code> options, then these values have highest precedence. The
+<code class="docutils literal"><span class="pre">OMP_NUM_THREADS</span></code> environment variable has next highest precedence
+for setting any of the component specific thread count
+variables. Lowest precedence for setting these variables is the value
+of <code class="docutils literal"><span class="pre">nthreads</span></code> from the configure cache file.</p>
+</div>
+<div class="section" id="cam-namelist-variables">
+<h3>8.2.3. CAM Namelist variables<a class="headerlink" href="#cam-namelist-variables" title="Permalink to this headline">¶</a></h3>
+<p>A searchable (or browsable) page containing all CAM namelist variables
+is <a class="reference external" href="https://github.com/erika72/cam/wiki/CAM-URL">here</a>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="references.html" title="9. References"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="physics-modifications-via-the-namelist.html" title="7. Physics modifications via the namelist"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017 UCAR.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+    </div>
+  </body>
+</html>

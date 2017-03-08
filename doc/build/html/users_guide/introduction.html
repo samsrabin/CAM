@@ -1,0 +1,139 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. Introduction &mdash; camdoc  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM User’s Guide" href="index.html" />
+    <link rel="next" title="2. Getting Help" href="getting-help.html" />
+    <link rel="prev" title="CAM User’s Guide" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="getting-help.html" title="2. Getting Help"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="CAM User’s Guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">CAM User&#8217;s Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="getting-help.html"
+                        title="next chapter">2. Getting Help</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/users_guide/introduction.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<span id="id1"></span><h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The Community Atmosphere Model version CAM-5.3 is released as the atmosphere component of the Community Earth System Model version CESM-1.2.
+It is the latest in a series of global atmosphere models whose development is guided by the <a class="reference external" href="http://www.cesm.ucar.edu/working_groups/Atmosphere/">Atmosphere Model Working Group (AMWG)</a> of the <a class="reference external" href="http://www.cesm.ucar.edu//">Community Earth System Model (CESM)</a> project.
+CAM is the atmospheric component of the CESM.
+CAM is has a &#8220;standalone&#8221; configuration in CESM, by we mean that the atmosphere is coupled to an active land model (CLM), a thermodynamic only sea ice model (a special configuration of CICE), and a data ocean model (DOCN).
+When one speaks of &#8220;doing CAM simulations&#8221; the implication is that it&#8217;s a standalone configuration that is being used.
+When CAM is coupled to CESM active ocean and sea ice models then we refer to it as a &#8220;fully coupled CESM simulation&#8221;.</p>
+<p>CAM provides a framework for running the &#8220;Whole Atmosphere&#8221; configurations; WACCM, and WACCM-X.
+To run CAM in a WACCM or WACCM-X configuration the user is referred to the <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/">CESM-1.2 User&#8217;s Guide</a>.</p>
+<p>In versions of CAM before 4.0 the driver for the standalone configuration was completely separate code from what was used to couple the components of the CCSM.
+One of the most significant software changes in CAM-4.0 was a refactoring of how the land, ocean, and sea ice components are called which enabled the use of the CCSM coupler to act as the CAM standalone driver (this also depended on the complete rewritting of the CCSM coupler to support sequential execution of the components).
+Hence, for the CESM1 model, just as for CCSM4 before it, it is accurate to say that a CAM standalone configuration is nothing more than a special configuration of CESM in which the active ocean and sea ice components are replaced by data ocean and thermodynamic sea ice components.</p>
+<p>Since the CAM standalone model is just a special configuration of CESM it can be run using the CESM scripts.
+This is done by using one of the &#8220;F&#8221; compsets and is described in the <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/">CESM-1.2 User&#8217;s Guide</a>.
+The main advantage of running CAM via the CESM scripts is to leverage the high level of support that those scripts provide for doing production runs of predefined experiments on supported platforms.
+The CESM scripts do things like: setting up reasonable runtime environments; automatically retrieving required input datasets from an SVN server; and archiving output files.
+But CAM is used in a lot of environments where the complexity of production ready scripts is not necessary.
+In these instances the flexibility and simplicity of being able to completely describe a run using a short shell script is a valuable option.
+In either case though, the ability to customize a CAM build or runtime configuration depends on being able to use the utilities described in this document.
+Any build configuration can be set up via appropriate commandline arguments to CAM&#8217;s <code class="docutils literal"><span class="pre">configure</span></code> utility, and any runtime configuration can be set up with appropriate arguments to CAM&#8217;s <code class="docutils literal"><span class="pre">build-namelist</span></code> utility.
+Issues that are specific to running CAM from the CESM scripts will not be discussed in this guide.
+Rather we focus on issues that are independent of which scripts are used to run CAM, although there is some attention given in this guide to the construction of simple scripts designed for running CAM in its standalone mode.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="getting-help.html" title="2. Getting Help"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="CAM User’s Guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017 UCAR.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.3.
+    </div>
+  </body>
+</html>
