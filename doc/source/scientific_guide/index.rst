@@ -15,3 +15,7 @@ CAM Scientific Guide
 
    chap2.rst
    chap3.rst
+   chap4.rst
+
+
+
