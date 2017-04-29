@@ -197,7 +197,7 @@ additions to superfast chemistry.</p>
 <h3>6.2.1. Chemistry Schemes<a class="headerlink" href="#chemistry-schemes" title="Permalink to this headline">¶</a></h3>
 <p>For CAM-Chem, an extensive tropospheric chemistry option is available
 (trop mozart), as well as an extensive tropospheric and stratospheric
-chemistry (trop-strat mozart) as discussed in detail in ([lamarque:12]),
+chemistry (trop-strat mozart) as discussed in detail in (<a class="reference internal" href="chapter8.html#lamarque-12" id="id2">[LEH+12]</a>),
 including a list of all species and reactions. Furthermore, a superfast
 chemistry option is available for CAM, as discussed in
 Section&nbsp;<a class="reference internal" href="#sec-chem-superfast"><span class="std std-ref">Superfast Chemistry</span></a>. For each chemical scheme,
@@ -211,32 +211,32 @@ supported compsets, this generated code is available in a sub-directory
 of <code class="docutils literal"><span class="pre">atm/src/chemistry</span></code>.</p>
 <div class="section" id="the-bulk-aerosol-model">
 <h4>6.2.1.1. The Bulk Aerosol Model<a class="headerlink" href="#the-bulk-aerosol-model" title="Permalink to this headline">¶</a></h4>
-<p>CAM4-chem uses the bulk aerosol model discussed in [lamarque:05]
-and [emmons:10]. This model has a representation of aerosols
-based on the work by [{tie:02] and [tie:05], i.e. sulfate
+<p>CAM4-chem uses the bulk aerosol model discussed in <a class="reference internal" href="chapter8.html#lamarque-05" id="id3">[LHE+05]</a>
+and <a class="reference internal" href="chapter8.html#emmons-10" id="id4">[EWH+10]</a>. This model has a representation of aerosols
+based on the work by [{tie:02] and <a class="reference internal" href="chapter8.html#tie-05" id="id6">[TMW+05a]</a>, i.e. sulfate
 aerosol is formed by the oxidation of SO<img class="math" src="../_images/math/bb24541895bbe61f03ab83032effbbdcddfe5e82.png" alt="_{2}"/> in the gas
 phase (by reaction with the hydroxyl radical) and in the aqueous phase
 (by reaction with ozone and hydrogen peroxide).  Furthermore, the
 model includes a representation of ammonium nitrate that is dependent
 on the amount of sulfate present in the air mass following the
 parameterization of gas/aerosol partitioning by
-[metzger:01]. Because only the bulk mass is calculated, a
+<a class="reference internal" href="chapter8.html#metzger-01" id="id7">[MDPL02]</a>. Because only the bulk mass is calculated, a
 lognormal distribution is assumed for all aerosols using different
-mean radius and geometric standard deviation [liao:03].  The
+mean radius and geometric standard deviation <a class="reference internal" href="chapter8.html#liao-03" id="id8">[LAC+03]</a>.  The
 conversion of carbonaceous aerosols (organic and black) from
 hydrophobic to hydrophilic is assumed to occur within a fixed 1.6 days
-[tie:05]. Natural aerosols (desert dust and sea salt) are
-implemented following [mahowald:06a] and [mahowald:06b]
+<a class="reference internal" href="chapter8.html#tie-05" id="id9">[TMW+05a]</a>. Natural aerosols (desert dust and sea salt) are
+implemented following <a class="reference internal" href="chapter8.html#mahowald-06a" id="id10">[MLTW06]</a> and <a class="reference internal" href="chapter8.html#mahowald-06b" id="id11">[MML+06]</a>
 and the sources of these aerosols are derived based on the model
 calculated wind speed and surface conditions.  In addition,
 secondary-organic aerosols (SOA) are linked to the gas-phase chemistry
 through the oxidation of atmospheric non-methane hydrocarbons (NMHCs),
-as in [lack:04].</p>
+as in <a class="reference internal" href="chapter8.html#lack-04" id="id12">[LTB+04]</a>.</p>
 </div>
 <div class="section" id="cam-chem-using-the-modal-aerosol-model">
 <h4>6.2.1.2. CAM-Chem using the Modal Aerosol Model<a class="headerlink" href="#cam-chem-using-the-modal-aerosol-model" title="Permalink to this headline">¶</a></h4>
 <p>CAM-Chem has the ability to run with two modal aerosols models, the MAM3
-and MAM7 ([liu:12]). The Modal Aerosols Model, is described in Section
+and MAM7 (<a class="reference internal" href="chapter8.html#liu-12" id="id13">[LEG+12]</a>). The Modal Aerosols Model, is described in Section
 4.8.2. In CAM5-Chem, the gase-phase chemistry is coupled to Modal
 Aerosol Model in chemical species O<img class="math" src="../_images/math/4313cf755ae9528d90ca36bd8a3bc3df19101f9c.png" alt="_{3}"/>, OH, HO<img class="math" src="../_images/math/bb24541895bbe61f03ab83032effbbdcddfe5e82.png" alt="_{2}"/>
 and NO<img class="math" src="../_images/math/4313cf755ae9528d90ca36bd8a3bc3df19101f9c.png" alt="_{3}"/>, as derived from the chemical mechanism and not
@@ -247,16 +247,16 @@ chemical mechanism.</p>
 <div class="section" id="trop-mozart-chemistry">
 <h4>6.2.1.3. Trop MOZART Chemistry<a class="headerlink" href="#trop-mozart-chemistry" title="Permalink to this headline">¶</a></h4>
 <p>The extensive tropospheric chemistry scheme represents a minor update to
-the MOZART-4 mechanism, fully described in ([emmons:10]). In particular, we
+the MOZART-4 mechanism, fully described in (<a class="reference internal" href="chapter8.html#emmons-10" id="id14">[EWH+10]</a>). In particular, we
 have included C<img class="math" src="../_images/math/bb24541895bbe61f03ab83032effbbdcddfe5e82.png" alt="_{2}"/>H<img class="math" src="../_images/math/bb24541895bbe61f03ab83032effbbdcddfe5e82.png" alt="_{2}"/>, HCOOH, HCN and
 CH<img class="math" src="../_images/math/4313cf755ae9528d90ca36bd8a3bc3df19101f9c.png" alt="_{3}"/>CN. Reaction rates have been updated to JPL-2006
-([sander_etal:06]). A minor update has been made to the isoprene oxidation
+(<a class="reference internal" href="chapter8.html#sander-etal-06" id="id15">[SanderSPeal06]</a>). A minor update has been made to the isoprene oxidation
 scheme, including an increase in the production of glyoxal. This
 mechanism is mainly of relevance in the troposphere and is intended for
 simulations for which long-term trends in the stratospheric composition
 are not crucial. Therefore, in this configuration, the stratospheric
 distributions of long-lived species (see discussion below) are specified
-from previously performed WACCM simulations ([garcia_etal:07]); see Section <a class="reference internal" href="#sec-boundary"><span class="std std-ref">Boundary conditions</span></a>).</p>
+from previously performed WACCM simulations (<a class="reference internal" href="chapter8.html#garcia-etal-07" id="id16">[GMK+07]</a>); see Section <a class="reference internal" href="#sec-boundary"><span class="std std-ref">Boundary conditions</span></a>).</p>
 </div>
 <div class="section" id="trop-strat-mozart-chemistry">
 <h4>6.2.1.4. Trop-Strat MOZART Chemistry<a class="headerlink" href="#trop-strat-mozart-chemistry" title="Permalink to this headline">¶</a></h4>
@@ -273,16 +273,16 @@ Section&nbsp;[sec:waccm]; (<strong>???</strong>), Kinnison et al, 2012, (in prep
 <h4>6.2.1.5. SOA calculation in CAM-Chem<a class="headerlink" href="#soa-calculation-in-cam-chem" title="Permalink to this headline">¶</a></h4>
 <p>An SOA simulation of intermediate complexity is also available in
 CAM-Chem. This is based on the 2-product model scheme of
-[odum:97], as implemented in CAM-Chem by [heald:08]. This
+<a class="reference internal" href="chapter8.html#odum-97" id="id17">[OJG+97]</a>, as implemented in CAM-Chem by <a class="reference internal" href="chapter8.html#heald-08" id="id18">[HHH+08]</a>. This
 treats the products of VOC oxidation as semi-volatile species, which
 re-partition every time step based on the temperature (enthalpy of
 vaporization of 42 kJmol-1) and organic aerosol mass available for
-condensation of vapours [pankow:94].  In CAM-Chem we treat
+condensation of vapours <a class="reference internal" href="chapter8.html#pankow-94" id="id19">[Pan94]</a>.  In CAM-Chem we treat
 secondary organic aerosol formation from the products of isoprene,
 monoterpene and aromatic (benzene, toluene and xylene) oxidation by
 OH, O<img class="math" src="../_images/math/4313cf755ae9528d90ca36bd8a3bc3df19101f9c.png" alt="_{3}"/> and NO<img class="math" src="../_images/math/4313cf755ae9528d90ca36bd8a3bc3df19101f9c.png" alt="_{3}"/>.  The yields and partitioning
 coefficients are based on smog chamber studies
-[griffin:99][henze:08][ng:07].  The SOA calculation is setup to
+<a class="reference internal" href="chapter8.html#griffin-99" id="id20">[GCFS99]</a><a class="reference internal" href="chapter8.html#henze-08" id="id21">[HSN+08]</a><a class="reference internal" href="chapter8.html#ng-07" id="id22">[NKC+07]</a>.  The SOA calculation is setup to
 run with biogenic emissions calucated by the MEGAN2.1 model (see Section <a class="reference internal" href="#sec-emissions"><span class="std std-ref">Emissions</span></a>).</p>
 </div>
 </div>
@@ -631,8 +631,8 @@ desired, it is set to 0.0001. If the iteration maximum is reached (for
 any species) before the error criterion is met, the time step is cut in
 half and the solution to equation <a class="reference internal" href="#equation-solver5">(5)</a>  is iterated again. The
 time step can be reduced five times before the solution is accepted.
-This approach is based on the work of [sandu_etal:96] and [sandu_etal:97]; see also
-[brasseur_etal:99].</p>
+This approach is based on the work of <a class="reference internal" href="chapter8.html#sandu-etal-96" id="id23">[SPDIC96]</a> and <a class="reference internal" href="chapter8.html#sandu-etal-97" id="id24">[SVvL+97]</a>; see also
+<a class="reference internal" href="chapter8.html#brasseur-etal-99" id="id25">[BOT99]</a>.</p>
 </div>
 <div class="section" id="superfast-chemistry">
 <span id="sec-chem-superfast"></span><h2>6.5. Superfast Chemistry<a class="headerlink" href="#superfast-chemistry" title="Permalink to this headline">¶</a></h2>
@@ -655,8 +655,8 @@ photochemistry. The families selected are Ox, HOx, NOy, the
 CH<img class="math" src="../_images/math/7543f6b5afdfe584b14fc07c80ba81409810be74.png" alt="_{4}"/> oxidation suite plus isoprene (to capture the main NMHC
 effects), and a group of sulfur species to simulate natural and
 anthropogenic sources leading to sulfate aerosol.
-Sulfate aerosols is handled following <a class="reference internal" href="chapter8.html#tie2005" id="id26">[TMW+05]</a>.
-In this scheme, CH4 concentrations are read in from a file and uses CAM3.5 simulations [lamarque:10].
+Sulfate aerosols is handled following <a class="reference internal" href="chapter8.html#tie2005" id="id26">[TMW+05b]</a>.
+In this scheme, CH4 concentrations are read in from a file and uses CAM3.5 simulations <a class="reference internal" href="chapter8.html#lamarque-10" id="id27">[LamarqueBondEyring+10]</a>.
 The super-fast mechanism was validated by comparing the super-fast and full mechanisms in side-by-side simulations.</p>
 </div>
 <div class="section" id="emissions-for-cam4-superfast-chemistry">
@@ -674,7 +674,7 @@ The super-fast mechanism was validated by comparing the super-fast and full mech
 <div class="section" id="linoz">
 <h3>6.5.3. LINOZ<a class="headerlink" href="#linoz" title="Permalink to this headline">¶</a></h3>
 <p>Linoz is linearized ozone chemistry for stratospheric
-modeling [mclinden:00]. It calculates the net
+modeling <a class="reference internal" href="chapter8.html#mclinden-00" id="id28">[MOH+00]</a>. It calculates the net
 production of ozone (i.e., production minus loss) as a
 function of only three independent variables: local ozone
 concentration, temperature, and overhead column ozone). A
@@ -682,7 +682,7 @@ zonal mean climatology for these three variables as well as
 the other key chemical variables such a total odd-nitrogen
 methane abundance is developed from satellite and other in
 situ observations. A relatively complete photochemical box
-model [prather:92] is used to integrate the radicals to a
+model <a class="reference internal" href="chapter8.html#prather-92" id="id29">[Pra92]</a> is used to integrate the radicals to a
 steady state balance and then compute the net production of
 ozone. Small perturbations about the chemical climatology
 are used to calculate the coefficients of the first-order Taylor
@@ -711,7 +711,7 @@ is implemented for the chemical tendency of ozone in CAM-chem.</p>
 <div class="section" id="parameterized-psc-ozone-loss">
 <h3>6.5.4. Parameterized PSC ozone loss<a class="headerlink" href="#parameterized-psc-ozone-loss" title="Permalink to this headline">¶</a></h3>
 <p>In the superfast chemistry, we incorporate the PSCs parameterization
-scheme of [cariolle_et_al:90] when the temperature falls below
+scheme of <a class="reference internal" href="chapter8.html#cariolle-et-al-90" id="id30">[CLBRG90]</a> when the temperature falls below
 195 K and the sun is above the horizon at stratospheric altitudes.
 The O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/> loss scales as the squared stratospheric chlorine
 loading (normalized by the 1980 level threshold). In this formulation
@@ -719,7 +719,7 @@ PSC activation invokes a rapid e-fold of O<img class="math" src="../_images/math
 photochemical model, but only when t he temperature stays below the
 PSC threshold. The stratospheric chlorine loading (1850-2005) is input
 in the model using equivalent effective stratospheric chlorine (EESC)
-([newman:07]) table based on observed mixing ratios at the
+(<a class="reference internal" href="chapter8.html#newman-07" id="id31">[NDWN07]</a>) table based on observed mixing ratios at the
 surface.</p>
 <p>This can be used instead of the more explicit representation available
 from WACCM in the strat-trop configuration.</p>
@@ -862,7 +862,7 @@ represented by a separation velocity for each constituent with respect
 mean air. Since &nbsp;extends only into the lower thermosphere, we avoid the
 full complexity of the separation problem and represent mean air by the
 usual dry air mixture used in the lower atmosphere
-(<img class="math" src="../_images/math/0f0c82d32516acc517b6c9b6b157f320ff73b0af.png" alt="M_w = 28.966"/>) ([banks-kockarts:73]).</p>
+(<img class="math" src="../_images/math/0f0c82d32516acc517b6c9b6b157f320ff73b0af.png" alt="M_w = 28.966"/>) (<a class="reference internal" href="chapter8.html#banks-kockarts-73" id="id32">[BK73]</a>).</p>
 </div>
 <div class="section" id="discretization-of-the-vertical-diffusion-equations">
 <h4>6.6.2.3. Discretization of the vertical diffusion equations<a class="headerlink" href="#discretization-of-the-vertical-diffusion-equations" title="Permalink to this headline">¶</a></h4>
@@ -996,11 +996,11 @@ momentum sinks resulting from breaking gravity waves play an important
 role in determining the structure of the large-scale flow. CAM4
 incorporates a parameterization for a spectrum of vertically
 propagating internal gravity waves based on the work of
-[lindzen:81], [holton:82],
-[garcia-solomon:85] and
-[mcfarlane:87]. The parameterization solves separately for a general
+<a class="reference internal" href="chapter8.html#lindzen-81" id="id33">[Lin81]</a>, <a class="reference internal" href="chapter8.html#holton-82" id="id34">[Hol82]</a>,
+<a class="reference internal" href="chapter8.html#garcia-solomon-85" id="id35">[GS85]</a> and
+<a class="reference internal" href="chapter8.html#mcfarlane-87" id="id36">[McF87]</a>. The parameterization solves separately for a general
 spectrum of monochromatic waves and for a single stationary wave generated by
-flow over orography, following [mcfarlane:87]. The spectrum is omitted in
+flow over orography, following <a class="reference internal" href="chapter8.html#mcfarlane-87" id="id37">[McF87]</a>. The spectrum is omitted in
 the standard tropospheric version of CAM4, as in previous versions of the CCM.
 Here we describe the modified version of the gravity wave spectrum
 parameterization used in WACCM4.0.</p>
@@ -1140,7 +1140,7 @@ temperature and constituent perturbations. For potential temperature,
 \right) \theta^\prime + w' {\partial \overline\theta \over \partial z}
 = -\delta \theta^\prime \, ,"/></p>
 </div><p>where <img class="math" src="../_images/math/a702e781dfc76762a3a132c2031fba8898430925.png" alt="\delta"/> is the dissipation rate implied by wave breaking,
-which depends on the wave’s group velocity, <img class="math" src="../_images/math/dec7eea860f9426fdd7b97e566213bb0179dca00.png" alt="c_{gz}"/> (see [garcia:91]).</p>
+which depends on the wave’s group velocity, <img class="math" src="../_images/math/dec7eea860f9426fdd7b97e566213bb0179dca00.png" alt="c_{gz}"/> (see <a class="reference internal" href="chapter8.html#garcia-91" id="id38">[Gar01]</a>).</p>
 <div class="math" id="equation-eq:gw_dissip">
 <p><span class="eqno">(43)<a class="headerlink" href="#equation-eq:gw_dissip" title="Permalink to this equation">¶</a></span><img src="../_images/math/2244ada9b7221395f2438ad5fbddfdd3282114ef.png" alt="\delta = {c_{gz} \over 2H} = k \ {(\overline u - c)^2 \over 2H N}
 \, ."/></p>
@@ -1159,7 +1159,7 @@ represented as vertical diffusion, with coefficient <img class="math" src="../_i
 to the term in brackets in <a class="reference internal" href="#equation-eq:gw_kzz">(44)</a> , but they do not
 represent turbulent diffusive fluxes but rather eddy fluxes. Any
 additional turbulent fluxes due to wave breaking are ignored. To take
-into account the effect of localization of turbulence (e.g., [fritts-dunkerton:85][mcintyre:89])
+into account the effect of localization of turbulence (e.g., <a class="reference internal" href="chapter8.html#fritts-dunkerton-85" id="id39">[FD85]</a><a class="reference internal" href="chapter8.html#mcintyre-89" id="id40">[McI89]</a>)
 <a class="reference internal" href="#equation-eq:gw_kzz">(44)</a>  is multiplied times an inverse Prandtl
 number, <img class="math" src="../_images/math/6304f91a99b602f7e115bbb2272b4470ed404f8d.png" alt="{Pr}^{-1}"/>; in WACCM4.0 we use <img class="math" src="../_images/math/e2378553b18d643bdf14e4d1bb1a9f3b0f902492.png" alt="{Pr}^{-1}=0.25"/>.</p>
 </div>

@@ -1,4 +1,4 @@
-.. _introduction:
+.. _introduction1:
 
 .. |cam| replace:: CAM6.0
 
@@ -550,11 +550,11 @@ compared to the previous CAM radiation package (CAM-RT).
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Chemistry in CAM is now fully interactive and implemented in CESM
-(Section :ref:`sec_chem_sub_cam`); in particular, emissions of biogenic
+(Section :ref:`sec-chem_sub_cam`); in particular, emissions of biogenic
 compounds and deposition of aerosols to snow, ice, ocean and vegetation
 are handled through the coupler. The released version of CAM-chem in
 CESM is using the recently-developed superfast chemistry (Section
-:ref:`sec_chem_superfast`), in collaboration with P. Cameron-Smith
+:ref:`sec-chem_superfast`), in collaboration with P. Cameron-Smith
 from LLNL and M. Prather from UCI) to perform centennial scale
 simulations at a minor cost increase over the base CAM4. These
 simulations use the recently developed 1850-2005 emissions created in

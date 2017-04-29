@@ -106,8 +106,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <span class="target" id="introduction"></span><div class="section" id="id1">
-<h1>2. Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <span class="target" id="introduction1"></span><div class="section" id="introduction">
+<h1>2. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>This report presents the details of the governing equations, physical
 parameterizations, and numerical algorithms defining the version of the
 NCAR Community Atmosphere Model designated . The material provides an
@@ -115,7 +115,7 @@ overview of the major model components, and the way in which they
 interact as the numerical integration proceeds. Details on the coding
 implementation, along with in-depth information on running the CAM6.0 code, are
 given in a separate technical report entitled ‘ ‘User’s Guide to
-oCommunity Atmosphere Model CAM6.0’’ (<a class="reference internal" href="chapter8.html#eaton10" id="id2">[Eat10]</a>). As before, it is our
+oCommunity Atmosphere Model CAM6.0’’ (<a class="reference internal" href="chapter8.html#eaton10" id="id1">[Eat10]</a>). As before, it is our
 objective that this model provide NCAR and the university research
 community with a reliable, well documented atmospheric general
 circulation model. This version of the CAM6.0 incorporates a number
@@ -137,25 +137,25 @@ atmospheric model to university and NCAR scientists for use in the
 analysis and understanding of global climate. Because of its widespread
 use, the model was designated a community tool and given the name
 Community Climate Model (CCM). The original versions of the NCAR
-Community Climate Model, CCM0A (<a class="reference internal" href="chapter8.html#washington82" id="id3">[Was82]</a> ) and CCM0B (<a class="reference internal" href="chapter8.html#williamson83a" id="id4">[Wil83]</a>)
-were based on the Australian spectral model (<a class="reference internal" href="chapter8.html#bourke77" id="id5">[BMPT77]</a>; <a class="reference internal" href="chapter8.html#mcavaney78" id="id6">[MBP78]</a>) and an adiabatic, inviscid version of
-the ECMWF spectral model (<a class="reference internal" href="chapter8.html#baede79" id="id7">[BJC79]</a>). The CCM0B
+Community Climate Model, CCM0A (<a class="reference internal" href="chapter8.html#washington82" id="id2">[Was82]</a> ) and CCM0B (<a class="reference internal" href="chapter8.html#williamson83a" id="id3">[Wil83]</a>)
+were based on the Australian spectral model (<a class="reference internal" href="chapter8.html#bourke77" id="id4">[BMPT77]</a>; <a class="reference internal" href="chapter8.html#mcavaney78" id="id5">[MBP78]</a>) and an adiabatic, inviscid version of
+the ECMWF spectral model (<a class="reference internal" href="chapter8.html#baede79" id="id6">[BJC79]</a>). The CCM0B
 implementation was constructed so that its simulated climate would match
 the earlier CCM0A model to within natural variability (incorporated the
 same set of physical parameterizations and numerical approximations),
 but also provided a more flexible infrastructure for conducting medium–
 and long–range global forecast studies. The major strength of this
 latter effort was that all aspects of the model were described in a
-series of technical notes, which included a Users’ Guide (<a class="reference internal" href="chapter8.html#sato83" id="id8">[SBWW83]</a>),
+series of technical notes, which included a Users’ Guide (<a class="reference internal" href="chapter8.html#sato83" id="id7">[SBWW83]</a>),
 a subroutine guide which provided a detailed description of the
-code (<a class="reference internal" href="chapter8.html#williamson83a" id="id9">[Wil83]</a>) a detailed description of the algorithms
-(<a class="reference internal" href="chapter8.html#williamson83b" id="id10">[WBS+83]</a>), and a compilation of the simulated circulation
-statistics (<a class="reference internal" href="chapter8.html#williamson84" id="id11">[WW84]</a>). This development activity
+code (<a class="reference internal" href="chapter8.html#williamson83a" id="id8">[Wil83]</a>) a detailed description of the algorithms
+(<a class="reference internal" href="chapter8.html#williamson83b" id="id9">[WBS+83]</a>), and a compilation of the simulated circulation
+statistics (<a class="reference internal" href="chapter8.html#williamson84" id="id10">[WW84]</a>). This development activity
 firmly established NCAR’s commitment to provide a versatile, modular,
 and well–documented atmospheric general circulation model that would be
 suitable for climate and forecast studies by NCAR and university
 scientists. A more detailed discussion of the early history and
-philosophy of the Community Climate Model can be found in <a class="reference internal" href="chapter8.html#anthes86" id="id12">[Ant86]</a>.</p>
+philosophy of the Community Climate Model can be found in <a class="reference internal" href="chapter8.html#anthes86" id="id11">[Ant86]</a>.</p>
 <p>The second generation community model, CCM1, was introduced in July of
 1987, and included a number of significant changes to the model
 formulation which were manifested in changes to the simulated climate.
@@ -166,9 +166,9 @@ horizontal diffusion processes, and modifications to the formulation of
 surface energy exchange. A number of new modeling capabilities were also
 introduced, including a seasonal mode in which the specified surface
 conditions vary with time, and an optional interactive surface hydrology
-that followed the formulation presented by <a class="reference internal" href="chapter8.html#manabe69" id="id13">[Man69]</a>. A detailed
+that followed the formulation presented by <a class="reference internal" href="chapter8.html#manabe69" id="id12">[Man69]</a>. A detailed
 series of technical documentation was also made available for this
-version (<a class="reference internal" href="chapter8.html#williamson87" id="id14">[WKR+87]</a>; <a class="reference internal" href="chapter8.html#bath87" id="id15">[BDW+87]</a>; <a class="reference internal" href="chapter8.html#gwilliamson87" id="id16">[WW87]</a>; <a class="reference internal" href="chapter8.html#hack89" id="id17">[HBWB89]</a>)
+version (<a class="reference internal" href="chapter8.html#williamson87" id="id13">[WKR+87]</a>; <a class="reference internal" href="chapter8.html#bath87" id="id14">[BDW+87]</a>; <a class="reference internal" href="chapter8.html#gwilliamson87" id="id15">[WW87]</a>; <a class="reference internal" href="chapter8.html#hack89" id="id16">[HBWB89]</a>)
 and more completely describe this version of the CCM.</p>
 </div>
 <div class="section" id="ccm2">
@@ -196,26 +196,26 @@ dynamics; and the use of a bi-harmonic horizontal diffusion operator.
 Major changes to the dynamical formalism included the use of a
 terrain-following hybrid vertical coordinate, and the incorporation of
 a shape-preserving semi-Lagrangian transport scheme
-<a class="reference internal" href="chapter8.html#williamson94a" id="id18">[WO94a]</a> for advecting water vapor, as well as an
+<a class="reference internal" href="chapter8.html#williamson94a" id="id17">[WO94a]</a> for advecting water vapor, as well as an
 arbitrary number of other scalar fields (eg cloud water variables,
 chemical constituents, etc.).  Principal changes to the physics
 included the use of a <img class="math" src="../_images/math/2c8a74f2197c0cf95cf40caf7655c28f15195c7c.png" alt="delta"/> -Eddington approximation to calculate
-solar absorption <a class="reference internal" href="chapter8.html#briegleb92" id="id19">[Bri92]</a>; the use of a Voigt line shape to
+solar absorption <a class="reference internal" href="chapter8.html#briegleb92" id="id18">[Bri92]</a>; the use of a Voigt line shape to
 more accurately treat infrared radiative cooling in the stratosphere;
 the inclusion of a diurnal cycle to properly account for the
 interactions between the radiative effects of the diurnal cycle and
 the surface fluxes of sensible and latent heat; the incorporation of a
 finite heat capacity soil/sea ice model; a more sophisticated cloud
 fraction parameterization and treatment of cloud optical properties
-<a class="reference internal" href="chapter8.html#kiehl94" id="id20">[KHB94]</a>; the incorporation of a sophisticated non-local
-treatment of boundary-layer processes <a class="reference internal" href="chapter8.html#holtslag93" id="id21">[HB93]</a>; the use of a
-simple mass flux representation of moist convection <a class="reference internal" href="chapter8.html#hack94a" id="id22">[Hac94]</a>,
+<a class="reference internal" href="chapter8.html#kiehl94" id="id19">[KHB94]</a>; the incorporation of a sophisticated non-local
+treatment of boundary-layer processes <a class="reference internal" href="chapter8.html#holtslag93" id="id20">[HB93]</a>; the use of a
+simple mass flux representation of moist convection <a class="reference internal" href="chapter8.html#hack94a" id="id21">[Hac94]</a>,
 and the optional incorporation of the Biosphere-Atmosphere Transfer
-Scheme (BATS) of <a class="reference internal" href="chapter8.html#dickinson87" id="id23">[DHSKW87]</a>.  As with previous versions of
-the model, a User&#8217;s Guide <a class="reference internal" href="chapter8.html#bath92" id="id24">[BRO92]</a> and model description
-<a class="reference internal" href="chapter8.html#hack93" id="id25">[HBB+93]</a> were provided to completely document the model
+Scheme (BATS) of <a class="reference internal" href="chapter8.html#dickinson87" id="id22">[DHSKW87]</a>.  As with previous versions of
+the model, a User&#8217;s Guide <a class="reference internal" href="chapter8.html#bath92" id="id23">[BRO92]</a> and model description
+<a class="reference internal" href="chapter8.html#hack93" id="id24">[HBB+93]</a> were provided to completely document the model
 formalism and implementation.  Control simulation data sets were
-documented in <a class="reference internal" href="chapter8.html#gwilliamson93" id="id26">[Wil93]</a>.</p>
+documented in <a class="reference internal" href="chapter8.html#gwilliamson93" id="id25">[Wil93]</a>.</p>
 </div>
 <div class="section" id="ccm3">
 <h3>2.1.3. CCM3<a class="headerlink" href="#ccm3" title="Permalink to this headline">¶</a></h3>
@@ -267,8 +267,8 @@ significantly improved estimates of boundary layer height, and a
 substantial reduction in the overall magnitude of the hydrological
 cycle.  Parameterized convection was also modified where this process
 was represented using the deep moist convection formalism of
-<a class="reference internal" href="chapter8.html#zhang95" id="id27">[ZM95]</a> in conjunction with the scheme developed by
-<a class="reference internal" href="chapter8.html#hack94a" id="id28">[Hac94]</a> for CCM2.  This change resulted in an additional
+<a class="reference internal" href="chapter8.html#zhang95" id="id26">[ZM95]</a> in conjunction with the scheme developed by
+<a class="reference internal" href="chapter8.html#hack94a" id="id27">[Hac94]</a> for CCM2.  This change resulted in an additional
 reduction in the magnitude of the hydrological cycle and a smoother
 distribution of tropical precipitation.  Surface roughness over oceans
 was also diagnosed as a function of surface wind speed and stability,
@@ -280,10 +280,10 @@ should be pointed out that the improvements in the radiative and
 hydrological cycle characteristics of the model climate were achieved
 without compromising the quality of the simulated equilibrium
 thermodynamic structures (one of the major strengths of the CCM2)
-thanks in part to the incorporation of a <a class="reference internal" href="chapter8.html#sundqvist88" id="id29">[Sun88]</a> style
+thanks in part to the incorporation of a <a class="reference internal" href="chapter8.html#sundqvist88" id="id28">[Sun88]</a> style
 evaporation of stratiform precipitation.</p>
 <p>The CCM3 incorporated version 1 of the Land Surface Model (LSM)
-developed by <a class="reference internal" href="chapter8.html#bonan96a" id="id30">[Bon96]</a> which provided for the comprehensive
+developed by <a class="reference internal" href="chapter8.html#bonan96a" id="id29">[Bon96]</a> which provided for the comprehensive
 treatment of land surface processes.  This was a one-dimensional model
 of energy, momentum, water, and CO$_2$ exchange between the atmosphere
 and land, accounting for ecological differences among vegetation
@@ -319,7 +319,7 @@ and use in evolving computational environments. As was the case for
 CCM2, the code was internally documented, obviating the need for a
 separate technical note that describes each subroutine and common block
 in the model library. Thus, the Users’ Guide, the land surface technical
-note, the CCM3 technical note <a class="reference internal" href="chapter8.html#kiehl96" id="id31">[KHB+96]</a>, the actual code and a
+note, the CCM3 technical note <a class="reference internal" href="chapter8.html#kiehl96" id="id30">[KHB+96]</a>, the actual code and a
 series of reviewed scientific publications (including a special issue of
 the Journal of Climate, Volume 11, Number 6) were designed to completely
 document CCM3.</p>
@@ -341,8 +341,8 @@ addition of FV was a major extension to the model provided through a
 collaboration between NCAR and NASA Goddard&#8217;s Data Assimilation Office
 (DAO). The major changes in the physics included treatment of cloud
 condensed water using a prognostic formulation with a bulk
-microphysical component following <a class="reference internal" href="chapter8.html#rasch98" id="id32">[RK98]</a> and a macroscale
-component following <a class="reference internal" href="chapter8.html#zhang03" id="id33">[ZLB+03]</a>.  The <a class="reference internal" href="chapter8.html#zhang95" id="id34">[ZM95]</a>
+microphysical component following <a class="reference internal" href="chapter8.html#rasch98" id="id31">[RK98]</a> and a macroscale
+component following <a class="reference internal" href="chapter8.html#zhang03" id="id32">[ZLB+03]</a>.  The <a class="reference internal" href="chapter8.html#zhang95" id="id33">[ZM95]</a>
 parameterization for deep convection was retained from CCM3.</p>
 <p>A new treatment of geometrical cloud overlap in the radiation
 calculations computed the shortwave and longwave fluxes and heating
@@ -361,7 +361,7 @@ and Radiance Model (GENLN3). The mean absolute errors in the surface and
 top-of-atmosphere clear-sky longwave fluxes for standard atmospheres
 were reduced to less than 1&nbsp;W/m<img class="math" src="../_images/math/2047585f2f3353d419d959ea3fbc408bb0e55a40.png" alt="{}^2"/>. The near-infrared
 absorption by water vapor was also updated to a parameterization based
-upon the HITRAN2k line database <a class="reference internal" href="chapter8.html#rothman03" id="id35">[RBB+03]</a> that incorporated
+upon the HITRAN2k line database <a class="reference internal" href="chapter8.html#rothman03" id="id34">[RBB+03]</a> that incorporated
 the CKD&nbsp;2.4 prescription for the continuum. The magnitude of errors in
 flux divergences and heating rates relative to modern LBL calculations
 were reduced by approximately seven times compared to the previous CCM3
@@ -372,7 +372,7 @@ transport model forced with meteorological analysis and constrained by
 assimilation of satellite aerosol retrievals. These aerosols affect the
 shortwave energy budget of the atmosphere. CAM3 also included a
 mechanism for treating the shortwave and longwave effects of volcanic
-aerosols. Evaporation of convective precipitation following <a class="reference internal" href="chapter8.html#sundqvist88" id="id36">[Sun88]</a>
+aerosols. Evaporation of convective precipitation following <a class="reference internal" href="chapter8.html#sundqvist88" id="id35">[Sun88]</a>
 was implemented and enhancement of atmospheric moisture through
 this mechanism was offset by drying introduced by changes in the
 longwave absorptivity and emissivity. A careful formulation of vertical
@@ -407,19 +407,19 @@ had science enhancements from CAM3 and represented an intermediate
 release version as part of a staged and parallel process in
 atmospheric model development. In the CAM4 changes to the moist
 physical representations centered on enhancements to the existing
-<a class="reference internal" href="chapter8.html#zhang95" id="id37">[ZM95]</a> deep convection parameterization. The calculation of
+<a class="reference internal" href="chapter8.html#zhang95" id="id36">[ZM95]</a> deep convection parameterization. The calculation of
 Convective Available Potential Energy (CAPE) assumed an entraining
 plume to provide the in-cloud temperature and humidity profiles used
 to determine bouyancy and related cloud closure properties
 (chapter~ref{ssec:deep-convection}). The modification is based on the
 conservation of moist entropy and mixing methods of
-<a class="reference internal" href="chapter8.html#raymond86" id="id38">[RB86]</a><a class="reference internal" href="chapter8.html#raymond92" id="id39">[RB92]</a>.  It replaced the standard undilute
+<a class="reference internal" href="chapter8.html#raymond86" id="id37">[RB86]</a><a class="reference internal" href="chapter8.html#raymond92" id="id38">[RB92]</a>.  It replaced the standard undilute
 non-entraining plume method used in CAM3 and was employed to increase
 convection sensitivity to tropospheric moisture and reduce the
 amplitude of the diurnal cycle of precipitation over land. Sub-grid
 scale Convective Momentum Transports (CMT) were added to the deep
-convection scheme following <a class="reference internal" href="chapter8.html#richter08" id="id40">[RR08]</a> and the methodology of
-<a class="reference internal" href="chapter8.html#gregory97" id="id41">[GKI97]</a> (chapter~:ref:<cite>ssec:Convection-CMT</cite>).  CMT affects
+convection scheme following <a class="reference internal" href="chapter8.html#richter08" id="id39">[RR08]</a> and the methodology of
+<a class="reference internal" href="chapter8.html#gregory97" id="id40">[GKI97]</a> (chapter~:ref:<cite>ssec:Convection-CMT</cite>).  CMT affects
 tropospheric climate mainly through changes to the Coriolis torque.
 These changes resulted in improvement of the Hadley circulation during
 northern Winter and it reduced many of the model biases.  In an annual
@@ -428,14 +428,14 @@ excessive southern hemisphere mid-latitude jet were improved.</p>
 <p>In combination these modifications to the deep-convection lead to
 significant improvements in the phase, amplitude and spacial anomaly
 patterns of the modeled El Ni~{n}o, as documented in
-<a class="reference internal" href="chapter8.html#neale08" id="id42">[NRJ08]</a>. The calculation of cloud fraction in polar climates
+<a class="reference internal" href="chapter8.html#neale08" id="id41">[NRJ08]</a>. The calculation of cloud fraction in polar climates
 was also modified for the CAM4.0.  Due to the combination of a
 diagnostic cloud fraction and prognostic cloud water represntation it
 was possible to model unphysical extensive cloud decks with near zero
 in-cloud water in the CAM3. This was particularly pervasize in polar
 climates in Winter. These calculation inconsitencies and large cloud
 fractions are significantly reduced with modifications to the
-calculation of stratiform cloud following <a class="reference internal" href="chapter8.html#vavrus08" id="id43">[VW08]</a>.  In the
+calculation of stratiform cloud following <a class="reference internal" href="chapter8.html#vavrus08" id="id42">[VW08]</a>.  In the
 lower troposphere a &#8216;freeze-drying&#8217; process is perfomed whereby cloud
 fractions were systematically reduced for very low water vaopr
 amounts. The low cloud reduction caused an Arctic-wide drop of 15 W
@@ -451,7 +451,7 @@ climate performance with the CAM4.0 physics changes was summarized in
 the horizontal resolution comparison study of [ent09].</p>
 <p>For the dynamical core component of CAM4 the finite volume (FV) scheme
 was made the default due to its superior transport properties
-<a class="reference internal" href="chapter8.html#lin96" id="id45">[LR96]</a>. Modifications were made that upgraded the code version
+<a class="reference internal" href="chapter8.html#lin96" id="id44">[LR96]</a>. Modifications were made that upgraded the code version
 to a more recent NASA Goddard supported version.  Other changes
 provided new horizontal grid discretizations (e.g., 1.9x2.5 deg and
 0.9x1.25 deg) for optimal computational processor decompostion and
@@ -541,8 +541,8 @@ convection parameterization is retained from CAM4.0 (Section <a class="reference
 <p>Stratiform microphysical processes (Section <span class="xref std std-ref">sec-microphysics</span>)
 are represented by a prognostic, two-moment formulation for cloud
 droplet and cloud ice with mass and number concentrations following
-the original parameterization of <a class="reference internal" href="chapter8.html#morrison2008" id="id47">[MG08]</a>. The
-implimentation in cam <a class="reference internal" href="chapter8.html#gettelman2008" id="id48">[GMG08]</a> determines liquid and ice
+the original parameterization of <a class="reference internal" href="chapter8.html#morrison2008" id="id46">[MG08]</a>. The
+implimentation in cam <a class="reference internal" href="chapter8.html#gettelman2008" id="id47">[GMG08]</a> determines liquid and ice
 particle sizes from gamma functions and their evolution in time is
 subject to grid-scale advection, convective detrainment, turbulent
 diffusion and several microphysical processes. Activation of cloud
@@ -550,8 +550,8 @@ droplets occurs on an aerosol size distribution based on aerosol
 chemistry, temperature and vertical velocity. A sub-grid scale
 vertical velocity is provided through a turbulent kinetic energy
 approximation. A number of mechanisms are calcuated for ice crystal
-nucleation <a class="reference internal" href="chapter8.html#liu2007" id="id49">[LPGW07]</a> and combined with modifications to allow
-ice supersaturation <a class="reference internal" href="chapter8.html#gettelman2010" id="id50">[G+10]</a>.</p>
+nucleation <a class="reference internal" href="chapter8.html#liu2007" id="id48">[LPGW07]</a> and combined with modifications to allow
+ice supersaturation <a class="reference internal" href="chapter8.html#gettelman2010" id="id49">[G+10]</a>.</p>
 <p>The revised cloud macrophysics scheme (Section
 <span class="xref std std-ref">sec-macrophysics</span>,:cite:<cite>PBR10</cite>) provides a more transparent
 treatment of cloud processes and imposes full consistency between
@@ -562,7 +562,7 @@ an assumed triangular distribution of total relative humidity. Ice
 cloud fraction is based on [Get10] and allows supersaturation
 via a modified relative humidity over ice and the inclusion of ice
 condensate amount.</p>
-<p>A new 3-mode modal aerosol scheme (MAM3, Section aerosols, <a class="reference internal" href="chapter8.html#liu10" id="id52">[LG10]</a>)
+<p>A new 3-mode modal aerosol scheme (MAM3, Section aerosols, <a class="reference internal" href="chapter8.html#liu10" id="id51">[LG10]</a>)
 provides internally mixed representations of number
 concentrations and mass for Aitkin, accumulation and course aerosol
 modes which are merged characterizations of the more complex 7-mode
@@ -570,7 +570,7 @@ version of the scheme. Anthropogenic emissions, defined as originating
 from industrial, domestic and agriculture activity sectors, are provided
 from the [lamarque10] IPCC AR5 emission data set. Emissions of black carbon
 and organic carbon represent an update of [bond07] and [junker08].
-Emissions of sulfur dioxide are an update of <a class="reference internal" href="chapter8.html#smith01" id="id56">[SPW01]</a>, [smith04].
+Emissions of sulfur dioxide are an update of <a class="reference internal" href="chapter8.html#smith01" id="id55">[SPW01]</a>, [smith04].
 Injection heights, and size distribution of emissions
 data are not provided with the raw datasets so the protocols of
 [dentener06] are followed for CAM6.0. AEROCOM emission datastes are used for
@@ -585,7 +585,7 @@ taken from the microphysics and aerosol parmeterization quantities and
 provided as input to the radiation scheme (Section
 ref{sec:condensed_optics}). The radiation scheme (Section
 ref{sec:radiation}) has been updated to the Rapid Radiative Transfer
-Method for GCMs (RRTMG, <a class="reference internal" href="chapter8.html#iacono1" id="id59">[IDM+08]</a>[ mlawer]). It employs an
+Method for GCMs (RRTMG, <a class="reference internal" href="chapter8.html#iacono1" id="id58">[IDM+08]</a>[ mlawer]). It employs an
 efficient and accurate modified correlated-k method for calculating
 radiative fluxes and heating rates in the clear sky and for the
 condensed phase species. For each short-wave band calculation
@@ -593,12 +593,12 @@ extinction optical depth, single scattering albedo and asymmetry
 properties are specified. For each long-wave band mass-specific
 absorption is specified. The aerosol optical properties are defined
 for each mode of the MAM as described by
-<a class="reference internal" href="chapter8.html#ghanzaveri" id="id61">[GZ07]</a>. Hygroscopicity characteristics are specified for
+<a class="reference internal" href="chapter8.html#ghanzaveri" id="id60">[GZ07]</a>. Hygroscopicity characteristics are specified for
 soluable species. For volcanic aerosols a geometric mean radius is
 used. Optical properties of aerosols are combined prior to the
 radiative calculation. Liquid-cloud optics are calculated following
-<a class="reference internal" href="chapter8.html#wiscombe1996" id="id62">[Wis96]</a> and ice-cloud optics are calculated following
-<a class="reference internal" href="chapter8.html#mitchell2002" id="id63">[Mit02]</a>. Ice-cloud size optics are extended to allow for
+<a class="reference internal" href="chapter8.html#wiscombe1996" id="id61">[Wis96]</a> and ice-cloud optics are calculated following
+<a class="reference internal" href="chapter8.html#mitchell2002" id="id62">[Mit02]</a>. Ice-cloud size optics are extended to allow for
 radiatively active falling snow. Optical properties of clouds
 (including separate fractions and in-cloud water contents) are
 combined prior to the radiative calculation. RRTM separates the</p>
@@ -606,14 +606,14 @@ combined prior to the radiative calculation. RRTM separates the</p>
 <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>m, and models sources of extinction for H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O,
 O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>, CO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>, O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>, CH<img class="math" src="../_images/math/284796e299f67ddec30ffb68aa85adb566a054af.png" alt="_4"/>,
 N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> and Rayleigh scattering. Solar irradiance is now specified
-for the short-wave bands from the Lean dataset <a class="reference internal" href="chapter8.html#wang05" id="id64">[WLS05]</a>.
+for the short-wave bands from the Lean dataset <a class="reference internal" href="chapter8.html#wang05" id="id63">[WLS05]</a>.
 The long-wave spectrum is separated into 16 bands extending from
 3.1 <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>m to 1000 <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>m with molecular sources of
 absorption for the same species, in addition to CFC-11 (containing
 multiple CFC species) and CFC-12. RRTMG has extensive modifications from
 the original RRTM in order to provide significant speed-up for long
 climate integrations. Chief amongt these is the Monte-Carlo Independent
-Column Approximation <a class="reference internal" href="chapter8.html#pincus" id="id65">[PM03]</a>) that represnts
+Column Approximation <a class="reference internal" href="chapter8.html#pincus" id="id64">[PM03]</a>) that represnts
 sub-grid scale cloud variability. With these modifications RRTMG still
 retains superior offline agreement with line-by-line calculations when
 compared to the previous CAM radiation package (CAM-RT).</p>
@@ -621,11 +621,11 @@ compared to the previous CAM radiation package (CAM-RT).</p>
 <div class="section" id="the-cam-chemistry-model-cam-chem">
 <h4>2.1.6.2. <em>The CAM Chemistry Model (CAM-CHEM)</em><a class="headerlink" href="#the-cam-chemistry-model-cam-chem" title="Permalink to this headline">¶</a></h4>
 <p>Chemistry in CAM is now fully interactive and implemented in CESM
-(Section <span class="xref std std-ref">sec_chem_sub_cam</span>); in particular, emissions of biogenic
+(Section <span class="xref std std-ref">sec-chem_sub_cam</span>); in particular, emissions of biogenic
 compounds and deposition of aerosols to snow, ice, ocean and vegetation
 are handled through the coupler. The released version of CAM-chem in
 CESM is using the recently-developed superfast chemistry (Section
-<span class="xref std std-ref">sec_chem_superfast</span>), in collaboration with P. Cameron-Smith
+<a class="reference internal" href="chapter5.html#sec-chem-superfast"><span class="std std-ref">Superfast Chemistry</span></a>), in collaboration with P. Cameron-Smith
 from LLNL and M. Prather from UCI) to perform centennial scale
 simulations at a minor cost increase over the base CAM4. These
 simulations use the recently developed 1850-2005 emissions created in

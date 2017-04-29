@@ -1209,7 +1209,7 @@ homogeneous freezing of cloud droplets (subscript hom), melting
 (subscript mlt), ice multiplication (subsrcipt mult), sedimentation
 (subscript sed), and convective detrainment (subscript det). The
 formulations for these processes are detailed in section 3. Numerical
-aspects in solving :eq:`eq:MG6` and :ea:`eq:MG7` are detailed in section 4.
+aspects in solving :eq:`eq:MG6` and :eq:`eq:MG7` are detailed in section 4.
 
 Sub-grid cloud variability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
