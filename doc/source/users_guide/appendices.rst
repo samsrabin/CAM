@@ -17,6 +17,9 @@ The CESM scripts access CAM's ``configure`` via the script
 ``cam.buildnml.csh`` script acts as the interface between the CESM
 scripts and CAM's ``configure`` and ``build-namelist`` utilities.
 
+
+.. _arguments-to-configure:
+
 ----------------------------------------------
 Arguments to configure
 ----------------------------------------------
@@ -531,4 +534,4 @@ CAM Namelist variables
 ----------------------------------------------
 
 A searchable (or browsable) page containing all CAM namelist variables
-is `here <https://github.com/erika72/cam/wiki/CAM-URL>`_.
+is `here <http://www.cesm.ucar.edu/models/cesm2.0/namelists/cam_nml.html>`_.

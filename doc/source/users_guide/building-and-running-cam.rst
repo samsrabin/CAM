@@ -1,41 +1,112 @@
 .. _building-and-running-cam:
 
 **************************
-Building and Running CAM
+Building and Running CAM within CESM
 **************************
 
-The following describes how to build and run CAM in its standalone configuration. 
-We do not provide scripts that are setup to work out of the box on a particular set of platforms. 
-If you would like this level of support then consider running CAM from the CESM scripts (see `CESM-1.2 User's Guide <http://www.cesm.ucar.edu/models/cesm2.0/...>`_). We do however provide some examples of simple run scripts which should provide a useful starting point for writing your own scripts (see `Section 2.2, “Sample Run Scripts” <CAM-2.2-Sample-Run-Scripts>`_).
+If you need to install CESM, please refer to `downloading CESM <http://cesm-development.github.io/cime/doc/build/html/downloading_cesm.html>`_.
 
-In order to build and run CAM the following are required:
+CAM runs are setup, built and submitted via the cime scripts.  A simple session to build an FHIST_DEV, 1 degree case and call it test_FHIST is illustrated as follows:
+::
 
-- The source tree. CAM-5.3 is distributed with CESM-1.2. To obtain the source code go to the section "Acquiring the Code" on the `CESM Home Page <http://www.cesm.ucar.edu/>`_. When we refer to the root of the CAM source tree, this is the same directory as the root of the CESM source tree. This directory is referred to throughout this document as ``$CAM_ROOT``.
-- Perl (version 5.4 or later).
-- A GNU version of the ``make`` utility.
-- Fortran and C compilers. The Fortran compiler needs to support at least the Fortran95 standard.
-- A NetCDF library (version 4.1.3 or later) that has the Fortran APIs built using the same Fortran compiler that is used to build the rest of the CAM code. This library is used extensively by CAM both to read input datasets and to write the output datasets. The NetCDF source code is available `here <http://www.unidata.ucar.edu/downloads/netcdf/>`_. We have updated the required NetCDF library version from 3.6 to 4.1.3 due to a recently discovered bug which affects all previous versions of the NetCDF library. The bug only occurs in special circumstances that are not that easy to replicate, however the result is that corrupt files are silently created. A more complete description of the bug is here.
+        % cd cime/scripts
+	% ./create_newcase --case test_FHIST --res f09_f09_mg17 --compset FHIST_DEV 
+	% cd test_FHIST
+	% ./case.setup
+	% ./case.build
+	% ./case.submit
 
-Input datasets. 
-The required datasets depend on the CAM configuration. Determining which datasets are required for any configuration is discussed in `Section 2.1.6, “Building the Namelist” <CAM-2.1-Sample-Interactive-Session#216-building-the-namelist>`_. Acquiring those datasets is discussed in `Section 2.1.7, “Acquiring Input Datasets” <CAM-2.1-Sample-Interactive-Session#217-acquiring-input-datasets>`_.
+In the example above, the directory test_FHIST is called the **CASEROOT**.  The job will be run in **RUNDIR**.  The values of these (and all the other xml variables set by cime) can be seen by using xmlquery.
+::
 
-To build CAM for SPMD execution it will also be necessary to have an MPI library (version 1 or later). As with the NetCDF library, the Fortran API should be build using the same Fortran compiler that is used to build the rest of CAM. Otherwise linking to the library may encounter difficulties, usually due to inconsistencies in Fortran name mangling.
+	%cd test_FHIST
+	%./xmlquery CASEROOT
+	%./xmlquery RUNDIR
 
-Building and running CAM takes place in the following steps:
+A summary description of the setup/build/submit process can be found at the `CESM quick start <http://cesm-development.github.io/cime/doc/build/html/quickstart.html>`_.  
 
-1. Configure model
-2. Build model
-3. Build namelist
-4. Execute model
+Further, detailed information for each of the above steps can be found at: 
 
-**Configure model.**  This step is accomplished by running the ``configure`` utility to set the compile-time parameters such as the dynamical core (Eulerian Spectral, Semi-Lagrangian Spectral, Finite Volume, or Spectral Element), horizontal grid resolution, and the type of parallelism to employ (shared-memory and/or distributed memory). 
-The ``configure`` utility is discussed in `Appendix A, The configure utility <CAM-6.1-The-configure-utility>`_.
+- `create_newcase <http://esmci.github.io/cime/users_guide/create-a-case.html>`_ 
+- `case.setup <http://esmci.github.io/cime/users_guide/setting-up-a-case.html>`_
+- `case.build <http://esmci.github.io/cime/users_guide/building-a-case.html>`_
+- `case.submit <http://esmci.github.io/cime/users_guide/running-a-case.html>`_
 
-**Build model.**  This step includes compiling and linking the executable using the GNU make command (``gmake``). 
-``configure`` creates a ``Makefile`` in the directory where the build is to take place. The user then need only change to this directory and execute the ``gmake`` command.
+In addtion, there is information for `customizing a case <http://esmci.github.io/cime/users_guide/customizing-a-case.html>`_.  
 
-**Build namelist.**  This step is accomplished by running the ``build-namelist`` utility, which supports a variety of options to control the run-time behavior of the model. 
-Any namelist variable recognized by CAM can be changed by the user via the ``build-namelist`` interface. There is also a high level "use case" functionality which makes it easy for the user to specify a consistent set of namelist variable settings for running particular types of experiments. The ``build-namelist`` utility is discussed in `Appendix B, The build-namelist utility <CAM-6.2-The-build-namelist-utility>`_.
+It is encouraged for users to review these sections as they go into much more detail than is contained here.
 
-**Execute model.**  This step includes the actual invocation of the executable. 
-When running using distributed memory parallelism this step requires knowledge of how your machine invokes (or "launches") MPI executables. When running with shared-memory parallelism (using OpenMP) you may also set the number of OpenMP threads. On most HPC platforms access to the compute resource is through a batch queue system. The sample run scripts discussed in `Section 2.2, “Sample Run Scripts” <CAM-2.2-Sample-Run-Scripts>`_ show how to set the batch queue resources on several HPC platforms.
+--------------------------
+CAM compsets
+--------------------------
+CAM compsets include the F, PORT and Q compsets.
+
+- **F**: CAM standalone runs, using an active Land and everything else is prognostic
+- **PORT**: Parallel offline radiation tool
+- **Q**: Aquaplanet with either prescribed ocean (QP) or slab ocean(QS)
+
+CAM has a number of predefined compsets with different levels of support.  
+
+- **Scientifically supported**:  Specific compset/resolution pairs which have had significant, multi-year runs made and have been studied scientifically.
+- **Tested**: One or more tests for this compset have been made using at least one resolution.  Extensive scientific study has not been performed.
+- **Unsupported**:  These compsets are setup as a "convenience" for various reasons and they are not supported for science runs.  If a user decides to use one of these compsets, they must also supply the --run-unsupported flag to create_newcase.
+
+**Scientifically supported CAM compsets**
+
++--------------+-----------------------------------------+---------+
+| Compset Name | Description                             | Period  |
++==============+=========================================+=========+
+| FHIST_DEV    | Historical current developer            | 1850    |
+|              | setup (CAM6)                            |         |
++--------------+-----------------------------------------+---------+
+| F2000climo   | Climatological 21st century             | 2000 to |
+|              |                                         | 2015    |
++--------------+-----------------------------------------+---------+
+
+
+
+**Tested CAM compsets**
+
++--------------+-----------------------------------------+---------+
+| Compset Name | Description                             | Period  |
++==============+=========================================+=========+
+|              |                                         |         |
+|              |                                         |         |
++--------------+-----------------------------------------+---------+
+|              |                                         |         |
+|              |                                         |         |
++--------------+-----------------------------------------+---------+
+
+
+------------------------------
+Modifying CAM's configuration 
+------------------------------
+
+- **CAM_CONFIG_OPTS**:  The settings in this variable are passed directly to CAM's configure command.  The list of possible options are detailed at :ref:`arguments to configure<arguments-to-configure>`.  It is important to note that CAM compsets already have this variable set and that a user will most likely want to oppend flags as opposed to replacing them.  If the append flag is not used, this variable is reset to only include the values specified and all preset values are removed.
+
+::
+
+	% cd test_FHIST
+	%xmlchange --append CAM_CONFIG_OPTS='-nthreads 3'
+
+------------------------------
+Modifying namelist settings in CAM run
+------------------------------
+To modify CAM namelist settings, add the appropriate keyword/value pair at the end of the $CASEROOT/user_nl_cam file.  If the run needs to change namelist settings in other components, then modify the appropriate $CASEROOT/user_nl_XXX file.
+
+For example, to change the CO2 constant to 400, modify **user_nl_cam** and add the following line at the end:
+::
+
+	co2_ppmv=400. 
+
+To see the result, call **preview_namelists** and verify that the new value appears in **CaseDocs/atm_in**.
+
+A complete listing of all of CAM's namelists is available at `CAM's namelist variables <http://www.cesm.ucar.edu/models/cesm2.0/namelists/cam_nml.html>`_
+
+==============================
+Example:  Using CMIP5 emissions
+==============================
+
+==============================
+Example:  Setting up a new Single Column (SCAM) run
+==============================
