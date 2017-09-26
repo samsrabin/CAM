@@ -54,49 +54,85 @@ CAM configuration
 ####################
 
 
-These options will have an effect whether running CAM as part of CESM
- or running in a CAM standalone mode:
+These options will have an effect whether running CAM as part of CESM or running in a CAM standalone mode:
 
 ``-[no]age_of_air_trcs``
-  Switch on [off] age of air tracers. Default: on for waccm_phys, otherwise off.
+  Switch on [off] age of air tracers. 
+ 
+  Default: on if ``-waccm_phys``, otherwise off.
 
-``-carma <name>``
-  Build CAM with specified CARMA microphysics model ``[ none |
-  bc_strat | cirrus | dust | meteor_smoke | pmc | sea_salt | sulfate |
-  test_detrain | test_growth | test_passive | test_radiative |
-  test_swelling | test_tracers ]``. Default: ``none``.
+``-analytic_ic``
+  Enables the (namelist controlled) dycore testing infrastructure
+
+``-aquaplanet``
+  Switch on aqua-planet mode.
+
+``-build_chem_proc``
+  Switch forces the build of the chemistry preprocessor (primarily for testing).
+
+``-carma <name>`` 
+  [ ``none`` (disabled) | ``bc_strat`` (Stratospheric Black Carbon) | ``cirrus`` (Cirrus Clouds) |
+  ``cirrus_dust`` (Cirrus Clouds with dust) | ``dust`` (Dust) | ``meteor_impact`` (Meteor Impact) |
+  ``meteor_smoke`` (Meteor Smoke) | ``mixed_sulfate`` (Meteor Smoke and Sulfate) | ``pmc`` (Polar Mesospheric Clouds) | 
+  ``pmc_sulfate`` (PMC and Sulfate) | ``sea_salt`` (Sea Salt) | ``sulfate`` (Sulfate Aerosols) | 
+  ``tholin`` (early earth haze) | ``test_detrain`` (Detrainment) | ``test_growth`` (Particle Growth) | 
+  ``test_passive`` (Passive Dust) | ``test_radiative`` (Radiatively Active Dust) | ``test_swelling`` (Sea Salt) | 
+  ``test_tracers`` (Asian Monsoon) | ``test_tracers2`` (Guam) ]
+
+  Build CAM with specified CARMA microphysics model
+
+  Default: ``none``
 
 ``-chem <name>``
-  Build CAM with specified prognostic chemistry package ``[
-  waccm_mozart | waccm_mozart_sulfur | waccm_ghg | trop_mozart |
-  trop_mozart_mam3 | trop_mozart_soa | trop_ghg | trop_bam | trop_mam3
-  | trop_mam7 | super_fast_llnl | super_fast_llnl_mam3 |
-  trop_strat_soa | trop_strat_mam3 | trop_strat_mam7 | none
-  ]``. Default: ``trop_mam3`` if the physics package is ``cam5``,
-  otherwise default is ``none``.
+  [ ``trop_mam3`` | ``trop_mam4`` | ``trop_mam7`` | ``trop_mozart`` | ``trop_strat_mam4_vbs`` |
+  ``trop_bam`` | ``trop_ghg`` | ``waccm_ma`` | ``waccm_mad_mam4`` | ``waccm_ma_mam4`` |
+  ``waccm_ma_sulfur`` | ``waccm_sc`` | ``waccm_sc_mam4`` | ``waccm_tsmlt`` | ``waccm_tsmlt_mam4`` |
+  ``waccm_tsmlt_sulfur`` | ``super_fast_llnl`` | ``super_fast_llnl_mam3`` | ``terminator`` | ``none`` ]``.
 
-``-clubb_sgs``
-  Switch to turn on the CLUBB_SGS package. Default: Off.
+  Build CAM with specified prognostic chemistry package
+
+  Default: 
+   -  ``trop_mam4``:  if the physics package is ``cam6``
+   -  ``trop_mam3``:  if the physics package is ``cam5`` 
+   -  otherwise ``none``
+
+``-[no]clubb_sgs``    
+  Switch on [off] CLUBB_SGS.  
+
+  Default: ``on`` for ``cam6``, otherwise ``off``.
+
+``-clubb_opts`` [``clubb_do_adv`` (Advect CLUBB moments)]
+  Comma separated list of CLUBB options to turn on/off.  
+
+  Default: they are all off.
 
 ``-co2_cycle``
   This option is usually used with the ``-ccsm_seq`` option as part of
   the configuration for running biogeochemistry (BGC) compsets. It
   modifies the CAM configuration by increasing the number of advected
-  constituents by 4. Default: not set.
+  constituents by 4. 
 
-``-comp_intf [mct | esmf]``
-  Specify the component interfaces Default: mct.
+  Default: not set.
+
+``-comp_intf`` [``mct`` | ``esmf``]
+  Specify the component interfaces 
+
+  Default: ``mct``
 
 ``-cosp``
-  Enable the COSP simulator package. Default: not set.
+  Enable the COSP simulator package. 
+
+  Default: not set.
 
 ``-cppdefs <string>``
   A string of user specified CPP defines appended to Makefile
   defaults. E.g. ``-cppdefs '-DVAR1 -DVAR2'``. Note that a string
   containing whitespace will need to be quoted.
 
-``-dyn [eul | sld | fv | se ]``
-  Build CAM with specified dynamical core. Default: fv.
+``-dyn`` [``eul`` | ``fv`` | ``se`` ]
+  Build CAM with specified dynamical core. 
+
+  Default: ``fv``
 
 ``-edit_chem_mech``
   Invokes ``CAMCHEM_EDITOR`` to allow the user to edit the chemistry mechanism file.
@@ -112,66 +148,137 @@ These options will have an effect whether running CAM as part of CESM
   edge of the cube, and ``M`` is the number of Gauss points on the
   edge of an element (e.g., ``ne30np4``).
 
-``-microphys [mg1 | mg1.5 | rk]``
-  Specify the microphysics package. Default: mg1 if the physics package is cam5, otherwise rk.
+``-ionosphere`` [ ``none`` | ``wxi`` | ``wxie`` ].
+   Ionophere module used in WACCMX 
+
+   Default: ``none``
+
+``-macrophys`` [ ``rk`` , ``park`` , ``clubb_sgs`` , ``spcam_sam1mom`` , ``spcam_m2005`` , ``none``]
+  Specify the macrophysics option  
+
+  Default:
+   - ``clubb_sgs``:  if ``cam6`` and clubb_sgs not explicitly turned off 
+   - ``park``:  if ``cam6`` and ``noclubb_sgs`` or ``cam5`` 
+   - ``rk``:  if ``cam3`` or ``cam4``
+
+``-max_n_rad_cnst`` <n> 
+  Maximum number of constituents that are either radiatively active, or in any single diagnostic list for the radiation.  Default: ``30``
+
+``-microphys`` [ ``rk`` , ``mg1`` , ``mg2`` , ``spcam_m2005`` , ``spcam_sam1mom`` , ``none`` ]
+  Specify the microphysics package. 
+
+  Default: 
+   - ``mg2``:  if the physics package is ``cam6``
+   - ``mg1``:  if it is ``cam5``
+   - ``rk``:  if it is ``cam3`` or ``cam4``.
 
 ``-nadv <n>``
   Set total number of advected species to ``<n>``. If ``-nadv`` is set
   to a larger number than is required by the selected physics and
   chemistry schemes, then the remainder will automatically be used for
   test tracers (N.B. the namelist variable ``tracers_flag`` must be
-  set to ``.true.`` to enable the test tracer code.) Default: set to
-  the number required by the selected physics and chemistry schemes.
+  set to ``.true.`` to enable the test tracer code.) 
+
+  Default: set to the number required by the selected physics and chemistry schemes.
 
 ``-nadv_tt <n>``
   Set number of advected test tracers to <n>. Setting the number of
   test tracers explicitly with this option allows ``build-namelist``
   to automatically enable the test tracer code by setting the
-  ``tracers_flag`` namelist variable. Default: 0.
+  ``tracers_flag`` namelist variable. 
+
+  Default: ``0``
 
 ``-nlev <n>``
-  Set number of vertical layers to ``<n>``. Default: ``30`` if the
-  physics package is ``cam5``, ``ideal``, or ``adiabatic``. ``26`` if
-  the physics package is ``cam4``. ``66`` if the chemistry package is
-  ``waccm_*. 81`` if the ``-waccmx`` is used.
+  Set number of vertical layers to ``<n>``. 
+
+  Default:
+   -  ``32``:  if the physics package is ``cam6``.  
+   -  ``30``:  if the physics package is ``cam5``, ``ideal``, or ``adiabatic`` or ``spcam_m2005``. 
+   -  ``26``:  if the physics package is ``cam3``, ``cam4`` or ``spcam_sam1mom``. 
+   -  ``66``:  if the chemistry package is ``waccm`` and physics package is ``cam4``. 
+   -  ``70``:  if the chemistry package is ``waccm`` and physics package is not ``cam4``. 
+   -  ``81``:  if ``-waccmx`` is set.
+   -  ``126``:  if ``-waccmx`` is set and ``-ionosphere`` is ``wxie``
 
 ``-offline_dyn``
-  Switch enables the use of offline driver for FV dycore. Default: not set.
+  Switch enables the use of offline driver for FV dycore. 
 
-``-pbl [uw | hb | hbr | clubb_sgs]``
-  PBL package. Default: uw if the physics package is cam5; clubb_sgs
-  if the -clubb_sgs switch is set; otherwise hb.
+   Default: not set.
+
+``-pbl`` [ ``clubb_sgs`` , ``hb`` (Holtslag and Boville), ``hbr`` (Holtslag, Boville, and Rasch),  ``spcam_sam1mom``, ``spcam_m2005``, ``uw`` (University of Washington), ``none`` ]
+  PBL package. 
+
+  Default: 
+   - ``clubb_sgs``:  if the physics package is ``cam6`` or the ``-clubb_sgs`` switch is set 
+   - ``hb``:  if the physics package is ``cam3`` or ``cam4``
+   - ``spacm_m2005``:  if it the physics package is ``spcam_m2005``
+   - ``spacm_sam1mom``:  if it the physics package is ``spcam_sam1mom``
+   - ``uw``:  if the physics package is ``cam5`` or ``cam6`` and ``-noclubb_sgs``
+   - otherwise ``none``
 
 ``-pcols <n>``
-  Set maximum number of grid columns in a chunk to ``<n>``. Default: 16.
+  Set maximum number of grid columns in a chunk to ``<n>``. 
+
+  Default: 
+   - ``1``:  if ``-scam`` is set
+   - otherwise ``16`` 
 
 ``-pergro``
   Switch enables building CAM for perturbation growth tests. Only
   valid with ``cam3`` and ``cam4`` physics packages.
 
-``-phys [cam3 | cam4 | cam5 | ideal | adiabatic]``
-  Physics package. Default: ``cam5``.
+``-phys`` [ ``cam3`` | ``cam4`` | ``cam5`` | ``cam6`` | ``adiabatic`` | ``held_suarez`` | ``kessler`` | ``spcam_sam1mom`` | ``spcam_m2005`` ]
+
+  Physics package. 
+
+  Default: 
+   - ``cam6``:  except
+   - ``cam4``:  if ``-waccmx`` or ``-chem`` contains ``_mam`` in its setting
 
 ``-prog_species <list>``
   Comma separated list of prognostic mozart species
   packages. Currently available: ``DST,SSLT,SO4,GHG,OC,BC,CARBON16``
 
 ``-psubcols <n>``
-  Set maximum number of subcolumns in a grid column to ``<n>``. Default: 1.
+  Set maximum number of subcolumns in a grid column to ``<n>``. 
 
-``-rad [rrtmg | camrt]``
-  Radiation package. Default: ``rrtmg`` if the physics package is ``cam5``, otherwise ``camrt``.
+  Default: ``1``.
+
+``-rad`` [``rrtmg`` | ``camrt`` | ``none``]
+  Radiation package. 
+
+  Default: 
+   - ``rrtmg``:  if the physics package is ``cam5``, ``cam6`` or ``spacm_m2005``
+   - ``camrt``:  if the physics package is ``cam3``, ``cam4`` or ``spacm_sam1mom``
+
+``-spcam_clubb_sgs``   Turn on the SPCAM version of CLUBB
+
+``-spcam_nx`` <n>      SPCAM x-grid. - defaults to ``4`` (note the CRM requires spcam_nx to be greater than or equal to 4)
+
+``-spcam_ny`` <n>      SPCAM y-grid. - defaults to ``1``
+
+``-spcam_dx`` <n>      SPCAM horizontal grid spacing.
+
+``-spcam_dt`` <n>      SPCAM timestep.
+
+``-unicon``            Switch to turn on the UNICON scheme. Default: ``off``.
 
 ``-usr_mech_infile <name>``
-  Pathname of the user supplied chemistry mechanism file.
+  Full pathname of the user supplied chemistry mechanism file.
 
 ``-waccm_phys``
-  Switch enables the use of WACCM physics in any chemistry
-  configuration. Default: Off unless one of the waccm chemistry
-  options is chosen then it's automatically turned on.
+  Switch enables the use of WACCM physics in any chemistry configuration. 
+
+  Default: 
+   - ``Off``:  unless one of the waccm chemistry options is chosen, then it's automatically turned ``on``.
 
 ``-waccmx``
   Build CAM/WACCM with WACCM upper Thermosphere/Ionosphere extended package.
+
+``-zmconv_org``       
+  Include parameterization for sub-grid scale convective organization for the ZM deep convective scheme based on Mapes and Neale (2011)
+
 
 ####################
 SCAM configuration
@@ -217,9 +324,9 @@ CAM parallelization when running standalone with CICE
 ``-cice_decomptype <name>``
   CICE decomposition type ``[ cartesian | spacecurve | roundrobin ]``.
 
-################
-General options
-################
+############################
+General options to configure
+############################
 
 ``-cache <name>``
   Name of output cache file. Default: ``config_cache.xml``.
@@ -229,9 +336,6 @@ General options
 
 ``-ccsm_seq``
   Switch to specify that CAM is being built from within the CESM scripts. This produces Filepath and CCSM_cppdefs files that contains only the paths and CPP macros needed to build a library for the CAM component.
-
-``-defaults <name>``
-  Specify a configuration file which will be used to supply defaults instead of one of the ``config_files/defaults_*.xml`` files. This file is used to specify model configuration parameters only. Parameters relating to the build which are system dependent will be ignored.
 
 ``-help | -h``
   Print usage to STDOUT.
@@ -248,23 +352,21 @@ General options
 ``-version``
   Echo the repository tag name used to check out this CAM source tree.
 
-###################
-Surface components
-###################
+#########################################
+Surface components used in standalone CAM
+#########################################
 
 Options for surface components used in standalone CAM mode:
 
-``-ice [cice | sice ]``
-  Specify the sea ice component. Default: ``cice``.
+``-ocn`` [ ``docn`` | ``dom`` | ``som`` | ``socn`` | ``aquaplanet`` ]``
+  Specify ocean component.  Use data ocean model (``docn`` or ``dom``), stub ocean (``socn``), or aqua planet 
+  ocean (``aquaplanet``) in cam build.  When built from the CESM scripts the value of ocn may be set to 
+  pop.  This doesn't impact how CAM is built, only how attributes are matched when searching for 
+  namelist defaults.  If ocn is set to ``som`` then the ``docn`` component is used.
 
-``-lnd [clm | slnd ]``
-  Specify the land component. Default: ``clm``.
-
-``-ocn [docn | socn | dom | aquaplanet ]``
-  Specify ocean component. If set to ``aquaplanet`` then the stub ice (``sice``) and stubb land (``slnd``) components are implied. Default: ``docn``.
-
-``-rof [rtm | srof ]``
-  Specify the river runoff component. Default: ``rtm``.
+  Default: 
+   - ``aquaplanet``:  if ``-aquaplanet`` set
+   -  otherwise ``socn`` 
 
 ######################
 CAM standalone build

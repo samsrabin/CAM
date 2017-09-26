@@ -60,7 +60,7 @@
 <li><a class="reference internal" href="#cam-compsets">3.1. CAM compsets</a></li>
 <li><a class="reference internal" href="#modifying-cam-s-configuration">3.2. Modifying CAM&#8217;s configuration</a></li>
 <li><a class="reference internal" href="#modifying-namelist-settings-in-cam-run">3.3. Modifying namelist settings in CAM run</a><ul>
-<li><a class="reference internal" href="#example-using-cmip5-emissions">3.3.1. Example:  Using CMIP5 emissions</a></li>
+<li><a class="reference internal" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions">3.3.1. Modifying Namelist settings:  Detailed Example &#8211; Using CMIP5 emissions</a></li>
 <li><a class="reference internal" href="#example-setting-up-a-new-single-column-scam-run">3.3.2. Example:  Setting up a new Single Column (SCAM) run</a></li>
 </ul>
 </li>
@@ -137,42 +137,45 @@
 </ul>
 <p>CAM has a number of predefined compsets with different levels of support.</p>
 <ul class="simple">
-<li><strong>Scientifically supported</strong>:  Specific compset/resolution pairs which have had significant, multi-year runs made and have been studied scientifically.</li>
-<li><strong>Tested</strong>: One or more tests for this compset have been made using at least one resolution.  Extensive scientific study has not been performed.</li>
-<li><strong>Unsupported</strong>:  These compsets are setup as a &#8220;convenience&#8221; for various reasons and they are not supported for science runs.  If a user decides to use one of these compsets, they must also supply the &#8211;run-unsupported flag to create_newcase.</li>
+<li><strong>Scientifically supported</strong>:  Specific compset/resolution pairs which have had significant, multi-year runs made and have been studied scientifically.  It is important to note that resolutions which are not listed, are not scientifically supported, have not had tunings performed and should not be used for scientific studies without careful examination of the results.</li>
+<li><strong>Tested</strong>: One or more tests for this compset have been made using at least one resolution.  Extensive scientific study has not been performed.  The designation of &#8220;Tested&#8221; simply acknowledges that one or more compset/resolution pair(s) have been confirmed to run without crashing.  No attempts have been made to validate the scientific quality of these runs and tunings have NOT been performed on them.</li>
+<li><strong>Unsupported</strong>:  These compsets are setup as a &#8220;convenience&#8221; for various reasons and they are not supported for science runs.  If a user decides to use one of these compsets, they must also supply the &#8211;run-unsupported flag to create_newcase.  These compsets may not even compile and run successfully as they have not been tested.</li>
 </ul>
 <p><strong>Scientifically supported CAM compsets</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="64%" />
+<col width="16%" />
+<col width="24%" />
+<col width="46%" />
 <col width="14%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Compset Name</th>
+<th class="head">supported resolution</th>
 <th class="head">Description</th>
 <th class="head">Period</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>FHIST_DEV</td>
+<td>f09_f09_mg17</td>
 <td>Historical current developer
 setup (CAM6)</td>
-<td>1850</td>
+<td>1979 to 2015</td>
 </tr>
 <tr class="row-odd"><td>F2000climo</td>
+<td>f09_f09_mg17</td>
 <td>Climatological 21st century</td>
-<td>2000 to
-2015</td>
+<td>2000 to 2015</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Tested CAM compsets</strong></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="22%" />
-<col width="64%" />
-<col width="14%" />
+<col width="21%" />
+<col width="60%" />
+<col width="19%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Compset Name</th>
@@ -185,20 +188,16 @@ setup (CAM6)</td>
 <td>&#160;</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-</tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="modifying-cam-s-configuration">
 <h2>3.2. Modifying CAM&#8217;s configuration<a class="headerlink" href="#modifying-cam-s-configuration" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><strong>CAM_CONFIG_OPTS</strong>:  The settings in this variable are passed directly to CAM&#8217;s configure command.  The list of possible options are detailed at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  It is important to note that CAM compsets already have this variable set and that a user will most likely want to oppend flags as opposed to replacing them.  If the append flag is not used, this variable is reset to only include the values specified and all preset values are removed.</li>
+<li><strong>CAM_CONFIG_OPTS</strong>:  The settings in this variable are passed directly to CAM&#8217;s configure command.  The list of possible options are detailed at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  It is important to note that CAM compsets already have this variable set and that a user will most likely want to append flags as opposed to replacing them.  If the append flag is not used, this variable is reset to only include the values specified and all preset values are removed.</li>
 </ul>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">test_FHIST</span>
-<span class="o">%</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">append</span> <span class="n">CAM_CONFIG_OPTS</span><span class="o">=</span><span class="s1">&#39;-nthreads 3&#39;</span>
+<span class="o">%</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">append</span> <span class="n">CAM_CONFIG_OPTS</span><span class="o">=</span><span class="s1">&#39;-nthreads 2&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -211,8 +210,48 @@ setup (CAM6)</td>
 </div>
 <p>To see the result, call <strong>preview_namelists</strong> and verify that the new value appears in <strong>CaseDocs/atm_in</strong>.</p>
 <p>A complete listing of all of CAM&#8217;s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/namelists/cam_nml.html">CAM&#8217;s namelist variables</a></p>
-<div class="section" id="example-using-cmip5-emissions">
-<h3>3.3.1. Example:  Using CMIP5 emissions<a class="headerlink" href="#example-using-cmip5-emissions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="modifying-namelist-settings-detailed-example-using-cmip5-emissions">
+<h3>3.3.1. Modifying Namelist settings:  Detailed Example &#8211; Using CMIP5 emissions<a class="headerlink" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions" title="Permalink to this headline">¶</a></h3>
+<p>The following steps illustrate how to change the CMIP emissions back to the CMIP5 version.  If a user desires to do this, they may cut/paste the ext_frc_specifier and srf_emis_specifier settings below and put them into their own user_nl_cam.</p>
+<p>First the user must create a case and set it up</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_CMIP5_emiss</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FHIST_DEV</span>
+<span class="o">%</span> <span class="n">cd</span> <span class="n">test_FHIST</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
+</pre></div>
+</div>
+<p>Then the user should make any namelist changes by editing the user_nl_cam file.  Depending on the compset requested, this file may or may not already have information within it.  The user should either add or replace the variables they want to set.  To revert to CMIP5 emissions, we only need to change the values of the files specifed by ext_frc_specifier and srf_frc_specifier.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ext_frc_specifier</span>  <span class="o">=</span> <span class="s1">&#39;H2O -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/elev/H2O_emission_CH4_oxidationx2_elev_1850-2100_CCMI_RCP6_0_c160219.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;SO2         -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/ccmi_1960-2008/IPCC_emissions_volc_SO2_1850-2100_1.9x2.5_c130426cycle.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;bc_a4       -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_elev_1850-2005_c090804.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;num_a1      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a1_elev_1850-2005_c150205.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;num_a2      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_elev_1850-2005_c090804.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;num_a4      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a4_elev_1850-2005_c150205.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;pom_a4      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_pom_elev_1850-2005_c130424.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;so4_a1      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_elev_1850-2005_c090804.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;so4_a2      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_elev_1850-2005_c090804.nc&#39;</span>
+
+<span class="n">srf_emis_specifier</span> <span class="o">=</span> <span class="s1">&#39;DMS       -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/ccmi_1950_2100_rcp6/IPCC_emissions_DMS_surface_1850-2100_1.9x2.5_c130814.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;SO2       -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/ccmi_1950_2100_rcp6/IPCC_emissions_SO2_surface_1850-2100_1.9x2.5_c130814.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;SOAG      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_soag_1.5_surf_1850-2005_c130424.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;bc_a4     -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_surf_1850-2005_c090804.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;num_a1    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a1_surf_1850-2005_c150205.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;num_a2    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_num_a2_surf_1850-2005_c090804.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;num_a4    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a4_surf_1850-2005_c150205.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;pom_a4    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_pom_surf_1850-2005_c130424.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;so4_a1    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a1_surf_1850-2005_c090804.nc&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;so4_a2    -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_so4_a2_surf_1850-2005_c090804.nc&#39;</span>
+</pre></div>
+</div>
+<p>At this point, it is good practice to run preview_namelists and examine the <strong>CaseDocs/atm_in</strong> file to make sure that the requested changes have made it into the CAM namelist file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">preview_namelists</span>
+</pre></div>
+</div>
+<p>After confirming that the requested namelist changes have been put into the atm_in file, then it is safe to continue with building and submitting the job.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="example-setting-up-a-new-single-column-scam-run">
 <h3>3.3.2. Example:  Setting up a new Single Column (SCAM) run<a class="headerlink" href="#example-setting-up-a-new-single-column-scam-run" title="Permalink to this headline">¶</a></h3>

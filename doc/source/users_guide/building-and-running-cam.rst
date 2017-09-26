@@ -98,9 +98,9 @@ To see the result, call **preview_namelists** and verify that the new value appe
 
 A complete listing of all of CAM's namelists is available at `CAM's namelist variables <http://www.cesm.ucar.edu/models/cesm2.0/namelists/cam_nml.html>`_
 
-===============================
+=======================================================================
 Modifying Namelist settings:  Detailed Example -- Using CMIP5 emissions
-===============================
+=======================================================================
 The following steps illustrate how to change the CMIP emissions back to the CMIP5 version.  If a user desires to do this, they may cut/paste the ext_frc_specifier and srf_emis_specifier settings below and put them into their own user_nl_cam.
 
 First the user must create a case and set it up
@@ -146,6 +146,7 @@ After confirming that the requested namelist changes have been put into the atm_
 
 	% ./case.build
 	% ./case.submit
+
 ===================================================
 Example:  Setting up a new Single Column (SCAM) run
 ===================================================

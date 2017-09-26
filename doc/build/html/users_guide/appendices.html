@@ -64,8 +64,8 @@
 <li><a class="reference internal" href="#scam-configuration">8.1.2.2. SCAM configuration</a></li>
 <li><a class="reference internal" href="#cam-parallelization">8.1.2.3. CAM parallelization</a></li>
 <li><a class="reference internal" href="#cam-parallelization-when-running-standalone-with-cice">8.1.2.4. CAM parallelization when running standalone with CICE</a></li>
-<li><a class="reference internal" href="#general-options">8.1.2.5. General options</a></li>
-<li><a class="reference internal" href="#surface-components">8.1.2.6. Surface components</a></li>
+<li><a class="reference internal" href="#general-options-to-configure">8.1.2.5. General options to configure</a></li>
+<li><a class="reference internal" href="#surface-components-used-in-standalone-cam">8.1.2.6. Surface components used in standalone CAM</a></li>
 <li><a class="reference internal" href="#cam-standalone-build">8.1.2.7. CAM standalone build</a></li>
 </ul>
 </li>
@@ -148,41 +148,76 @@ expressed as single letter switches may not be clumped, e.g., <code class="docut
 listed separated by a vertical bar either version may be used.</p>
 <div class="section" id="cam-configuration">
 <h4>8.1.2.1. CAM configuration<a class="headerlink" href="#cam-configuration" title="Permalink to this headline">¶</a></h4>
+<p>These options will have an effect whether running CAM as part of CESM or running in a CAM standalone mode:</p>
 <dl class="docutils">
-<dt>These options will have an effect whether running CAM as part of CESM</dt>
-<dd>or running in a CAM standalone mode:</dd>
 <dt><code class="docutils literal"><span class="pre">-[no]age_of_air_trcs</span></code></dt>
-<dd>Switch on [off] age of air tracers. Default: on for waccm_phys, otherwise off.</dd>
+<dd><p class="first">Switch on [off] age of air tracers.</p>
+<p class="last">Default: on if <code class="docutils literal"><span class="pre">-waccm_phys</span></code>, otherwise off.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-analytic_ic</span></code></dt>
+<dd>Enables the (namelist controlled) dycore testing infrastructure</dd>
+<dt><code class="docutils literal"><span class="pre">-aquaplanet</span></code></dt>
+<dd>Switch on aqua-planet mode.</dd>
+<dt><code class="docutils literal"><span class="pre">-build_chem_proc</span></code></dt>
+<dd>Switch forces the build of the chemistry preprocessor (primarily for testing).</dd>
 <dt><code class="docutils literal"><span class="pre">-carma</span> <span class="pre">&lt;name&gt;</span></code></dt>
-<dd>Build CAM with specified CARMA microphysics model <code class="docutils literal"><span class="pre">[</span> <span class="pre">none</span> <span class="pre">|</span>
-<span class="pre">bc_strat</span> <span class="pre">|</span> <span class="pre">cirrus</span> <span class="pre">|</span> <span class="pre">dust</span> <span class="pre">|</span> <span class="pre">meteor_smoke</span> <span class="pre">|</span> <span class="pre">pmc</span> <span class="pre">|</span> <span class="pre">sea_salt</span> <span class="pre">|</span> <span class="pre">sulfate</span> <span class="pre">|</span>
-<span class="pre">test_detrain</span> <span class="pre">|</span> <span class="pre">test_growth</span> <span class="pre">|</span> <span class="pre">test_passive</span> <span class="pre">|</span> <span class="pre">test_radiative</span> <span class="pre">|</span>
-<span class="pre">test_swelling</span> <span class="pre">|</span> <span class="pre">test_tracers</span> <span class="pre">]</span></code>. Default: <code class="docutils literal"><span class="pre">none</span></code>.</dd>
+<dd><p class="first">[ <code class="docutils literal"><span class="pre">none</span></code> (disabled) | <code class="docutils literal"><span class="pre">bc_strat</span></code> (Stratospheric Black Carbon) | <code class="docutils literal"><span class="pre">cirrus</span></code> (Cirrus Clouds) |
+<code class="docutils literal"><span class="pre">cirrus_dust</span></code> (Cirrus Clouds with dust) | <code class="docutils literal"><span class="pre">dust</span></code> (Dust) | <code class="docutils literal"><span class="pre">meteor_impact</span></code> (Meteor Impact) |
+<code class="docutils literal"><span class="pre">meteor_smoke</span></code> (Meteor Smoke) | <code class="docutils literal"><span class="pre">mixed_sulfate</span></code> (Meteor Smoke and Sulfate) | <code class="docutils literal"><span class="pre">pmc</span></code> (Polar Mesospheric Clouds) |
+<code class="docutils literal"><span class="pre">pmc_sulfate</span></code> (PMC and Sulfate) | <code class="docutils literal"><span class="pre">sea_salt</span></code> (Sea Salt) | <code class="docutils literal"><span class="pre">sulfate</span></code> (Sulfate Aerosols) |
+<code class="docutils literal"><span class="pre">tholin</span></code> (early earth haze) | <code class="docutils literal"><span class="pre">test_detrain</span></code> (Detrainment) | <code class="docutils literal"><span class="pre">test_growth</span></code> (Particle Growth) |
+<code class="docutils literal"><span class="pre">test_passive</span></code> (Passive Dust) | <code class="docutils literal"><span class="pre">test_radiative</span></code> (Radiatively Active Dust) | <code class="docutils literal"><span class="pre">test_swelling</span></code> (Sea Salt) |
+<code class="docutils literal"><span class="pre">test_tracers</span></code> (Asian Monsoon) | <code class="docutils literal"><span class="pre">test_tracers2</span></code> (Guam) ]</p>
+<p>Build CAM with specified CARMA microphysics model</p>
+<p class="last">Default: <code class="docutils literal"><span class="pre">none</span></code></p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-chem</span> <span class="pre">&lt;name&gt;</span></code></dt>
-<dd>Build CAM with specified prognostic chemistry package <code class="docutils literal"><span class="pre">[</span>
-<span class="pre">waccm_mozart</span> <span class="pre">|</span> <span class="pre">waccm_mozart_sulfur</span> <span class="pre">|</span> <span class="pre">waccm_ghg</span> <span class="pre">|</span> <span class="pre">trop_mozart</span> <span class="pre">|</span>
-<span class="pre">trop_mozart_mam3</span> <span class="pre">|</span> <span class="pre">trop_mozart_soa</span> <span class="pre">|</span> <span class="pre">trop_ghg</span> <span class="pre">|</span> <span class="pre">trop_bam</span> <span class="pre">|</span> <span class="pre">trop_mam3</span>
-<span class="pre">|</span> <span class="pre">trop_mam7</span> <span class="pre">|</span> <span class="pre">super_fast_llnl</span> <span class="pre">|</span> <span class="pre">super_fast_llnl_mam3</span> <span class="pre">|</span>
-<span class="pre">trop_strat_soa</span> <span class="pre">|</span> <span class="pre">trop_strat_mam3</span> <span class="pre">|</span> <span class="pre">trop_strat_mam7</span> <span class="pre">|</span> <span class="pre">none</span>
-<span class="pre">]</span></code>. Default: <code class="docutils literal"><span class="pre">trop_mam3</span></code> if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code>,
-otherwise default is <code class="docutils literal"><span class="pre">none</span></code>.</dd>
-<dt><code class="docutils literal"><span class="pre">-clubb_sgs</span></code></dt>
-<dd>Switch to turn on the CLUBB_SGS package. Default: Off.</dd>
+<dd><p class="first">[ <code class="docutils literal"><span class="pre">trop_mam3</span></code> | <code class="docutils literal"><span class="pre">trop_mam4</span></code> | <code class="docutils literal"><span class="pre">trop_mam7</span></code> | <code class="docutils literal"><span class="pre">trop_mozart</span></code> | <code class="docutils literal"><span class="pre">trop_strat_mam4_vbs</span></code> |
+<code class="docutils literal"><span class="pre">trop_bam</span></code> | <code class="docutils literal"><span class="pre">trop_ghg</span></code> | <code class="docutils literal"><span class="pre">waccm_ma</span></code> | <code class="docutils literal"><span class="pre">waccm_mad_mam4</span></code> | <code class="docutils literal"><span class="pre">waccm_ma_mam4</span></code> |
+<code class="docutils literal"><span class="pre">waccm_ma_sulfur</span></code> | <code class="docutils literal"><span class="pre">waccm_sc</span></code> | <code class="docutils literal"><span class="pre">waccm_sc_mam4</span></code> | <code class="docutils literal"><span class="pre">waccm_tsmlt</span></code> | <code class="docutils literal"><span class="pre">waccm_tsmlt_mam4</span></code> |
+<code class="docutils literal"><span class="pre">waccm_tsmlt_sulfur</span></code> | <code class="docutils literal"><span class="pre">super_fast_llnl</span></code> | <code class="docutils literal"><span class="pre">super_fast_llnl_mam3</span></code> | <code class="docutils literal"><span class="pre">terminator</span></code> | <code class="docutils literal"><span class="pre">none</span></code> ]``.</p>
+<p>Build CAM with specified prognostic chemistry package</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">trop_mam4</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam6</span></code></li>
+<li><code class="docutils literal"><span class="pre">trop_mam3</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code></li>
+<li>otherwise <code class="docutils literal"><span class="pre">none</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-[no]clubb_sgs</span></code></dt>
+<dd><p class="first">Switch on [off] CLUBB_SGS.</p>
+<p class="last">Default: <code class="docutils literal"><span class="pre">on</span></code> for <code class="docutils literal"><span class="pre">cam6</span></code>, otherwise <code class="docutils literal"><span class="pre">off</span></code>.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-clubb_opts</span></code> [<code class="docutils literal"><span class="pre">clubb_do_adv</span></code> (Advect CLUBB moments)]</dt>
+<dd><p class="first">Comma separated list of CLUBB options to turn on/off.</p>
+<p class="last">Default: they are all off.</p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-co2_cycle</span></code></dt>
-<dd>This option is usually used with the <code class="docutils literal"><span class="pre">-ccsm_seq</span></code> option as part of
+<dd><p class="first">This option is usually used with the <code class="docutils literal"><span class="pre">-ccsm_seq</span></code> option as part of
 the configuration for running biogeochemistry (BGC) compsets. It
 modifies the CAM configuration by increasing the number of advected
-constituents by 4. Default: not set.</dd>
-<dt><code class="docutils literal"><span class="pre">-comp_intf</span> <span class="pre">[mct</span> <span class="pre">|</span> <span class="pre">esmf]</span></code></dt>
-<dd>Specify the component interfaces Default: mct.</dd>
+constituents by 4.</p>
+<p class="last">Default: not set.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-comp_intf</span></code> [<code class="docutils literal"><span class="pre">mct</span></code> | <code class="docutils literal"><span class="pre">esmf</span></code>]</dt>
+<dd><p class="first">Specify the component interfaces</p>
+<p class="last">Default: <code class="docutils literal"><span class="pre">mct</span></code></p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-cosp</span></code></dt>
-<dd>Enable the COSP simulator package. Default: not set.</dd>
+<dd><p class="first">Enable the COSP simulator package.</p>
+<p class="last">Default: not set.</p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-cppdefs</span> <span class="pre">&lt;string&gt;</span></code></dt>
 <dd>A string of user specified CPP defines appended to Makefile
 defaults. E.g. <code class="docutils literal"><span class="pre">-cppdefs</span> <span class="pre">'-DVAR1</span> <span class="pre">-DVAR2'</span></code>. Note that a string
 containing whitespace will need to be quoted.</dd>
-<dt><code class="docutils literal"><span class="pre">-dyn</span> <span class="pre">[eul</span> <span class="pre">|</span> <span class="pre">sld</span> <span class="pre">|</span> <span class="pre">fv</span> <span class="pre">|</span> <span class="pre">se</span> <span class="pre">]</span></code></dt>
-<dd>Build CAM with specified dynamical core. Default: fv.</dd>
+<dt><code class="docutils literal"><span class="pre">-dyn</span></code> [<code class="docutils literal"><span class="pre">eul</span></code> | <code class="docutils literal"><span class="pre">fv</span></code> | <code class="docutils literal"><span class="pre">se</span></code> ]</dt>
+<dd><p class="first">Build CAM with specified dynamical core.</p>
+<p class="last">Default: <code class="docutils literal"><span class="pre">fv</span></code></p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-edit_chem_mech</span></code></dt>
 <dd>Invokes <code class="docutils literal"><span class="pre">CAMCHEM_EDITOR</span></code> to allow the user to edit the chemistry mechanism file.</dd>
 <dt><code class="docutils literal"><span class="pre">-hgrid</span> <span class="pre">&lt;name&gt;</span></code></dt>
@@ -195,52 +230,157 @@ longitude respectively (e.g., <code class="docutils literal"><span class="pre">1
 sphere) use <code class="docutils literal"><span class="pre">neNnpM</span></code> where <code class="docutils literal"><span class="pre">N</span></code> is the number of elements on an
 edge of the cube, and <code class="docutils literal"><span class="pre">M</span></code> is the number of Gauss points on the
 edge of an element (e.g., <code class="docutils literal"><span class="pre">ne30np4</span></code>).</dd>
-<dt><code class="docutils literal"><span class="pre">-microphys</span> <span class="pre">[mg1</span> <span class="pre">|</span> <span class="pre">mg1.5</span> <span class="pre">|</span> <span class="pre">rk]</span></code></dt>
-<dd>Specify the microphysics package. Default: mg1 if the physics package is cam5, otherwise rk.</dd>
+<dt><code class="docutils literal"><span class="pre">-ionosphere</span></code> [ <code class="docutils literal"><span class="pre">none</span></code> | <code class="docutils literal"><span class="pre">wxi</span></code> | <code class="docutils literal"><span class="pre">wxie</span></code> ].</dt>
+<dd><p class="first">Ionophere module used in WACCMX</p>
+<p class="last">Default: <code class="docutils literal"><span class="pre">none</span></code></p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-macrophys</span></code> [ <code class="docutils literal"><span class="pre">rk</span></code> , <code class="docutils literal"><span class="pre">park</span></code> , <code class="docutils literal"><span class="pre">clubb_sgs</span></code> , <code class="docutils literal"><span class="pre">spcam_sam1mom</span></code> , <code class="docutils literal"><span class="pre">spcam_m2005</span></code> , <code class="docutils literal"><span class="pre">none</span></code>]</dt>
+<dd><p class="first">Specify the macrophysics option</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">clubb_sgs</span></code>:  if <code class="docutils literal"><span class="pre">cam6</span></code> and clubb_sgs not explicitly turned off</li>
+<li><code class="docutils literal"><span class="pre">park</span></code>:  if <code class="docutils literal"><span class="pre">cam6</span></code> and <code class="docutils literal"><span class="pre">noclubb_sgs</span></code> or <code class="docutils literal"><span class="pre">cam5</span></code></li>
+<li><code class="docutils literal"><span class="pre">rk</span></code>:  if <code class="docutils literal"><span class="pre">cam3</span></code> or <code class="docutils literal"><span class="pre">cam4</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-max_n_rad_cnst</span></code> &lt;n&gt;</dt>
+<dd>Maximum number of constituents that are either radiatively active, or in any single diagnostic list for the radiation.  Default: <code class="docutils literal"><span class="pre">30</span></code></dd>
+<dt><code class="docutils literal"><span class="pre">-microphys</span></code> [ <code class="docutils literal"><span class="pre">rk</span></code> , <code class="docutils literal"><span class="pre">mg1</span></code> , <code class="docutils literal"><span class="pre">mg2</span></code> , <code class="docutils literal"><span class="pre">spcam_m2005</span></code> , <code class="docutils literal"><span class="pre">spcam_sam1mom</span></code> , <code class="docutils literal"><span class="pre">none</span></code> ]</dt>
+<dd><p class="first">Specify the microphysics package.</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">mg2</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam6</span></code></li>
+<li><code class="docutils literal"><span class="pre">mg1</span></code>:  if it is <code class="docutils literal"><span class="pre">cam5</span></code></li>
+<li><code class="docutils literal"><span class="pre">rk</span></code>:  if it is <code class="docutils literal"><span class="pre">cam3</span></code> or <code class="docutils literal"><span class="pre">cam4</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-nadv</span> <span class="pre">&lt;n&gt;</span></code></dt>
-<dd>Set total number of advected species to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. If <code class="docutils literal"><span class="pre">-nadv</span></code> is set
+<dd><p class="first">Set total number of advected species to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. If <code class="docutils literal"><span class="pre">-nadv</span></code> is set
 to a larger number than is required by the selected physics and
 chemistry schemes, then the remainder will automatically be used for
 test tracers (N.B. the namelist variable <code class="docutils literal"><span class="pre">tracers_flag</span></code> must be
-set to <code class="docutils literal"><span class="pre">.true.</span></code> to enable the test tracer code.) Default: set to
-the number required by the selected physics and chemistry schemes.</dd>
+set to <code class="docutils literal"><span class="pre">.true.</span></code> to enable the test tracer code.)</p>
+<p class="last">Default: set to the number required by the selected physics and chemistry schemes.</p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-nadv_tt</span> <span class="pre">&lt;n&gt;</span></code></dt>
-<dd>Set number of advected test tracers to &lt;n&gt;. Setting the number of
+<dd><p class="first">Set number of advected test tracers to &lt;n&gt;. Setting the number of
 test tracers explicitly with this option allows <code class="docutils literal"><span class="pre">build-namelist</span></code>
 to automatically enable the test tracer code by setting the
-<code class="docutils literal"><span class="pre">tracers_flag</span></code> namelist variable. Default: 0.</dd>
+<code class="docutils literal"><span class="pre">tracers_flag</span></code> namelist variable.</p>
+<p class="last">Default: <code class="docutils literal"><span class="pre">0</span></code></p>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-nlev</span> <span class="pre">&lt;n&gt;</span></code></dt>
-<dd>Set number of vertical layers to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. Default: <code class="docutils literal"><span class="pre">30</span></code> if the
-physics package is <code class="docutils literal"><span class="pre">cam5</span></code>, <code class="docutils literal"><span class="pre">ideal</span></code>, or <code class="docutils literal"><span class="pre">adiabatic</span></code>. <code class="docutils literal"><span class="pre">26</span></code> if
-the physics package is <code class="docutils literal"><span class="pre">cam4</span></code>. <code class="docutils literal"><span class="pre">66</span></code> if the chemistry package is
-<code class="docutils literal"><span class="pre">waccm_*.</span> <span class="pre">81</span></code> if the <code class="docutils literal"><span class="pre">-waccmx</span></code> is used.</dd>
+<dd><p class="first">Set number of vertical layers to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>.</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">32</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam6</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">30</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code>, <code class="docutils literal"><span class="pre">ideal</span></code>, or <code class="docutils literal"><span class="pre">adiabatic</span></code> or <code class="docutils literal"><span class="pre">spcam_m2005</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">26</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam3</span></code>, <code class="docutils literal"><span class="pre">cam4</span></code> or <code class="docutils literal"><span class="pre">spcam_sam1mom</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">66</span></code>:  if the chemistry package is <code class="docutils literal"><span class="pre">waccm</span></code> and physics package is <code class="docutils literal"><span class="pre">cam4</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">70</span></code>:  if the chemistry package is <code class="docutils literal"><span class="pre">waccm</span></code> and physics package is not <code class="docutils literal"><span class="pre">cam4</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">81</span></code>:  if <code class="docutils literal"><span class="pre">-waccmx</span></code> is set.</li>
+<li><code class="docutils literal"><span class="pre">126</span></code>:  if <code class="docutils literal"><span class="pre">-waccmx</span></code> is set and <code class="docutils literal"><span class="pre">-ionosphere</span></code> is <code class="docutils literal"><span class="pre">wxie</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-offline_dyn</span></code></dt>
-<dd>Switch enables the use of offline driver for FV dycore. Default: not set.</dd>
-<dt><code class="docutils literal"><span class="pre">-pbl</span> <span class="pre">[uw</span> <span class="pre">|</span> <span class="pre">hb</span> <span class="pre">|</span> <span class="pre">hbr</span> <span class="pre">|</span> <span class="pre">clubb_sgs]</span></code></dt>
-<dd>PBL package. Default: uw if the physics package is cam5; clubb_sgs
-if the -clubb_sgs switch is set; otherwise hb.</dd>
+<dd><p class="first">Switch enables the use of offline driver for FV dycore.</p>
+<blockquote class="last">
+<div>Default: not set.</div></blockquote>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-pbl</span></code> [ <code class="docutils literal"><span class="pre">clubb_sgs</span></code> , <code class="docutils literal"><span class="pre">hb</span></code> (Holtslag and Boville), <code class="docutils literal"><span class="pre">hbr</span></code> (Holtslag, Boville, and Rasch),  <code class="docutils literal"><span class="pre">spcam_sam1mom</span></code>, <code class="docutils literal"><span class="pre">spcam_m2005</span></code>, <code class="docutils literal"><span class="pre">uw</span></code> (University of Washington), <code class="docutils literal"><span class="pre">none</span></code> ]</dt>
+<dd><p class="first">PBL package.</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">clubb_sgs</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam6</span></code> or the <code class="docutils literal"><span class="pre">-clubb_sgs</span></code> switch is set</li>
+<li><code class="docutils literal"><span class="pre">hb</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam3</span></code> or <code class="docutils literal"><span class="pre">cam4</span></code></li>
+<li><code class="docutils literal"><span class="pre">spacm_m2005</span></code>:  if it the physics package is <code class="docutils literal"><span class="pre">spcam_m2005</span></code></li>
+<li><code class="docutils literal"><span class="pre">spacm_sam1mom</span></code>:  if it the physics package is <code class="docutils literal"><span class="pre">spcam_sam1mom</span></code></li>
+<li><code class="docutils literal"><span class="pre">uw</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code> or <code class="docutils literal"><span class="pre">cam6</span></code> and <code class="docutils literal"><span class="pre">-noclubb_sgs</span></code></li>
+<li>otherwise <code class="docutils literal"><span class="pre">none</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-pcols</span> <span class="pre">&lt;n&gt;</span></code></dt>
-<dd>Set maximum number of grid columns in a chunk to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. Default: 16.</dd>
+<dd><p class="first">Set maximum number of grid columns in a chunk to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>.</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">1</span></code>:  if <code class="docutils literal"><span class="pre">-scam</span></code> is set</li>
+<li>otherwise <code class="docutils literal"><span class="pre">16</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-pergro</span></code></dt>
 <dd>Switch enables building CAM for perturbation growth tests. Only
 valid with <code class="docutils literal"><span class="pre">cam3</span></code> and <code class="docutils literal"><span class="pre">cam4</span></code> physics packages.</dd>
-<dt><code class="docutils literal"><span class="pre">-phys</span> <span class="pre">[cam3</span> <span class="pre">|</span> <span class="pre">cam4</span> <span class="pre">|</span> <span class="pre">cam5</span> <span class="pre">|</span> <span class="pre">ideal</span> <span class="pre">|</span> <span class="pre">adiabatic]</span></code></dt>
-<dd>Physics package. Default: <code class="docutils literal"><span class="pre">cam5</span></code>.</dd>
+</dl>
+<p><code class="docutils literal"><span class="pre">-phys</span></code> [ <code class="docutils literal"><span class="pre">cam3</span></code> | <code class="docutils literal"><span class="pre">cam4</span></code> | <code class="docutils literal"><span class="pre">cam5</span></code> | <code class="docutils literal"><span class="pre">cam6</span></code> | <code class="docutils literal"><span class="pre">adiabatic</span></code> | <code class="docutils literal"><span class="pre">held_suarez</span></code> | <code class="docutils literal"><span class="pre">kessler</span></code> | <code class="docutils literal"><span class="pre">spcam_sam1mom</span></code> | <code class="docutils literal"><span class="pre">spcam_m2005</span></code> ]</p>
+<blockquote>
+<div><p>Physics package.</p>
+<dl class="docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">cam6</span></code>:  except</li>
+<li><code class="docutils literal"><span class="pre">cam4</span></code>:  if <code class="docutils literal"><span class="pre">-waccmx</span></code> or <code class="docutils literal"><span class="pre">-chem</span></code> contains <code class="docutils literal"><span class="pre">_mam</span></code> in its setting</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-prog_species</span> <span class="pre">&lt;list&gt;</span></code></dt>
 <dd>Comma separated list of prognostic mozart species
 packages. Currently available: <code class="docutils literal"><span class="pre">DST,SSLT,SO4,GHG,OC,BC,CARBON16</span></code></dd>
 <dt><code class="docutils literal"><span class="pre">-psubcols</span> <span class="pre">&lt;n&gt;</span></code></dt>
-<dd>Set maximum number of subcolumns in a grid column to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>. Default: 1.</dd>
-<dt><code class="docutils literal"><span class="pre">-rad</span> <span class="pre">[rrtmg</span> <span class="pre">|</span> <span class="pre">camrt]</span></code></dt>
-<dd>Radiation package. Default: <code class="docutils literal"><span class="pre">rrtmg</span></code> if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code>, otherwise <code class="docutils literal"><span class="pre">camrt</span></code>.</dd>
+<dd><p class="first">Set maximum number of subcolumns in a grid column to <code class="docutils literal"><span class="pre">&lt;n&gt;</span></code>.</p>
+<p class="last">Default: <code class="docutils literal"><span class="pre">1</span></code>.</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">-rad</span></code> [<code class="docutils literal"><span class="pre">rrtmg</span></code> | <code class="docutils literal"><span class="pre">camrt</span></code> | <code class="docutils literal"><span class="pre">none</span></code>]</dt>
+<dd><p class="first">Radiation package.</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">rrtmg</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam5</span></code>, <code class="docutils literal"><span class="pre">cam6</span></code> or <code class="docutils literal"><span class="pre">spacm_m2005</span></code></li>
+<li><code class="docutils literal"><span class="pre">camrt</span></code>:  if the physics package is <code class="docutils literal"><span class="pre">cam3</span></code>, <code class="docutils literal"><span class="pre">cam4</span></code> or <code class="docutils literal"><span class="pre">spacm_sam1mom</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><code class="docutils literal"><span class="pre">-spcam_clubb_sgs</span></code>   Turn on the SPCAM version of CLUBB</p>
+<p><code class="docutils literal"><span class="pre">-spcam_nx</span></code> &lt;n&gt;      SPCAM x-grid. - defaults to <code class="docutils literal"><span class="pre">4</span></code> (note the CRM requires spcam_nx to be greater than or equal to 4)</p>
+<p><code class="docutils literal"><span class="pre">-spcam_ny</span></code> &lt;n&gt;      SPCAM y-grid. - defaults to <code class="docutils literal"><span class="pre">1</span></code></p>
+<p><code class="docutils literal"><span class="pre">-spcam_dx</span></code> &lt;n&gt;      SPCAM horizontal grid spacing.</p>
+<p><code class="docutils literal"><span class="pre">-spcam_dt</span></code> &lt;n&gt;      SPCAM timestep.</p>
+<p><code class="docutils literal"><span class="pre">-unicon</span></code>            Switch to turn on the UNICON scheme. Default: <code class="docutils literal"><span class="pre">off</span></code>.</p>
+<dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-usr_mech_infile</span> <span class="pre">&lt;name&gt;</span></code></dt>
-<dd>Pathname of the user supplied chemistry mechanism file.</dd>
+<dd>Full pathname of the user supplied chemistry mechanism file.</dd>
 <dt><code class="docutils literal"><span class="pre">-waccm_phys</span></code></dt>
-<dd>Switch enables the use of WACCM physics in any chemistry
-configuration. Default: Off unless one of the waccm chemistry
-options is chosen then it&#8217;s automatically turned on.</dd>
+<dd><p class="first">Switch enables the use of WACCM physics in any chemistry configuration.</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">Off</span></code>:  unless one of the waccm chemistry options is chosen, then it&#8217;s automatically turned <code class="docutils literal"><span class="pre">on</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</dd>
 <dt><code class="docutils literal"><span class="pre">-waccmx</span></code></dt>
 <dd>Build CAM/WACCM with WACCM upper Thermosphere/Ionosphere extended package.</dd>
+<dt><code class="docutils literal"><span class="pre">-zmconv_org</span></code></dt>
+<dd>Include parameterization for sub-grid scale convective organization for the ZM deep convective scheme based on Mapes and Neale (2011)</dd>
 </dl>
 </div>
 <div class="section" id="scam-configuration">
@@ -281,8 +421,8 @@ options is chosen then it&#8217;s automatically turned on.</dd>
 <dd>CICE decomposition type <code class="docutils literal"><span class="pre">[</span> <span class="pre">cartesian</span> <span class="pre">|</span> <span class="pre">spacecurve</span> <span class="pre">|</span> <span class="pre">roundrobin</span> <span class="pre">]</span></code>.</dd>
 </dl>
 </div>
-<div class="section" id="general-options">
-<h4>8.1.2.5. General options<a class="headerlink" href="#general-options" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="general-options-to-configure">
+<h4>8.1.2.5. General options to configure<a class="headerlink" href="#general-options-to-configure" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">-cache</span> <span class="pre">&lt;name&gt;</span></code></dt>
 <dd>Name of output cache file. Default: <code class="docutils literal"><span class="pre">config_cache.xml</span></code>.</dd>
@@ -290,8 +430,6 @@ options is chosen then it&#8217;s automatically turned on.</dd>
 <dd>Name of directory where output cache file is written. Default: CAM build directory.</dd>
 <dt><code class="docutils literal"><span class="pre">-ccsm_seq</span></code></dt>
 <dd>Switch to specify that CAM is being built from within the CESM scripts. This produces Filepath and CCSM_cppdefs files that contains only the paths and CPP macros needed to build a library for the CAM component.</dd>
-<dt><code class="docutils literal"><span class="pre">-defaults</span> <span class="pre">&lt;name&gt;</span></code></dt>
-<dd>Specify a configuration file which will be used to supply defaults instead of one of the <code class="docutils literal"><span class="pre">config_files/defaults_*.xml</span></code> files. This file is used to specify model configuration parameters only. Parameters relating to the build which are system dependent will be ignored.</dd>
 <dt><code class="docutils literal"><span class="pre">-help</span> <span class="pre">|</span> <span class="pre">-h</span></code></dt>
 <dd>Print usage to STDOUT.</dd>
 <dt><code class="docutils literal"><span class="pre">-silent</span> <span class="pre">|</span> <span class="pre">-s</span></code></dt>
@@ -304,18 +442,24 @@ options is chosen then it&#8217;s automatically turned on.</dd>
 <dd>Echo the repository tag name used to check out this CAM source tree.</dd>
 </dl>
 </div>
-<div class="section" id="surface-components">
-<h4>8.1.2.6. Surface components<a class="headerlink" href="#surface-components" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="surface-components-used-in-standalone-cam">
+<h4>8.1.2.6. Surface components used in standalone CAM<a class="headerlink" href="#surface-components-used-in-standalone-cam" title="Permalink to this headline">¶</a></h4>
 <p>Options for surface components used in standalone CAM mode:</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">-ice</span> <span class="pre">[cice</span> <span class="pre">|</span> <span class="pre">sice</span> <span class="pre">]</span></code></dt>
-<dd>Specify the sea ice component. Default: <code class="docutils literal"><span class="pre">cice</span></code>.</dd>
-<dt><code class="docutils literal"><span class="pre">-lnd</span> <span class="pre">[clm</span> <span class="pre">|</span> <span class="pre">slnd</span> <span class="pre">]</span></code></dt>
-<dd>Specify the land component. Default: <code class="docutils literal"><span class="pre">clm</span></code>.</dd>
-<dt><code class="docutils literal"><span class="pre">-ocn</span> <span class="pre">[docn</span> <span class="pre">|</span> <span class="pre">socn</span> <span class="pre">|</span> <span class="pre">dom</span> <span class="pre">|</span> <span class="pre">aquaplanet</span> <span class="pre">]</span></code></dt>
-<dd>Specify ocean component. If set to <code class="docutils literal"><span class="pre">aquaplanet</span></code> then the stub ice (<code class="docutils literal"><span class="pre">sice</span></code>) and stubb land (<code class="docutils literal"><span class="pre">slnd</span></code>) components are implied. Default: <code class="docutils literal"><span class="pre">docn</span></code>.</dd>
-<dt><code class="docutils literal"><span class="pre">-rof</span> <span class="pre">[rtm</span> <span class="pre">|</span> <span class="pre">srof</span> <span class="pre">]</span></code></dt>
-<dd>Specify the river runoff component. Default: <code class="docutils literal"><span class="pre">rtm</span></code>.</dd>
+<dt><code class="docutils literal"><span class="pre">-ocn</span></code> [ <code class="docutils literal"><span class="pre">docn</span></code> | <code class="docutils literal"><span class="pre">dom</span></code> | <code class="docutils literal"><span class="pre">som</span></code> | <code class="docutils literal"><span class="pre">socn</span></code> | <code class="docutils literal"><span class="pre">aquaplanet</span></code> ]``</dt>
+<dd><p class="first">Specify ocean component.  Use data ocean model (<code class="docutils literal"><span class="pre">docn</span></code> or <code class="docutils literal"><span class="pre">dom</span></code>), stub ocean (<code class="docutils literal"><span class="pre">socn</span></code>), or aqua planet
+ocean (<code class="docutils literal"><span class="pre">aquaplanet</span></code>) in cam build.  When built from the CESM scripts the value of ocn may be set to
+pop.  This doesn&#8217;t impact how CAM is built, only how attributes are matched when searching for
+namelist defaults.  If ocn is set to <code class="docutils literal"><span class="pre">som</span></code> then the <code class="docutils literal"><span class="pre">docn</span></code> component is used.</p>
+<dl class="last docutils">
+<dt>Default:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">aquaplanet</span></code>:  if <code class="docutils literal"><span class="pre">-aquaplanet</span></code> set</li>
+<li>otherwise <code class="docutils literal"><span class="pre">socn</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd>
 </dl>
 </div>
 <div class="section" id="cam-standalone-build">
