@@ -238,8 +238,8 @@ ocean/thermodynamic sea-ice component, and a collection of other changes
 to the formalism which did not introduce significant changes to the
 model climate.</p>
 <p>Changes to the clear-sky radiation formalism included the incorporation
-of minor CO<span class="math">_2</span> bands trace gases (<span class="math">CH_4</span>, <span class="math">N{_2}O</span>,
-<span class="math">CFC11</span>, <span class="math">CFC12</span>) in the longwave parameterization, and the
+of minor CO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> bands trace gases (<img class="math" src="../_images/math/70ef78fdd619a5193e2dc3a321996ebd6e6b0dea.png" alt="CH_4"/>, <img class="math" src="../_images/math/de84e47ae75fbe180790ab59c1796937fcde43e1.png" alt="N{_2}O"/>,
+<img class="math" src="../_images/math/8cf5dbddcca958e949fa5906aaea5b0a1e3c02c3.png" alt="CFC11"/>, <img class="math" src="../_images/math/781e3b389db8a7f18519d4d08ddce3f02e1941ce.png" alt="CFC12"/>) in the longwave parameterization, and the
 incorporation of a background aerosol (0.14 optical depth) in the
 shortwave parameterization. All-sky changes included improvements to the
 way in which cloud optical properties (effective radius and liquid water
@@ -299,7 +299,7 @@ and ice distributions for the present climate. The model allowed for the
 simplest interactive surface for the ocean and sea ice components of the
 climate system.</p>
 <p>The final class of model modifications included a change to the form of
-the hydrostatic matrix which ensures consistency between <span class="math">\omega</span>
+the hydrostatic matrix which ensures consistency between <img class="math" src="../_images/math/b51aa99e0bc8cc8c3d17c0b9cf822db73e13293e.png" alt="\omega"/>
 and the discrete continuity equation, and a more generalized form of the
 gravity wave drag parameterization. In the latter case, the
 parameterization was configured to behave in the same way as the CCM2
@@ -355,7 +355,7 @@ components of the method related to water vapor were replaced with new
 terms calculated with the General Line-by-line Atmospheric Transmittance
 and Radiance Model (GENLN3). The mean absolute errors in the surface and
 top-of-atmosphere clear-sky longwave fluxes for standard atmospheres
-were reduced to less than 1&nbsp;W/m<span class="math">{}^2</span>. The near-infrared
+were reduced to less than 1&nbsp;W/m<img class="math" src="../_images/math/2047585f2f3353d419d959ea3fbc408bb0e55a40.png" alt="{}^2"/>. The near-infrared
 absorption by water vapor was also updated to a parameterization based
 upon the HITRAN2k line database <a class="reference internal" href="chapter8.html#rothman03" id="id34">[RBB+03]</a> that incorporated
 the CKD&nbsp;2.4 prescription for the continuum. The magnitude of errors in
@@ -518,10 +518,10 @@ are described below:</p>
 that explicitly simulates stratus-radiation-turbulence interactions,
 making it possible to simulate full aerosol indirect effects within
 stratus. It is based on a diagnostic Turbulent Kinetic Energy (TKE)
-forumlation and uses a <span class="math">1^{st}</span> order K-diffusion scheme with
+forumlation and uses a <img class="math" src="../_images/math/f70e2df82c698c56e71eeb62ee5c14ff8e7aa7a8.png" alt="1^{st}"/> order K-diffusion scheme with
 entrainment [BP09] originally developed at the University of
 Washington.. The scheme operates in any layer of the atmopshere when the
-moist <span class="math">Ri</span> ( Richardson number ) is larger than its critical
+moist <img class="math" src="../_images/math/2edbda09efe593b17512bc12c1e07b0dada387da.png" alt="Ri"/> ( Richardson number ) is larger than its critical
 value.</p>
 <p>A new shallow convection scheme (Section sec-shallow-convection) uses
 a realistic plume dilution equation and closure that accurately
@@ -598,13 +598,13 @@ radiative calculation. Liquid-cloud optics are calculated following
 radiatively active falling snow. Optical properties of clouds
 (including separate fractions and in-cloud water contents) are
 combined prior to the radiative calculation. RRTM separates the</p>
-<p>short-wave spectrum into 14 bands extending from 0.2 <span class="math">\mu</span>m to 12.2
-<span class="math">\mu</span>m, and models sources of extinction for H<span class="math">_2</span>O,
-O<span class="math">_3</span>, CO<span class="math">_2</span>, O<span class="math">_2</span>, CH<span class="math">_4</span>,
-N<span class="math">_2</span> and Rayleigh scattering. Solar irradiance is now specified
+<p>short-wave spectrum into 14 bands extending from 0.2 <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>m to 12.2
+<img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>m, and models sources of extinction for H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O,
+O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>, CO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>, O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>, CH<img class="math" src="../_images/math/284796e299f67ddec30ffb68aa85adb566a054af.png" alt="_4"/>,
+N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> and Rayleigh scattering. Solar irradiance is now specified
 for the short-wave bands from the Lean dataset <a class="reference internal" href="chapter8.html#wang05" id="id63">[WLS05]</a>.
 The long-wave spectrum is separated into 16 bands extending from
-3.1 <span class="math">\mu</span>m to 1000 <span class="math">\mu</span>m with molecular sources of
+3.1 <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>m to 1000 <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/>m with molecular sources of
 absorption for the same species, in addition to CFC-11 (containing
 multiple CFC species) and CFC-12. RRTMG has extensive modifications from
 the original RRTM in order to provide significant speed-up for long

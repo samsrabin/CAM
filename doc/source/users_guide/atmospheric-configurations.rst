@@ -394,6 +394,25 @@ If a user wishes to run SCAM with an IOP location that is not already predefined
 
         % ./create_newcase --case 
 
+** INSTRUCTIONS FOR USER IOP GO HERE **
+
+** REFERENCE SCRIPT (and make sure it is checked in **
+
+** Running the USER IOP Case **
+
+To run the user iop with SCAM, follow the following steps (here it is a test case over the SGP site output from a CAM Run)
+
+- Decide your iop name (e.g. usrsgp)
+- Add this to the script create_scam6_iop
+- In the tag you have downloaded, go to the 'usermods_dirs' directory
+	e.g. cam6_0_000/components/cam/cime_config/usermods_dirs
+- Copy one of the directories for the IOP cases, e.g. cp -r scam_arm97 scam_usrsgp
+- Change files in this directory
+	Shell commands: XML change commands: Typically the LAT, LON, STARTDATE, START_TOD, STOP_OPTION and STOP_N
+	User_nl_cam:  usually just iopfile. May also want to change mfilt (to keep all times on one file) 
+- Run create_sca6_iop script with apprpriate IOP (scam_usrsgp in this case)
+
+	
 -------------------------------------------------------------------------------
 Other CAM compsets
 -------------------------------------------------------------------------------
