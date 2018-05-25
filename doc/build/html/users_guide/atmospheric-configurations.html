@@ -54,11 +54,11 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#cam-parallel-offline-radiation-tool-port-p-compsets">4.2.2. CAM Parallel Offline Radiation Tool (PORT - P compsets)</a><ul>
-<li><a class="reference internal" href="#still-being-edited-example-verifying-a-port-setup">4.2.2.1. <strong>STILL BEING EDITED</strong> Example: Verifying a PORT setup</a></li>
-<li><a class="reference internal" href="#example-using-port-to-study-flux-differences-due-to-4-x-co2">4.2.2.2. Example: Using PORT to study flux differences due to 4 x CO2</a><ul>
-<li><a class="reference internal" href="#step-1-extracting-cesm-state-for-use-in-port">4.2.2.2.1. Step 1:  Extracting CESM state for use in PORT.</a></li>
-<li><a class="reference internal" href="#step-2-compile-and-run-port-on-extracted-radiation-data">4.2.2.2.2. Step 2:  Compile and run PORT on extracted radiation data</a></li>
-<li><a class="reference internal" href="#step-3-create-file-with-4xco2-and-compile-and-run-port-using-this-new-file">4.2.2.2.3. Step 3:  Create file with 4xCO2 and compile and run PORT using this new file</a></li>
+<li><a class="reference internal" href="#port-compsets">4.2.2.1. PORT Compsets</a></li>
+<li><a class="reference internal" href="#example-using-port-to-study-flux-differences-due-to-2-x-co2">4.2.2.2. Example: Using PORT to study flux differences due to 2 x CO2</a><ul>
+<li><a class="reference internal" href="#sample-the-base-run">4.2.2.2.1. Sample the base run</a></li>
+<li><a class="reference internal" href="#port-validation">4.2.2.2.2. PORT validation</a></li>
+<li><a class="reference internal" href="#compute-forcing-due-to-a-change-in-composition-co2-as-an-example">4.2.2.2.3. Compute forcing due to a change in composition (CO2, as an example)</a></li>
 </ul>
 </li>
 </ul>
@@ -238,7 +238,7 @@ f19_f19_mg17</td>
 </table>
 <div class="section" id="cam-aquaplanet-qp-and-qs-compsets">
 <h3>4.2.1. CAM aquaplanet (QP and QS compsets)<a class="headerlink" href="#cam-aquaplanet-qp-and-qs-compsets" title="Permalink to this headline">¶</a></h3>
-<p>Aquaplanets are configurations of global atmospheric models that have no landmasses and saturated lower boundaries. The aquaplanet compsets in CESM2 provide a convenient way to configure CAM with prescribed, zonally symmetric SST, a user-supplied SST dataset, or a slab-ocean lower boundary. The surface is controlled through the data ocean model. There are a standard set of SST profiles based on the AquaPlanet Experiment project (APE; Neale &amp; Hoskins <a class="footnote-reference" href="#id6" id="id1">[2]</a>, Williamson et al. <a class="footnote-reference" href="#id7" id="id2">[3]</a>). The advantage of an aquaplanet configuration is that it allows the user to run the full CAM parameterization suite while retaining much simpler surface conditions than the complex combination of land, ocean, and sea-ice in the real world.  The CAM5 aquaplanet configuration is described by Medeiros et al. <a class="footnote-reference" href="#id5" id="id3">[1]</a></p>
+<p>Aquaplanets are configurations of global atmospheric models that have no landmasses and saturated lower boundaries. The aquaplanet compsets in CESM2 provide a convenient way to configure CAM with prescribed, zonally symmetric SST, a user-supplied SST dataset, or a slab-ocean lower boundary. The surface is controlled through the data ocean model. There are a standard set of SST profiles based on the AquaPlanet Experiment project (APE; Neale &amp; Hoskins <a class="footnote-reference" href="#id6" id="id1">[2]</a>, Williamson et al. <a class="footnote-reference" href="#id7" id="id2">[3]</a>). The advantage of an aquaplanet configuration is that it allows the user to run the full CAM parameterization suite while retaining much simpler surface conditions than the complex combination of land, ocean, and sea-ice in the real world.  The CAM5 aquaplanet configuration is described by Medeiros et al. <a href="#id19"><span class="problematic" id="id3">[1]_</span></a></p>
 <dl class="docutils">
 <dt>Aquaplanet compsets which have been tested, but are not scientifically supported:</dt>
 <dd><ul class="first last simple">
@@ -260,7 +260,7 @@ f19_f19_mg17</td>
 <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>By default initial conditions from a previous aquaplanet simulation are used. The SST pattern is the APE “QOBS” option, which is used in APE and CFMIP protocols. The atmospheric ozone is specified to be that used for APE. Aerosol emissions are neglected except for sea salt (which is diagnostic), see Medeiros et al. <a class="footnote-reference" href="#id5" id="id4">[1]</a> for details.</p>
+<p>By default initial conditions from a previous aquaplanet simulation are used. The SST pattern is the APE “QOBS” option, which is used in APE and CFMIP protocols. The atmospheric ozone is specified to be that used for APE. Aerosol emissions are neglected except for sea salt (which is diagnostic), see Medeiros et al. <a href="#id20"><span class="problematic" id="id4">[1]_</span></a> for details.</p>
 </div>
 <div class="section" id="example-2-default-aquaplanet-with-slab-ocean-model">
 <h4>4.2.1.2. Example 2: Default Aquaplanet with Slab-Ocean Model<a class="headerlink" href="#example-2-default-aquaplanet-with-slab-ocean-model" title="Permalink to this headline">¶</a></h4>
@@ -308,7 +308,7 @@ f19_f19_mg17</td>
 <table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Medeiros, B., D. L. Williamson, and J. G. Olson, 2016: Reference aquaplanet climate in the community atmosphere model, version 5. Journal of Advances in Modeling Earth Systems, doi: <a class="reference external" href="http://dx.doi.org/10.1002/2015MS000593">http://dx.doi.org/10.1002/2015MS000593</a></td></tr>
+<tr><td class="label">[1]</td><td>Medeiros, B., D. L. Williamson, and J. G. Olson, 2016: Reference aquaplanet climate in the community atmosphere model, version 5. Journal of Advances in Modeling Earth Systems, doi: <a class="reference external" href="http://dx.doi.org/10.1002/2015MS000593">http://dx.doi.org/10.1002/2015MS000593</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id6" rules="none">
@@ -327,125 +327,176 @@ f19_f19_mg17</td>
 </div>
 <div class="section" id="cam-parallel-offline-radiation-tool-port-p-compsets">
 <h3>4.2.2. CAM Parallel Offline Radiation Tool (PORT - P compsets)<a class="headerlink" href="#cam-parallel-offline-radiation-tool-port-p-compsets" title="Permalink to this headline">¶</a></h3>
-<p>PORT is used as part of the process for computing radiative forcing and instantaneous radiative forcing.  For effective radiative forcing please see the documentation related to F-case runs.</p>
-<p>PORT uses instantaneous samples of the model state to compute the radiative fluxes and heating rates through the atmosphere.  This computation does not include middle and upper atmospheric radiative transfer as implemented in WACCM.  The only prognostic variable is temperature, in the specific PORT configuration to compute radiative forcing that includes the stratospheric adjustment (fixed dynamical heating).</p>
-<div class="section" id="still-being-edited-example-verifying-a-port-setup">
-<h4>4.2.2.1. <strong>STILL BEING EDITED</strong> Example: Verifying a PORT setup<a class="headerlink" href="#still-being-edited-example-verifying-a-port-setup" title="Permalink to this headline">¶</a></h4>
+<p>PORT is used as part of the process for computing radiative forcing and instantaneous radiative forcing.
+For effective radiative forcing please see the documentation related to F-case runs.</p>
+<p>PORT uses instantaneous samples of the model state to compute the radiative fluxes and heating rates
+through the atmosphere.  This computation does not include middle and upper atmospheric radiative
+transfer as implemented in WACCM.  The only prognostic variable is temperature, in the specific PORT
+configuration to compute radiative forcing that includes the stratospheric adjustment (fixed dynamical heating).</p>
+<div class="section" id="port-compsets">
+<h4>4.2.2.1. PORT Compsets<a class="headerlink" href="#port-compsets" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">short name</th>
+<th class="head">long name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PC4</td>
+<td>2000_CAM40%PORT_SLND_SICE_SOCN_SROF_SGLC_SWAV</td>
+</tr>
+<tr class="row-odd"><td>PC5</td>
+<td>2000_CAM50%PORT_SLND_SICE_SOCN_SROF_SGLC_SWAV</td>
+</tr>
+<tr class="row-even"><td>PC6</td>
+<td>2000_CAM60%PORT_SLND_SICE_SOCN_SROF_SGLC_SWAV</td>
+</tr>
+</tbody>
+</table>
+<p>The user is required to supply radiation input datasets via one of the namelist options:</p>
 <ul class="simple">
-<li>Run CESM 9 timesteps outputting in addition to rad, FLNT,FSNT, etc.</li>
-<li>Run PORT using the h1 file - need to output every timestep</li>
-<li>Compare FLNT from step 1 and step 2  (BFB comparison)</li>
+<li><strong>offline_driver_infile</strong> (for single input file)</li>
+<li><strong>offline_driver_fileslist</strong> (sequential list of input files)</li>
 </ul>
+<p>These can be set in the <strong>user_nl_cam</strong> file found in the CESM case directory.</p>
 </div>
-<div class="section" id="example-using-port-to-study-flux-differences-due-to-4-x-co2">
-<h4>4.2.2.2. Example: Using PORT to study flux differences due to 4 x CO2<a class="headerlink" href="#example-using-port-to-study-flux-differences-due-to-4-x-co2" title="Permalink to this headline">¶</a></h4>
-<p>There are typically three stages to computing radiative forcing</p>
-<p>Extracting samples of CESM state</p>
-<p>Set up the <strong>user_nl_cam</strong> file</p>
+<div class="section" id="example-using-port-to-study-flux-differences-due-to-2-x-co2">
+<h4>4.2.2.2. Example: Using PORT to study flux differences due to 2 x CO2<a class="headerlink" href="#example-using-port-to-study-flux-differences-due-to-2-x-co2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="sample-the-base-run">
+<h5>4.2.2.2.1. Sample the base run<a class="headerlink" href="#sample-the-base-run" title="Permalink to this headline">¶</a></h5>
+<p>Create the base sampling case:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">base_run_case</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">F2000climo</span>
+<span class="o">%</span> <span class="n">cd</span> <span class="n">base_run_case</span>
+</pre></div>
+</div>
+<p>Set up the <strong>user_nl_cam</strong> file for the base run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Output the radiation data
 rad_data_output=.true.
 
-! Specify the radiation data be written to histfile number 2 (rad_data will be in files with cam.h1 in their name)
+! Specify the radiation data be written to history file number 2 (rad_data will be in files with cam.h1 in their name)
+rad_data_histfile_num=2
+
+! Make certain the radiation is called every time step
+rad_always = .true.
+
+! Write out the instantaneous rad_data
+rad_data_avgflag=&#39;I&#39;
+
+! Include radiation diagnostics
+fincl2 = &#39;FLNT&#39;, &#39;FLNR&#39;,&#39;FLNS&#39;, &#39;FSNT&#39;,&#39;FSNR&#39;, &#39;FSNS&#39;
+
+! Output frequency
+nhtfrq=0,73
+</pre></div>
+</div>
+<p>Note: It has been found that sampling every 73’rd time step is a good balance of computational cost
+and size of data for dtime = 1800 and a 2-degree horizontal resolution.</p>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Conley, A. J., Lamarque, J.-F., Vitt, F., Collins, W. D., and Kiehl, J.: PORT, a CESM tool for the diagnosis of radiative forcing, Geosci. Model Dev., 6, 469-476, <a class="reference external" href="https://doi.org/10.5194/gmd-6-469-2013">https://doi.org/10.5194/gmd-6-469-2013</a>, 2013.</td></tr>
+</tbody>
+</table>
+<p>Build and submit this sampling run data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_N</span><span class="o">=</span><span class="mi">16</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_OPTION</span><span class="o">=</span><span class="n">nmonths</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
+</pre></div>
+</div>
+<p>After your job completes, you will have a number of files, including ones with filenames containing “cam.h1”.
+The “cam.h1” files contain the radiation history which was specified by the namelist and will be used in the
+next step.</p>
+<p>Prepare sequential list of input files for the PORT run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">ls</span> <span class="o">-</span><span class="mi">1</span><span class="n">d</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">base_run_case</span><span class="o">.</span><span class="n">cam</span><span class="o">.</span><span class="n">h1</span><span class="o">.*</span><span class="n">nc</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">samples</span><span class="o">.</span><span class="n">input</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="port-validation">
+<h5>4.2.2.2.2. PORT validation<a class="headerlink" href="#port-validation" title="Permalink to this headline">¶</a></h5>
+<p>Create the PORT validation run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">port_run_case</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">PC6</span>
+<span class="o">%</span> <span class="n">cd</span> <span class="n">port_run_case</span>
+</pre></div>
+</div>
+<p>Set up the <strong>user_nl_cam</strong> file for the PORT run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Output the radiation data
+rad_data_output=.true.
+
+! Specify the radiation data be written to history file number 2 (rad_data will be in files with cam.h1 in their name)
 rad_data_histfile_num=2
 
 ! Write out the instantaneous rad_data
 rad_data_avgflag=&#39;I&#39;
 
-! Add back in the fields for the output
-fincl1 = &#39;SOLIN&#39;, &#39;QRS&#39;, &#39;FSNS&#39;, &#39;FSNT&#39;,&#39;FSNSC&#39;, &#39;FSDSC&#39;,&#39;FSNR&#39;,&#39;FLNR&#39;,
-         &#39;FSNTOA&#39;, &#39;FSUTOA&#39;, &#39;FSNTOAC&#39;, &#39;FSNTC&#39;, &#39;FSDSC&#39;, &#39;FSDS&#39;, &#39;SWCF&#39;,
-         &#39;QRL&#39;, &#39;FLNS&#39;, &#39;FLDS&#39;, &#39;FLNT&#39;, &#39;LWCF&#39;, &#39;FLUT&#39; ,&#39;FLUTC&#39;, &#39;FLNTC&#39;,
-         &#39;FLNSC&#39;, &#39;FLDSC&#39;
+! Include radiation diagnostics
+fincl2 = &#39;FLNT&#39;, &#39;FLNR&#39;,&#39;FLNS&#39;, &#39;FSNT&#39;,&#39;FSNR&#39;, &#39;FSNS&#39;
 
-fincl2 = &#39;SOLIN&#39;, &#39;QRS&#39;, &#39;FSNS&#39;, &#39;FSNT&#39;,&#39;FSNSC&#39;, &#39;FSDSC&#39;,&#39;FSNR&#39;,&#39;FLNR&#39;,
-         &#39;FSNTOA&#39;, &#39;FSUTOA&#39;, &#39;FSNTOAC&#39;, &#39;FSNTC&#39;, &#39;FSDSC&#39;, &#39;FSDS&#39;, &#39;SWCF&#39;,
-         &#39;QRL&#39;, &#39;FLNS&#39;, &#39;FLDS&#39;, &#39;FLNT&#39;, &#39;LWCF&#39;, &#39;FLUT&#39; ,&#39;FLUTC&#39;, &#39;FLNTC&#39;,
-         &#39;FLNSC&#39;, &#39;FLDSC&#39;
+! Output frequency
+nhtfrq=0,73
 
-! Write out every timestep
-nhtfrq=1
+! Sequential list of input files
+offline_driver_fileslist = &#39;/path/samples.input&#39;
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_PORT_setup_orig</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FHIST_DEV</span>
-<span class="o">%</span> <span class="n">cd</span> <span class="n">test_PORT_setup_orig</span>
-
-<span class="o">-</span> <span class="n">Using</span> <span class="n">PORT</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">fluxes</span> <span class="ow">and</span> <span class="n">heating</span> <span class="n">rates</span> <span class="n">on</span> <span class="n">the</span> <span class="n">extracted</span> <span class="n">samples</span>
-<span class="o">-</span> <span class="n">Using</span> <span class="n">PORT</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">fluxes</span> <span class="ow">and</span> <span class="n">heating</span> <span class="n">rates</span> <span class="n">on</span> <span class="n">modifications</span> <span class="n">of</span> <span class="n">the</span> <span class="n">extracted</span> <span class="n">samples</span>
+<p>For verification tests the run time length can be as short as a few time steps.</p>
+<p>Build and submit this validation run data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_N</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_OPTION</span><span class="o">=</span><span class="n">ndays</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
+<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>Radiative Forcing is defined as the difference between the top of atmosphere fluxes computed in stages 2 and 3 above.</p>
-<div class="section" id="step-1-extracting-cesm-state-for-use-in-port">
-<h5>4.2.2.2.1. Step 1:  Extracting CESM state for use in PORT.<a class="headerlink" href="#step-1-extracting-cesm-state-for-use-in-port" title="Permalink to this headline">¶</a></h5>
-<p>A user first needs to set up a run from which the radiation data will be extracted.  In this example, we will use the F2000_DEV compset, but any configuration of CAM may be used, dependent on what the user wishes to study.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_forPORT</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">F2000_DEV</span>
-<span class="o">%</span> <span class="n">cd</span> <span class="n">test_forPORT</span>
+<p>The differences in radiation diagnostics (FLNT,FLNR,FLNS,FSNT,FSNR,FSNS) in the the sampling base run and the
+PORT run should be zero (or within roundoff).</p>
+</div>
+<div class="section" id="compute-forcing-due-to-a-change-in-composition-co2-as-an-example">
+<h5>4.2.2.2.3. Compute forcing due to a change in composition (CO2, as an example)<a class="headerlink" href="#compute-forcing-due-to-a-change-in-composition-co2-as-an-example" title="Permalink to this headline">¶</a></h5>
+<p>In this case we are doubling the CO2 and modifying this via the netcdf utility, ncap for each file.
+Further documentation on ncap can be found in the <a class="reference external" href="http://nco.sourceforge.net/nco.html">NCO User Guide</a>.</p>
+<p>Modify the composition in the sample files.  For each file listed in /path/samples.inputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">ncap</span> <span class="o">-</span><span class="n">s</span> <span class="s2">&quot;rad_CO2=2.0*rad_CO2&quot;</span> <span class="n">original</span><span class="o">.</span><span class="n">h1</span><span class="o">.</span><span class="n">file</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">nc</span> <span class="mi">2</span><span class="n">xCO2</span><span class="o">.</span><span class="n">file</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">nc</span>
 </pre></div>
 </div>
-<p>To output the radiation data, the <strong>user_nl_cam</strong> needs to contain the following settings.</p>
+<p>Create a new sequential list of input files for the PORT run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">ls</span> <span class="o">-</span><span class="mi">1</span><span class="n">d</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="mi">2</span><span class="n">xCO2</span><span class="o">.</span><span class="n">file</span><span class="o">*</span><span class="n">nc</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">samples2xCO2</span><span class="o">.</span><span class="n">inputs</span>
+</pre></div>
+</div>
+<p>Prepare the PORT run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">port_2xCO2_case</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">PC6</span>
+<span class="o">%</span> <span class="n">cd</span> <span class="n">port_2xCO2_case</span>
+</pre></div>
+</div>
+<p>Set up the <strong>user_nl_cam</strong> file for the PORT run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Output the radiation data
 rad_data_output=.true.
 
-! Specify the radiation data be written to histfile number 2 (rad_data will be in files with cam.h1 in their name)
+! Specify the radiation data be written to history file number 2 (rad_data will be in files with cam.h1 in their name)
 rad_data_histfile_num=2
 
 ! Write out the instantaneous rad_data
 rad_data_avgflag=&#39;I&#39;
-</pre></div>
-</div>
-<p>For this test, the user needs to complete the setup/build process and run for at least 16 months.  For a simple verification test, the times can be as short as 9 timesteps.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_N</span><span class="o">=</span><span class="mi">16</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_OPTION</span><span class="o">=</span><span class="n">nmonths</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
-</pre></div>
-</div>
-<p>After your job completes, you will have a number of files, including ones with filenames containing “cam.h1”.  The “cam.h1” files contain the radiation history which was specified by the namelist and will be used in the next step.</p>
-</div>
-<div class="section" id="step-2-compile-and-run-port-on-extracted-radiation-data">
-<h5>4.2.2.2.2. Step 2:  Compile and run PORT on extracted radiation data<a class="headerlink" href="#step-2-compile-and-run-port-on-extracted-radiation-data" title="Permalink to this headline">¶</a></h5>
-<p>Configure CESM to construct the PORT executable by running the offline radiation tool.  A new case needs to be created for this step and it will use the special CAM6 PORT compset, PC6</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_PORT_run_orig</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">PC6</span>
-<span class="o">%</span> <span class="n">cd</span> <span class="n">test_PORT_run_orig</span>
-</pre></div>
-</div>
-<p>Create a file that contains the full filepaths to all of the h1 files created in step 1.  Setup the namelist in <strong>user_nl_cam</strong> and have it use the fileslist</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Use the radiation with the latest date (has cam.h1 in the name)
-offline_driver_fileslist=&#39;/fullpath/fileslist_orig&#39;
 
-! turn on Fixed Dynamical Heating in the offline radiation tool (PORT)
-rad_data_fdh=.true.
-</pre></div>
-</div>
-<p>Compile and submit this run of the original data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_N</span><span class="o">=</span><span class="mi">16</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_OPTION</span><span class="o">=</span><span class="n">nmonths</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
-<span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="step-3-create-file-with-4xco2-and-compile-and-run-port-using-this-new-file">
-<h5>4.2.2.2.3. Step 3:  Create file with 4xCO2 and compile and run PORT using this new file<a class="headerlink" href="#step-3-create-file-with-4xco2-and-compile-and-run-port-using-this-new-file" title="Permalink to this headline">¶</a></h5>
-<p>Create a variation to the input files to study the effects the variation has on radiation.  In this case we are quadrupling the CO2 and modifying this via the netcdf utility, ncap for each file.  Further documentation on ncap can be found in the <a class="reference external" href="http://nco.sourceforge.net/nco.html">NCO User Guide</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">ncap</span> <span class="o">-</span><span class="n">s</span> <span class="s2">&quot;rad_co2=4*rad_co2&quot;</span> <span class="n">extracted_file</span><span class="o">.</span><span class="n">nc</span> <span class="n">extracted_file_with_quadrupled_co2</span><span class="o">.</span><span class="n">nc</span>
-</pre></div>
-</div>
-<p>Repeat the same setup that you did in Step 2 with a different case name, creating a new list with the modified files and putting this new fileslist in <strong>user_nl_cam</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_PORT_run_4xCO2</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">PC6</span>
-<span class="o">%</span> <span class="n">cd</span> <span class="n">test_PORT_run_4xCO2</span>
-</pre></div>
-</div>
-<p>Setup the namelist in <strong>user_nl_cam</strong> and have it use the file generated in the previous example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Use the radiation with the latest date (has cam.h1 in the name)
-offline_driver_fileslist=&#39;/fullpath/fileslist_4XCO2&#39;
+! Include radiation diagnostics
+fincl2 = &#39;FLNT&#39;, &#39;FLNR&#39;,&#39;FLNS&#39;, &#39;FSNT&#39;,&#39;FSNR&#39;, &#39;FSNS&#39;
 
-! turn on Fixed Dynamical Heating in the offline radiation tool (PORT)
-rad_data_fdh=.true.
+! Output frequency
+nhtfrq=0,73
+
+! Sequential list of input files
+offline_driver_fileslist = &#39;/path/samples2xCO2.inputs&#39;
+
+! Allow temperatures above the tropopause to equilibrate under the assumption of fixed dynamical heating
+rad_data_fdh = .true.
 </pre></div>
 </div>
-<p>Compile and submit this run with the modified data</p>
+<p>Build and submit:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_N</span><span class="o">=</span><span class="mi">16</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_OPTION</span><span class="o">=</span><span class="n">nmonths</span>
@@ -453,7 +504,14 @@ rad_data_fdh=.true.
 <span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>Differencing the resulting output files with those from Example 2 provides the forcing as well as changes in heating rates.</p>
+<dl class="docutils">
+<dt>Forcing is the difference between:</dt>
+<dd><ul class="first last simple">
+<li>the net flux at the tropopause (FLNR-FSNR) from the last 12 months of the sample files  AND</li>
+<li>the net flux at the tropopause (FLNR-FSNR) from the last 12 months of the 2xCO2sample files</li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -595,35 +653,35 @@ This produces 3 hourly output at a point for fincl2 fields on an h1 file.</p>
 <p>There are a number of other CAM compsets which have not been described in this document. The complete listing of all compsets is found <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/cesm/compsets.html">here</a>.  Users are cautioned about using compsets that are not scientifically supported or tested.  These compsets are not supported and users may encounter problems or get invalid results using them.</p>
 <div class="section" id="super-parameterized-cam-spcam">
 <h3>4.3.1. Super-parameterized CAM (SPCAM)<a class="headerlink" href="#super-parameterized-cam-spcam" title="Permalink to this headline">¶</a></h3>
-<p>Another set of compsets which require a brief description are ones for Super-parameterized CAM (SPCAM). SPCAM implements a 2D cloud resolving model (the System for Atmospheric Modeling SAM, Version 6.8.2) in CAM6.0 to replace its conventional parameterization for moist convection and large-scale condensation. Two different sets are provided. SAM1MOM use one moment SAM microphysics, and is based on Khairoutdinov and Randall <a class="footnote-reference" href="#id14" id="id8">[5]</a>. M2005 uses two moment microphysics from Morrison et al <a class="footnote-reference" href="#id15" id="id9">[6]</a>, and its implementation is based on Wang et al. <a class="footnote-reference" href="#id16" id="id10">[7]</a>; <a class="footnote-reference" href="#id17" id="id11">[8]</a>. In M2005, Explicit-Cloud-Parameterized-Pollutant (ECPP) approach is used to treat cloud processing of aerosols with statistics of cloud properties resolved by the cloud resolving model (Gustafson et al., 2008) <a class="footnote-reference" href="#id13" id="id12">[4]</a> . It is important to point out that the CLUBB version used in SPCAM is an older version of CLUBB than what is used by CAM6.0 and this customized version of CLUBB resides in the CRM library.</p>
-<table class="docutils footnote" frame="void" id="id13" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[4]</a></td><td>Gustafson, W. I., L. K. Berg, R. C. Easter, and S. J. Ghan (2008), The Explicit-Cloud Parameterized-Pollutant hybrid approach for aerosol-cloud interactions in multiscale modeling framework models: tracer transport results, Environ Res Lett, 3(2), 025005.</td></tr>
-</tbody>
-</table>
+<p>Another set of compsets which require a brief description are ones for Super-parameterized CAM (SPCAM). SPCAM implements a 2D cloud resolving model (the System for Atmospheric Modeling SAM, Version 6.8.2) in CAM6.0 to replace its conventional parameterization for moist convection and large-scale condensation. Two different sets are provided. SAM1MOM use one moment SAM microphysics, and is based on Khairoutdinov and Randall <a class="footnote-reference" href="#id15" id="id9">[5]</a>. M2005 uses two moment microphysics from Morrison et al <a class="footnote-reference" href="#id16" id="id10">[6]</a>, and its implementation is based on Wang et al. <a class="footnote-reference" href="#id17" id="id11">[7]</a>; <a class="footnote-reference" href="#id18" id="id12">[8]</a>. In M2005, Explicit-Cloud-Parameterized-Pollutant (ECPP) approach is used to treat cloud processing of aerosols with statistics of cloud properties resolved by the cloud resolving model (Gustafson et al., 2008) <a class="footnote-reference" href="#id14" id="id13">[4]</a> . It is important to point out that the CLUBB version used in SPCAM is an older version of CLUBB than what is used by CAM6.0 and this customized version of CLUBB resides in the CRM library.</p>
 <table class="docutils footnote" frame="void" id="id14" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[5]</a></td><td>Khairoutdinov, M. F., and D. A. Randall (2001), A cloud resolving model as a cloud parameterization in the NCAR Community Climate System Model: Preliminary results, Geophys Res Lett, 28(18), 3617-3620.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id13">[4]</a></td><td>Gustafson, W. I., L. K. Berg, R. C. Easter, and S. J. Ghan (2008), The Explicit-Cloud Parameterized-Pollutant hybrid approach for aerosol-cloud interactions in multiscale modeling framework models: tracer transport results, Environ Res Lett, 3(2), 025005.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id15" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[6]</a></td><td>Morrison, H., Curry, J. A., &amp; Khvorostyanov, V. I. (2005). A new double-moment microphysics parameterization for application in cloud and climate models. Part I: Description. Journal of the atmospheric sciences, 62(6), 1665-1677.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id9">[5]</a></td><td>Khairoutdinov, M. F., and D. A. Randall (2001), A cloud resolving model as a cloud parameterization in the NCAR Community Climate System Model: Preliminary results, Geophys Res Lett, 28(18), 3617-3620.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[7]</a></td><td>Wang, M., et al. (2011a), The multi-scale aerosol-climate model PNNL-MMF: model description and evaluation, Geosci. Model Dev., 4(1), 137–168, doi:10.5194/gmd-4-137-2011.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id10">[6]</a></td><td>Morrison, H., Curry, J. A., &amp; Khvorostyanov, V. I. (2005). A new double-moment microphysics parameterization for application in cloud and climate models. Part I: Description. Journal of the atmospheric sciences, 62(6), 1665-1677.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id17" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[8]</a></td><td>Wang, M., S. Ghan, M. Ovchinnikov, X. Liu, R. Easter, E. Kassianov, Y. Qian, and H. Morrison (2011b), Aerosol indirect effects in a multi-scale aerosol-climate model PNNL-MMF, Atmos. Chem. Phys., 11(11), 5431-5455.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id11">[7]</a></td><td>Wang, M., et al. (2011a), The multi-scale aerosol-climate model PNNL-MMF: model description and evaluation, Geosci. Model Dev., 4(1), 137–168, doi:10.5194/gmd-4-137-2011.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id18" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[8]</a></td><td>Wang, M., S. Ghan, M. Ovchinnikov, X. Liu, R. Easter, E. Kassianov, Y. Qian, and H. Morrison (2011b), Aerosol indirect effects in a multi-scale aerosol-climate model PNNL-MMF, Atmos. Chem. Phys., 11(11), 5431-5455.</td></tr>
 </tbody>
 </table>
 <p><strong>SPCAM tested compsets</strong></p>
