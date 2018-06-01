@@ -2,27 +2,41 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>5. Customizing CAM runs &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="6. Input Datasets" href="input-datasets.html" />
     <link rel="prev" title="4. Atmospheric configurations (compsets)" href="atmospheric-configurations.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -36,7 +50,7 @@
           <a href="atmospheric-configurations.html" title="4. Atmospheric configurations (compsets)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -49,7 +63,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#changing-cam-namelist-options">5.2. Changing CAM namelist options</a><ul>
-<li><a class="reference internal" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions">5.2.1. Modifying Namelist settings:  Detailed Example – Using CMIP5 emissions</a></li>
+<li><a class="reference internal" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions">5.2.1. Modifying Namelist settings:  Detailed Example &#8211; Using CMIP5 emissions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#user-defined-compsets">5.3. User-Defined Compsets</a></li>
@@ -66,20 +80,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/customizing-compsets.rst.txt"
+      <li><a href="../_sources/users_guide/customizing-compsets.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -96,27 +108,27 @@
 <dl class="docutils">
 <dt>It is important to understand that there are two main ways that CAM runs can be modified.</dt>
 <dd><ul class="first last simple">
-<li><strong>configuration</strong>: These variables change the way that the actual code is compiled and results in an executable which contains this code setup.  They must be set prior to running <code class="docutils literal notranslate"><span class="pre">./case.build</span></code>.  If any modifications are made to the configuration after <code class="docutils literal notranslate"><span class="pre">./case.build</span></code> has been run, the user must cleanup the prior build using <code class="docutils literal notranslate"><span class="pre">case.build</span> <span class="pre">--clean-all</span></code> followed by another <code class="docutils literal notranslate"><span class="pre">./case.build</span></code> to rebuild the executable.</li>
+<li><strong>configuration</strong>: These variables change the way that the actual code is compiled and results in an executable which contains this code setup.  They must be set prior to running <code class="docutils literal"><span class="pre">./case.build</span></code>.  If any modifications are made to the configuration after <code class="docutils literal"><span class="pre">./case.build</span></code> has been run, the user must cleanup the prior build using <code class="docutils literal"><span class="pre">case.build</span> <span class="pre">--clean-all</span></code> followed by another <code class="docutils literal"><span class="pre">./case.build</span></code> to rebuild the executable.</li>
 <li><strong>namelist</strong>: These variables are used to modify the way that CAM is run.  The code does not need to be rebuilt when modifying these settings.</li>
 </ul>
 </dd>
 </dl>
-<p>Users need to be careful when modifying CAM’s configuration and namelists as it is very easy to create an invalid run.  An example would be with the <code class="docutils literal notranslate"><span class="pre">-nlev</span></code> configuration setting as input files are dependent on this setting and may not exist for the requested dynamics/nlev combination.</p>
+<p>Users need to be careful when modifying CAM&#8217;s configuration and namelists as it is very easy to create an invalid run.  An example would be with the <code class="docutils literal"><span class="pre">-nlev</span></code> configuration setting as input files are dependent on this setting and may not exist for the requested dynamics/nlev combination.</p>
 <div class="section" id="changing-cam-configurations">
 <h2>5.1. Changing CAM configurations<a class="headerlink" href="#changing-cam-configurations" title="Permalink to this headline">¶</a></h2>
-<p>All configure options change the way that CAM is built and need to be applied before <code class="docutils literal notranslate"><span class="pre">case.build</span></code> is run.  Changing the configuration is done by issuing an <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> command for <strong>CAM_CONFIG_OPTS</strong>.  It is important to make sure that you use the <code class="docutils literal notranslate"><span class="pre">--append</span></code> flag to maintain configuration options that are set by the compset.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">append</span> <span class="n">CAM_CONFIG_OPTS</span><span class="o">=</span><span class="s1">&#39;-nthreads 2&#39;</span>
+<p>All configure options change the way that CAM is built and need to be applied before <code class="docutils literal"><span class="pre">case.build</span></code> is run.  Changing the configuration is done by issuing an <code class="docutils literal"><span class="pre">xmlchange</span></code> command for <strong>CAM_CONFIG_OPTS</strong>.  It is important to make sure that you use the <code class="docutils literal"><span class="pre">--append</span></code> flag to maintain configuration options that are set by the compset.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">append</span> <span class="n">CAM_CONFIG_OPTS</span><span class="o">=</span><span class="s1">&#39;-nthreads 2&#39;</span>
 </pre></div>
 </div>
-<p>CAM has numerous options which can modify it’s configuration.  A few of the more widely used settings will be discussed here.  The complete listing of configure options is at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  More information on xmlchange can be found at the <a class="reference external" href="http://esmci.github.io/cime/Tools_user/xmlchange.html">xmlchange web page</a>.</p>
+<p>CAM has numerous options which can modify it&#8217;s configuration.  A few of the more widely used settings will be discussed here.  The complete listing of configure options is at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  More information on xmlchange can be found at the <a class="reference external" href="http://esmci.github.io/cime/Tools_user/xmlchange.html">xmlchange web page</a>.</p>
 <div class="section" id="changing-the-physics">
 <h3>5.1.1. Changing the physics<a class="headerlink" href="#changing-the-physics" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>There are a number of settings which can change the physics which is run.  Some of the more popular settings are:</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">chem</span> <span class="pre">&lt;name&gt;</span></code> - Build CAM with the specified prognostic chemistry package</li>
-<li><code class="docutils literal notranslate"><span class="pre">cosp</span></code> - Enable the COSP simulator package</li>
-<li><code class="docutils literal notranslate"><span class="pre">ionosphere</span></code> - Specifies the ionopshere model which is used in WACCM-X</li>
+<li><code class="docutils literal"><span class="pre">chem</span> <span class="pre">&lt;name&gt;</span></code> - Build CAM with the specified prognostic chemistry package</li>
+<li><code class="docutils literal"><span class="pre">cosp</span></code> - Enable the COSP simulator package</li>
+<li><code class="docutils literal"><span class="pre">ionosphere</span></code> - Specifies the ionopshere model which is used in WACCM-X</li>
 </ul>
 </dd>
 </dl>
@@ -124,19 +136,19 @@
 </div>
 <div class="section" id="changing-cam-namelist-options">
 <h2>5.2. Changing CAM namelist options<a class="headerlink" href="#changing-cam-namelist-options" title="Permalink to this headline">¶</a></h2>
-<p>There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at <a class="reference internal" href="model-output.html#model-output"><span class="std std-ref">Model Output</span></a>. .  A complete listing of all of CAM’s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">CAM’s namelist variables</a></p>
+<p>There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at <a class="reference internal" href="model-output.html#model-output"><span class="std std-ref">Model Output</span></a>. .  A complete listing of all of CAM&#8217;s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">CAM&#8217;s namelist variables</a></p>
 <div class="section" id="modifying-namelist-settings-detailed-example-using-cmip5-emissions">
-<h3>5.2.1. Modifying Namelist settings:  Detailed Example – Using CMIP5 emissions<a class="headerlink" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.1. Modifying Namelist settings:  Detailed Example &#8211; Using CMIP5 emissions<a class="headerlink" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions" title="Permalink to this headline">¶</a></h3>
 <p>The following steps illustrate how to change the CMIP emissions back to the CMIP5 version.  If a user desires to do this, they may cut/paste the ext_frc_specifier and srf_emis_specifier settings below and put them into their own user_nl_cam.</p>
 <p>First the user must create a case and set it up</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_CMIP5_emiss</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FHIST</span>
 <span class="o">%</span> <span class="n">cd</span> <span class="n">test_FHIST</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
 </pre></div>
 </div>
 <p>Then the user should make any namelist changes by editing the user_nl_cam file.  Depending on the compset requested, this file may or may not already have information within it.  The user should either add or replace the variables they want to set.  To revert to CMIP5 emissions, we only need to change the values of the files specifed by ext_frc_specifier and srf_frc_specifier.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ext_frc_specifier</span>  <span class="o">=</span> <span class="s1">&#39;H2O -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/elev/H2O_emission_CH4_oxidationx2_elev_1850-2100_CCMI_RCP6_0_c160219.nc&#39;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ext_frc_specifier</span>  <span class="o">=</span> <span class="s1">&#39;H2O -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/elev/H2O_emission_CH4_oxidationx2_elev_1850-2100_CCMI_RCP6_0_c160219.nc&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;SO2         -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/ccmi_1960-2008/IPCC_emissions_volc_SO2_1850-2100_1.9x2.5_c130426cycle.nc&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;bc_a4       -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam3_bc_elev_1850-2005_c090804.nc&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;num_a1      -&gt; /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart_aero/emis/ar5_mam4_num_a1_elev_1850-2005_c150205.nc&#39;</span><span class="p">,</span>
@@ -159,11 +171,11 @@
 </pre></div>
 </div>
 <p>At this point, it is good practice to run preview_namelists and examine the <strong>CaseDocs/atm_in</strong> file to make sure that the requested changes have made it into the CAM namelist file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">preview_namelists</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">preview_namelists</span>
 </pre></div>
 </div>
 <p>After confirming that the requested namelist changes have been put into the atm_in file, then it is safe to continue with building and submitting the job.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
@@ -173,16 +185,16 @@
 <h2>5.3. User-Defined Compsets<a class="headerlink" href="#user-defined-compsets" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes a user does not find a specific compset that brings in all of the specific versions of components that they want.  In this case, a user will need to create a user defined compset.  This is something that only an expert user should do as not all versions and variations of components are able to work together.  It is also important to note that creating runs outside of supported compsets may yield incorrect results due to the simple fact that they have not been tuned or tested.  A user needs to be extremely cautious when making their own user-defined compsets.</p>
 <p>A simple example will be discussed here, but a more comprehensive writeup can be found in <a class="reference external" href="http://esmci.github.io/cime/users_guide/compsets.html#creating-new-compsets.html">creating new compsets</a>.</p>
-<p>Typically users use shortnames in their <code class="docutils literal notranslate"><span class="pre">./create_newcase</span></code> commands for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_shortname</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FHIST</span>
+<p>Typically users use shortnames in their <code class="docutils literal"><span class="pre">./create_newcase</span></code> commands for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_shortname</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FHIST</span>
 </pre></div>
 </div>
-<p>A user may also use the long name for the compset which specifies all of the various components and versions.  An example to run the FHIST compset using it’s longname is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_longname</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">HIST_CAM60_CLM50</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE</span><span class="o">%</span><span class="n">PRES_DOCN</span><span class="o">%</span><span class="n">DOM_MOSART_CISM2</span><span class="o">%</span><span class="n">NOEVOLVE_SWAV</span>
+<p>A user may also use the long name for the compset which specifies all of the various components and versions.  An example to run the FHIST compset using it&#8217;s longname is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_longname</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">HIST_CAM60_CLM50</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE</span><span class="o">%</span><span class="n">PRES_DOCN</span><span class="o">%</span><span class="n">DOM_MOSART_CISM2</span><span class="o">%</span><span class="n">NOEVOLVE_SWAV</span>
 </pre></div>
 </div>
-<p>Both of the two examples above will create identical results.  The shortname is an easy to use alias for the longname.  If a user wants to make their own user-defined compset, they will need to supply the longname.  For example, if a user wanted to use CAM5.0 instead of CAM6.0, they could supply the following to the <code class="docutils literal notranslate"><span class="pre">./create_newcase</span></code> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_cam5</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">HIST_CAM50_CLM50</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE</span><span class="o">%</span><span class="n">PRES_DOCN</span><span class="o">%</span><span class="n">DOM_MOSART_CISM2</span><span class="o">%</span><span class="n">NOEVOLVE_SWAV</span>
+<p>Both of the two examples above will create identical results.  The shortname is an easy to use alias for the longname.  If a user wants to make their own user-defined compset, they will need to supply the longname.  For example, if a user wanted to use CAM5.0 instead of CAM6.0, they could supply the following to the <code class="docutils literal"><span class="pre">./create_newcase</span></code> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST_cam5</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">HIST_CAM50_CLM50</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE</span><span class="o">%</span><span class="n">PRES_DOCN</span><span class="o">%</span><span class="n">DOM_MOSART_CISM2</span><span class="o">%</span><span class="n">NOEVOLVE_SWAV</span>
 </pre></div>
 </div>
 <p>It is important to note that CAM5.0 is not tuned in the CAM6.0 version of the model, and while a user may be able to make a run using this user-defined compset, they will need to make a careful examination of their results.</p>
@@ -208,12 +220,12 @@
           <a href="atmospheric-configurations.html" title="4. Atmospheric configurations (compsets)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

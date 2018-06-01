@@ -2,27 +2,41 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>9. Sea Ice Thermodynamics &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 Scientific Guide" href="index.html" />
     <link rel="next" title="10. Initial and Boundary Data" href="chapter7.html" />
     <link rel="prev" title="7. Extensions to CAM" href="chapter5.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -73,20 +87,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/cam6_scientific_guide/chapter6.rst.txt"
+      <li><a href="../_sources/cam6_scientific_guide/chapter6.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -143,8 +155,8 @@ exchange, evaporative flux, and surface drag is integrally coupled with
 the formulation of heat transfer through the sea ice and snow. The
 equation governing vertical heat transfer in the ice and snow, which
 allows for internal absorption of penetrating solar radiation, is</p>
-<div class="math" id="equation-eq-heateq">
-<p><span class="eqno">(1)<a class="headerlink" href="#equation-eq-heateq" title="Permalink to this equation">¶</a></span><img src="../_images/math/407d59e87fd8bc1d2470e433425d138a40bcd945.png" alt="\rho c { \partial T \over  \partial t} = \left( { \partial  \over
+<div class="math" id="equation-eq:heateq">
+<p><span class="eqno">(1)</span><img src="../_images/math/407d59e87fd8bc1d2470e433425d138a40bcd945.png" alt="\rho c { \partial T \over  \partial t} = \left( { \partial  \over
 \partial z} k { \partial T \over \partial z} + Q_{SW} \right)"/></p>
 </div><p>where <img class="math" src="../_images/math/9a51ab9a0b521705e1e8762fac6bdd6f11771758.png" alt="\rho"/> is the density, <img class="math" src="../_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is the heat capacity,
 <img class="math" src="../_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/> is the temperature, <img class="math" src="../_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> is the thermal conductivity,
@@ -154,8 +166,8 @@ and <img class="math" src="../_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30
 depend on temperature and salinity within the sea ice to account for the
 behavior of brine pockets.</p>
 <p>The boundary condition for the heat equation at the surface is</p>
-<div class="math" id="equation-eq-top">
-<p><span class="eqno">(2)<a class="headerlink" href="#equation-eq-top" title="Permalink to this equation">¶</a></span><img src="../_images/math/b910c10304695f0729a6baedc1685fe80c7b8a02.png" alt="F_{TOP}(T_s) = F_{SW}-I_{SW} + F_{LW} + F_{SH} + F_{LH} + k {dT
+<div class="math" id="equation-eq:top">
+<p><span class="eqno">(2)</span><img src="../_images/math/b910c10304695f0729a6baedc1685fe80c7b8a02.png" alt="F_{TOP}(T_s) = F_{SW}-I_{SW} + F_{LW} + F_{SH} + F_{LH} + k {dT
     \over dz}"/></p>
 </div><p>where <img class="math" src="../_images/math/a9768475a0024f74567dfa3db0f51240f0479382.png" alt="T_s"/> is the surface temperature, <img class="math" src="../_images/math/ad1ff8192355a83dabe0cf5669978ba129b532a5.png" alt="F_{SW}"/> is the
 absorbed shortwave flux, <img class="math" src="../_images/math/dad18c098868e34c88f9e6f3701c6695c9637020.png" alt="I_{SW}"/> is the shortwave flux that
@@ -170,28 +182,28 @@ to be freezing and a flux boundary condition is used for Eq.
 [eq:heateq], and Eqs. [eq:heateq] and [eq:top] are solved simultaneously
 with <img class="math" src="../_images/math/ca473e0924f422562cbeb617b452f9f74e3331be.png" alt="F_{TOP}(T_s) = 0"/> in the latter.</p>
 <p>Snow melt and accumulation is computed from</p>
-<div class="math" id="equation-eq-snow">
-<p><span class="eqno">(3)<a class="headerlink" href="#equation-eq-snow" title="Permalink to this equation">¶</a></span><img src="../_images/math/eced6f2e39a6da228e590b9c4cfcba7beed4ec99.png" alt="\rho_s {dh_s \over dt} = {-F_{TOP} \over L_i} +
+<div class="math" id="equation-eq:snow">
+<p><span class="eqno">(3)</span><img src="../_images/math/eced6f2e39a6da228e590b9c4cfcba7beed4ec99.png" alt="\rho_s {dh_s \over dt} = {-F_{TOP} \over L_i} +
   {F_{LH} \over L_i+L_v} + F_{SNW}"/></p>
 </div><p>where <img class="math" src="../_images/math/37cccd8abc6ddcf615ff2f27baa2af6fb48cf904.png" alt="h_s"/> is the snow depth, <img class="math" src="../_images/math/cd35bd8c1ad2f45b60559441a7058ba7f2ac9901.png" alt="\rho_s"/> is the snow density,
 <img class="math" src="../_images/math/a3af17b7dbd4e75d965f8393b7e812a0f1435418.png" alt="L_i"/> and <img class="math" src="../_images/math/9a776fd3a2b33e91214d370fedbb44f9a1cd34f4.png" alt="L_v"/> are the latent heats of fusion and
 vaporization, and <img class="math" src="../_images/math/716b7e144c7b74216b0d6b13d0ddfd009dcf2b45.png" alt="F_{SNW}"/> is the snowfall rate (see Table [table:siphysconst] for values of constants).</p>
 <p>When CAM6.0 is coupled to the mixed layer ocean and the sea ice is snow-free,
 sea ice surface melt is computed from</p>
-<div class="math" id="equation-eq-hicetop">
-<p><span class="eqno">(4)<a class="headerlink" href="#equation-eq-hicetop" title="Permalink to this equation">¶</a></span><img src="../_images/math/5f9e07c82841dfecee93adbd3cdf7b08c3e08eed.png" alt="{dh_i \over dt} = {F_{TOP} \over q} +
+<div class="math" id="equation-eq:hicetop">
+<p><span class="eqno">(4)</span><img src="../_images/math/5f9e07c82841dfecee93adbd3cdf7b08c3e08eed.png" alt="{dh_i \over dt} = {F_{TOP} \over q} +
 {F_{LH} \over - q+\rho_i L_v}"/></p>
 </div><p>where <img class="math" src="../_images/math/d03a4b38f7e618d6826778cf0a8b906fbbaa935a.png" alt="h_i"/> is the ice thickness, <img class="math" src="../_images/math/c78b4bf077031bc2c06ab07c66e869d3ddaceb72.png" alt="\rho_i"/> is the ice
 density, and <img class="math" src="../_images/math/620a3ce6403ec82f1347af9985bc03f7a9382f4a.png" alt="q"/> is the energy of melting of sea ice (<img class="math" src="../_images/math/9c8dbccf1594ccbfc6c6763993d5e1eae533cbba.png" alt="q&lt;0"/>
 by definition, see section [bpocks] on brine pockets). Basal growth or
 melt is computed from</p>
-<div class="math" id="equation-eq-hicebot">
-<p><span class="eqno">(5)<a class="headerlink" href="#equation-eq-hicebot" title="Permalink to this equation">¶</a></span><img src="../_images/math/d2a7557b83d66dd6b2a925da0693a9a2df3713a3.png" alt="{dh_i \over dt} = {F_{BOT} \over q} - {k \over q}{dT \over dz}"/></p>
+<div class="math" id="equation-eq:hicebot">
+<p><span class="eqno">(5)</span><img src="../_images/math/d2a7557b83d66dd6b2a925da0693a9a2df3713a3.png" alt="{dh_i \over dt} = {F_{BOT} \over q} - {k \over q}{dT \over dz}"/></p>
 </div><p>where <img class="math" src="../_images/math/69dfe293f78e19cc5ae2afc6e67d071ce217c3a5.png" alt="F_{BOT}"/> is the heat flux from the ocean to the ice (see
 section [Fbot-sec]). Finally an equation is needed to describe the
 evolution of the ice concentration <img class="math" src="../_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/>:</p>
-<div class="math" id="equation-eq-daice">
-<p><span class="eqno">(6)<a class="headerlink" href="#equation-eq-daice" title="Permalink to this equation">¶</a></span><img src="../_images/math/03f9d436a6be2c01e9ae50831f4cd41e64a0f836.png" alt="{dA \over dt} = {\mathcal A}"/></p>
+<div class="math" id="equation-eq:daice">
+<p><span class="eqno">(6)</span><img src="../_images/math/03f9d436a6be2c01e9ae50831f4cd41e64a0f836.png" alt="{dA \over dt} = {\mathcal A}"/></p>
 </div><p>where <img class="math" src="../_images/math/901b3cad98d7fd871545989d76dfd60dc87bb17a.png" alt="\mathcal A"/> accounts for new ice formation over open water
 and lateral melt (see section [lateralmelt])</p>
 <p>Parameterizations of albedo, surface fluxes, brine pockets, and
@@ -289,7 +301,7 @@ temperature dependence:</p>
 </div><p>for <img class="math" src="../_images/math/f6c7c491f5dab599f64cd08f23cb0015d4e7290d.png" alt="T_{s} \ge -1^\circ"/>C.</p>
 <p>The horizontal fraction of surface covered with snow is assumed to be</p>
 <div class="math" id="equation-horizfrac">
-<p><span class="eqno">(7)<a class="headerlink" href="#equation-horizfrac" title="Permalink to this equation">¶</a></span><img src="../_images/math/3027efb2394240b0eb71f0cd79c0f35592aac455.png" alt="f_s = \frac{h_s}{h_s + 0.02}."/></p>
+<p><span class="eqno">(7)</span><img src="../_images/math/3027efb2394240b0eb71f0cd79c0f35592aac455.png" alt="f_s = \frac{h_s}{h_s + 0.02}."/></p>
 </div><p>Finally, combining ice and snow albedos by averaging over the horizontal
 coverage results in</p>
 <div class="math">
@@ -329,7 +341,7 @@ reflected component from the downwelling longwave whenever
 sensible and latent heat fluxes the following bulk formulas are used
 (Bryan et al. 1996):</p>
 <div class="math" id="equation-sibulkfluxes">
-<p><span class="eqno">(8)<a class="headerlink" href="#equation-sibulkfluxes" title="Permalink to this equation">¶</a></span><img src="../_images/math/4e09cc42a930177bd3db1c295ec22dc49e179a06.png" alt="\tau_{ax} = &amp; \rho_a r_{m} u^\ast u_a \\
+<p><span class="eqno">(8)</span><img src="../_images/math/4e09cc42a930177bd3db1c295ec22dc49e179a06.png" alt="\tau_{ax} = &amp; \rho_a r_{m} u^\ast u_a \\
 \tau_{ay} = &amp; \rho_a r_{m} u^\ast v_a \\
 F_{SH} = &amp; \rho_a c_a r_{h} u^\ast \left( \theta_a - T_{s} \right) \\
 F_{LH} = &amp; \rho_a (L_i+L_v) r_{e}  u^\ast \left( q_a - {\overline q}^{*}  \right)."/></p>
@@ -470,8 +482,8 @@ available, respectively. Thus the maximum fluxes available for melt are
 <img class="math" src="../_images/math/1627785f3d7437f9b4327375e714250262ab894b.png" alt="f_{bot} F_{oi}"/> and <img class="math" src="../_images/math/943cd8f36609563f9befef75a38b3f7a84edf90e.png" alt="f_{sid} F_{oi}"/>. The actual amount
 used for bottom melting, <img class="math" src="../_images/math/69dfe293f78e19cc5ae2afc6e67d071ce217c3a5.png" alt="F_{BOT}"/>, is based on boundary layer
 theory of McPhee (1992):</p>
-<div class="math" id="equation-eq-fbot">
-<p><span class="eqno">(9)<a class="headerlink" href="#equation-eq-fbot" title="Permalink to this equation">¶</a></span><img src="../_images/math/9c553dd663bb262c548bed50206f0d184d8f57cb.png" alt="F_{BOT} = max(-\rho_o C_o c_h u^*(T_o - T_f), f_{bot} F_{max})"/></p>
+<div class="math" id="equation-eq:fbot">
+<p><span class="eqno">(9)</span><img src="../_images/math/9c553dd663bb262c548bed50206f0d184d8f57cb.png" alt="F_{BOT} = max(-\rho_o C_o c_h u^*(T_o - T_f), f_{bot} F_{max})"/></p>
 </div><p>where the empirical drag coefficient <img class="math" src="../_images/math/54060b8f03f94d090fda052142ee42a5c42ea67b.png" alt="c_h"/>=0.006 and the skin
 friction speed <img class="math" src="../_images/math/b5edeacd3679a159f255f1364ceaa56dfd6852f1.png" alt="u^* = 1"/> cm/s (Steele 1995).</p>
 <p>The heat flux for lateral melt is the product of the vertically-summed,
@@ -488,8 +500,8 @@ of floes <img class="math" src="../_images/math/126c2f361bf4df5fc8d0af50e58824ef
 = n_f \pi d"/> and the floe area <img class="math" src="../_images/math/29ac5f87d272d15404c44ff22f5d5da666b436d3.png" alt="A_f = \eta_{lm} d^2"/> (Rothrock and
 Thorndike 1984). Thus the heat flux for lateral melt is
 <img class="math" src="../_images/math/48b05e1e7bccfd7b11b09b2a1c7de63d0c23cc37.png" alt="E_{tot}(p_f/A_f)M_a"/>, so that the actual amount used is:</p>
-<div class="math" id="equation-fsid">
-<p><span class="eqno">(10)<a class="headerlink" href="#equation-fsid" title="Permalink to this equation">¶</a></span><img src="../_images/math/91698963581e67b406381076281738694b522d03.png" alt="F_{SID} = max(\frac{E_{tot} \pi}{\eta_{lm} d} m_1 (T_o - T_f)^{m_2},
+<div class="math" id="equation-FSID">
+<p><span class="eqno">(10)</span><img src="../_images/math/91698963581e67b406381076281738694b522d03.png" alt="F_{SID} = max(\frac{E_{tot} \pi}{\eta_{lm} d} m_1 (T_o - T_f)^{m_2},
 f_{sid} F_{max})"/></p>
 </div><p>where <img class="math" src="../_images/math/4f294426cd6892a097686cca90dfb6551eda1370.png" alt="\eta_{lm}=0.66"/> (Rothrock and Thorndike 1984). Based
 partially on tuning and partially on the results of floe distribution
@@ -505,8 +517,8 @@ includes the shortwave flux transmitted to the ocean through sea ice</p>
 <div class="math">
 <p><img src="../_images/math/b4c9542562ea5df9b44e91669722d433aaa19eff.png" alt="F_{SWo}  = I_{0vs} e^{-\kappa_{vs} h} +I_{0ni} e^{-\kappa_{ni} h}"/></p>
 </div><p>(see Eq. [eq:swtran]). Hence</p>
-<div class="math" id="equation-focnice">
-<p><span class="eqno">(11)<a class="headerlink" href="#equation-focnice" title="Permalink to this equation">¶</a></span><img src="../_images/math/8186187f70b2af3bbcb360af18555389852c6c4c.png" alt="F_{oi}=F_{SWo}+F_{BOT} + F_{SID}."/></p>
+<div class="math" id="equation-Focnice">
+<p><span class="eqno">(11)</span><img src="../_images/math/8186187f70b2af3bbcb360af18555389852c6c4c.png" alt="F_{oi}=F_{SWo}+F_{BOT} + F_{SID}."/></p>
 </div></div>
 <div class="section" id="brine-pockets-and-internal-energy-of-sea-ice">
 <h2>9.6. Brine Pockets and Internal Energy of Sea Ice<a class="headerlink" href="#brine-pockets-and-internal-energy-of-sea-ice" title="Permalink to this headline">¶</a></h2>
@@ -518,8 +530,8 @@ temperature and salinity following the work of Maykut and Untersteiner
 (1971) and Bitz and Lipscomb (1999). The equation for the heat capacity
 for sea ice <img class="math" src="../_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> was first postulated by Untersteiner (1961) and
 then later derived from first principles by Ono (1967):</p>
-<div class="math" id="equation-eq-ci">
-<p><span class="eqno">(12)<a class="headerlink" href="#equation-eq-ci" title="Permalink to this equation">¶</a></span><img src="../_images/math/4f56f94b22081e4b70e4a3468b94c6c862f91252.png" alt="c(T,S) = c_o + \frac{L_i \mu S}{T^2},"/></p>
+<div class="math" id="equation-eq:ci">
+<p><span class="eqno">(12)</span><img src="../_images/math/4f56f94b22081e4b70e4a3468b94c6c862f91252.png" alt="c(T,S) = c_o + \frac{L_i \mu S}{T^2},"/></p>
 </div><p>where <img class="math" src="../_images/math/f80dc89ca86f623e9cd7cb294a9fc33a396787d3.png" alt="c_o"/> is the heat capacity for fresh ice, <img class="math" src="../_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/> is the
 sea ice salinity, <img class="math" src="../_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/> is the temperature, and <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/> is an
 empirical constant relating the freezing temperature of sea water
@@ -527,8 +539,8 @@ linearly to its salinity (<img class="math" src="../_images/math/85b6ff84ffa4c2a
 <p>Equation [eq:ci] can be multiplied by the sea ice density and integrated
 to give the amount of energy <img class="math" src="../_images/math/331157c6afbd113256867fd408d80277d1a24756.png" alt="Q"/> required to raise the temperature
 of a unit volume of sea ice from <img class="math" src="../_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/> to <img class="math" src="../_images/math/da37fceece54a94c7f677d31f5dbb7da974a5892.png" alt="T'"/>:</p>
-<div class="math" id="equation-eq-q">
-<p><span class="eqno">(13)<a class="headerlink" href="#equation-eq-q" title="Permalink to this equation">¶</a></span><img src="../_images/math/025c02eca34b50aa63ef57a5aac1ca6ecf441a5f.png" alt="Q(S,T,T')=\rho_i c_o(T'-T)-\rho_i L_o\mu S \left({1 \over T'} - {1 \over
+<div class="math" id="equation-eq:Q">
+<p><span class="eqno">(13)</span><img src="../_images/math/025c02eca34b50aa63ef57a5aac1ca6ecf441a5f.png" alt="Q(S,T,T')=\rho_i c_o(T'-T)-\rho_i L_o\mu S \left({1 \over T'} - {1 \over
     T}\right)."/></p>
 </div><p>If we take <img class="math" src="../_images/math/da37fceece54a94c7f677d31f5dbb7da974a5892.png" alt="T'"/> to be the melting temperature of ice with salinity
 <img class="math" src="../_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/>, then at <img class="math" src="../_images/math/da37fceece54a94c7f677d31f5dbb7da974a5892.png" alt="T'"/> sea ice consists entirely of brine; that
@@ -536,8 +548,8 @@ is, the brine pockets have grown to encompass the entire mass of ice.
 The amount of energy needed to melt a unit volume of sea ice of salinity
 <img class="math" src="../_images/math/1dbc400fcc213305415872f9f625cd2828f97a00.png" alt="S"/> at temperature <img class="math" src="../_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>, resulting in meltwater at
 <img class="math" src="../_images/math/ff70731f72e23ae7bc4d5301a56bdd033a5d13a4.png" alt="T_f"/>, is equal to</p>
-<div class="math" id="equation-eq-q">
-<p><span class="eqno">(14)<a class="headerlink" href="#equation-eq-q" title="Permalink to this equation">¶</a></span><img src="../_images/math/d288b088b681aa55b162e5ad5cdc997e69fc0752.png" alt="q(S,T)=\rho_i c_o(-\mu S-T)+\rho_i L_o \left(1+{\mu S \over T}\right)."/></p>
+<div class="math" id="equation-eq:q">
+<p><span class="eqno">(14)</span><img src="../_images/math/d288b088b681aa55b162e5ad5cdc997e69fc0752.png" alt="q(S,T)=\rho_i c_o(-\mu S-T)+\rho_i L_o \left(1+{\mu S \over T}\right)."/></p>
 </div><p><img class="math" src="../_images/math/620a3ce6403ec82f1347af9985bc03f7a9382f4a.png" alt="q"/> is referred to as the <em>energy of melting</em> of sea ice, and it
 appears in Eqs. [eq:hicetop] and [eq:hicebot].</p>
 <p>The thermal conductivity for sea ice <img class="math" src="../_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> is</p>
@@ -555,8 +567,8 @@ profile that varies from <img class="math" src="../_images/math/532f3248d6552e7a
 <img class="math" src="../_images/math/e07b3dbbe6d35f744438bdddac69c1dfea655a06.png" alt="3.2"/> ppt at ice base. Snow is assumed fresh.</p>
 <p>Shortwave radiative heating within the sea ice <img class="math" src="../_images/math/08644517725e27fa237a8279277b30a1c1eda242.png" alt="Q_{SW}"/> is equal
 to the vertical gradient of the radiative transfer within the sea ice:</p>
-<div class="math" id="equation-eq-swtran">
-<p><span class="eqno">(15)<a class="headerlink" href="#equation-eq-swtran" title="Permalink to this equation">¶</a></span><img src="../_images/math/f28cec1917daa22022b560a305a0378a57369b23.png" alt="Q_{SW} = - \frac{d}{dz} \{ I_{0vs} e^{-\kappa_{vs} z} +
+<div class="math" id="equation-eq:swtran">
+<p><span class="eqno">(15)</span><img src="../_images/math/f28cec1917daa22022b560a305a0378a57369b23.png" alt="Q_{SW} = - \frac{d}{dz} \{ I_{0vs} e^{-\kappa_{vs} z} +
                              I_{0ni} e^{-\kappa_{ni} z} \}"/></p>
 </div><p>where <img class="math" src="../_images/math/f70ce2b002342a8b83d2fac0976d97ceb53a2f8d.png" alt="I_{0vs}"/> and <img class="math" src="../_images/math/ad94e4201b6c65877b15ef09033b7a1f99910e12.png" alt="I_{0ni}"/>, the visible and near infrared
 radiation fluxes that penetrate the surface, are reduced according to
@@ -583,7 +595,7 @@ additional heat out of the ocean (see Eq. [6.a.1]). In this case the
 additional heat comes from freezing sea water, as the ocean cannot
 supercool in this model. Hence</p>
 <div class="math" id="equation-hnew">
-<p><span class="eqno">(16)<a class="headerlink" href="#equation-hnew" title="Permalink to this equation">¶</a></span><img src="../_images/math/69ffde326c42b0dc1de67ad88fb196bfc7edcd4b.png" alt="q_f {\partial h_{new} \over \partial t} = F_{frz} \ (1-A)"/></p>
+<p><span class="eqno">(16)</span><img src="../_images/math/69ffde326c42b0dc1de67ad88fb196bfc7edcd4b.png" alt="q_f {\partial h_{new} \over \partial t} = F_{frz} \ (1-A)"/></p>
 </div><p>where <img class="math" src="../_images/math/ef41357a14efffe8d97281cc805eb3ed8df16c5f.png" alt="q_f"/> is the energy of melting for new ice growth (assuming
 the salinity is 4psu and the new ice temperature is -1.8:math:<cite>^o</cite>C),
 <img class="math" src="../_images/math/860f493e771c6686cb53757f6fa77dc53ac7e56c.png" alt="h_{new}"/> is the thickness of the new ice, and <img class="math" src="../_images/math/90e8254d1e5ee6948a1efad97afdd6a9dfc0131f.png" alt="F_{frz}"/> is
@@ -600,13 +612,13 @@ to 0 or 100% unless open water production is parameterized somehow. A
 typical method is to assume the ice thickness on a subgrid-scale is
 linearly distributed between 0 and <img class="math" src="../_images/math/b12a3f49ff337c2f794744af068708f54a548ddf.png" alt="2h"/>, so that when ice melts
 vertically, it also reduces the concentration:</p>
-<div class="math" id="equation-da1">
-<p><span class="eqno">(17)<a class="headerlink" href="#equation-da1" title="Permalink to this equation">¶</a></span><img src="../_images/math/0d5a13b432ae273df3993edb766570f52b78227b.png" alt="\left(A-{\partial A \over \partial t}\right)^2
+<div class="math" id="equation-dA1">
+<p><span class="eqno">(17)</span><img src="../_images/math/0d5a13b432ae273df3993edb766570f52b78227b.png" alt="\left(A-{\partial A \over \partial t}\right)^2
 = {A^2 \over h_i} \left( h - {\partial h_i \over \partial t} \right)"/></p>
 </div><p>The ice concentration is also reduced by a lateral heat flux from the
 ocean (see Eq. [FSID]):</p>
-<div class="math" id="equation-da2">
-<p><span class="eqno">(18)<a class="headerlink" href="#equation-da2" title="Permalink to this equation">¶</a></span><img src="../_images/math/2296511fe95133443979cfd4872a4ad0a5172493.png" alt="{\partial A \over \partial t} = A {F_{SID} \over E_{TOT}}"/></p>
+<div class="math" id="equation-dA2">
+<p><span class="eqno">(18)</span><img src="../_images/math/2296511fe95133443979cfd4872a4ad0a5172493.png" alt="{\partial A \over \partial t} = A {F_{SID} \over E_{TOT}}"/></p>
 </div><p>although it is typically only a small contribution to the concentration
 tendency.</p>
 <p>It is not possible to combine Eqs. [hnew]–[dA2] to make a single
@@ -646,8 +658,8 @@ absorption of penetrating solar radiation, is given by:</p>
 scheme. Using a staggered grid with <img class="math" src="../_images/math/1c1e3c5d4e3de9bfd38e77f77600339d1d4a8a86.png" alt="T_l"/> representing the layer
 temperature and <img class="math" src="../_images/math/a924a05649234675f5026f61497b6778f0b26ecd.png" alt="k_l"/> representing conductivity at the layer
 interfaces, for interior layers we have</p>
-<div class="math" id="equation-num-1">
-<p><span class="eqno">(19)<a class="headerlink" href="#equation-num-1" title="Permalink to this equation">¶</a></span><img src="../_images/math/88a2f5bba2b1bfe4fc4d796052aac3c37aa041a0.png" alt="\rho_i c_o(T_l^{m+1}  -  T_l^m)
+<div class="math" id="equation-num:1">
+<p><span class="eqno">(19)</span><img src="../_images/math/88a2f5bba2b1bfe4fc4d796052aac3c37aa041a0.png" alt="\rho_i c_o(T_l^{m+1}  -  T_l^m)
   \left(1 + {L_i\mu S_l \over  c_o T_l^{m+1} T_l^m} \right) =
    { \Delta t  \over  \Delta h^m  } \left(
     k_{l+1}^m { T_{l+1}^{m+1} - T_l^{m+1}  \over  \Delta h^m  }
@@ -678,10 +690,10 @@ level <img class="math" src="../_images/math/edba97b4c0d864d26e92ea7ea73767fa38e
 converges to the same solution one gets when evaluating <img class="math" src="../_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> at
 <img class="math" src="../_images/math/edec40cd12b3d08dac5b9da86d7f4f0170e2da1e.png" alt="m+1"/>.</p>
 <p>The discrete heat equation for the surface layers is modified slightly
-from <a class="reference internal" href="#equation-num-1">(19)</a> to maintain second-order accuracy for <img class="math" src="../_images/math/06646fc8236057c00abac2179c07966fe91268ed.png" alt="\partial{T} \over \partial{z}"/>.
+from <a href="#equation-num:1">(19)</a> to maintain second-order accuracy for <img class="math" src="../_images/math/06646fc8236057c00abac2179c07966fe91268ed.png" alt="\partial{T} \over \partial{z}"/>.
 The equation for the bottom layer (<img class="math" src="../_images/math/9fa309e25808c72ef272c8d99dddeb855b0d6637.png" alt="l=L"/>) is</p>
-<div class="math" id="equation-num-1b">
-<p><span class="eqno">(20)<a class="headerlink" href="#equation-num-1b" title="Permalink to this equation">¶</a></span><img src="../_images/math/5f7a1a997186e11c17f8557991b50793729789ee.png" alt="\rho_i c_o&amp;(T_L^{m+1}- T_L^m)
+<div class="math" id="equation-num:1b">
+<p><span class="eqno">(20)</span><img src="../_images/math/5f7a1a997186e11c17f8557991b50793729789ee.png" alt="\rho_i c_o&amp;(T_L^{m+1}- T_L^m)
   \left(1 + {L_i\mu S_L \over  c_o T_L^{m+1} T_L^m} \right) =\\
   &amp; { \Delta t  \over  \Delta h^m  }
     \left(
@@ -701,7 +713,7 @@ four possibilities, as outlined in Table [tab:bc].</p>
 <col width="26%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">&#160;</th>
+<tr class="row-odd"><th class="head">&nbsp;</th>
 <th class="head">snow accumulated</th>
 <th class="head">melting</th>
 </tr>
@@ -730,8 +742,8 @@ four possibilities, as outlined in Table [tab:bc].</p>
 <h3>9.9.1. Case I: Snow accumulated with no melting<a class="headerlink" href="#case-i-snow-accumulated-with-no-melting" title="Permalink to this headline">¶</a></h3>
 <p>The discrete heat equation for the uppermost layer (i.e, the snow layer)
 is</p>
-<div class="math" id="equation-num-1t0">
-<p><span class="eqno">(21)<a class="headerlink" href="#equation-num-1t0" title="Permalink to this equation">¶</a></span><img src="../_images/math/eca92dd7098b0331a826b024707d941cb0341789.png" alt="\rho_s c_s(T_0^{m+1} - T_0^m)
+<div class="math" id="equation-num:1t0">
+<p><span class="eqno">(21)</span><img src="../_images/math/eca92dd7098b0331a826b024707d941cb0341789.png" alt="\rho_s c_s(T_0^{m+1} - T_0^m)
   =  { \Delta t  \over  h_s^m }
 \left[ k_1^m { T_1^{m+1} - T_0^{m+1} \over (\Delta h^m+h_s^m)/2}
    - \alpha k_s { T_0^{m+1} - T_s^{m+1} \over h_s^m  }
@@ -753,15 +765,15 @@ conductive fluxes above and below the interface;</p>
    {h_s^m+\Delta h^m \over 2}."/></p>
 </div><p>Because <img class="math" src="../_images/math/a9768475a0024f74567dfa3db0f51240f0479382.png" alt="T_s"/> is below melting, a flux boundary condition is
 used, and an additional equation is required in the coupled set:</p>
-<div class="math" id="equation-num-1surf">
-<p><span class="eqno">(22)<a class="headerlink" href="#equation-num-1surf" title="Permalink to this equation">¶</a></span><img src="../_images/math/a2a3cd1da9bd044725dea7ac7d1d9a8e58eb895e.png" alt="F_o(T_s^{m+1})+\alpha k_s { T_0^{m+1} - T_s^{m+1} \over h_s^m }
+<div class="math" id="equation-num:1surf">
+<p><span class="eqno">(22)</span><img src="../_images/math/a2a3cd1da9bd044725dea7ac7d1d9a8e58eb895e.png" alt="F_o(T_s^{m+1})+\alpha k_s { T_0^{m+1} - T_s^{m+1} \over h_s^m }
       +\beta k_s { T_1^{m+1} - T_s^{m+1} \over h_s^m }= 0,"/></p>
 </div><p>where <img class="math" src="../_images/math/6d5d7823fbfd30d5bfe0f3bf084326c13cbd7fb5.png" alt="F_o(T_s^{m+1})"/> is the sum of all terms on the right-hand
 side of Eq. [eq:top] except <img class="math" src="../_images/math/8fa8f9ed35864dc931edb5c1b55c1ca65e5288de.png" alt="k \partial T / \partial z"/>. The net
 surface flux <img class="math" src="../_images/math/6d5d7823fbfd30d5bfe0f3bf084326c13cbd7fb5.png" alt="F_o(T_s^{m+1})"/> is approximated as linear in
 <img class="math" src="../_images/math/d695288761042e413c7796e7333e3653aad1c51f.png" alt="T_s^{m+1}"/>; thus</p>
 <div class="math" id="equation-topboundary">
-<p><span class="eqno">(23)<a class="headerlink" href="#equation-topboundary" title="Permalink to this equation">¶</a></span><img src="../_images/math/3dfb386ac56a7260fc78ab96fd9552e3601dcf01.png" alt="F_o(T_s^{m+1})\sim F_o(T_s^m)+\left.{\partial F_o \over \partial
+<p><span class="eqno">(23)</span><img src="../_images/math/3dfb386ac56a7260fc78ab96fd9552e3601dcf01.png" alt="F_o(T_s^{m+1})\sim F_o(T_s^m)+\left.{\partial F_o \over \partial
     T_s}\right|_{T_s^m}(T_s^{m+1}-T_s^m)."/></p>
 </div><p>with</p>
 <div class="math">
@@ -770,15 +782,15 @@ surface flux <img class="math" src="../_images/math/6d5d7823fbfd30d5bfe0f3bf0843
 \left.{\partial F_{SH} \over \partial T_s}\right|_{T_s^m} +
 \left.{\partial F_{LH} \over \partial T_s}\right|_{T_s^m}"/></p>
 </div><p>To simplify our set of equations, we define</p>
-<div class="math" id="equation-eq-chat">
-<p><span class="eqno">(24)<a class="headerlink" href="#equation-eq-chat" title="Permalink to this equation">¶</a></span><img src="../_images/math/8245166fa4244b54d77000b31c9de5bb53253d56.png" alt="\hat c_l^{m+1}= \rho_i \left( c_o + {L_i \mu S \over T_l^{m+1} T_l^m}\right),"/></p>
+<div class="math" id="equation-eq:chat">
+<p><span class="eqno">(24)</span><img src="../_images/math/8245166fa4244b54d77000b31c9de5bb53253d56.png" alt="\hat c_l^{m+1}= \rho_i \left( c_o + {L_i \mu S \over T_l^{m+1} T_l^m}\right),"/></p>
 </div><p>where the hat implies that <img class="math" src="../_images/math/6aae774497e40bef3a6302c7834983525f0c07fa.png" alt="\hat c_l^{m+1}"/> depends on
 <img class="math" src="../_images/math/cd885264602c695867205b078d239185d0c66450.png" alt="T_l^m"/> as well as on <img class="math" src="../_images/math/e30ba41e6203d38ad527c9b4cfc189e69b991f85.png" alt="T_l^{m+1}"/>, and</p>
-<div class="math" id="equation-eq-eta">
-<p><span class="eqno">(25)<a class="headerlink" href="#equation-eq-eta" title="Permalink to this equation">¶</a></span><img src="../_images/math/fecfcf0c3840819c2ea253765115d6f378b32c9e.png" alt="\chi_l^{m+1}= {\Delta t \over \Delta h^m } {1 \over \hat c_l^{m+1}}."/></p>
+<div class="math" id="equation-eq:eta">
+<p><span class="eqno">(25)</span><img src="../_images/math/fecfcf0c3840819c2ea253765115d6f378b32c9e.png" alt="\chi_l^{m+1}= {\Delta t \over \Delta h^m } {1 \over \hat c_l^{m+1}}."/></p>
 </div><p>Also, let</p>
-<div class="math" id="equation-eq-ktrick">
-<p><span class="eqno">(26)<a class="headerlink" href="#equation-eq-ktrick" title="Permalink to this equation">¶</a></span><img src="../_images/math/5a589276618705ca4de8dddfd316f3519d83e096.png" alt="\begin{aligned}
+<div class="math" id="equation-eq:ktrick">
+<p><span class="eqno">(26)</span><img src="../_images/math/5a589276618705ca4de8dddfd316f3519d83e096.png" alt="\begin{aligned}
 
 k_l&amp;= {k_l^m \over \Delta h^m}.\\*[-1.0em]
 \intertext{for $l \ge 2$ and} \nonumber\\*[-2.0em]
@@ -797,8 +809,8 @@ T_l^{m+1}-T_l^m&amp;=\chi_l^{m+1}\left[k_{l+1}(T_{l+1}^{m+1}-T_l^{m+1})
                             -k_L(T_L^{m+1}-T_{L-1}^{m+1})+I_L\biggr] \end{aligned}"/></p>
 </div><p>where <img class="math" src="../_images/math/cfa52dd82eb6b524026b12bcda514367d3235cd6.png" alt="k_b = k_{L+1} / \Delta h^m"/>. The equation describing the
 snow layer is written</p>
-<div class="math" id="equation-toplayeri">
-<p><span class="eqno">(27)<a class="headerlink" href="#equation-toplayeri" title="Permalink to this equation">¶</a></span><img src="../_images/math/270721c837b0b794c8fe73737c84fa25eaadb0ee.png" alt="\rho_s c_s (T_0^{m+1}-T_0^m)={\Delta t \over h_s^m }
+<div class="math" id="equation-toplayerI">
+<p><span class="eqno">(27)</span><img src="../_images/math/270721c837b0b794c8fe73737c84fa25eaadb0ee.png" alt="\rho_s c_s (T_0^{m+1}-T_0^m)={\Delta t \over h_s^m }
                   \left[ k_1(T_1^{m+1}-T_0^{m+1})
                   -\alpha k_0(T_0^{m+1}-T_s^{m+1})
                   -\beta  k_0(T_1^{m+1}-T_s^{m+1}) \right]."/></p>
@@ -810,8 +822,8 @@ snow layer is written</p>
 </div><p>The complete set of coupled equations for case I can be written with all
 of the terms that explicitly depend on temperature at the <img class="math" src="../_images/math/edec40cd12b3d08dac5b9da86d7f4f0170e2da1e.png" alt="m+1"/>
 time step gathered on the right-hand side:</p>
-<div class="math" id="equation-seti">
-<p><span class="eqno">(28)<a class="headerlink" href="#equation-seti" title="Permalink to this equation">¶</a></span><img src="../_images/math/9473a88ee9d46c4714ace6544ee95494820dbc37.png" alt="-F_o(T_s^m)+ \left.{\partial F_o \over
+<div class="math" id="equation-setI">
+<p><span class="eqno">(28)</span><img src="../_images/math/9473a88ee9d46c4714ace6544ee95494820dbc37.png" alt="-F_o(T_s^m)+ \left.{\partial F_o \over
 \partial T_s}\right|_{T_s^m}T_s^m &amp;=
 T_s^{m+1}\left(\left.{\partial F_o \over \partial T_s}
 \right|_{T_s^m}-\alpha k_0 - \beta k_0 \right) \\
@@ -880,8 +892,8 @@ guess of <img class="math" src="../_images/math/8b94891103ac5309a3330dde83faf02e
 <p>Nearly the same method applies when the ice is snow free, except one
 less equation is needed to describe the evolution of the temperature
 profile. The equation for the uppermost ice layer is written</p>
-<div class="math" id="equation-num-1ti">
-<p><span class="eqno">(29)<a class="headerlink" href="#equation-num-1ti" title="Permalink to this equation">¶</a></span><img src="../_images/math/6ad713de9aa3fd312e0c65a879dbf219806e7aa6.png" alt="\rho_i c_o(&amp; T_1^{m+1} - T_1^m)
+<div class="math" id="equation-num:1ti">
+<p><span class="eqno">(29)</span><img src="../_images/math/6ad713de9aa3fd312e0c65a879dbf219806e7aa6.png" alt="\rho_i c_o(&amp; T_1^{m+1} - T_1^m)
 \left(1 + {L_i\mu S_1 \over  c_o T_1^{m+1} T_1^m} \right) \\
 &amp;= { \Delta t  \over  \Delta h^m  }
 \left(
@@ -891,8 +903,8 @@ k_2^m { T_2^{m+1} - T_1^{m+1}  \over \Delta h^m }
 +  I^m_1 \right),"/></p>
 </div><p>where <img class="math" src="../_images/math/cf9912537bef72eb6a6e39864e05c76f7e0bb8ef.png" alt="k_1^m=k(S_1,T_1^m)"/>. After the definitions from Eqs.
 [eq:chat]–[eq:ktrick] are applied, Eq. [num:1ti] becomes</p>
-<div class="math" id="equation-toplayerii">
-<p><span class="eqno">(30)<a class="headerlink" href="#equation-toplayerii" title="Permalink to this equation">¶</a></span><img src="../_images/math/c7c4ebeeb741d8c09c34db47fc5dc129e0adee9b.png" alt="T_1^{m+1}-T_1^m=\chi_1^{m+1}\left[k_2(T_2^{m+1}-T_1^{m+1})
+<div class="math" id="equation-toplayerII">
+<p><span class="eqno">(30)</span><img src="../_images/math/c7c4ebeeb741d8c09c34db47fc5dc129e0adee9b.png" alt="T_1^{m+1}-T_1^m=\chi_1^{m+1}\left[k_2(T_2^{m+1}-T_1^{m+1})
                              -3k_1(T_1^{m+1}-T_s^{m+1})
                      +{1 \over 3}k_1(T_2^{m+1}-T_s^{m+1})+I_1^m\right]."/></p>
 </div><p>The flux boundary condition follows after linearizing
@@ -904,8 +916,8 @@ k_2^m { T_2^{m+1} - T_1^{m+1}  \over \Delta h^m }
 </div><p>The complete set of coupled equation includes Eqs. [setI] for layers 2
 to L with the following two equations for the surface and upper ice
 layer:</p>
-<div class="math" id="equation-setii">
-<p><span class="eqno">(31)<a class="headerlink" href="#equation-setii" title="Permalink to this equation">¶</a></span><img src="../_images/math/22bbd61cf92631ba99cee0e5755c1dc6d211bf36.png" alt="-F_o(T_s^m)+\left.{\partial F_o \over \partial T_s}\right|_{T_s^m} T_s^m &amp;=
+<div class="math" id="equation-setII">
+<p><span class="eqno">(31)</span><img src="../_images/math/22bbd61cf92631ba99cee0e5755c1dc6d211bf36.png" alt="-F_o(T_s^m)+\left.{\partial F_o \over \partial T_s}\right|_{T_s^m} T_s^m &amp;=
 T_s^{m+1}\left(\left.{\partial F_o \over \partial T_s}\right|_{T_s^m}
 -k_1 {8 \over 3}\right) + T_1^{m+1}3 k_1 + T_2^{m+1}( -k_1/3 ) \\
 T_1^m + \chi_1^{m+1} I_1^m &amp;=
@@ -913,8 +925,8 @@ T_s^{m+1}\left(-\chi_1^{m+1} k_1 {8 \over 3}\right) \\
 &amp; + T_1^{m+1}(1+\chi_1^{m+1} k_2 + 3 \chi_1^{m+1} k_1 ) \\
 &amp; + T_2^{m+1}(-\chi_1^{m+1} k_2 - {1 \over 3}\chi_1^{m+1} k_1),"/></p>
 </div><p>which can be written</p>
-<div class="math" id="equation-reqatii">
-<p><span class="eqno">(32)<a class="headerlink" href="#equation-reqatii" title="Permalink to this equation">¶</a></span><img src="../_images/math/9c5814b379fcf3e9b116b522380c0411c238a089.png" alt="r_s &amp;= T_s^{m+1} b_s + T_1^{m+1}c_s+ T_2^{m+1}d_s \\
+<div class="math" id="equation-reqATII">
+<p><span class="eqno">(32)</span><img src="../_images/math/9c5814b379fcf3e9b116b522380c0411c238a089.png" alt="r_s &amp;= T_s^{m+1} b_s + T_1^{m+1}c_s+ T_2^{m+1}d_s \\
 r_1 &amp;= T_s^{m+1} a_1 + T_1^{m+1}b_1+ T_2^{m+1}c_1."/></p>
 </div><p>These two equations can be combined to eliminate the coefficient on
 <img class="math" src="../_images/math/d7e9304a1d69c49e1746e840696d7fd6991405b0.png" alt="T_2^{m+1}"/>, allowing the set to be written in tridiagonal form:</p>
@@ -992,8 +1004,8 @@ when the layer spacing changes after growth/melt,
 evaporation/sublimation, and flooding (see Figure [fig:adjust]). This
 calculation is only made when CAM6.0 is coupled to a mixed layer ocean. The
 adjusted energy of melting is</p>
-<div class="math" id="equation-eq-adjust">
-<p><span class="eqno">(33)<a class="headerlink" href="#equation-eq-adjust" title="Permalink to this equation">¶</a></span><img src="../_images/math/690b58fc7f5a497641d9388a021f0f45984bc0de.png" alt="q_l'= \begin{cases}
+<div class="math" id="equation-eq:adjust">
+<p><span class="eqno">(33)</span><img src="../_images/math/690b58fc7f5a497641d9388a021f0f45984bc0de.png" alt="q_l'= \begin{cases}
    \sum_{k=1}^L w_{k,1} q_k - q_{\rm flood} {z_{int} \over \Delta h'} ; &amp; l=1 \\
    \sum_{k=1}^L w_{k,l} q_k; &amp; 1&lt;l&lt;L, \\
    \sum_{k=1}^L w_{k,L} q_k + q_b
@@ -1039,7 +1051,7 @@ and Zwiers (2001)</td></tr>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

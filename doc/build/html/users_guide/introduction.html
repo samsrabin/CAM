@@ -2,27 +2,41 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>1. Introduction &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="2. Getting Help" href="getting-help.html" />
     <link rel="prev" title="CAM6 User’s Guide" href="index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -36,34 +50,32 @@
           <a href="index.html" title="CAM6 User’s Guide"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">CAM6 User’s Guide</a></p>
+                        title="previous chapter">CAM6 User&#8217;s Guide</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="getting-help.html"
                         title="next chapter">2. Getting Help</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/introduction.rst.txt"
+      <li><a href="../_sources/users_guide/introduction.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -80,15 +92,15 @@
 <h1>1. Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>The Community Atmosphere Model version CAM6 is released as the atmosphere component of the Community Earth System Model version CESM-2.0.
 It is the latest in a series of global atmosphere models whose development is guided by the <a class="reference external" href="http://www.cesm.ucar.edu/working_groups/Atmosphere/">Atmosphere Model Working Group (AMWG)</a> of the <a class="reference external" href="http://www.cesm.ucar.edu//">Community Earth System Model (CESM)</a> project.
-CAM can be run in a “standalone” configuration within CESM, by which we mean that the atmosphere is coupled to an active land model (CLM), a thermodynamic only sea ice model (a special configuration of CICE), and a data ocean model (DOCN) + ??????????????????????????.
-When one speaks of “doing CAM simulations” the implication is that it’s a standalone configuration that is being used.
-When CAM is coupled to CESM active ocean and sea ice models + ?????????????????? then we refer to it as a “fully coupled CESM simulation”.</p>
+CAM can be run in a &#8220;standalone&#8221; configuration within CESM, by which we mean that the atmosphere is coupled to an active land model (CLM), a thermodynamic only sea ice model (a special configuration of CICE), and a data ocean model (DOCN) + ??????????????????????????.
+When one speaks of &#8220;doing CAM simulations&#8221; the implication is that it&#8217;s a standalone configuration that is being used.
+When CAM is coupled to CESM active ocean and sea ice models + ?????????????????? then we refer to it as a &#8220;fully coupled CESM simulation&#8221;.</p>
 <p>Since the CAM standalone model is just a special configuration of CESM it can be run using the CESM scripts.
-This is done by using one of the “F” compsets and details on using the scripts can be found in the <a class="reference internal" href="building-and-running-cam.html#building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a> section of this User’s Guide or the <a class="reference external" href="http://escomp.github.io/cesm/release-cesm2">CESM2 Quick Start Guide</a>.
+This is done by using one of the &#8220;F&#8221; compsets and details on using the scripts can be found in the <a class="reference internal" href="building-and-running-cam.html#building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a> section of this User&#8217;s Guide or the <a class="reference external" href="http://escomp.github.io/cesm/release-cesm2">CESM2 Quick Start Guide</a>.
 The main advantage of running CAM via the CESM scripts is to leverage the high level of support that those scripts provide for doing production runs of predefined experiments on supported platforms.
 The CESM scripts do things like: setting up reasonable runtime environments; automatically retrieving required input datasets from an SVN server; and archiving output files.
 The ability to customize a CAM build or runtime configuration depends on being able to use the utilities described in this document.
-Any build configuration can be set up via appropriate commandline arguments to CAM’s <code class="docutils literal notranslate"><span class="pre">configure</span></code> utility, and any runtime configuration can be set up with appropriate arguments to CAM’s <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> utility.</p>
+Any build configuration can be set up via appropriate commandline arguments to CAM&#8217;s <code class="docutils literal"><span class="pre">configure</span></code> utility, and any runtime configuration can be set up with appropriate arguments to CAM&#8217;s <code class="docutils literal"><span class="pre">build-namelist</span></code> utility.</p>
 <p>CAM provides the basic atmospheric physics for several other models included in this release:</p>
 <blockquote>
 <div><ul class="simple">
@@ -98,7 +110,7 @@ Any build configuration can be set up via appropriate commandline arguments to C
 </ul>
 </div></blockquote>
 <p>Throughout this document, we will use the name CAM in a generic sense and directions provided will be useful for CAM-chem, WACCM and WACCM-X also.</p>
-<p>It should be noted that in CAM6, we are unable to support reproducibility of CAM4 and CAM5 numerical results with what a user would get running those configuration in CESM1.2 or prior. This is due to many factors including code changes and namelist settings.  While a user is still able to set the “-phys” namelist setting to either cam4 or cam5, the results will differ with what a user would get using those settings in CESM1.2. Due to these changes, a number of compsets specific to CAM4 or CAM5 have been removed.  We recommend that if a user wants a pure CAM4 or CAM5 run, that they use CESM1.2 for those runs.  WACCM-X which utilizes CAM4 does not have this issue and it should be run using the CESM2 release of CAM.</p>
+<p>It should be noted that in CAM6, we are unable to support reproducibility of CAM4 and CAM5 numerical results with what a user would get running those configuration in CESM1.2 or prior. This is due to many factors including code changes and namelist settings.  While a user is still able to set the &#8220;-phys&#8221; namelist setting to either cam4 or cam5, the results will differ with what a user would get using those settings in CESM1.2. Due to these changes, a number of compsets specific to CAM4 or CAM5 have been removed.  We recommend that if a user wants a pure CAM4 or CAM5 run, that they use CESM1.2 for those runs.  WACCM-X which utilizes CAM4 does not have this issue and it should be run using the CESM2 release of CAM.</p>
 </div>
 
 
@@ -120,12 +132,12 @@ Any build configuration can be set up via appropriate commandline arguments to C
           <a href="index.html" title="CAM6 User’s Guide"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

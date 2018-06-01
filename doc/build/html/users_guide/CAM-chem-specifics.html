@@ -2,27 +2,41 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>9. Chemistry specific modifications &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="10. Downloading CAM standalone" href="checking-out-cam-standalone.html" />
     <link rel="prev" title="8. Physics modifications via the namelist" href="physics-modifications-via-the-namelist.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -36,7 +50,7 @@
           <a href="physics-modifications-via-the-namelist.html" title="8. Physics modifications via the namelist"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -50,7 +64,7 @@
 <li><a class="reference internal" href="#adding-species-and-changing-the-mechanism">9.4. Adding species and changing the mechanism</a></li>
 <li><a class="reference internal" href="#running-with-prognostic-fire-emissions">9.5. Running with prognostic fire emissions</a></li>
 <li><a class="reference internal" href="#running-with-fixed-land-data">9.6. Running with fixed land data</a></li>
-<li><a class="reference internal" href="#running-with-prescribed-biogenic-emissions">9.7. Running with prescribed biogenic emissions</a></li>
+<li><a class="reference internal" href="#running-with-interactiv-prescribed-biogenic-emissions">9.7. Running with interactiv / prescribed biogenic emissions</a></li>
 </ul>
 </li>
 </ul>
@@ -64,20 +78,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/CAM-chem-specifics.rst.txt"
+      <li><a href="../_sources/users_guide/CAM-chem-specifics.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -140,7 +152,7 @@ thermosphere</td>
 <td>98</td>
 <td>298 (207 kinetic,
 91 photolysis)</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>pp_waccm_ma_mam4</td>
 </tr>
 <tr class="row-odd"><td>MAD</td>
@@ -149,7 +161,7 @@ ion chemistry</td>
 <td>135</td>
 <td>593 (489 kinetic,
 104 photolysis)</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>pp_waccm_mad_mam4</td>
 </tr>
 <tr class="row-even"><td>SC</td>
@@ -157,7 +169,7 @@ ion chemistry</td>
 <td>29</td>
 <td>12 (11 kinetic,
 1 photolysis)</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>pp_waccm_sc_mam4</td>
 </tr>
 <tr class="row-odd"><td>CAM</td>
@@ -167,7 +179,7 @@ formation</td>
 <td>32</td>
 <td>7 (6 kinetic), 1
 photolysis)</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>modal_aero</td>
 </tr>
 </tbody>
@@ -180,7 +192,7 @@ photolysis)</td>
 <li>Check out an existing compset that you would like to modify and compile and build your case</li>
 <li>Copy the existing chemical mechanism in $CASEROOT/CaseDocs/chem_mech.in to a location (e.g., /glade/u/home/$USER/mechanism/chem_mech_changed.in)</li>
 <li>Alter your mechanism as desired (see details in CAMchem Wiki page)</li>
-<li>Point to the new mechanism file in $CASEROOT/env_build.xml, for example::  &lt;entry id=”CAM_CONFIG_OPTS” value=”-phys cam6 -age_of_air_trcs -chem waccm_tsmlt_mam4 -usr_mech_infile /glade/u/home/$USER$/mechanism/chem_mech_changed.in”&gt;</li>
+<li>Point to the new mechanism file in $CASEROOT/env_build.xml, for example::  &lt;entry id=&#8221;CAM_CONFIG_OPTS&#8221; value=&#8221;-phys cam6 -age_of_air_trcs -chem waccm_tsmlt_mam4 -usr_mech_infile /glade/u/home/$USER$/mechanism/chem_mech_changed.in&#8221;&gt;</li>
 <li>Changing the chemical mechanism requires to rebuild your case</li>
 </ul>
 </div>
@@ -190,23 +202,23 @@ photolysis)</td>
 Sources can be either emissions (surface or vertical, see Section 6.1) or concentrations in form of lower boundary conditions.
 To add new emissions you have to copy the existing list of emisisons to your user_nl_cam file and add the additional species (See Section 5.2.1).</p>
 <p>To add new lower boundary conditions via namelist, you have to add an addition species to the flbc_list and modify the lbc_file:</p>
-<p>flbc_file              = ‘/glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_17500116-20150116_CMIP6_0p5degLat_c180227.nc’</p>
+<p>flbc_file              = &#8216;/glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_17500116-20150116_CMIP6_0p5degLat_c180227.nc&#8217;</p>
 <dl class="docutils">
-<dt>flbc_list              = ‘CCL4’, ‘CF2CLBR’, ‘CF3BR’, ‘CFC11’, ‘CFC113’, ‘CFC12’, ‘CH3BR’, ‘CH3CCL3’, ‘CH3CL’, ‘CH4’,</dt>
-<dd>‘CO2’, ‘H2’, ‘HCFC22’, ‘N2O’, ‘CFC114’, ‘CFC115’, ‘HCFC141B’, ‘HCFC142B’, ‘CH2BR2’, ‘CHBR3’,
-‘H2402’, ‘OCS’, ‘SF6’, ‘CFC11eq’</dd>
+<dt>flbc_list              = &#8216;CCL4&#8217;, &#8216;CF2CLBR&#8217;, &#8216;CF3BR&#8217;, &#8216;CFC11&#8217;, &#8216;CFC113&#8217;, &#8216;CFC12&#8217;, &#8216;CH3BR&#8217;, &#8216;CH3CCL3&#8217;, &#8216;CH3CL&#8217;, &#8216;CH4&#8217;,</dt>
+<dd>&#8216;CO2&#8217;, &#8216;H2&#8217;, &#8216;HCFC22&#8217;, &#8216;N2O&#8217;, &#8216;CFC114&#8217;, &#8216;CFC115&#8217;, &#8216;HCFC141B&#8217;, &#8216;HCFC142B&#8217;, &#8216;CH2BR2&#8217;, &#8216;CHBR3&#8217;,
+&#8216;H2402&#8217;, &#8216;OCS&#8217;, &#8216;SF6&#8217;, &#8216;CFC11eq&#8217;</dd>
 </dl>
 </div>
 <div class="section" id="adding-species-and-changing-the-mechanism">
 <h2>9.4. Adding species and changing the mechanism<a class="headerlink" href="#adding-species-and-changing-the-mechanism" title="Permalink to this headline">¶</a></h2>
-<p>The addition of species with dry and wet deposition requires code changes. This requires to add information of the Henry’s law coefficient:</p>
+<p>The addition of species with dry and wet deposition requires code changes. This requires to add information of the Henry&#8217;s law coefficient:</p>
 <ul>
 <li><p class="first">Copy $CCSMROOT/cime/src/drivers/mct/shr/seq_drydep_mod.F90 in to your  $CASEROOTSourceMods/src.share directory and modify the following. You can also map the new new species to deposit with the same rates as a species already undergoing wet deposition and therefore skip this step.</p>
 <blockquote>
 <div><ul class="simple">
-<li>In this code, there are several arrays containing: 1) species names, 2) reactivity factors (f0), 3) henry’s law constants, and 4) molecular weights. Add your new species characteristics at the end of each of these arrays.</li>
-<li>Update the variable “maxspc” to be the total number of species you are dry depositing.</li>
-<li>Update the variable “n_species_table” to the total number of species listed in these arrays.</li>
+<li>In this code, there are several arrays containing: 1) species names, 2) reactivity factors (f0), 3) henry&#8217;s law constants, and 4) molecular weights. Add your new species characteristics at the end of each of these arrays.</li>
+<li>Update the variable &#8220;maxspc&#8221; to be the total number of species you are dry depositing.</li>
+<li>Update the variable &#8220;n_species_table&#8221; to the total number of species listed in these arrays.</li>
 </ul>
 </div></blockquote>
 </li>
@@ -237,8 +249,29 @@ To add new emissions you have to copy the existing list of emisisons to your use
 <div class="section" id="running-with-fixed-land-data">
 <h2>9.6. Running with fixed land data<a class="headerlink" href="#running-with-fixed-land-data" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="running-with-prescribed-biogenic-emissions">
-<h2>9.7. Running with prescribed biogenic emissions<a class="headerlink" href="#running-with-prescribed-biogenic-emissions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running-with-interactiv-prescribed-biogenic-emissions">
+<h2>9.7. Running with interactiv / prescribed biogenic emissions<a class="headerlink" href="#running-with-interactiv-prescribed-biogenic-emissions" title="Permalink to this headline">¶</a></h2>
+<p>Running with interactive biogenic emissions:</p>
+<ul class="simple">
+<li>The default setting in CESM2 CAM-chem and WACCM configuration is to run with interactive biogenic emissions, while CAM6 and WACCM SC do not use biogenic emissions. To run with interactive biogenic emissions, this file needs to be specified:</li>
+</ul>
+<p>megan_factors_file = &#8216;/glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart/emis/megan21_emis_factors_78pft_c20161108.nc&#8217;</p>
+<ul class="simple">
+<li>This file contains the emission factors at standard temperature and pressure for each compound for each plant functional type, as well as the other model parameters. The compound names are given in the variable “Comp_Name”. The default file works with 78 plant function types (PFTs).</li>
+<li>CLM/MEGAN-v2.1 includes an option for using a map of emission factors for isoprene. The map in the current release is out of date and SHOULD NOT BE USED.  Under megan_emis_nl, in drv_flds_on or user_nl_cam: megan_mapped_emisfctrs = .false.</li>
+</ul>
+<p>Running with prescribed biogenic emissions:</p>
+<p>To turn run with prescribed biogenic emissions requires including those emissions in the namelist for surface emission files that are not indluced in the namelist by default. Additionally, one needs to turn off interactive biogenic emissions, if using a CAMchem or WACCM TSML compset:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">megan_emis_nl</span>
+ <span class="n">megan_factors_file</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+ <span class="n">megan_specifier</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+<span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>History output:</p>
+<ul class="simple">
+<li>To save the MEGAN emissions in the CAM history files, include the desired MEG_{species} variables in the fincl* fields of user_nml_cam. The SF{species} variables are the total emissions fluxes for each species, so will include all sources if an emissions file was also read for other sources (such as bb).</li>
+</ul>
 </div>
 </div>
 
@@ -261,12 +294,12 @@ To add new emissions you have to copy the existing list of emisisons to your use
           <a href="physics-modifications-via-the-namelist.html" title="8. Physics modifications via the namelist"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

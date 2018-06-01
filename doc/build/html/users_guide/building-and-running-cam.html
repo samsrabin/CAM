@@ -2,27 +2,41 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>3. Building and Running the atmospheric model within CESM &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="4. Atmospheric configurations (compsets)" href="atmospheric-configurations.html" />
     <link rel="prev" title="2. Getting Help" href="getting-help.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -36,7 +50,7 @@
           <a href="getting-help.html" title="2. Getting Help"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -44,7 +58,7 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">3. Building and Running the atmospheric model within CESM</a><ul>
-<li><a class="reference internal" href="#modifying-cam-s-compiled-code-base-configuration">3.1. Modifying CAM’s compiled code base (configuration)</a></li>
+<li><a class="reference internal" href="#modifying-cam-s-compiled-code-base-configuration">3.1. Modifying CAM&#8217;s compiled code base (configuration)</a></li>
 <li><a class="reference internal" href="#modifying-namelist-settings-in-cam-run">3.2. Modifying namelist settings in CAM run</a></li>
 </ul>
 </li>
@@ -59,20 +73,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/building-and-running-cam.rst.txt"
+      <li><a href="../_sources/users_guide/building-and-running-cam.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -88,7 +100,7 @@
 <p>If you need to install CESM, you will need to download it from a git repository.  Please refer to <a class="reference external" href="http://escomp.github.io/cesm/release-cesm2/downloading_cesm.html">downloading CESM</a>.  If you have developer access to the CAM development repository, and if you are not going to run a fully coupled run and are only going to run F, Q or P compsets, you may save space by checking out a CAM standalone tag.  <em>This is only an option if you have developer access to the CAM development repository.</em>  CAM is stored in a svn repository and the instructions for checking it out are in <a class="reference internal" href="checking-out-cam-standalone.html#checking-out-cam-standalone"><span class="std std-ref">Checking out CAM standalone</span></a></p>
 <p>CAM runs are setup, built and submitted via the cime scripts.  These directions apply also to the CAM extension models of CAM-chem, WACCM and WACCM-X.  In all cases, the first step to making a run is to create a case using a named configuration known as a compset.  Compsets will be described in much more detail in <a class="reference internal" href="atmospheric-configurations.html#atmospheric-configurations"><span class="std std-ref">Atmospheric configurations</span></a>.  For this chapter, we will be using the compset FHIST.</p>
 <p>A simple session to build the compset FHIST, 1 degree finite volume case and name the case test_FHIST is illustrated as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_FHIST</span> <span class="o">--</span><span class="n">res</span> <span class="n">f09_f09_mg17</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FHIST</span>
 <span class="o">%</span> <span class="n">cd</span> <span class="n">test_FHIST</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">setup</span>
@@ -97,11 +109,11 @@
 </pre></div>
 </div>
 <p>It is important to note that case.build utilizes parallel compilation and will consume much of the node on which it is run.  On machines like cheyenne, this will result in the user being logged off the system partway through the build process.  On cheyenne, if you are executing the commands in a login node, you must say:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">qcmd</span> <span class="o">--</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">qcmd</span> <span class="o">--</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">build</span>
 </pre></div>
 </div>
 <p>In the example above, the directory test_FHIST is called the <strong>CASEROOT</strong>.  The job will be run in <strong>RUNDIR</strong>.  The values of these (and all the other xml variables set by cime) can be seen by using xmlquery.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">cd</span> <span class="n">test_FHIST</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">cd</span> <span class="n">test_FHIST</span>
 <span class="o">%./</span><span class="n">xmlquery</span> <span class="n">CASEROOT</span>
 <span class="o">%./</span><span class="n">xmlquery</span> <span class="n">RUNDIR</span>
 </pre></div>
@@ -116,11 +128,11 @@
 </ul>
 <p>It is encouraged for users to review these sections as they go into much more detail than is contained here.</p>
 <div class="section" id="modifying-cam-s-compiled-code-base-configuration">
-<h2>3.1. Modifying CAM’s compiled code base (configuration)<a class="headerlink" href="#modifying-cam-s-compiled-code-base-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>3.1. Modifying CAM&#8217;s compiled code base (configuration)<a class="headerlink" href="#modifying-cam-s-compiled-code-base-configuration" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><strong>CAM_CONFIG_OPTS</strong>:  The settings in this variable are passed directly to CAM’s configure command.  Modifications in this variable change the way CAM is compiled.  The list of possible options are detailed at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  It is important to note that CAM compsets already have this variable set and that a user will most likely want to append flags as opposed to replacing them.  If the append flag is not used, this variable is reset to only include the values specified and all preset values are removed.  More details on changing CAM’s configuration can be found at <a class="reference internal" href="customizing-compsets.html#customizing-compsets"><span class="std std-ref">customizing compsets</span></a>.</li>
+<li><strong>CAM_CONFIG_OPTS</strong>:  The settings in this variable are passed directly to CAM&#8217;s configure command.  Modifications in this variable change the way CAM is compiled.  The list of possible options are detailed at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  It is important to note that CAM compsets already have this variable set and that a user will most likely want to append flags as opposed to replacing them.  If the append flag is not used, this variable is reset to only include the values specified and all preset values are removed.  More details on changing CAM&#8217;s configuration can be found at <a class="reference internal" href="customizing-compsets.html#customizing-compsets"><span class="std std-ref">customizing compsets</span></a>.</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">test_FHIST</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">test_FHIST</span>
 <span class="o">%</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">append</span> <span class="n">CAM_CONFIG_OPTS</span><span class="o">=</span><span class="s1">&#39;-nthreads 2&#39;</span>
 </pre></div>
 </div>
@@ -129,11 +141,11 @@
 <h2>3.2. Modifying namelist settings in CAM run<a class="headerlink" href="#modifying-namelist-settings-in-cam-run" title="Permalink to this headline">¶</a></h2>
 <p>To modify CAM namelist settings, add the appropriate keyword/value pair at the end of the $CASEROOT/user_nl_cam file.  If the run needs to change namelist settings in other components, then modify the appropriate $CASEROOT/user_nl_XXX file.</p>
 <p>For example, to change the CO2 constant to 400, modify <strong>user_nl_cam</strong> and add the following line at the end:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">co2_ppmv</span><span class="o">=</span><span class="mf">400.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">co2_ppmv</span><span class="o">=</span><span class="mf">400.</span>
 </pre></div>
 </div>
-<p>To see the result, call <code class="docutils literal notranslate"><span class="pre">preview_namelists</span></code> and verify that the new value appears in <strong>CaseDocs/atm_in</strong>.  The exception to this are variables within the <strong>camexp</strong> namelist group (as listed in the link immediately below).  Variables within this group are used internally by CAM’s build-namelist utility and modify the resulting namelist. They will not be written out to the the atm_in file.</p>
-<p>A complete listing of all of CAM’s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">CAM’s namelist variables</a>  More details on changing CAM’s namelist can be found at <a class="reference internal" href="customizing-compsets.html#customizing-compsets"><span class="std std-ref">customizing compsets</span></a>.</p>
+<p>To see the result, call <code class="docutils literal"><span class="pre">preview_namelists</span></code> and verify that the new value appears in <strong>CaseDocs/atm_in</strong>.  The exception to this are variables within the <strong>camexp</strong> namelist group (as listed in the link immediately below).  Variables within this group are used internally by CAM&#8217;s build-namelist utility and modify the resulting namelist. They will not be written out to the the atm_in file.</p>
+<p>A complete listing of all of CAM&#8217;s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">CAM&#8217;s namelist variables</a>  More details on changing CAM&#8217;s namelist can be found at <a class="reference internal" href="customizing-compsets.html#customizing-compsets"><span class="std std-ref">customizing compsets</span></a>.</p>
 </div>
 </div>
 
@@ -156,12 +168,12 @@
           <a href="getting-help.html" title="2. Getting Help"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

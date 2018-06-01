@@ -2,27 +2,41 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>8. Physics modifications via the namelist &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="9. Chemistry specific modifications" href="CAM-chem-specifics.html" />
     <link rel="prev" title="7. Model Output:" href="model-output.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -36,7 +50,7 @@
           <a href="model-output.html" title="7. Model Output:"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -66,20 +80,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/physics-modifications-via-the-namelist.rst.txt"
+      <li><a href="../_sources/users_guide/physics-modifications-via-the-namelist.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -94,10 +106,10 @@
 <span id="id1"></span><h1>8. Physics modifications via the namelist<a class="headerlink" href="#physics-modifications-via-the-namelist" title="Permalink to this headline">¶</a></h1>
 <p><strong>Brian Eaton will update this entire chapter</strong></p>
 <p>This chapter is comprised of sections that explore how to customize
-various aspects of CAM’s run time configuration. General instructions
-for building namelists using the <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> utility were given
+various aspects of CAM&#8217;s run time configuration. General instructions
+for building namelists using the <code class="docutils literal"><span class="pre">build-namelist</span></code> utility were given
 in <a class="reference external" href="CAM-2.1-Sample-Interactive-Session#216-building-the-namelist">Section 2.1.6, “Building the Namelist”</a>, and
-details of the <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> utility are in <a class="reference external" href="CAM-6.2-The-build-namelist-utility">Appendix B, The
+details of the <code class="docutils literal"><span class="pre">build-namelist</span></code> utility are in <a class="reference external" href="CAM-6.2-The-build-namelist-utility">Appendix B, The
 build-namelist utility</a>.</p>
 <div class="section" id="radiative-constituents">
 <h2>8.1. Radiative Constituents<a class="headerlink" href="#radiative-constituents" title="Permalink to this headline">¶</a></h2>
@@ -116,18 +128,18 @@ constituents that impact the radiation calculations, and</li>
 the <a class="reference external" href="https://github.com/erika72/cam/wiki/CAM-URL">Reference Manual</a>.</p>
 <p>Putting the entire specification of the radiative constituents into
 the namelist results in a certain amount of complexity which is hard
-to avoid. This sections begins with a description of what’s in the
+to avoid. This sections begins with a description of what&#8217;s in the
 default specifications for both the cam4 and cam5 physics
 packages. Following that are some examples of how to modify the
 default namelist settings.</p>
 <div class="section" id="default-rad-climate-for-cam4-physics">
 <h3>8.1.1. Default rad_climate for cam4 physics<a class="headerlink" href="#default-rad-climate-for-cam4-physics" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">cam4</span></code> physics package uses prescribed gases (except for water
-vapor), and prescribed bulk aerosols. <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> is the namelist
+<p>The <code class="docutils literal"><span class="pre">cam4</span></code> physics package uses prescribed gases (except for water
+vapor), and prescribed bulk aerosols. <code class="docutils literal"><span class="pre">rad_climate</span></code> is the namelist
 variable which holds the specification of radiatively active
-constituents. The default value of <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> generated by
-<code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rad_climate</span> <span class="o">=</span>
+constituents. The default value of <code class="docutils literal"><span class="pre">rad_climate</span></code> generated by
+<code class="docutils literal"><span class="pre">build-namelist</span></code> is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rad_climate</span> <span class="o">=</span>
  <span class="s1">&#39;A:Q:H2O&#39;</span><span class="p">,</span> <span class="s1">&#39;N:O2:O2&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CO2:CO2&#39;</span><span class="p">,</span> <span class="s1">&#39;N:ozone:O3&#39;</span><span class="p">,</span>
  <span class="s1">&#39;N:N2O:N2O&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CH4:CH4&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CFC11:CFC11&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CFC12:CFC12&#39;</span><span class="p">,</span>
  <span class="s1">&#39;N:sulf:/CSMDATA/atm/cam/physprops/sulfate_camrt_c080918.nc&#39;</span><span class="p">,</span>
@@ -143,13 +155,13 @@ constituents. The default value of <code class="docutils literal notranslate"><s
  <span class="s1">&#39;N:SSLTC:/CSMDATA/atm/cam/physprops/sscm_camrt_c080918.nc&#39;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> variable takes an array of string values. Each of
+<p>The <code class="docutils literal"><span class="pre">rad_climate</span></code> variable takes an array of string values. Each of
 the strings has three fields separated by colons. In this example the
-first field of each string is either an <code class="docutils literal notranslate"><span class="pre">A</span></code> or an <code class="docutils literal notranslate"><span class="pre">N</span></code>. An <code class="docutils literal notranslate"><span class="pre">A</span></code>
-indicates the constituent is advected and an <code class="docutils literal notranslate"><span class="pre">N</span></code> indicates the
+first field of each string is either an <code class="docutils literal"><span class="pre">A</span></code> or an <code class="docutils literal"><span class="pre">N</span></code>. An <code class="docutils literal"><span class="pre">A</span></code>
+indicates the constituent is advected and an <code class="docutils literal"><span class="pre">N</span></code> indicates the
 constituent is not advected. Generally a non-advected constituent is
-one whose value is prescribed from a dataset but that’s not always the
-case. It’s also possible that a non-advected constituent is one that
+one whose value is prescribed from a dataset but that&#8217;s not always the
+case. It&#8217;s also possible that a non-advected constituent is one that
 has been prognosed by a chemistry scheme (e.g. the cloud borne species
 in the modal aerosol models) or diagnosed from other prognostic
 species. The second field in each string is a name that is used to
@@ -161,48 +173,48 @@ absolute pathname of a dataset that contains physical and optical
 properties of an aerosol. This third field is how CAM distinquishes
 the gas from the aerosol species.</p>
 <p>The names used for the prescribed gas species except ozone in both the
-<code class="docutils literal notranslate"><span class="pre">cam4</span></code> and <code class="docutils literal notranslate"><span class="pre">cam5</span></code> physics packages, i.e., <code class="docutils literal notranslate"><span class="pre">O2,</span> <span class="pre">CO2,</span> <span class="pre">N2O,</span> <span class="pre">CH4,</span>
-<span class="pre">CFC11,</span> <span class="pre">and</span> <span class="pre">CFC12</span></code>, are hardcoded in the module <code class="docutils literal notranslate"><span class="pre">ghg_data</span></code> which is
+<code class="docutils literal"><span class="pre">cam4</span></code> and <code class="docutils literal"><span class="pre">cam5</span></code> physics packages, i.e., <code class="docutils literal"><span class="pre">O2,</span> <span class="pre">CO2,</span> <span class="pre">N2O,</span> <span class="pre">CH4,</span>
+<span class="pre">CFC11,</span> <span class="pre">and</span> <span class="pre">CFC12</span></code>, are hardcoded in the module <code class="docutils literal"><span class="pre">ghg_data</span></code> which is
 responsible for setting the values of these species in the physics
-buffer. The name for water vapor, <code class="docutils literal notranslate"><span class="pre">Q</span></code>, is hardcoded in a
-<code class="docutils literal notranslate"><span class="pre">cnst_add</span></code> subroutine call made from subroutine
-<code class="docutils literal notranslate"><span class="pre">phys_register</span></code>. The name for ozone, <code class="docutils literal notranslate"><span class="pre">ozone</span></code>, is hardcoded in the
-<code class="docutils literal notranslate"><span class="pre">prescribed_ozone</span></code> module which is responsible for reading ozone
-datasets and setting the values for <code class="docutils literal notranslate"><span class="pre">ozone</span></code> in the physics buffer.</p>
+buffer. The name for water vapor, <code class="docutils literal"><span class="pre">Q</span></code>, is hardcoded in a
+<code class="docutils literal"><span class="pre">cnst_add</span></code> subroutine call made from subroutine
+<code class="docutils literal"><span class="pre">phys_register</span></code>. The name for ozone, <code class="docutils literal"><span class="pre">ozone</span></code>, is hardcoded in the
+<code class="docutils literal"><span class="pre">prescribed_ozone</span></code> module which is responsible for reading ozone
+datasets and setting the values for <code class="docutils literal"><span class="pre">ozone</span></code> in the physics buffer.</p>
 <p>The names used to identify the gas species which must be provided to
-the <code class="docutils literal notranslate"><span class="pre">cam4</span></code> radiation code are <code class="docutils literal notranslate"><span class="pre">H2O,</span> <span class="pre">O2,</span> <span class="pre">CO2,</span> <span class="pre">O3,</span> <span class="pre">N2O,</span> <span class="pre">CH4,</span> <span class="pre">CFC11,</span>
+the <code class="docutils literal"><span class="pre">cam4</span></code> radiation code are <code class="docutils literal"><span class="pre">H2O,</span> <span class="pre">O2,</span> <span class="pre">CO2,</span> <span class="pre">O3,</span> <span class="pre">N2O,</span> <span class="pre">CH4,</span> <span class="pre">CFC11,</span>
 <span class="pre">and</span> <span class="pre">CFC12</span></code>. These names are hardcoded in the module
-<code class="docutils literal notranslate"><span class="pre">radconstants</span></code>. There are no datasets associated with the gas specie
+<code class="docutils literal"><span class="pre">radconstants</span></code>. There are no datasets associated with the gas specie
 names because the optical properties of the gases are handled by the
 radiation code directly.</p>
 <p>The names used to identify the bulk aerosol species are hardcoded in
-the <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> utility and are specified to the
-<code class="docutils literal notranslate"><span class="pre">prescribed_aero</span></code> module by the namelist variable
-<code class="docutils literal notranslate"><span class="pre">prescribed_aero_specifier</span></code> as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prescribed_aero_specifier</span> <span class="o">=</span>
+the <code class="docutils literal"><span class="pre">build-namelist</span></code> utility and are specified to the
+<code class="docutils literal"><span class="pre">prescribed_aero</span></code> module by the namelist variable
+<code class="docutils literal"><span class="pre">prescribed_aero_specifier</span></code> as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">prescribed_aero_specifier</span> <span class="o">=</span>
  <span class="s1">&#39;sulf:SO4&#39;</span><span class="p">,</span> <span class="s1">&#39;bcar1:CB1&#39;</span><span class="p">,</span> <span class="s1">&#39;bcar2:CB2&#39;</span><span class="p">,</span> <span class="s1">&#39;ocar1:OC1&#39;</span><span class="p">,</span> <span class="s1">&#39;ocar2:OC2&#39;</span><span class="p">,</span>
  <span class="s1">&#39;sslt1:SSLT01&#39;</span><span class="p">,</span> <span class="s1">&#39;sslt2:SSLT02&#39;</span><span class="p">,</span> <span class="s1">&#39;sslt3:SSLT03&#39;</span><span class="p">,</span> <span class="s1">&#39;sslt4:SSLT04&#39;</span><span class="p">,</span>
  <span class="s1">&#39;dust1:DST01&#39;</span><span class="p">,</span> <span class="s1">&#39;dust2:DST02&#39;</span><span class="p">,</span> <span class="s1">&#39;dust3:DST03&#39;</span><span class="p">,</span> <span class="s1">&#39;dust4:DST04&#39;</span>
 </pre></div>
 </div>
 <p>The first name in each of these colon separated pairs is the one the
-<code class="docutils literal notranslate"><span class="pre">prescribed_aero</span></code> module adds to the physics buffer, while the
+<code class="docutils literal"><span class="pre">prescribed_aero</span></code> module adds to the physics buffer, while the
 second name is the variable name in the dataset. The first names for
-all the species except the sea salt bins (<code class="docutils literal notranslate"><span class="pre">sslt1,</span> <span class="pre">...,</span> <span class="pre">sslt4</span></code>) are
-the ones that appear in the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> specifier. Sea salt is
+all the species except the sea salt bins (<code class="docutils literal"><span class="pre">sslt1,</span> <span class="pre">...,</span> <span class="pre">sslt4</span></code>) are
+the ones that appear in the <code class="docutils literal"><span class="pre">rad_climate</span></code> specifier. Sea salt is
 treated specially by repartitioning the total mass in the four bins
-into a coarse and an accumulation mode with the names <code class="docutils literal notranslate"><span class="pre">SSLTC</span></code> and
-<code class="docutils literal notranslate"><span class="pre">SSLTA</span></code> respectively. The repartitioning is done by the
-<code class="docutils literal notranslate"><span class="pre">sslt_rebin</span></code> module.</p>
+into a coarse and an accumulation mode with the names <code class="docutils literal"><span class="pre">SSLTC</span></code> and
+<code class="docutils literal"><span class="pre">SSLTA</span></code> respectively. The repartitioning is done by the
+<code class="docutils literal"><span class="pre">sslt_rebin</span></code> module.</p>
 <p>Each of the aerosol species has an associated file which contains physical and optical properties.</p>
 </div>
 <div class="section" id="default-rad-climate-for-cam5-physics">
 <h3>8.1.2. Default rad_climate for cam5 physics<a class="headerlink" href="#default-rad-climate-for-cam5-physics" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">cam5</span></code> physics package uses the same prescribed gases as the
-<code class="docutils literal notranslate"><span class="pre">cam4</span></code> package, but uses prognostic modal aerosols from the
-<code class="docutils literal notranslate"><span class="pre">trop_mam3</span></code> chemistry package. The default value of <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code>
+<p>The <code class="docutils literal"><span class="pre">cam5</span></code> physics package uses the same prescribed gases as the
+<code class="docutils literal"><span class="pre">cam4</span></code> package, but uses prognostic modal aerosols from the
+<code class="docutils literal"><span class="pre">trop_mam3</span></code> chemistry package. The default value of <code class="docutils literal"><span class="pre">rad_climate</span></code>
 generated by build-namelist is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rad_climate</span> <span class="o">=</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rad_climate</span> <span class="o">=</span>
  <span class="s1">&#39;A:Q:H2O&#39;</span><span class="p">,</span> <span class="s1">&#39;N:O2:O2&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CO2:CO2&#39;</span><span class="p">,</span> <span class="s1">&#39;N:ozone:O3&#39;</span><span class="p">,</span>
  <span class="s1">&#39;N:N2O:N2O&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CH4:CH4&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CFC11:CFC11&#39;</span><span class="p">,</span> <span class="s1">&#39;N:CFC12:CFC12&#39;</span><span class="p">,</span>
  <span class="s1">&#39;M:mam3_mode1:/CSMDATA/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc&#39;</span><span class="p">,</span>
@@ -211,28 +223,28 @@ generated by build-namelist is:</p>
 </pre></div>
 </div>
 <p>The gas species mass mixing ratios come from the same constituents in
-<code class="docutils literal notranslate"><span class="pre">cam5</span></code> as they did in <code class="docutils literal notranslate"><span class="pre">cam4</span></code> (but the radiative treatment is
-different since the <code class="docutils literal notranslate"><span class="pre">rrtmg</span></code> radiation package replaces
-<code class="docutils literal notranslate"><span class="pre">camrt</span></code>). Hence the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> strings for the gasses are the
-same as they were in the <code class="docutils literal notranslate"><span class="pre">cam4</span></code> physics example.</p>
-<p>The aerosol constituents in this <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> specification are all
-in the form of modes. The first field is an <code class="docutils literal notranslate"><span class="pre">M</span></code> rather than an <code class="docutils literal notranslate"><span class="pre">A</span></code>
-or an <code class="docutils literal notranslate"><span class="pre">N</span></code> to indicate that the aerosol constituents are
-modes. Roughly, the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> variable lists the aerosol
+<code class="docutils literal"><span class="pre">cam5</span></code> as they did in <code class="docutils literal"><span class="pre">cam4</span></code> (but the radiative treatment is
+different since the <code class="docutils literal"><span class="pre">rrtmg</span></code> radiation package replaces
+<code class="docutils literal"><span class="pre">camrt</span></code>). Hence the <code class="docutils literal"><span class="pre">rad_climate</span></code> strings for the gasses are the
+same as they were in the <code class="docutils literal"><span class="pre">cam4</span></code> physics example.</p>
+<p>The aerosol constituents in this <code class="docutils literal"><span class="pre">rad_climate</span></code> specification are all
+in the form of modes. The first field is an <code class="docutils literal"><span class="pre">M</span></code> rather than an <code class="docutils literal"><span class="pre">A</span></code>
+or an <code class="docutils literal"><span class="pre">N</span></code> to indicate that the aerosol constituents are
+modes. Roughly, the <code class="docutils literal"><span class="pre">rad_climate</span></code> variable lists the aerosol
 constituents whose contributions are added together to compute the
 total aerosol optical depth. In the case of the bulk aerosols the
 optical depths due to the individual aerosol species are summed to
 find the total aerosol optical depth. In the case of the modal aerosol
 model it is the modes that are summed. Hence each mode has an entry in
-the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> list, along with a file that contains physical and
+the <code class="docutils literal"><span class="pre">rad_climate</span></code> list, along with a file that contains physical and
 optical properties of the mode as a whole. In the example above there
-are three modes identified by the names <code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code>,
-<code class="docutils literal notranslate"><span class="pre">mam3_mode2</span></code>, and <code class="docutils literal notranslate"><span class="pre">mam3_mode3</span></code>. These names are hardwired in the
-<code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> utility and are only used to connect each mode with
+are three modes identified by the names <code class="docutils literal"><span class="pre">mam3_mode1</span></code>,
+<code class="docutils literal"><span class="pre">mam3_mode2</span></code>, and <code class="docutils literal"><span class="pre">mam3_mode3</span></code>. These names are hardwired in the
+<code class="docutils literal"><span class="pre">build-namelist</span></code> utility and are only used to connect each mode with
 more detailed specification of the constituents that comprise it. That
-specification is given by the namelist variable <code class="docutils literal notranslate"><span class="pre">mode_defs</span></code> and
-looks as follows for the default <code class="docutils literal notranslate"><span class="pre">trop_mam3</span></code> chemistry scheme.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mode_defs</span> <span class="o">=</span>
+specification is given by the namelist variable <code class="docutils literal"><span class="pre">mode_defs</span></code> and
+looks as follows for the default <code class="docutils literal"><span class="pre">trop_mam3</span></code> chemistry scheme.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mode_defs</span> <span class="o">=</span>
 <span class="s1">&#39;mam3_mode1:accum:=&#39;</span><span class="p">,</span>
    <span class="s1">&#39;A:num_a1:N:num_c1:num_mr:+&#39;</span><span class="p">,</span>
    <span class="s1">&#39;A:so4_a1:N:so4_c1:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc:+&#39;</span><span class="p">,</span>
@@ -253,65 +265,65 @@ looks as follows for the default <code class="docutils literal notranslate"><spa
    <span class="s1">&#39;A:so4_a3:N:so4_c3:sulfate:/CSMDATA/atm/cam/physprops/sulfate_rrtmg_c080918.nc&#39;</span>
 </pre></div>
 </div>
-<p>Similarly to the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> variable, the <code class="docutils literal notranslate"><span class="pre">mode_defs</span></code> variable
+<p>Similarly to the <code class="docutils literal"><span class="pre">rad_climate</span></code> variable, the <code class="docutils literal"><span class="pre">mode_defs</span></code> variable
 is an array of strings which provide a definition for all the modes
-that may be used in a single run. The modes don’t all need to appear
-in the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> variable; some may only be needed for
+that may be used in a single run. The modes don&#8217;t all need to appear
+in the <code class="docutils literal"><span class="pre">rad_climate</span></code> variable; some may only be needed for
 diagnostic radiation calculations which will be discussed in more
 detail later.</p>
-<p>There are three different types of strings in <code class="docutils literal notranslate"><span class="pre">mode_defs</span></code>:</p>
+<p>There are three different types of strings in <code class="docutils literal"><span class="pre">mode_defs</span></code>:</p>
 <p>The initial string in each mode specification contains three
 fields. The first is a name that identifies the mode, the second is a
 name that identifies the type of the mode, and the final is the token
-“=”.</p>
+&#8220;=&#8221;.</p>
 <p>One string in each mode specification must contain the names for the
 mode number concentrations in both the interstitial and cloud borne
 phases.</p>
 <p>One or more strings in each mode specification must contain the names
 for the mass mixing ratios in both the interstitial and cloud borne
 phases of the individual constituents that comprise the mode.</p>
-<p>The example of <code class="docutils literal notranslate"><span class="pre">mode_defs</span></code> above has been formatted in a way that
+<p>The example of <code class="docutils literal"><span class="pre">mode_defs</span></code> above has been formatted in a way that
 makes the individual parts of each mode definition stand out. The
-actual output from the <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> utility is not formatted
+actual output from the <code class="docutils literal"><span class="pre">build-namelist</span></code> utility is not formatted
 like this and is a bit harder to decipher.</p>
 <p>What follows is an detailed explanation of the mode definitions in the example above.</p>
-<p>There are three modes defined, i.e., <code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code>, <code class="docutils literal notranslate"><span class="pre">mam3_mode2</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">mam3_mode3</span></code>. The name of a mode is arbitrary, the only
-requirement being that the same name is used in the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code>
-(or <code class="docutils literal notranslate"><span class="pre">rad_diag_N</span></code>) and the <code class="docutils literal notranslate"><span class="pre">mode_defs</span></code> variables. These default
-mode names for <code class="docutils literal notranslate"><span class="pre">trop_mam3</span></code> are hardcoded in the <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code>
-utility. The three modes are of type <code class="docutils literal notranslate"><span class="pre">accum</span></code> (accumulation),
-<code class="docutils literal notranslate"><span class="pre">aitken</span></code>, and <code class="docutils literal notranslate"><span class="pre">coarse</span></code> respectively. The names for the mode types
-are hardcoded in the <code class="docutils literal notranslate"><span class="pre">modal_aero_data</span></code> module.</p>
+<p>There are three modes defined, i.e., <code class="docutils literal"><span class="pre">mam3_mode1</span></code>, <code class="docutils literal"><span class="pre">mam3_mode2</span></code>,
+and <code class="docutils literal"><span class="pre">mam3_mode3</span></code>. The name of a mode is arbitrary, the only
+requirement being that the same name is used in the <code class="docutils literal"><span class="pre">rad_climate</span></code>
+(or <code class="docutils literal"><span class="pre">rad_diag_N</span></code>) and the <code class="docutils literal"><span class="pre">mode_defs</span></code> variables. These default
+mode names for <code class="docutils literal"><span class="pre">trop_mam3</span></code> are hardcoded in the <code class="docutils literal"><span class="pre">build-namelist</span></code>
+utility. The three modes are of type <code class="docutils literal"><span class="pre">accum</span></code> (accumulation),
+<code class="docutils literal"><span class="pre">aitken</span></code>, and <code class="docutils literal"><span class="pre">coarse</span></code> respectively. The names for the mode types
+are hardcoded in the <code class="docutils literal"><span class="pre">modal_aero_data</span></code> module.</p>
 <p>The second line in the definition of each mode contains the names of
 the number concentrations for the interstitial and cloud borne
-phases. Looking specifically at the definition for <code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code>, the
+phases. Looking specifically at the definition for <code class="docutils literal"><span class="pre">mam3_mode1</span></code>, the
 first two fields are for the interstitial phase and specify that the
-name <code class="docutils literal notranslate"><span class="pre">num_a1</span></code> is an advected constituent (<code class="docutils literal notranslate"><span class="pre">A</span></code>), while the third
+name <code class="docutils literal"><span class="pre">num_a1</span></code> is an advected constituent (<code class="docutils literal"><span class="pre">A</span></code>), while the third
 and fourth fields are for the cloud borne phase and specify that the
-name <code class="docutils literal notranslate"><span class="pre">num_c1</span></code> is a non-advected constituent (<code class="docutils literal notranslate"><span class="pre">N</span></code>). The names of
+name <code class="docutils literal"><span class="pre">num_c1</span></code> is a non-advected constituent (<code class="docutils literal"><span class="pre">N</span></code>). The names of
 the number concentration constituents are hardcoded in the
-<code class="docutils literal notranslate"><span class="pre">modal_aero_initialize_data</span> <span class="pre">module</span></code>. The fifth field, <code class="docutils literal notranslate"><span class="pre">num_mr</span></code>, is
-a fixed token recognized by the parser of the <code class="docutils literal notranslate"><span class="pre">mode_defs</span></code> strings
-(in the <code class="docutils literal notranslate"><span class="pre">rad_constituents</span></code> module) as an indicator that the string
+<code class="docutils literal"><span class="pre">modal_aero_initialize_data</span> <span class="pre">module</span></code>. The fifth field, <code class="docutils literal"><span class="pre">num_mr</span></code>, is
+a fixed token recognized by the parser of the <code class="docutils literal"><span class="pre">mode_defs</span></code> strings
+(in the <code class="docutils literal"><span class="pre">rad_constituents</span></code> module) as an indicator that the string
 contains the number concentration names. The final token in the
-string, a “+”, signals to the parser that the definition of the
+string, a &#8220;+&#8221;, signals to the parser that the definition of the
 current mode continues in the next string.</p>
 <p>The third through final strings in each mode definition contain
 specifications for each specie in the mode. Looking again at the
-definition of <code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code>, the first specie is of type <code class="docutils literal notranslate"><span class="pre">sulfate</span></code>
+definition of <code class="docutils literal"><span class="pre">mam3_mode1</span></code>, the first specie is of type <code class="docutils literal"><span class="pre">sulfate</span></code>
 which is indicated by the fifth field in that string. The specie type
-names are hardcoded in the <code class="docutils literal notranslate"><span class="pre">modal_aero_data</span> <span class="pre">module</span></code>. The first two
+names are hardcoded in the <code class="docutils literal"><span class="pre">modal_aero_data</span> <span class="pre">module</span></code>. The first two
 fields in the string provide the name for the mass mixing ratio of the
-specie in the interstitial phase (<code class="docutils literal notranslate"><span class="pre">so4_a1</span></code>), and indicate that it is
-an advected constituent (<code class="docutils literal notranslate"><span class="pre">A</span></code>). Fields three and four specify that
+specie in the interstitial phase (<code class="docutils literal"><span class="pre">so4_a1</span></code>), and indicate that it is
+an advected constituent (<code class="docutils literal"><span class="pre">A</span></code>). Fields three and four specify that
 the name of the mass mixing ratio for the cloud borne phase is
-<code class="docutils literal notranslate"><span class="pre">so4_c1</span></code>, and that this is a non-advected constituent (<code class="docutils literal notranslate"><span class="pre">N</span></code>). The
+<code class="docutils literal"><span class="pre">so4_c1</span></code>, and that this is a non-advected constituent (<code class="docutils literal"><span class="pre">N</span></code>). The
 names of the mass mixing ratio constituents are hardcoded in the
-<code class="docutils literal notranslate"><span class="pre">modal_aero_initialize_data</span> <span class="pre">module</span></code>. The sixth field in the string
+<code class="docutils literal"><span class="pre">modal_aero_initialize_data</span> <span class="pre">module</span></code>. The sixth field in the string
 is the absolute pathname of the file containing physical and optical
 properties of the specie. The last field in the string contains the
-token “+” which again indicates that the definition of the mode
+token &#8220;+&#8221; which again indicates that the definition of the mode
 continues in the next string.</p>
 </div>
 </div>
@@ -324,7 +336,7 @@ while leaving the troposheric distribution unchanged. To modify a
 radiatively active gas two things must be done.</p>
 <p>Change the name (and possibly the type) of the constituent which is
 providing the mass mixing ratios to the radiation code. This is a
-simple modification to the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> value.</p>
+simple modification to the <code class="docutils literal"><span class="pre">rad_climate</span></code> value.</p>
 <p>Make the necessary modifications to CAM to provide the new constituent
 mixing ratios. A likely scenario for this example would be to create a
 new module which is responsible for adding the modified water vapor
@@ -332,87 +344,87 @@ field to the physics buffer. This module could leverage the existing
 tropopause module to determine the vertical levels where changes need
 to be made. It could also leverage existing modules for reading and
 interpolating prescribed constituents, for example the
-<code class="docutils literal notranslate"><span class="pre">prescribed_ozone</span></code> module. Details of how to make this type of
-source code modification won’t be covered here.</p>
+<code class="docutils literal"><span class="pre">prescribed_ozone</span></code> module. Details of how to make this type of
+source code modification won&#8217;t be covered here.</p>
 <p>Now suppose the source code modifications have been made and the new
 water vapor constituent is in the physics buffer with the name
-<code class="docutils literal notranslate"><span class="pre">Q_fixstrat</span></code>. The best way to modify the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> variable is
-to start from a value that was generated by <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> for the
+<code class="docutils literal"><span class="pre">Q_fixstrat</span></code>. The best way to modify the <code class="docutils literal"><span class="pre">rad_climate</span></code> variable is
+to start from a value that was generated by <code class="docutils literal"><span class="pre">build-namelist</span></code> for the
 configuration of interest but with the default water vapor, and then
-to modify that version of <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> and add the modified version
-to the <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> command in our run script. Note that the
-entire value of <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> must be specified. There is no way to
+to modify that version of <code class="docutils literal"><span class="pre">rad_climate</span></code> and add the modified version
+to the <code class="docutils literal"><span class="pre">build-namelist</span></code> command in our run script. Note that the
+entire value of <code class="docutils literal"><span class="pre">rad_climate</span></code> must be specified. There is no way to
 just modify one individual string in the array of string values. If we
-are running with a default <code class="docutils literal notranslate"><span class="pre">cam5</span></code> configuration then the customized
+are running with a default <code class="docutils literal"><span class="pre">cam5</span></code> configuration then the customized
 namelist would be generated by the following command.</p>
 <dl class="docutils">
 <dt>::</dt>
 <dd><dl class="first last docutils">
-<dt>$camcfg/build-namelist … </dt>
-<dd>-namelist “&amp;cam …
+<dt>$camcfg/build-namelist ... </dt>
+<dd>-namelist &#8220;&amp;cam ...
 rad_climate =
-‘N:Q_fixstrat:H2O’, ‘N:O2:O2’, ‘N:CO2:CO2’, ‘N:ozone:O3’,
-‘N:N2O:N2O’, ‘N:CH4:CH4’, ‘N:CFC11:CFC11’, ‘N:CFC12:CFC12’,
-‘M:mam3_mode1:/CSMDATA/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc’,
-‘M:mam3_mode2:/CSMDATA/atm/cam/physprops/mam3_mode2_rrtmg_c110318.nc’,
-‘M:mam3_mode3:/CSMDATA/atm/cam/physprops/mam3_mode3_rrtmg_c110318.nc’  /”</dd>
+&#8216;N:Q_fixstrat:H2O&#8217;, &#8216;N:O2:O2&#8217;, &#8216;N:CO2:CO2&#8217;, &#8216;N:ozone:O3&#8217;,
+&#8216;N:N2O:N2O&#8217;, &#8216;N:CH4:CH4&#8217;, &#8216;N:CFC11:CFC11&#8217;, &#8216;N:CFC12:CFC12&#8217;,
+&#8216;M:mam3_mode1:/CSMDATA/atm/cam/physprops/mam3_mode1_rrtmg_c110318.nc&#8217;,
+&#8216;M:mam3_mode2:/CSMDATA/atm/cam/physprops/mam3_mode2_rrtmg_c110318.nc&#8217;,
+&#8216;M:mam3_mode3:/CSMDATA/atm/cam/physprops/mam3_mode3_rrtmg_c110318.nc&#8217;  /&#8221;</dd>
 </dl>
 </dd>
 </dl>
-<p>The only difference between this version of <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> and the
+<p>The only difference between this version of <code class="docutils literal"><span class="pre">rad_climate</span></code> and the
 default is that the string for water vapor:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;A:Q:H2O&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;A:Q:H2O&#39;</span>
 </pre></div>
 </div>
 <p>has been replaced by</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;N:Q_fixstrat:H2O&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;N:Q_fixstrat:H2O&#39;</span>
 </pre></div>
 </div>
 <p>In addition to specifying the new name for the constituent
-(<code class="docutils literal notranslate"><span class="pre">Q_fixstrat</span></code>), it was necessary to replace the <code class="docutils literal notranslate"><span class="pre">A</span></code> by an <code class="docutils literal notranslate"><span class="pre">N</span></code>
+(<code class="docutils literal"><span class="pre">Q_fixstrat</span></code>), it was necessary to replace the <code class="docutils literal"><span class="pre">A</span></code> by an <code class="docutils literal"><span class="pre">N</span></code>
 since the new constituent is not advected, even though it is derived
-in part for the constituent <code class="docutils literal notranslate"><span class="pre">Q</span></code> which is advected.</p>
+in part for the constituent <code class="docutils literal"><span class="pre">Q</span></code> which is advected.</p>
 </div>
 <div class="section" id="example-diagnostic-radiative-forcing">
 <h2>8.3. Example - Diagnostic radiative forcing<a class="headerlink" href="#example-diagnostic-radiative-forcing" title="Permalink to this headline">¶</a></h2>
 <p>There are several namelist variables available for direct radiative
-forcing calculations in the <code class="docutils literal notranslate"><span class="pre">cam5</span></code> physics package. But note that
-these online calculations are enabled for <code class="docutils literal notranslate"><span class="pre">RRTMG</span></code> only and not for
-the <code class="docutils literal notranslate"><span class="pre">CAM_RT</span></code> radiation code used in the <code class="docutils literal notranslate"><span class="pre">cam4</span></code> and earlier physics
+forcing calculations in the <code class="docutils literal"><span class="pre">cam5</span></code> physics package. But note that
+these online calculations are enabled for <code class="docutils literal"><span class="pre">RRTMG</span></code> only and not for
+the <code class="docutils literal"><span class="pre">CAM_RT</span></code> radiation code used in the <code class="docutils literal"><span class="pre">cam4</span></code> and earlier physics
 packages. The ability to do radiative forcing calculations with
-<code class="docutils literal notranslate"><span class="pre">CAM_RT</span></code> is provided by using the offline tool PORT which is
+<code class="docutils literal"><span class="pre">CAM_RT</span></code> is provided by using the offline tool PORT which is
 documented <a class="reference external" href="https://wiki.ucar.edu/display/port/PORT">here</a>, and
 described in the paper <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/bi01.html#conley2013">Conley et al. [2013]</a>. The
 PORT functionality is included in the CESM release code.</p>
 <p>Namelist variables are available for ten radiative forcing
-calculations; <code class="docutils literal notranslate"><span class="pre">rad_diag_1,</span> <span class="pre">...,</span> <span class="pre">rad_diag_10</span></code>. The values of these
-variables use the exact same format as the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code>
+calculations; <code class="docutils literal"><span class="pre">rad_diag_1,</span> <span class="pre">...,</span> <span class="pre">rad_diag_10</span></code>. The values of these
+variables use the exact same format as the <code class="docutils literal"><span class="pre">rad_climate</span></code>
 variable. When a diagnostic calculation is requested, for example by
-setting the variable <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code>, then the default history output
+setting the variable <code class="docutils literal"><span class="pre">rad_diag_1</span></code>, then the default history output
 variables for the radiative heating rates and fluxes will be output
 for the diagnostic calculation as well. The names of the variables for
 the diagnostic calculation will be distinguished from those that
-affect the climate simulation by appending the strings <code class="docutils literal notranslate"><span class="pre">'_d1',</span> <span class="pre">...,</span>
-<span class="pre">'_d10'</span></code> for diagnostic calculations specified by <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code>
-through <code class="docutils literal notranslate"><span class="pre">rad_diag_10</span></code> respectively.</p>
+affect the climate simulation by appending the strings <code class="docutils literal"><span class="pre">'_d1',</span> <span class="pre">...,</span>
+<span class="pre">'_d10'</span></code> for diagnostic calculations specified by <code class="docutils literal"><span class="pre">rad_diag_1</span></code>
+through <code class="docutils literal"><span class="pre">rad_diag_10</span></code> respectively.</p>
 </div>
 <div class="section" id="example-aerosol-radiative-forcing">
 <h2>8.4. Example - Aerosol radiative forcing<a class="headerlink" href="#example-aerosol-radiative-forcing" title="Permalink to this headline">¶</a></h2>
 <p>To compute the total aerosol radiative forcing we need a diagnostic
 calculation in which all the aerosols have been removed. To do this we
-start from the default setting for the <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> variable, use
-that as the initial setting for <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code>, and then edit that
-initial setting to remove the aerosols. In the <code class="docutils literal notranslate"><span class="pre">cam5</span></code> physics this
+start from the default setting for the <code class="docutils literal"><span class="pre">rad_climate</span></code> variable, use
+that as the initial setting for <code class="docutils literal"><span class="pre">rad_diag_1</span></code>, and then edit that
+initial setting to remove the aerosols. In the <code class="docutils literal"><span class="pre">cam5</span></code> physics this
 involves removing the specification of the three modes, so we end up
-with a setting in our <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> command that looks like this</p>
+with a setting in our <code class="docutils literal"><span class="pre">build-namelist</span></code> command that looks like this</p>
 <dl class="docutils">
 <dt>::</dt>
 <dd><dl class="first last docutils">
-<dt>$camcfg/build-namelist … </dt>
-<dd>-namelist “&amp;cam …
+<dt>$camcfg/build-namelist ... </dt>
+<dd>-namelist &#8220;&amp;cam ...
 rad_diag_1 =
-‘A:Q:H2O’, ‘N:O2:O2’, ‘N:CO2:CO2’, ‘N:ozone:O3’,
-‘N:N2O:N2O’, ‘N:CH4:CH4’, ‘N:CFC11:CFC11’, ‘N:CFC12:CFC12’ /”</dd>
+&#8216;A:Q:H2O&#8217;, &#8216;N:O2:O2&#8217;, &#8216;N:CO2:CO2&#8217;, &#8216;N:ozone:O3&#8217;,
+&#8216;N:N2O:N2O&#8217;, &#8216;N:CH4:CH4&#8217;, &#8216;N:CFC11:CFC11&#8217;, &#8216;N:CFC12:CFC12&#8217; /&#8221;</dd>
 </dl>
 </dd>
 </dl>
@@ -423,18 +435,18 @@ rad_diag_1 =
 diagnostic calculation in which that specie has been removed from all
 modes that contain it. This is a bit more complicated that the
 previous example where we were able to remove entire modes from the
-value of <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code>. Removing species from modes requires us to
+value of <code class="docutils literal"><span class="pre">rad_diag_1</span></code>. Removing species from modes requires us to
 create new mode definitions. Using black carbon as a specific example,
-we see from the default definitions of the <code class="docutils literal notranslate"><span class="pre">trop_mam3</span></code> modes
+we see from the default definitions of the <code class="docutils literal"><span class="pre">trop_mam3</span></code> modes
 (<a class="reference external" href="https://github.com/erika72/cam/wiki/CAM-URL">Section 5.1.2, “Default rad_climate for cam5 physics”</a>) that black carbon is
-only contained in <code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code>. The best way to create the
-definition of a new mode which doesn’t contain black carbon is to copy
-the definition of <code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code>, change its name, and remove the
+only contained in <code class="docutils literal"><span class="pre">mam3_mode1</span></code>. The best way to create the
+definition of a new mode which doesn&#8217;t contain black carbon is to copy
+the definition of <code class="docutils literal"><span class="pre">mam3_mode1</span></code>, change its name, and remove the
 black carbon from the definition. Then use this new mode in place of
-<code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code> in the specifier for <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code>. Below is an
-outline of our <code class="docutils literal notranslate"><span class="pre">build-namelist</span></code> command with just the <code class="docutils literal notranslate"><span class="pre">mode_defs</span></code>
-and <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code> variables listed.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$camcfg/build-namelist ... \
+<code class="docutils literal"><span class="pre">mam3_mode1</span></code> in the specifier for <code class="docutils literal"><span class="pre">rad_diag_1</span></code>. Below is an
+outline of our <code class="docutils literal"><span class="pre">build-namelist</span></code> command with just the <code class="docutils literal"><span class="pre">mode_defs</span></code>
+and <code class="docutils literal"><span class="pre">rad_diag_1</span></code> variables listed.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$camcfg/build-namelist ... \
  -namelist &quot;&amp;cam ...
  mode_defs =
    &#39;mam3_mode1:accum:=&#39;,
@@ -472,9 +484,9 @@ rad_diag_1 =
 </pre></div>
 </div>
 <p>Note that we just appended the new mode definition,
-<code class="docutils literal notranslate"><span class="pre">mam3_mode1_noBC</span></code>, to the end of the modes used in the climate
-calculation, and then used that mode in place of <code class="docutils literal notranslate"><span class="pre">mam3_mode1</span></code> in the
-<code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code> value.</p>
+<code class="docutils literal"><span class="pre">mam3_mode1_noBC</span></code>, to the end of the modes used in the climate
+calculation, and then used that mode in place of <code class="docutils literal"><span class="pre">mam3_mode1</span></code> in the
+<code class="docutils literal"><span class="pre">rad_diag_1</span></code> value.</p>
 </div>
 </div>
 
@@ -497,12 +509,12 @@ calculation, and then used that mode in place of <code class="docutils literal n
           <a href="model-output.html" title="7. Model Output:"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

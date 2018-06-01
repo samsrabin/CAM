@@ -2,27 +2,41 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>10. Downloading CAM standalone &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="11. Appendices" href="appendices.html" />
     <link rel="prev" title="9. Chemistry specific modifications" href="CAM-chem-specifics.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
-  </head><body>
+  </head>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -36,7 +50,7 @@
           <a href="CAM-chem-specifics.html" title="9. Chemistry specific modifications"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -60,20 +74,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/checking-out-cam-standalone.rst.txt"
+      <li><a href="../_sources/users_guide/checking-out-cam-standalone.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -101,7 +113,7 @@ download open source tools, visit <a class="reference external" href="http://sub
 built and run, the user may download the latest version of the development
 code. First view the available versions with the
 following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">%</span><span class="n">svn</span> <span class="nb">list</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">-</span><span class="n">ccsm</span><span class="o">-</span><span class="n">models</span><span class="o">.</span><span class="n">cgd</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">cam1</span><span class="o">/</span><span class="n">trunk_tags</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">%</span><span class="n">svn</span> <span class="nb">list</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">-</span><span class="n">ccsm</span><span class="o">-</span><span class="n">models</span><span class="o">.</span><span class="n">cgd</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">cam1</span><span class="o">/</span><span class="n">trunk_tags</span>
 </pre></div>
 </div>
 <p>Note that when you are contacting the Subversion server for the first time, you may need to accept an authentication certification.</p>
@@ -112,41 +124,41 @@ checking out the code for the first time from this new Subversion path.
 This is because the code is distributed across a number of different
 Subversion repositories and each repository requires authentication.</p>
 <p>Once correctly entered, the username and password will be cached in a
-protected subdirectory of the user’s home directory so that repeated
+protected subdirectory of the user&#8217;s home directory so that repeated
 entry of this information will not be required for a given machine.</p>
 <p>The following example shows how to checkout CAM standalone tag cam6_0_002:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">%</span><span class="n">svn</span> <span class="n">co</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">-</span><span class="n">ccsm</span><span class="o">-</span><span class="n">models</span><span class="o">.</span><span class="n">cgd</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">cam1</span><span class="o">/</span><span class="n">trunk_tags</span><span class="o">/</span><span class="n">cam6_0_002</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">%</span><span class="n">svn</span> <span class="n">co</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">-</span><span class="n">ccsm</span><span class="o">-</span><span class="n">models</span><span class="o">.</span><span class="n">cgd</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">cam1</span><span class="o">/</span><span class="n">trunk_tags</span><span class="o">/</span><span class="n">cam6_0_002</span>
 </pre></div>
 </div>
 <p>If a problem was encountered during checkout, which may happen with an older version of the client software, it may appear to have downloaded successfully, but in fact only a partial checkout has occurred. To ensure a successful download, make sure the last line of svn output has the following statement:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Checked</span> <span class="n">out</span> <span class="n">revision</span> <span class="n">XXXXX</span><span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Checked</span> <span class="n">out</span> <span class="n">revision</span> <span class="n">XXXXX</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>This will create a directory called <code class="docutils literal notranslate"><span class="pre">cam6_0_002</span></code> that can be used to
+<p>This will create a directory called <code class="docutils literal"><span class="pre">cam6_0_002</span></code> that can be used to
 modify, build, and run the model.</p>
 </div>
 <div class="section" id="checkout-out-the-externals">
 <h2>10.2. Checkout out the externals<a class="headerlink" href="#checkout-out-the-externals" title="Permalink to this headline">¶</a></h2>
 <p>Once the CAM code has been checked out, but before it can be used, the external libraries that CAM uses must be checked out.</p>
 <p>To get the externals, users need to cd to the main CAM directory and run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">%</span><span class="n">manage_externals</span><span class="o">/</span><span class="n">checkout_externals</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">%</span><span class="n">manage_externals</span><span class="o">/</span><span class="n">checkout_externals</span>
 </pre></div>
 </div>
 <p>This will create and populate all of the external directories.</p>
-<p>Note – You will get an error message if you try to cd into manage_externals and run checkout_externals from that directory.</p>
+<p>Note &#8211; You will get an error message if you try to cd into manage_externals and run checkout_externals from that directory.</p>
 </div>
 <div class="section" id="useful-svn-commands">
 <h2>10.3. Useful svn commands<a class="headerlink" href="#useful-svn-commands" title="Permalink to this headline">¶</a></h2>
-<p>For various information regarding the version checked out…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">svn</span> <span class="n">info</span>
+<p>For various information regarding the version checked out...</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">svn</span> <span class="n">info</span>
 </pre></div>
 </div>
-<p>For a listing of files that have changed since checkout…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">svn</span> <span class="n">status</span>
+<p>For a listing of files that have changed since checkout...</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">svn</span> <span class="n">status</span>
 </pre></div>
 </div>
-<p>For a description of the changes made to the working copy…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">svn</span> <span class="n">diff</span>
+<p>For a description of the changes made to the working copy...</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">svn</span> <span class="n">diff</span>
 </pre></div>
 </div>
 </div>
@@ -171,12 +183,12 @@ modify, build, and run the model.</p>
           <a href="CAM-chem-specifics.html" title="9. Chemistry specific modifications"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>
