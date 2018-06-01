@@ -149,7 +149,7 @@ Topography files
 Meteorological data sets
 ------------------------------
 
-For specified dynamics model simulation, meteorolocial analysis from the  Goddard Earth Observing System Model, Version 5 (GEOS5) and the Modern-Era Retrospective analysis for Research and Applications, Version 2 (MERRA2) data have been prepared to run CESM and WRF simulations and are available in 3 resulution, and are availbe on the Research Data Archive: 
+For specified dynamics model simulation, meteorolocial analysis from the  Goddard Earth Observing System Model, Version 5 (GEOS5) and the Modern-Era Retrospective analysis for Research and Applications, Version 2 (MERRA2) data have been prepared to run CESM and WRF simulations and are available in 3 resolutions, and are availbe on the Research Data Archive: 
 
 
 GEOS5 2005-present (currently only 1.9x2.5 degree horizontal resolution): https://rda.ucar.edu/datasets/ds313.0/
