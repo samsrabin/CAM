@@ -312,8 +312,4 @@ Upper boundary condition
 ================================================
  snoe_ubc_file		= '$DIN_LOC_ROOT/inputdata/atm/waccm/ub/snoe_eof.nc'
 
-------------------------------
-WACCM-X
-------------------------------
-Nothing to see here?
 
