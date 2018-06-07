@@ -2,20 +2,23 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>7. Extensions to CAM &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -24,12 +27,13 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -133,7 +137,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/cam6_scientific_guide/extensions.rst.txt"
+      <li><a href="../_sources/cam6_scientific_guide/extensions.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -555,8 +559,8 @@ option.</p>
 <p>Chemical and photochemical processes are expressed by a system of
 time-dependent ordinary differential equations at each point in the
 spatial grid, of the following form:</p>
-<div class="math">
-<p><img src="../_images/math/4be29f8396b479c637e247a4d1dc6e370c90d4e3.png" alt="\frac{d\vec{y}}{dt} = \vec{P}(\vec{y}, t) - \vec{L}(\vec{y}, t) \cdot \vec{y}"/></p>
+<div class="math" id="equation-solver1">
+<p><span class="eqno">(1)</span><img src="../_images/math/4be29f8396b479c637e247a4d1dc6e370c90d4e3.png" alt="\frac{d\vec{y}}{dt} = \vec{P}(\vec{y}, t) - \vec{L}(\vec{y}, t) \cdot \vec{y}"/></p>
 </div><div class="math">
 <p><img src="../_images/math/c2f61dbac73b1ab3d3a25095472e513762a2e871.png" alt="\vec y(t) = \{y_i(t)\} \quad i = 1, 2, \ldots, N"/></p>
 </div><p>where <img class="math" src="../_images/math/d84e527f16e758fbba75f2c5f0bea219f065fa98.png" alt="\vec y"/> is the vector of all solution variables (chemical
@@ -566,37 +570,37 @@ species), <img class="math" src="../_images/math/f4170ed8938b79490d8923857962695
 general, non-linear functions of the <img class="math" src="../_images/math/07f6018e00c747406442bb3912e0209766fc9090.png" alt="y_i"/>. This system of
 equations is solved via two algorithms: an explicit forward Euler
 method:</p>
-<div class="math">
-<p><img src="../_images/math/4250c2bae06a580d0f9be38cb253e70921ff5793.png" alt="y_i^{n+1} = y_i^n + \Delta t \cdot f_i(t_{n}, y^{n})"/></p>
+<div class="math" id="equation-solver2">
+<p><span class="eqno">(2)</span><img src="../_images/math/4250c2bae06a580d0f9be38cb253e70921ff5793.png" alt="y_i^{n+1} = y_i^n + \Delta t \cdot f_i(t_{n}, y^{n})"/></p>
 </div><p>in the case of species with long lifetimes and weak forcing terms
 (e.g., N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O), and a more robust implicit backward Euler
 method:</p>
-<div class="math">
-<p><img src="../_images/math/11d7a002516e4748d1b075327fc933b447e2052a.png" alt="y_i^{n+1} = y_i^n + \Delta t\cdot f_i(t_{n+1}, y^{n+1})"/></p>
-</div><p>for species that comprise a``stiff system” with short lifetimes and
+<div class="math" id="equation-solver3">
+<p><span class="eqno">(3)</span><img src="../_images/math/11d7a002516e4748d1b075327fc933b447e2052a.png" alt="y_i^{n+1} = y_i^n + \Delta t\cdot f_i(t_{n+1}, y^{n+1})"/></p>
+</div><p>for species that comprise a``stiff system&#8221; with short lifetimes and
 strong forcings (e.g., OH). Here <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> represents the time step
 index. Each method is first order accurate in time and conservative. The
 overall chemistry time step, <img class="math" src="../_images/math/c3c998600f3411cfe6d35f2d2c4dc7a50104e9b1.png" alt="\Delta t = t_{n+1}-t_n"/>, is fixed at
 30 minutes. Preprocessing software requires the user to assign each
 solution variable, <img class="math" src="../_images/math/07f6018e00c747406442bb3912e0209766fc9090.png" alt="y_i"/>, to one of the solution schemes. The
-discrete analogue for methods <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-solver2">(2)</a>  and <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-solver3">(3)</a>  above results
+discrete analogue for methods <a href="#equation-solver2">(2)</a>  and <a href="#equation-solver3">(3)</a>  above results
 in two systems of algebraic equations at each grid point. The solution
-to these algebraic systems for equation <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-solver2">(2)</a>  is straightforward
+to these algebraic systems for equation <a href="#equation-solver2">(2)</a>  is straightforward
 (i.e., explicit). The algebraic system from the implicit method
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-solver3">(3)</a>  is quadratically non-linear. This system can be written as:</p>
-<div class="math">
-<p><img src="../_images/math/f030645a64f412e3285c8ccc81ba2ab57231a722.png" alt="\vec{G}(\vec{y}^{\,\, n+1})=\vec{y}^{\,\, n+1}-\vec{y}^{\,\, n}- \Delta t\cdot\vec{f}(t_{n+1},\vec{y}^{\,\, n+1})=0"/></p>
+<a href="#equation-solver3">(3)</a>  is quadratically non-linear. This system can be written as:</p>
+<div class="math" id="equation-solver4">
+<p><span class="eqno">(4)</span><img src="../_images/math/f030645a64f412e3285c8ccc81ba2ab57231a722.png" alt="\vec{G}(\vec{y}^{\,\, n+1})=\vec{y}^{\,\, n+1}-\vec{y}^{\,\, n}- \Delta t\cdot\vec{f}(t_{n+1},\vec{y}^{\,\, n+1})=0"/></p>
 </div><p>Here <img class="math" src="../_images/math/dee63237674afc3154c2e33b7b68d67f85f2ee0a.png" alt="G"/> is an <img class="math" src="../_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png" alt="N"/>-valued, non-linear vector function,
 where <img class="math" src="../_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png" alt="N"/> equals the number of species solved via the implicit
-method. The solution to equation <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-solver4">(4)</a>  is solved with a Newton-
+method. The solution to equation <a href="#equation-solver4">(4)</a>  is solved with a Newton-
 Raphson iteration approach as shown below:</p>
-<div class="math">
-<p><img src="../_images/math/5688257ffc86ff37fcf9e167a264e7d8587d454e.png" alt="\vec{y}^{\,\, n+1}_{m+1} = \vec{y}^{\,\, n+1}_m - \vec{J} \cdot \vec{G}(\vec{y}^{\,\, n+1}_m); \; m=0,1,\ldots, M"/></p>
+<div class="math" id="equation-solver5">
+<p><span class="eqno">(5)</span><img src="../_images/math/5688257ffc86ff37fcf9e167a264e7d8587d454e.png" alt="\vec{y}^{\,\, n+1}_{m+1} = \vec{y}^{\,\, n+1}_m - \vec{J} \cdot \vec{G}(\vec{y}^{\,\, n+1}_m); \; m=0,1,\ldots, M"/></p>
 </div><p>Where <img class="math" src="../_images/math/edba97b4c0d864d26e92ea7ea73767fa38eef3f7.png" alt="m"/> is the iteration index and has a maximum value of ten.
 The elements of the Jacobian matrix <img class="math" src="../_images/math/c5832c31bc7b0a7034ea38fcf0220919be445d8e.png" alt="\vec J"/> are given by:</p>
 <div class="math">
 <p><img src="../_images/math/71a4648a14f60be5315b821edbb807be36c66d70.png" alt="J_{ij}=\frac{\partial G_i}{\partial y_j}"/></p>
-</div><p>The iteration and solution of equation <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-solver5">(5)</a>  is carried out with
+</div><p>The iteration and solution of equation <a href="#equation-solver5">(5)</a>  is carried out with
 a sparse matrix solution algorithm. This process is terminated when the
 given solution variable changes in a relative measure by less than a
 prescribed fractional amount. This relative error criterion is set on a
@@ -604,7 +608,7 @@ species by species basis, and is typically 0.001; however, for some
 species (e.g., O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>), where a tighter error criterion is
 desired, it is set to 0.0001. If the iteration maximum is reached (for
 any species) before the error criterion is met, the time step is cut in
-half and the solution to equation <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-solver5">(5)</a>  is iterated again. The
+half and the solution to equation <a href="#equation-solver5">(5)</a>  is iterated again. The
 time step can be reduced five times before the solution is accepted.
 This approach is based on the work of <a class="reference internal" href="chapter8.html#sandu-etal-96" id="id22">[SPDIC96]</a> and <a class="reference internal" href="chapter8.html#sandu-etal-97" id="id23">[SVvL+97]</a>; see also
 <a class="reference internal" href="chapter8.html#brasseur-etal-99" id="id24">[BOT99]</a>.</p>
@@ -715,8 +719,8 @@ hPa, as in the previous WACCM versions. As in CAM4, the vertical
 coordinate is purely isobaric above 100 hPa, but is terrain following
 below that level. At any model grid point, the local pressure p is
 determined by</p>
-<div class="math">
-<p><img src="../_images/math/47ccbac4b9941501acda75d1c67d4edd44271ec8.png" alt="p(i,j,k) = A(k) \, p_0 + B(k) \, p_s(i,j)"/></p>
+<div class="math" id="equation-eq:p">
+<p><span class="eqno">(6)</span><img src="../_images/math/47ccbac4b9941501acda75d1c67d4edd44271ec8.png" alt="p(i,j,k) = A(k) \, p_0 + B(k) \, p_s(i,j)"/></p>
 </div><p>where <img class="math" src="../_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> and <img class="math" src="../_images/math/9805f44feec6f81d376d09e88b8236635edbb3c8.png" alt="B"/> are functions of model level, <img class="math" src="../_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/>,
 only; <img class="math" src="../_images/math/b1efd19e7b06b1003e77fcbc5e51527a339bc11c.png" alt="p_0=10^3"/> hPa is a reference surface pressure; and
 <img class="math" src="../_images/math/f44df021950898ccf1cb654e028ce34bc85af01b.png" alt="p_s"/> is the predicted surface pressure, which is a function of
@@ -725,7 +729,7 @@ finite volume dynamical core uses locally material surfaces for its
 internal vertical coordinate and remaps (conservatively interpolates) to
 the hybrid surfaces after each time step.</p>
 <p>Within the physical and chemical parameterizations, a local pressure
-coordinate is used, as described by <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:p">(6)</a> . However, in the remainder
+coordinate is used, as described by <a href="#equation-eq:p">(6)</a> . However, in the remainder
 of this note we refer to the vertical coordinate in terms of
 log-pressure altitude</p>
 <div class="math">
@@ -779,13 +783,13 @@ differing molecular weights. The formulation for molecular diffusion
 follows (<strong>???</strong>)</p>
 <p>A general vertical diffusion parameterization can be written in terms of
 the divergence of diffusive fluxes:</p>
-<div class="math">
-<p><img src="../_images/math/c1e00ce45321b3c956e206f8c413f2ee87eb9e8a.png" alt="\begin{aligned}
+<div class="math" id="equation-eq:contz1">
+<p><span class="eqno">(7)</span><img src="../_images/math/c1e00ce45321b3c956e206f8c413f2ee87eb9e8a.png" alt="\begin{aligned}
 \frac{\partial }{\partial t} (u,v,q)
      &amp;=&amp; - \frac{1}{\rho} \frac{\partial}{\partial z} (F_u, F_v, F_q) \\
 \end{aligned}"/></p>
-</div><div class="math">
-<p><img src="../_images/math/efd3498cc80cd011daaf2b00768d86eecf13f702.png" alt="\begin{aligned}
+</div><div class="math" id="equation-eq:contz3">
+<p><span class="eqno">(8)</span><img src="../_images/math/efd3498cc80cd011daaf2b00768d86eecf13f702.png" alt="\begin{aligned}
 \frac{\partial}{\partial t} s
      &amp;=&amp; - \frac{1}{\rho} \frac{\partial}{\partial z} F_H + D
 \end{aligned}"/></p>
@@ -794,13 +798,13 @@ geopotential height above the local surface (does not include the
 surface elevation) and <img class="math" src="../_images/math/3cf5aa5abe312e6fd4996975341a43aa566e8d8d.png" alt="D"/>&nbsp;is the heating rate due to the
 dissipation of resolved kinetic energy in the diffusion process. The
 diffusive fluxes are defined as:</p>
-<div class="math">
-<p><img src="../_images/math/de903a39a7c129377b0306343ee8ed4d76a887cc.png" alt="F_{u,v} =-\rho K_m \frac{\partial}{\partial z}(u,v),"/></p>
-</div><div class="math">
-<p><img src="../_images/math/97764be60c030cdb33a88693b5b18afbc0357879.png" alt="F_{H}   =-\rho K_H \frac{\partial s}{\partial z}
+<div class="math" id="equation-eq:fluxz1">
+<p><span class="eqno">(9)</span><img src="../_images/math/de903a39a7c129377b0306343ee8ed4d76a887cc.png" alt="F_{u,v} =-\rho K_m \frac{\partial}{\partial z}(u,v),"/></p>
+</div><div class="math" id="equation-eq:fluxz2">
+<p><span class="eqno">(10)</span><img src="../_images/math/97764be60c030cdb33a88693b5b18afbc0357879.png" alt="F_{H}   =-\rho K_H \frac{\partial s}{\partial z}
          +\rho K_H^t\gamma_{H}                    ,"/></p>
-</div><div class="math">
-<p><img src="../_images/math/51f23a219b7712a2028f7b1f6decc494cca3ee23.png" alt="F_{q}  =-\rho K_q \frac{\partial q}{\partial z}
+</div><div class="math" id="equation-eq:fluxz3">
+<p><span class="eqno">(11)</span><img src="../_images/math/51f23a219b7712a2028f7b1f6decc494cca3ee23.png" alt="F_{q}  =-\rho K_q \frac{\partial q}{\partial z}
          +\rho K_q^t\gamma_{q}  + {\rm sep-flux}  ."/></p>
 </div><p>The viscosity <img class="math" src="../_images/math/3d8e11daf40fcde6e95149df203cef99d6f0e42c.png" alt="K_m"/> and diffusivities <img class="math" src="../_images/math/91068498536d0db237760171da353b6f1ed5984f.png" alt="K_{q,H}"/> are the
 sums of: turbulent components <img class="math" src="../_images/math/f6ea28a2124fce88394218f2f0fea69ddceae32c.png" alt="K_{m,q,H}^t"/>, which dominate below
@@ -808,8 +812,8 @@ the mesopause; and molecular components <img class="math" src="../_images/math/6
 dominate above &nbsp;120 km. The non-local transport terms
 <img class="math" src="../_images/math/9e052a41e960c437f8cd39d1265c0559c7b90539.png" alt="\gamma_{q,H}"/> are given by the ABL parameterization and and the
 kinetic energy dissipation is</p>
-<div class="math">
-<p><img src="../_images/math/ee7064e27e74f746cb161d2f3a5efbc41b948b65.png" alt="D \equiv -\frac{1}{\rho} \left( F_u\frac{\partial u}{\partial z}
+<div class="math" id="equation-eq:diss_heat">
+<p><span class="eqno">(12)</span><img src="../_images/math/ee7064e27e74f746cb161d2f3a5efbc41b948b65.png" alt="D \equiv -\frac{1}{\rho} \left( F_u\frac{\partial u}{\partial z}
               +  F_v\frac{\partial v}{\partial z} \right)."/></p>
 </div><p>The treatment of the turbulent diffusivities <img class="math" src="../_images/math/f6ea28a2124fce88394218f2f0fea69ddceae32c.png" alt="K_{m,q,H}^t"/>, the
 energy dissipation <img class="math" src="../_images/math/3cf5aa5abe312e6fd4996975341a43aa566e8d8d.png" alt="D"/> and the nonlocal transport terms
@@ -818,15 +822,15 @@ be omitted here.</p>
 <div class="section" id="molecular-viscosity-and-diffusivity">
 <h4>7.6.2.1. Molecular viscosity and diffusivity<a class="headerlink" href="#molecular-viscosity-and-diffusivity" title="Permalink to this headline">¶</a></h4>
 <p>The empirical formula for the molecular kinematic viscosity is</p>
-<div class="math">
-<p><img src="../_images/math/2d002766f979430eb98e31059898f75a2eb45de9.png" alt="K_m^m = 3.55\times 10^{-7} T^{2/3} / \rho,"/></p>
+<div class="math" id="equation-Kmm">
+<p><span class="eqno">(13)</span><img src="../_images/math/2d002766f979430eb98e31059898f75a2eb45de9.png" alt="K_m^m = 3.55\times 10^{-7} T^{2/3} / \rho,"/></p>
 </div><p>and the molecular diffusivity for heat is</p>
-<div class="math">
-<p><img src="../_images/math/caef436d674088c7e1de24cf2b0080e144db1c1b.png" alt="K_H^m = P_r K_m^m,"/></p>
+<div class="math" id="equation-Kmh">
+<p><span class="eqno">(14)</span><img src="../_images/math/caef436d674088c7e1de24cf2b0080e144db1c1b.png" alt="K_H^m = P_r K_m^m,"/></p>
 </div><p>where <img class="math" src="../_images/math/7105fc7510fb6041f509989fd183251fe7341e73.png" alt="P_r"/> is the Prandtl number and we assume <img class="math" src="../_images/math/c1a325e786059f12968f96d0d9294aacdfcce75a.png" alt="P_r=1"/> in
 WACCM4.0. The constituent diffusivities are</p>
-<div class="math">
-<p><img src="../_images/math/67a0a6eb7b1659b1b66d0e8fc5c1d472f227e1e6.png" alt="K_q^m = T^{1/2} M_w/ \rho,"/></p>
+<div class="math" id="equation-Kmq">
+<p><span class="eqno">(15)</span><img src="../_images/math/67a0a6eb7b1659b1b66d0e8fc5c1d472f227e1e6.png" alt="K_q^m = T^{1/2} M_w/ \rho,"/></p>
 </div><p>where <img class="math" src="../_images/math/f17d59905f89a054537c343254885d895f7088c7.png" alt="M_w"/> is the molecular weight.</p>
 </div>
 <div class="section" id="diffusive-separation-velocities">
@@ -841,10 +845,10 @@ usual dry air mixture used in the lower atmosphere
 </div>
 <div class="section" id="discretization-of-the-vertical-diffusion-equations">
 <h4>7.6.2.3. Discretization of the vertical diffusion equations<a class="headerlink" href="#discretization-of-the-vertical-diffusion-equations" title="Permalink to this headline">¶</a></h4>
-<p>In CAM4, as in previous version of the CCM, <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:contz1">(7)</a> [eq:fluxz2])
+<p>In CAM4, as in previous version of the CCM, <a href="#equation-eq:contz1">(7)</a> [eq:fluxz2])
 are cast in pressure coordinates, using</p>
-<div class="math">
-<p><img src="../_images/math/b814ecaf40446a9fd08fa4dd6212c672a184da39.png" alt="dp = -\rho g dz,"/></p>
+<div class="math" id="equation-eq:hydrostatic">
+<p><span class="eqno">(16)</span><img src="../_images/math/b814ecaf40446a9fd08fa4dd6212c672a184da39.png" alt="dp = -\rho g dz,"/></p>
 </div><p>and discretized in a time-split form using an Euler backward time step.
 Before describing the numerical solution of the diffusion equations, we
 define a compact notation for the discrete equations. For an arbitrary
@@ -869,53 +873,53 @@ let <img class="math" src="../_images/math/57492f7df33ce09c19e3bbf1b00642ba0b797
 </div><p>Like the continuous equations, the discrete equations are required to
 conserve momentum, total energy and constituents. Neglecting the
 nonlocal transport terms, the discrete forms of
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:contz1">(7)</a> [eq:contz3]) are:</p>
-<div class="math">
-<p><img src="../_images/math/2a818847d193ee9bbf340304e73356fe278d19af.png" alt="\frac{\delta_n (u,v,q)^k}{\delta t} = g \frac{\delta^k F_{u,v,q}}{\delta^k p}"/></p>
-</div><div class="math">
-<p><img src="../_images/math/5bbbc244b6f85b7caa5754f90a86718c73824108.png" alt="\frac{\delta_n s^k}{\delta t} = g \frac{\delta^k F_{H}}{\delta^k p} + D^k."/></p>
+<a href="#equation-eq:contz1">(7)</a> [eq:contz3]) are:</p>
+<div class="math" id="equation-eq:vduvq">
+<p><span class="eqno">(17)</span><img src="../_images/math/2a818847d193ee9bbf340304e73356fe278d19af.png" alt="\frac{\delta_n (u,v,q)^k}{\delta t} = g \frac{\delta^k F_{u,v,q}}{\delta^k p}"/></p>
+</div><div class="math" id="equation-eq:vds">
+<p><span class="eqno">(18)</span><img src="../_images/math/5bbbc244b6f85b7caa5754f90a86718c73824108.png" alt="\frac{\delta_n s^k}{\delta t} = g \frac{\delta^k F_{H}}{\delta^k p} + D^k."/></p>
 </div><p>For interior interfaces, <img class="math" src="../_images/math/39cdd02466dd1b2b4dd39695a2dfe178a156128c.png" alt="1\le k \le L-1"/>,</p>
-<div class="math">
-<p><img src="../_images/math/02e2b47d4eef21b97185adb128a63fcb72b3d4b0.png" alt="F_{u,v}^{k+} = \left(g\rho^2 K_m\right)_n^{k+} \frac{\delta^{k+} (u,v)_{n+1}} {\delta^{k+} p}"/></p>
-</div><div class="math">
-<p><img src="../_images/math/1360fe889d08c936374553f1a29a50c9d4740ec4.png" alt="F_{q,H}^{k+} = \left(g\rho^2 K_{q,H}\right)_n^{k+} \frac{\delta^{k+} (u,v)_{n+1}} {\delta^{k+} p}."/></p>
+<div class="math" id="equation-eq:vdfuv">
+<p><span class="eqno">(19)</span><img src="../_images/math/02e2b47d4eef21b97185adb128a63fcb72b3d4b0.png" alt="F_{u,v}^{k+} = \left(g\rho^2 K_m\right)_n^{k+} \frac{\delta^{k+} (u,v)_{n+1}} {\delta^{k+} p}"/></p>
+</div><div class="math" id="equation-eq:vdfqs">
+<p><span class="eqno">(20)</span><img src="../_images/math/1360fe889d08c936374553f1a29a50c9d4740ec4.png" alt="F_{q,H}^{k+} = \left(g\rho^2 K_{q,H}\right)_n^{k+} \frac{\delta^{k+} (u,v)_{n+1}} {\delta^{k+} p}."/></p>
 </div><p>Surface fluxes <img class="math" src="../_images/math/9454e014a1fec72e1c9e7addd1a7b2910c5213ac.png" alt="F_{u,v,q,H}^{L+}"/> are provided explicitly at time
 <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> by separate surface models for land, ocean, and sea ice while
 the top boundary fluxes are usually <img class="math" src="../_images/math/327b1b862b8a9d107af2a643000a17296a43cb43.png" alt="F_{u,v,q,H}^{1-}=0"/>. The
 turbulent diffusion coefficients <img class="math" src="../_images/math/ab4ad6b763fff7cb5bef7ef4ea6023701dae8d23.png" alt="K_{m,q,H}^{t}"/> and non-local
 transport terms <img class="math" src="../_images/math/9e052a41e960c437f8cd39d1265c0559c7b90539.png" alt="\gamma_{q,H}"/> are calculated for time <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/>
 by the turbulence model (identical to CAM4). The molecular diffusion
-coefficients, given by <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-Kmm">(13)</a> [Kmq]) are also evaluated at time
+coefficients, given by <a href="#equation-Kmm">(13)</a> [Kmq]) are also evaluated at time
 <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/>.</p>
 </div>
 <div class="section" id="solution-of-the-vertical-diffusion-equations">
 <h4>7.6.2.4. Solution of the vertical diffusion equations<a class="headerlink" href="#solution-of-the-vertical-diffusion-equations" title="Permalink to this headline">¶</a></h4>
 <p>Neglecting the discretization of <img class="math" src="../_images/math/f6ea28a2124fce88394218f2f0fea69ddceae32c.png" alt="K_{m,q,H}^t"/>, <img class="math" src="../_images/math/3cf5aa5abe312e6fd4996975341a43aa566e8d8d.png" alt="D"/> and
 <img class="math" src="../_images/math/9e052a41e960c437f8cd39d1265c0559c7b90539.png" alt="\gamma_{q,H}"/>, a series of time-split operators is defined by
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:vduvq">(17)</a> [eq:vdfqs]). Once the diffusivities (<img class="math" src="../_images/math/1bed79a742c630c905571edab070a7032fd9cc13.png" alt="K_{m,q,H}"/>) and
+<a href="#equation-eq:vduvq">(17)</a> [eq:vdfqs]). Once the diffusivities (<img class="math" src="../_images/math/1bed79a742c630c905571edab070a7032fd9cc13.png" alt="K_{m,q,H}"/>) and
 the non-local transport terms (<img class="math" src="../_images/math/9e052a41e960c437f8cd39d1265c0559c7b90539.png" alt="\gamma_{q,H}"/>) have been
-determined, the solution of <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:vduvq">(17)</a> [eq:vdfqs]), proceeds in several
+determined, the solution of <a href="#equation-eq:vduvq">(17)</a> [eq:vdfqs]), proceeds in several
 steps.</p>
 <ol class="arabic simple">
 <li>update the bottom level values of <img class="math" src="../_images/math/92e3f44c99a016c5238a790c96f12fd46aa93c4a.png" alt="u"/>, <img class="math" src="../_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/>, <img class="math" src="../_images/math/620a3ce6403ec82f1347af9985bc03f7a9382f4a.png" alt="q"/> and
 <img class="math" src="../_images/math/63751cb2e98ba393b0f22e45ca127c3cebb61487.png" alt="s"/> using the surface fluxes;</li>
-<li>invert <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:vduvq">(17)</a>  and <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:vdfuv">(19)</a>  for <img class="math" src="../_images/math/685a0fc17fcac6c744af6745f9518553a69134b0.png" alt="u,v_{n+1}"/>;</li>
+<li>invert <a href="#equation-eq:vduvq">(17)</a>  and <a href="#equation-eq:vdfuv">(19)</a>  for <img class="math" src="../_images/math/685a0fc17fcac6c744af6745f9518553a69134b0.png" alt="u,v_{n+1}"/>;</li>
 <li>compute <img class="math" src="../_images/math/3cf5aa5abe312e6fd4996975341a43aa566e8d8d.png" alt="D"/> and use to update the <img class="math" src="../_images/math/63751cb2e98ba393b0f22e45ca127c3cebb61487.png" alt="s"/> profile;</li>
-<li>invert <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:vduvq">(17)</a> [eq:vds]) and <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:vdfqs">(20)</a>  for <img class="math" src="../_images/math/a9235e4f942dea2c4df0db2ef19db37b942f1250.png" alt="s_{n+1}"/> and
+<li>invert <a href="#equation-eq:vduvq">(17)</a> [eq:vds]) and <a href="#equation-eq:vdfqs">(20)</a>  for <img class="math" src="../_images/math/a9235e4f942dea2c4df0db2ef19db37b942f1250.png" alt="s_{n+1}"/> and
 <img class="math" src="../_images/math/ff37fba1bbd214f4ae41eb4c5a31b185acc8dc17.png" alt="q_{n+1}"/></li>
 </ol>
 <p>Note that since all parameterizations in CAM4 return tendencies rather
 modified profiles, the actual quantities returned by the vertical
 diffusion are <img class="math" src="../_images/math/fb1c7ca1011343a1405c200740ad3f07bbceae9d.png" alt="\delta_n (u,v,s,q) / \delta t"/>.</p>
-<p>Equations <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:vduvq">(17)</a> [eq:vdfqs]) constitute a set of four tridiagonal
+<p>Equations <a href="#equation-eq:vduvq">(17)</a> [eq:vdfqs]) constitute a set of four tridiagonal
 systems of the form</p>
-<div class="math">
-<p><img src="../_images/math/2cc007143529d4191d1d49947f61f5b52f4968dd.png" alt="-A^k \psi^{k+1}_{n+1} + B^k\psi^k_{n+1} -C^k\psi^{k-1}_{n+1}
+<div class="math" id="equation-eq:tridiag1">
+<p><span class="eqno">(21)</span><img src="../_images/math/2cc007143529d4191d1d49947f61f5b52f4968dd.png" alt="-A^k \psi^{k+1}_{n+1} + B^k\psi^k_{n+1} -C^k\psi^{k-1}_{n+1}
      = \psi^k_{n\prime},"/></p>
 </div><p>where <img class="math" src="../_images/math/49a93cea3103037ef3f9477074c0c42147afd926.png" alt="\psi_{n\prime}"/> indicates <img class="math" src="../_images/math/92e3f44c99a016c5238a790c96f12fd46aa93c4a.png" alt="u"/>, <img class="math" src="../_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/>, <img class="math" src="../_images/math/620a3ce6403ec82f1347af9985bc03f7a9382f4a.png" alt="q"/>,
 or <img class="math" src="../_images/math/63751cb2e98ba393b0f22e45ca127c3cebb61487.png" alt="s"/> after updating from time <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> values with the nonlocal
 and boundary fluxes. The super-diagonal (<img class="math" src="../_images/math/f39de020351b42ffc48ebca084da313b1182de54.png" alt="A^k"/>), diagonal
-(<img class="math" src="../_images/math/3a57fe7bf4f7e6c6ad0a84b8421eb5fc0a062f41.png" alt="B^k"/>) and sub-diagonal (<img class="math" src="../_images/math/b7d7f20a45ea539d42fb3d0c2ed27a4cf7642db3.png" alt="C^k"/>) elements of <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag1">(21)</a>
+(<img class="math" src="../_images/math/3a57fe7bf4f7e6c6ad0a84b8421eb5fc0a062f41.png" alt="B^k"/>) and sub-diagonal (<img class="math" src="../_images/math/b7d7f20a45ea539d42fb3d0c2ed27a4cf7642db3.png" alt="C^k"/>) elements of <a href="#equation-eq:tridiag1">(21)</a>
 are:</p>
 <div class="math">
 <p><img src="../_images/math/94ada5349e6718ba723c44cc31f4677d59644ce1.png" alt="\begin{aligned}
@@ -924,35 +928,35 @@ A^k &amp;=&amp; \frac{1}{\delta^{k} p}
 B^k &amp;=&amp; 1 + A^k + C^k, \\
 C^k &amp;=&amp; \frac{1}{\delta^{k} p}
      \frac{\delta t}{\delta^{k-}p}\left(g^2\rho^2 K\right)_n^{k-}.\end{aligned}"/></p>
-</div><p>The solution of <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag1">(21)</a>  has the form</p>
-<div class="math">
-<p><img src="../_images/math/6f9df91ca49a4ad8cf7c36dcf64b6710d5022787.png" alt="\psi^k_{n+1} = E^k \psi^{k-1}_{n+1} + F^k,"/></p>
+</div><p>The solution of <a href="#equation-eq:tridiag1">(21)</a>  has the form</p>
+<div class="math" id="equation-eq:tridiag2">
+<p><span class="eqno">(22)</span><img src="../_images/math/6f9df91ca49a4ad8cf7c36dcf64b6710d5022787.png" alt="\psi^k_{n+1} = E^k \psi^{k-1}_{n+1} + F^k,"/></p>
 </div><p>or,</p>
-<div class="math">
-<p><img src="../_images/math/6953b34dbd57c65a7d018f5cf29066504e8a75a6.png" alt="\psi^{k+1}_{n+1} = E^{k+1} \psi^{k}_{n+1} + F^{k+1}."/></p>
-</div><p>Substituting <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag3">(23)</a>  into <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag1">(21)</a> ,</p>
-<div class="math">
-<p><img src="../_images/math/80af008fd97d4e52507e3093ac6c7749af59a0a2.png" alt="\psi^{k}_{n+1} = \frac{C^k}{B^k - A^k E^{k+1}} \psi^{k-1}_{n+1}
+<div class="math" id="equation-eq:tridiag3">
+<p><span class="eqno">(23)</span><img src="../_images/math/6953b34dbd57c65a7d018f5cf29066504e8a75a6.png" alt="\psi^{k+1}_{n+1} = E^{k+1} \psi^{k}_{n+1} + F^{k+1}."/></p>
+</div><p>Substituting <a href="#equation-eq:tridiag3">(23)</a>  into <a href="#equation-eq:tridiag1">(21)</a> ,</p>
+<div class="math" id="equation-eq:tridiag4">
+<p><span class="eqno">(24)</span><img src="../_images/math/80af008fd97d4e52507e3093ac6c7749af59a0a2.png" alt="\psi^{k}_{n+1} = \frac{C^k}{B^k - A^k E^{k+1}} \psi^{k-1}_{n+1}
      + \frac{\psi^k_{n\prime} + A^k F^{k+1}}{B^k - A^k E^{k+1}}."/></p>
-</div><p>Comparing <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag2">(22)</a>  and <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag4">(24)</a> , we find</p>
-<div class="math">
-<p><img src="../_images/math/2b6eed94627a52657011f5ab441170fea30545bd.png" alt="E^k = \frac{C^k} {B^k - A^k E^{k+1}}, \quad L&gt;k&gt;1,"/></p>
-</div><div class="math">
-<p><img src="../_images/math/72e77eca217dd7396c3168f05763c64c80756298.png" alt="F^k = \frac{\psi^k_{n\prime} + A^k F^{k+1}}{B^k - A^k E^{k+1}}, \quad L&gt;k&gt;1"/></p>
+</div><p>Comparing <a href="#equation-eq:tridiag2">(22)</a>  and <a href="#equation-eq:tridiag4">(24)</a> , we find</p>
+<div class="math" id="equation-eq:tridiag5">
+<p><span class="eqno">(25)</span><img src="../_images/math/2b6eed94627a52657011f5ab441170fea30545bd.png" alt="E^k = \frac{C^k} {B^k - A^k E^{k+1}}, \quad L&gt;k&gt;1,"/></p>
+</div><div class="math" id="equation-eq:tridiag6">
+<p><span class="eqno">(26)</span><img src="../_images/math/72e77eca217dd7396c3168f05763c64c80756298.png" alt="F^k = \frac{\psi^k_{n\prime} + A^k F^{k+1}}{B^k - A^k E^{k+1}}, \quad L&gt;k&gt;1"/></p>
 </div><p>The terms <img class="math" src="../_images/math/29242a8e13ed87a6456b3b62df2203326a97e6de.png" alt="E^k"/> and <img class="math" src="../_images/math/528dd56eb4607d96b43738a34aee085523a1c6ad.png" alt="F^k"/> can be determined upward from
 <img class="math" src="../_images/math/ae9c198bcc2412e3a949e1158dae9dea21a9be53.png" alt="k=L"/>, using the boundary conditions</p>
 <div class="math">
 <p><img src="../_images/math/a96b38ae26640498370ae44aeedf04f70d1a7b06.png" alt="E^{L+1} = F^{L+1} = A^L = 0."/></p>
-</div><p>Finally, <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag4">(24)</a>  can be solved downward for
+</div><p>Finally, <a href="#equation-eq:tridiag4">(24)</a>  can be solved downward for
 <img class="math" src="../_images/math/2bf05b833c33fec9d9483ff2d8f4652ecfcea69a.png" alt="\psi^{k}_{n+1}"/>, using the boundary condition</p>
 <div class="math">
 <p><img src="../_images/math/55ff573a96e4da7b73a4f30c87e766af45836913.png" alt="C^1 = 0 \Rightarrow E^1 = 0."/></p>
 </div><p>CCM1-3 used the same solution method, but with the order of the solution
-reversed, which merely requires writing <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag3">(23)</a>  for
+reversed, which merely requires writing <a href="#equation-eq:tridiag3">(23)</a>  for
 <img class="math" src="../_images/math/3fd81da183edbe205a497d780ef3fd383383e8a4.png" alt="\psi^{k-1}_{n+1}"/> instead of <img class="math" src="../_images/math/bb6083a50bec539befda9a98361de69408584027.png" alt="\psi^{k+1}_{n+1}"/>. The order
 used here is particularly convenient because the turbulent diffusivities
 for heat and all constituents are the same but their molecular
-diffusivities are not. Since the terms in <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag5">(25)</a> and <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tridiag6">(26)</a>
+diffusivities are not. Since the terms in <a href="#equation-eq:tridiag5">(25)</a> and <a href="#equation-eq:tridiag6">(26)</a>
 are determined from the bottom upward, it is only necessary to
 recalculate <img class="math" src="../_images/math/f39de020351b42ffc48ebca084da313b1182de54.png" alt="A^k"/>, <img class="math" src="../_images/math/b7d7f20a45ea539d42fb3d0c2ed27a4cf7642db3.png" alt="C^k"/>, <img class="math" src="../_images/math/29242a8e13ed87a6456b3b62df2203326a97e6de.png" alt="E^k"/> and <img class="math" src="../_images/math/58b3cc5e8a3f35243dbb3ce45855759a6a2fc4e0.png" alt="1/({B^k - A^k E^{k+1}})"/>
 for each constituent within the region where molecular
@@ -984,60 +988,60 @@ parameterization used in WACCM4.0.</p>
 <p>Following (<strong>???</strong>), the continuous equations for the gravity wave
 parameterization are obtained from the two-dimensional hydrostatic
 momentum, continuity and thermodynamic equations in a vertical plane:</p>
-<div class="math">
-<p><img src="../_images/math/43ca2e74e28808eae3413fd1333ac596b21f5f93.png" alt="\left( \frac{\partial}{\partial t} + u\frac{\partial}{\partial x}\right)u
+<div class="math" id="equation-eq:gw_mom">
+<p><span class="eqno">(27)</span><img src="../_images/math/43ca2e74e28808eae3413fd1333ac596b21f5f93.png" alt="\left( \frac{\partial}{\partial t} + u\frac{\partial}{\partial x}\right)u
   = -\frac{\partial\Phi}{\partial x}\, ,"/></p>
-</div><div class="math">
-<p><img src="../_images/math/aa162612782e94d96b57b31c115ad73f81f7bf29.png" alt="\frac{\partial u}{\partial x} + \frac{\partial W}{\partial Z} = 0\, ,"/></p>
-</div><div class="math">
-<p><img src="../_images/math/cd867a237b3c1bf6747c74ba332f24f35c9c5aee.png" alt="\left( \frac{\partial}{\partial t} + u\frac{\partial}{\partial x}\right)
+</div><div class="math" id="equation-eq:gw_cont">
+<p><span class="eqno">(28)</span><img src="../_images/math/aa162612782e94d96b57b31c115ad73f81f7bf29.png" alt="\frac{\partial u}{\partial x} + \frac{\partial W}{\partial Z} = 0\, ,"/></p>
+</div><div class="math" id="equation-eq:gw_therm">
+<p><span class="eqno">(29)</span><img src="../_images/math/cd867a237b3c1bf6747c74ba332f24f35c9c5aee.png" alt="\left( \frac{\partial}{\partial t} + u\frac{\partial}{\partial x}\right)
 \ \frac{\partial\Phi}{\partial Z} + N^2 w = 0\, ."/></p>
 </div><p>Where <img class="math" src="../_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png" alt="N"/> is the local Brunt-Väisällä frequency, and <img class="math" src="../_images/math/953bde2ab2fca30897f66185e5b37b73747b8b46.png" alt="W"/> is
 the vertical velocity in log pressure height (<img class="math" src="../_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/>) coordinates.
-Eqs. <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_mom">(27)</a> –<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_therm">(29)</a>  are linearized
+Eqs. <a href="#equation-eq:gw_mom">(27)</a> –<a href="#equation-eq:gw_therm">(29)</a>  are linearized
 about a large scale background wind <img class="math" src="../_images/math/e26e04e5fa7b7a02348a45f4e4ba2915b4a2e146.png" alt="\overline u"/>, with
 perturbations <img class="math" src="../_images/math/249c88d8edc2e3a42206bad7495c0b7bdc34545b.png" alt="u^\prime,w^\prime"/>, and combined to obtain:</p>
-<div class="math">
-<p><img src="../_images/math/d82c410652636de6ee9cb4b8cf58e94465bcc542.png" alt="\left( \frac{\partial}{\partial t} +
+<div class="math" id="equation-eq:gw_lin">
+<p><span class="eqno">(30)</span><img src="../_images/math/d82c410652636de6ee9cb4b8cf58e94465bcc542.png" alt="\left( \frac{\partial}{\partial t} +
   {\overline u}\frac{\partial}{\partial x}\right)^2
      \frac{\partial^2 w^\prime}{\partial Z^2}
    + N^2 \frac{\partial^2 w^\prime}{\partial x^2} = 0\, ."/></p>
-</div><p>Solutions to <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_lin">(30)</a>  are assumed to be of the form:</p>
-<div class="math">
-<p><img src="../_images/math/b642ef7cb31b92ea1279ac59820141caf51b9445.png" alt="w^\prime = {\hat w} \, e^{ik(x-ct)} \, e^{Z/2H} \, ,"/></p>
+</div><p>Solutions to <a href="#equation-eq:gw_lin">(30)</a>  are assumed to be of the form:</p>
+<div class="math" id="equation-eq:gw_sol">
+<p><span class="eqno">(31)</span><img src="../_images/math/b642ef7cb31b92ea1279ac59820141caf51b9445.png" alt="w^\prime = {\hat w} \, e^{ik(x-ct)} \, e^{Z/2H} \, ,"/></p>
 </div><p>where <img class="math" src="../_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/> is the scale height, <img class="math" src="../_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> is the horizontal
 wavenumber and <img class="math" src="../_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is the phase speed of the wave. Substituting
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_sol">(31)</a> into <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_lin">(30)</a> , one obtains:</p>
-<div class="math">
-<p><img src="../_images/math/87aba607b635e5cfb2a818532906d8f8fd8e1f63.png" alt="-k^2 (\overline u -c)^2
+<a href="#equation-eq:gw_sol">(31)</a> into <a href="#equation-eq:gw_lin">(30)</a> , one obtains:</p>
+<div class="math" id="equation-eq:gw_what">
+<p><span class="eqno">(32)</span><img src="../_images/math/87aba607b635e5cfb2a818532906d8f8fd8e1f63.png" alt="-k^2 (\overline u -c)^2
  \left( \frac{\partial}{\partial Z} + \frac{1}{2H} \right)^2{\hat w}
  - k^2 N^2 {\hat w} = 0\, ."/></p>
 </div><p>Neglecting <img class="math" src="../_images/math/92b767bea83ae358c4c6573329c526e9c88094f0.png" alt="\frac{1}{2H}"/> compared to
 <img class="math" src="../_images/math/9b20131cc561633d10d8350894ebc8eab754e985.png" alt="\frac{\partial}{\partial Z}"/> in eq:<cite>gw_what</cite>, one
 obtains the final form of the two dimensional wave equation:</p>
-<div class="math">
-<p><img src="../_images/math/21b4f996481f8befd85fd6f574641cb139034e21.png" alt="\frac{d^2 {\hat w}}{d Z^2} + \lambda^2 {\hat w} = 0\, ,"/></p>
+<div class="math" id="equation-eq:gw_2d">
+<p><span class="eqno">(33)</span><img src="../_images/math/21b4f996481f8befd85fd6f574641cb139034e21.png" alt="\frac{d^2 {\hat w}}{d Z^2} + \lambda^2 {\hat w} = 0\, ,"/></p>
 </div><p>with the coefficient defined as:</p>
-<div class="math">
-<p><img src="../_images/math/ffea216323f5eeb9722e1f471542041262336524.png" alt="\lambda= \frac{N}{(\overline u -c)}\, ."/></p>
-</div><p>The WKB solution of <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_2d">(33)</a>  is:</p>
-<div class="math">
-<p><img src="../_images/math/a8a5246deedec22978aa79a4c7081892e1d67db8.png" alt="{\hat w} = A \lambda^{-1/2}\exp\left(i\int_0^Z\lambda
+<div class="math" id="equation-eq:gw_lam">
+<p><span class="eqno">(34)</span><img src="../_images/math/ffea216323f5eeb9722e1f471542041262336524.png" alt="\lambda= \frac{N}{(\overline u -c)}\, ."/></p>
+</div><p>The WKB solution of <a href="#equation-eq:gw_2d">(33)</a>  is:</p>
+<div class="math" id="equation-eq:gw_wkbsol">
+<p><span class="eqno">(35)</span><img src="../_images/math/a8a5246deedec22978aa79a4c7081892e1d67db8.png" alt="{\hat w} = A \lambda^{-1/2}\exp\left(i\int_0^Z\lambda
 dz^\prime\right)\, ,"/></p>
-</div><p>and the full solution, from <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_sol">(31)</a> , is:</p>
-<div class="math">
-<p><img src="../_images/math/d07614b625e93082d2cb9dd9ba5d57ff2a7ed9ba.png" alt="w^\prime(Z,t) = A \lambda^{-1/2}\exp\left(i\int_0^Z\lambda
+</div><p>and the full solution, from <a href="#equation-eq:gw_sol">(31)</a> , is:</p>
+<div class="math" id="equation-eq:gw_final">
+<p><span class="eqno">(36)</span><img src="../_images/math/d07614b625e93082d2cb9dd9ba5d57ff2a7ed9ba.png" alt="w^\prime(Z,t) = A \lambda^{-1/2}\exp\left(i\int_0^Z\lambda
 dz^\prime\right) \ e^{ik(x-ct)}\  e^{Z/2H} \, ."/></p>
 </div><p>The constant <img class="math" src="../_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> is determined from the wave amplitude at the
 source (<img class="math" src="../_images/math/b4a88b332e9885e000f4ad02238b759cf4b179b3.png" alt="z=0"/>), The Reynolds stress associated with
 eq:<cite>eq:gw_final</cite> is:</p>
-<div class="math">
-<p><img src="../_images/math/e7f63439ad79019aacd9c4afce2ff218aca7fa8f.png" alt="\tau(Z) = \tau(0) = \rho\overline{ u^\prime  w^\prime} = -\frac{2}{k}
+<div class="math" id="equation-eq:gw_reyn">
+<p><span class="eqno">(37)</span><img src="../_images/math/e7f63439ad79019aacd9c4afce2ff218aca7fa8f.png" alt="\tau(Z) = \tau(0) = \rho\overline{ u^\prime  w^\prime} = -\frac{2}{k}
 |A|^2\rho_0{\rm sgn}(\lambda)\, ,"/></p>
 </div><p>and is conserved, while the momentum flux
 <img class="math" src="../_images/math/4c06a17fe10d1be8699744f96cb4448e890f1908.png" alt="\overline{ u^\prime  w^\prime} = -(m/k)\ \overline{w^\prime w^\prime}"/>
 grows exponentially with altitude as <img class="math" src="../_images/math/c50478bed79e0042d9c546310e11e8ab944d65ed.png" alt="\exp(Z/H)"/>, per
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_final">(36)</a>. We note that the vertical flux of wave energy
+<a href="#equation-eq:gw_final">(36)</a>. We note that the vertical flux of wave energy
 is <img class="math" src="../_images/math/1d9010cdefdad04a3019d718602d20a81e3ff07e.png" alt="c_{gz}\ E' = (U-c)\ \tau"/> ((<strong>???</strong>)), where <img class="math" src="../_images/math/dec7eea860f9426fdd7b97e566213bb0179dca00.png" alt="c_{gz}"/> is
 the vertical group velocity, so that deposition of wave momentum into
 the mean flow will be accompanied by a transfer of energy to the
@@ -1045,23 +1049,23 @@ background state.</p>
 </div>
 <div class="section" id="saturation-condition">
 <h4>7.6.3.2. Saturation condition<a class="headerlink" href="#saturation-condition" title="Permalink to this headline">¶</a></h4>
-<p>The wave amplitude in <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_final">(36)</a>  grows as <img class="math" src="../_images/math/5eb976a66e416bc49627931588b8534ce2a92c51.png" alt="e^{Z/2H}"/>
+<p>The wave amplitude in <a href="#equation-eq:gw_final">(36)</a>  grows as <img class="math" src="../_images/math/5eb976a66e416bc49627931588b8534ce2a92c51.png" alt="e^{Z/2H}"/>
 until the wave becomes unstable to convective overturning,
 Kelvin-Helmholtz instability, or other nonlinear processes. At that
 point, the wave amplitude is assumed to be limited to the amplitude that
 would trigger the instability and the wave is “saturated”. The
 saturation condition used in CAM4 is from (<strong>???</strong>), based on a maximum
 Froude number (<img class="math" src="../_images/math/5169a3d155a81a651e664d3ed7c2ec2e1e39f160.png" alt="F_c"/>), or streamline slope.</p>
-<div class="math">
-<p><img src="../_images/math/224d57ee468d34ba19226d63da993648e40c034d.png" alt="|\rho\overline{ u^\prime  w^\prime}|
+<div class="math" id="equation-eq:gw_satcond">
+<p><span class="eqno">(38)</span><img src="../_images/math/224d57ee468d34ba19226d63da993648e40c034d.png" alt="|\rho\overline{ u^\prime  w^\prime}|
     \leq \tau^{*} = F_c^2\frac{k}{2}\rho \frac{|\overline{u}-c|^3}{N}
   \, ,"/></p>
 </div><p>where <img class="math" src="../_images/math/f0855d9044452cca883d8440f3ce5264590a7450.png" alt="\tau^*"/> is the saturation stress and <img class="math" src="../_images/math/a764ea58f88e54898a8017874bc2a4459e7249cb.png" alt="F_c^2=0.5"/>. In
 , <img class="math" src="../_images/math/53ff59df2836f5c2dc76d6db62aa8f72c05018ef.png" alt="F_c^2=1"/> and is omitted hereafter. Following (<strong>???</strong>), within
 a saturated region the momentum tendency can be determined analytically
 from the divergence of <img class="math" src="../_images/math/f0855d9044452cca883d8440f3ce5264590a7450.png" alt="\tau^*"/>:</p>
-<div class="math">
-<p><img src="../_images/math/87c54eed4150abc4021803c43ef86699cf45a40e.png" alt="\begin{aligned}
+<div class="math" id="equation-eq:gw_utend">
+<p><span class="eqno">(39)</span><img src="../_images/math/87c54eed4150abc4021803c43ef86699cf45a40e.png" alt="\begin{aligned}
 \frac{\partial \overline u}{\partial t} &amp;= -\frac{e}{\rho}\frac{\partial}{\partial Z}
  \rho\overline{ u^\prime  w^\prime}\, , \nonumber \\
 &amp; \simeq -e \frac{k}{2} \frac{(\overline u-c)^3}{N}
@@ -1069,7 +1073,7 @@ from the divergence of <img class="math" src="../_images/math/f0855d9044452cca88
 &amp; \simeq -e \frac{k}{2} \frac{(\overline u-c)^3}{N H}, \end{aligned}"/></p>
 </div><p>where <img class="math" src="../_images/math/78a06cf7a34f39fde71fbba0d5539baae7c72d4e.png" alt="e"/> is an “efficiency” factor. For a background wave
 spectrum, <img class="math" src="../_images/math/78a06cf7a34f39fde71fbba0d5539baae7c72d4e.png" alt="e"/> represents the temporal and spatial intermittency in
-the wave sources. The analytic solution <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_utend">(39)</a>  is not
+the wave sources. The analytic solution <a href="#equation-eq:gw_utend">(39)</a>  is not
 used in WACCM4.0; it is shown here to illustrate how the acceleration due to
 breaking gravity waves depends on the intrinsic phase speed. In the
 model, the stress profile is computed at interfaces and differenced to
@@ -1084,15 +1088,15 @@ periods of mesoscale gravity waves are short compared to IR relaxation
 time scales throughout the atmosphere, we ignore radiative damping. We
 take into account the molecular viscosity, <img class="math" src="../_images/math/0b73083b06bd542907e4d52067d1541be311d168.png" alt="K_m^m"/>, such that the
 stress profile is given by:</p>
-<div class="math">
-<p><img src="../_images/math/fae894247ed2c5381e84b89e860a2d29c8f43cf1.png" alt="\tau(Z) =  \tau(Z_t) \exp\left(-\frac{2}{H}\int_0^Z\lambda_i
+<div class="math" id="equation-eq:gw_taudamp">
+<p><span class="eqno">(40)</span><img src="../_images/math/fae894247ed2c5381e84b89e860a2d29c8f43cf1.png" alt="\tau(Z) =  \tau(Z_t) \exp\left(-\frac{2}{H}\int_0^Z\lambda_i
 dz^\prime\right) \, ,"/></p>
 </div><p>where <img class="math" src="../_images/math/6e13f5ae4f75f274ed94ad5c809c3d7bb96f7232.png" alt="Z_t"/> denotes the top of the region, below <img class="math" src="../_images/math/bcb2457ac9d8995a4f34d57cadac7ecbbe58f3bd.png" alt="Z"/>, not
 affected by thermal dissipation or molecular diffusion. The imaginary
 part of the local vertical wavenumber, <img class="math" src="../_images/math/159e1bfcbbeedf7e28983ee80db2b2d37c3b3ebc.png" alt="\lambda_i"/> is then:</p>
-<div class="math">
-<p><img src="../_images/math/658b1b1fa5ad36d3262dde3e72c60fdbe6eae2a0.png" alt="\lambda_i = \frac{N^3 \ K_m^m}{2 k (\overline u -c)^4 } \, ."/></p>
-</div><p>In WACCM4.0, (<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_taudamp">(40)</a> – <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_lambdai">(41)</a>) are only used
+<div class="math" id="equation-eq:gw_lambdai">
+<p><span class="eqno">(41)</span><img src="../_images/math/658b1b1fa5ad36d3262dde3e72c60fdbe6eae2a0.png" alt="\lambda_i = \frac{N^3 \ K_m^m}{2 k (\overline u -c)^4 } \, ."/></p>
+</div><p>In WACCM4.0, (<a href="#equation-eq:gw_taudamp">(40)</a> – <a href="#equation-eq:gw_lambdai">(41)</a>) are only used
 within the domain where molecular diffusion is important (above
 <img class="math" src="../_images/math/261ade2451615c3837418a8b2450a60d1e9b4b35.png" alt="\sim 75"/> km). At lower altitudes, molecular diffusion is
 negligible, <img class="math" src="../_images/math/c844830b0dca35bac64b2fb66315626cff566617.png" alt="\lambda_i \rightarrow 0"/>, and <img class="math" src="../_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> is
@@ -1110,19 +1114,19 @@ transport depends on the dissipation mechanism; in WACCM4.0, we assume that the
 dissipation can be represented by a linear damping on the potential
 temperature and constituent perturbations. For potential temperature,
 <img class="math" src="../_images/math/3be04d4207434584251f6921820c24ac9fa8c6f1.png" alt="\theta"/>, this leads to:</p>
-<div class="math">
-<p><img src="../_images/math/432b46cff010237669d0e05afd0632e208394f36.png" alt="\left( {\partial \over \partial t} + \overline u {\partial \over \partial x}
+<div class="math" id="equation-eq:gw_thetaprime">
+<p><span class="eqno">(42)</span><img src="../_images/math/432b46cff010237669d0e05afd0632e208394f36.png" alt="\left( {\partial \over \partial t} + \overline u {\partial \over \partial x}
 \right) \theta^\prime + w' {\partial \overline\theta \over \partial z}
 = -\delta \theta^\prime \, ,"/></p>
 </div><p>where <img class="math" src="../_images/math/a702e781dfc76762a3a132c2031fba8898430925.png" alt="\delta"/> is the dissipation rate implied by wave breaking,
 which depends on the wave’s group velocity, <img class="math" src="../_images/math/dec7eea860f9426fdd7b97e566213bb0179dca00.png" alt="c_{gz}"/> (see <a class="reference internal" href="chapter8.html#garcia-91" id="id37">[Gar01]</a>).</p>
-<div class="math">
-<p><img src="../_images/math/2244ada9b7221395f2438ad5fbddfdd3282114ef.png" alt="\delta = {c_{gz} \over 2H} = k \ {(\overline u - c)^2 \over 2H N}
+<div class="math" id="equation-eq:gw_dissip">
+<p><span class="eqno">(43)</span><img src="../_images/math/2244ada9b7221395f2438ad5fbddfdd3282114ef.png" alt="\delta = {c_{gz} \over 2H} = k \ {(\overline u - c)^2 \over 2H N}
 \, ."/></p>
-</div><p>Substitution of <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_dissip">(43)</a>  into
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_thetaprime">(42)</a>  then yields the eddy heat flux:</p>
-<div class="math">
-<p><img src="../_images/math/babad9ab387e3f548c060ba07f8048075eb1a02d.png" alt="\overline{w^\prime \theta^\prime}
+</div><p>Substitution of <a href="#equation-eq:gw_dissip">(43)</a>  into
+<a href="#equation-eq:gw_thetaprime">(42)</a>  then yields the eddy heat flux:</p>
+<div class="math" id="equation-eq:gw_kzz">
+<p><span class="eqno">(44)</span><img src="../_images/math/babad9ab387e3f548c060ba07f8048075eb1a02d.png" alt="\overline{w^\prime \theta^\prime}
 = -\left[ {\delta \ \overline{w^\prime w^\prime}
 \over k^2(\overline u - c)^2 + \delta^2} \right]
 {\partial \overline\theta \over \partial z} \, ."/></p>
@@ -1131,11 +1135,11 @@ constituents, with mixing ratio substituted in place of potential
 temperature in ([eq:gw:sub:<cite>k</cite>zz]). We note that these wave fluxes are
 always downgradient and that, for convenience of solution, they may be
 represented as vertical diffusion, with coefficient <img class="math" src="../_images/math/296f8d1a64a47c4d50017fd1ae3e1abece6d1106.png" alt="K_{zz}"/> equal
-to the term in brackets in <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_kzz">(44)</a> , but they do not
+to the term in brackets in <a href="#equation-eq:gw_kzz">(44)</a> , but they do not
 represent turbulent diffusive fluxes but rather eddy fluxes. Any
 additional turbulent fluxes due to wave breaking are ignored. To take
 into account the effect of localization of turbulence (e.g., <a class="reference internal" href="chapter8.html#fritts-dunkerton-85" id="id38">[FD85]</a><a class="reference internal" href="chapter8.html#mcintyre-89" id="id39">[McI89]</a>)
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_kzz">(44)</a>  is multiplied times an inverse Prandtl
+<a href="#equation-eq:gw_kzz">(44)</a>  is multiplied times an inverse Prandtl
 number, <img class="math" src="../_images/math/6304f91a99b602f7e115bbb2272b4470ed404f8d.png" alt="{Pr}^{-1}"/>; in WACCM4.0 we use <img class="math" src="../_images/math/e2378553b18d643bdf14e4d1bb1a9f3b0f902492.png" alt="{Pr}^{-1}=0.25"/>.</p>
 </div>
 <div class="section" id="heating-due-to-wave-dissipation">
@@ -1154,20 +1158,20 @@ density is:</p>
 \simeq (\overline u-c) {1 \over c_{gz}}{\partial \tau \over \partial t}
 = (\overline u-c) {\partial \tau \over \partial Z} \ ."/></p>
 </div><p>For a saturated wave, the stress divergence is given by
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_utend">(39)</a> , so that:</p>
-<div class="math">
-<p><img src="../_images/math/5529006c3474aefc26d13f1be28f20b331b999dc.png" alt="{\partial E' \over \partial t} =
+<a href="#equation-eq:gw_utend">(39)</a> , so that:</p>
+<div class="math" id="equation-eq:gw_eprime">
+<p><span class="eqno">(45)</span><img src="../_images/math/5529006c3474aefc26d13f1be28f20b331b999dc.png" alt="{\partial E' \over \partial t} =
 (\overline u - c) \ {\partial \, \tau^* \over \partial Z}
 = - e \cdot \rho \ {k \, (U-c)^4 \over 2 N H} \ ."/></p>
 </div><p>This energy loss by the wave represents a heat source for the
 background state, as does the change in the background kinetic energy
 density implied by wave drag on the background flow:</p>
-<div class="math">
-<p><img src="../_images/math/bec9a914ab6e4ed8f7526af15ca8d816671fe57e.png" alt="{\partial \overline K \over \partial t} \equiv
+<div class="math" id="equation-eq:gw_kbar">
+<p><span class="eqno">(46)</span><img src="../_images/math/bec9a914ab6e4ed8f7526af15ca8d816671fe57e.png" alt="{\partial \overline K \over \partial t} \equiv
 {\rho \over 2} {\partial \overline u^2 \over \partial t} =
 \overline u \ {\partial \, \tau^* \over \partial Z} =
 -e \cdot \rho \ {k \, \overline u \, (\overline u-c)^3 \over 2 NH} \ ,"/></p>
-</div><p>which follows directly from <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_utend">(39)</a> . The background
+</div><p>which follows directly from <a href="#equation-eq:gw_utend">(39)</a> . The background
 heating rate, in K sec<img class="math" src="../_images/math/32c47f7597d53ce7f2d3f4de3ce54a8bd5ac5d3c.png" alt="^{-1}"/>, is then:</p>
 <div class="math">
 <p><img src="../_images/math/ca04b13d4d267abce5d9935a3b9a10c62f7b1e5e.png" alt="Q_{gw} = -{1 \over \rho\, c_p}
@@ -1175,20 +1179,20 @@ heating rate, in K sec<img class="math" src="../_images/math/32c47f7597d53ce7f2d
 + {\partial E' \over \partial t} \right]."/></p>
 </div><p>Using <img class="math" src="../_images/math/5836c6f47c0e16b837015c3ebedc567d58061509.png" alt="(\ref{eq:gw_eprime})-(\ref{eq:gw_kbar})"/>, this heating
 rate may be expressed as:</p>
-<div class="math">
-<p><img src="../_images/math/e3c09d8e964390b2f7d050879ce3a8484e21ea6b.png" alt="Q_{gw} =
+<div class="math" id="equation-eq:gw_qgw">
+<p><span class="eqno">(47)</span><img src="../_images/math/e3c09d8e964390b2f7d050879ce3a8484e21ea6b.png" alt="Q_{gw} =
   {1 \over \rho\, c_p} \ c \ {\partial \, \tau^* \over \partial Z} =
   {1 \over c_p} \left[ \ e  \cdot  {k \, c\,(c-\overline u)^3 \over 2 N H} \right] ,"/></p>
 </div><p>where <img class="math" src="../_images/math/bdf930cd3af636fb27411ce02123dd469624494d.png" alt="c_p"/> is the specific heat at constant pressure. In WACCM4.0,
 <img class="math" src="../_images/math/6e0e2b51233c22b3b98a1dbfe0fde4ea32bab6df.png" alt="Q_{gw}"/> is calculated for each component of the gravity wave
-spectrum using the first equality in <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_qgw">(47)</a> , i.e., the
+spectrum using the first equality in <a href="#equation-eq:gw_qgw">(47)</a> , i.e., the
 product of the phase velocity times the stress divergence.</p>
 </div>
 <div class="section" id="orographic-source-function">
 <h4>7.6.3.6. Orographic source function<a class="headerlink" href="#orographic-source-function" title="Permalink to this headline">¶</a></h4>
 <p>For orographically generated waves, the source is taken from (<strong>???</strong>):</p>
-<div class="math">
-<p><img src="../_images/math/5e378a568fb37d51bb14c2b8707841c2748c0b2b.png" alt="\tau_g = |\rho\overline{ u^\prime  w^\prime}|_0
+<div class="math" id="equation-eq:oro_tau">
+<p><span class="eqno">(48)</span><img src="../_images/math/5e378a568fb37d51bb14c2b8707841c2748c0b2b.png" alt="\tau_g = |\rho\overline{ u^\prime  w^\prime}|_0
    = \frac{k}{2} h_0^2 \rho_0 N_0 \overline u_0\, ,"/></p>
 </div><p>where <img class="math" src="../_images/math/3df1e86855d69900fea6bdf36470d71906f09a2f.png" alt="h_0"/> is the streamline displacement at the source level,
 and <img class="math" src="../_images/math/d5b4a098286d906ca2e61aac7332930bf6898618.png" alt="\rho_0"/>, <img class="math" src="../_images/math/5d2483db4defbda77d5edb54e62c7eb768c7c25a.png" alt="N_0"/>, and <img class="math" src="../_images/math/1da0db0005bda262a85d3c87761273f9b3a0b980.png" alt="\overline u_0"/> are also
@@ -1198,18 +1202,18 @@ the average mountain height, determining the typical streamline
 displacement. An upper bound is used on the displacement (equivalent to
 defining a “separation streamline”) which corresponds to requiring that
 the wave not be supersaturated at the source level:</p>
-<div class="math">
-<p><img src="../_images/math/5cfd8d3169b38271dd9677d5d6b018a951f13fa7.png" alt="h_0=\min(2\sigma,  \frac{\overline u_0}{N_0})\, ."/></p>
+<div class="math" id="equation-eq:oro_h0">
+<p><span class="eqno">(49)</span><img src="../_images/math/5cfd8d3169b38271dd9677d5d6b018a951f13fa7.png" alt="h_0=\min(2\sigma,  \frac{\overline u_0}{N_0})\, ."/></p>
 </div><p>The source level quantities <img class="math" src="../_images/math/d5b4a098286d906ca2e61aac7332930bf6898618.png" alt="\rho_0"/>, <img class="math" src="../_images/math/5d2483db4defbda77d5edb54e62c7eb768c7c25a.png" alt="N_0"/>, and
 <img class="math" src="../_images/math/1da0db0005bda262a85d3c87761273f9b3a0b980.png" alt="\overline u_0"/> are defined by vertical averages over the source
 region, taken to be <img class="math" src="../_images/math/f3fa0d87f5af50a42fa360a6f4be305081c181fc.png" alt="2\sigma"/>, the depth to which the average
 mountain penetrates into the domain:</p>
-<div class="math">
-<p><img src="../_images/math/a126bd9055449c1f970046a418454b54b727daad.png" alt="\psi_0 = \int_0^{2\sigma} \psi\rho dz, \qquad \psi \in \{\rho,N,
+<div class="math" id="equation-4.e.18">
+<p><span class="eqno">(50)</span><img src="../_images/math/a126bd9055449c1f970046a418454b54b727daad.png" alt="\psi_0 = \int_0^{2\sigma} \psi\rho dz, \qquad \psi \in \{\rho,N,
 u, v\} \, ."/></p>
 </div><p>The source level wind vector <img class="math" src="../_images/math/49d065e3855fbe8ef020c61678650dc6ce62dd9f.png" alt="(u_0,v_0)"/> determines the
 orientation of the coordinate system in
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_mom">(27)</a> –<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_therm">(29)</a>  and the magnitude of the
+<a href="#equation-eq:gw_mom">(27)</a> –<a href="#equation-eq:gw_therm">(29)</a>  and the magnitude of the
 source wind <img class="math" src="../_images/math/1da0db0005bda262a85d3c87761273f9b3a0b980.png" alt="\overline u_0"/>.</p>
 </div>
 <div class="section" id="non-orographic-source-functions">
@@ -1221,7 +1225,7 @@ Instead, gravity waves are launched according to trigger functions that
 depend on the atmospheric state computed in WACCM4 at any given time and
 location, as discussed by (<strong>???</strong>). Two trigger functions are used:
 convective heat release (which is a calculated model field) and a
-“frontogenesis function”, (<strong>???</strong>), which diagnoses regions of
+&#8220;frontogenesis function&#8221;, (<strong>???</strong>), which diagnoses regions of
 strong wind field deformation and temperature gradient using the
 horizontal wind components and potential temperature field calculated by
 the model.</p>
@@ -1239,14 +1243,14 @@ trigger function exceeds a critical value (see (<strong>???</strong>)). The wave
 launched from a constant source level, which is specified to be 600 mb.
 The momentum flux phase speed spectrum is given by a Gaussian function
 in phase speed:</p>
-<div class="math">
-<p><img src="../_images/math/9323fad971e3e3af29b7d57f8c7440496bf3e347.png" alt="\tau_s (c)  = \tau_b
+<div class="math" id="equation-eq:tau_s">
+<p><span class="eqno">(51)</span><img src="../_images/math/9323fad971e3e3af29b7d57f8c7440496bf3e347.png" alt="\tau_s (c)  = \tau_b
    \exp\left[-\left( \frac{c - V_s}{c_w} \right)^2\right],"/></p>
 </div><p>centered on the source wind, <img class="math" src="../_images/math/42e54cd859a96cef14fc3fc7629cae557a0b6e57.png" alt="V_s = |{\bf V}_s|"/>, with width
 <img class="math" src="../_images/math/c6e89d3be0fa3c7b3594fe7b91a6d672f0738ae7.png" alt="c_w=30"/> m/s. A range of phase speeds with specified width and
 resolution is used:</p>
-<div class="math">
-<p><img src="../_images/math/027a0eda26a9c3d79c101eae532e256404f7ca5e.png" alt="c \in V_s + [\pm d_c, \pm 2d_c, ... \pm c_{max}]\, ,"/></p>
+<div class="math" id="equation-eq:phase_s">
+<p><span class="eqno">(52)</span><img src="../_images/math/027a0eda26a9c3d79c101eae532e256404f7ca5e.png" alt="c \in V_s + [\pm d_c, \pm 2d_c, ... \pm c_{max}]\, ,"/></p>
 </div><p>with <img class="math" src="../_images/math/5a5b1f34ba1eefc0caa27ea3b9075a8f9bb221c3.png" alt="d_c = 2.5"/> m s<img class="math" src="../_images/math/32c47f7597d53ce7f2d3f4de3ce54a8bd5ac5d3c.png" alt="^{-1}"/> and <img class="math" src="../_images/math/dcc639736e441285960cb8cb1c43763a741fb969.png" alt="c_{max} = 80"/> m
 s<img class="math" src="../_images/math/32c47f7597d53ce7f2d3f4de3ce54a8bd5ac5d3c.png" alt="^{-1}"/>, giving 64 phase speeds. Note that <img class="math" src="../_images/math/c1e770a8df280a470ea720c4f820049640f4ac51.png" alt="c=V_s"/> is
 retained in the code for simplicity, but has a critical level at the
@@ -1257,16 +1261,16 @@ wave driving, is consistent with observations. In WACCM4, <img class="math" src=
 = 1.5 x 10<img class="math" src="../_images/math/704ece9527a4f3d54bd4af0aa6e92781ad9fe92e.png" alt="^{-3}"/> Pa.</p>
 <p>Above the source region, the saturation condition is enforced separately
 for each phase speed, <img class="math" src="../_images/math/ff90a5f025d9fd305aac19c8dd64fa15f0c789a1.png" alt="c_i"/>, in the momentum flux spectrum:</p>
-<div class="math">
-<p><img src="../_images/math/16a89553586c2f3713366b5f6513f6f2f45bc2c0.png" alt="\tau(c_i) \leq \tau_i^{*}
+<div class="math" id="equation-eq:tau_i">
+<p><span class="eqno">(53)</span><img src="../_images/math/16a89553586c2f3713366b5f6513f6f2f45bc2c0.png" alt="\tau(c_i) \leq \tau_i^{*}
      =F_c^2 \frac{k}{2}\rho \frac{|\overline u-c_i|^3}{N} ."/></p>
 </div></div>
 <div class="section" id="numerical-approximations">
 <h4>7.6.3.8. Numerical approximations<a class="headerlink" href="#numerical-approximations" title="Permalink to this headline">¶</a></h4>
 <p>The gravity wave drag parameterization is applied immediately after the
 nonlinear vertical diffusion. The interface Brunt-Väisällä frequency is</p>
-<div class="math">
-<p><img src="../_images/math/e6f33cadb081ad0fbaf439353aacc756db676a14.png" alt="\left(N^{k+}\right)^2 = \frac{g^2}{T^{k+}} \left( \frac{1}{c_p}
+<div class="math" id="equation-4.e.25">
+<p><span class="eqno">(54)</span><img src="../_images/math/e6f33cadb081ad0fbaf439353aacc756db676a14.png" alt="\left(N^{k+}\right)^2 = \frac{g^2}{T^{k+}} \left( \frac{1}{c_p}
    - \rho^{k+} \frac{\delta^{k+} T}{\delta^{k+} p} \right) \, ,"/></p>
 </div><p>Where the interface density is:</p>
 <div class="math">
@@ -1285,49 +1289,49 @@ heights by <img class="math" src="../_images/math/039429efa3ed776858630587b4d64a
 <p>The source level wind vector, density and Brunt-Väisällä frequency are
 determined by vertical integration over the region from the surface to
 interface <img class="math" src="../_images/math/3944b464277d30af9c8296dae3e923d370146682.png" alt="k_s+1/2"/>:</p>
-<div class="math">
-<p><img src="../_images/math/5d0987107dfe7a0de37d6407438cfd2086bd316c.png" alt="\psi_0 = \sum_{k=k_s}^K \psi^k \delta^k p\, , \qquad \psi \in
+<div class="math" id="equation-4.e.27">
+<p><span class="eqno">(55)</span><img src="../_images/math/5d0987107dfe7a0de37d6407438cfd2086bd316c.png" alt="\psi_0 = \sum_{k=k_s}^K \psi^k \delta^k p\, , \qquad \psi \in
 \{\rho,N, u, v\} \, ."/></p>
 </div><p>The source level background wind is <img class="math" src="../_images/math/992c7b4c20980266d97d1bbddc1a47e90d94bafe.png" alt="\overline u_0 =\sqrt(u_0^2 +
 v_0^2)"/>, the unit vector for the source wind is</p>
-<div class="math">
-<p><img src="../_images/math/e5aea9c05f1098cbff251a35603482678056f6d7.png" alt="(x_0, y_0) = (u_0, v_0) /\overline u_0 \, ,"/></p>
+<div class="math" id="equation-4.e.28">
+<p><span class="eqno">(56)</span><img src="../_images/math/e5aea9c05f1098cbff251a35603482678056f6d7.png" alt="(x_0, y_0) = (u_0, v_0) /\overline u_0 \, ,"/></p>
 </div><p>and the projection of the midpoint winds onto the source wind is</p>
-<div class="math">
-<p><img src="../_images/math/1bc2c202d5a8211eed1daa26b26b2e26fd506ce6.png" alt="\overline u^k = u^k x_0 + v^k y_0 \, ."/></p>
+<div class="math" id="equation-4.e.29">
+<p><span class="eqno">(57)</span><img src="../_images/math/1bc2c202d5a8211eed1daa26b26b2e26fd506ce6.png" alt="\overline u^k = u^k x_0 + v^k y_0 \, ."/></p>
 </div><p>Assuming that <img class="math" src="../_images/math/20d63153295146d2ae16de929579169b985d8997.png" alt="\overline u_0 &gt; 2"/> m s<img class="math" src="../_images/math/32c47f7597d53ce7f2d3f4de3ce54a8bd5ac5d3c.png" alt="^{-1}"/> and
 <img class="math" src="../_images/math/ce73c80ef9d5869bbf71d178208dbec4504da61a.png" alt="2\sigma^h &gt; 10"/> m, then the orographic source term,
-<img class="math" src="../_images/math/a55d12e4357de03135ffe29451668221e87fd6ad.png" alt="\tau_g"/> is given by <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:oro_tau">(48)</a>  and
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:oro_h0">(49)</a> , with <img class="math" src="../_images/math/c339b7d677607ab458aec6290fb9f7574ce23a0f.png" alt="F_c^2"/> =1 and <img class="math" src="../_images/math/819a9d3bbcfabad886af9d500816f0a62987f954.png" alt="k = 2\pi/10^5"/>
+<img class="math" src="../_images/math/a55d12e4357de03135ffe29451668221e87fd6ad.png" alt="\tau_g"/> is given by <a href="#equation-eq:oro_tau">(48)</a>  and
+<a href="#equation-eq:oro_h0">(49)</a> , with <img class="math" src="../_images/math/c339b7d677607ab458aec6290fb9f7574ce23a0f.png" alt="F_c^2"/> =1 and <img class="math" src="../_images/math/819a9d3bbcfabad886af9d500816f0a62987f954.png" alt="k = 2\pi/10^5"/>
 m<img class="math" src="../_images/math/32c47f7597d53ce7f2d3f4de3ce54a8bd5ac5d3c.png" alt="^{-1}"/>. Although the code contains a provision for a linear
 stress profile within a “low level deposition region”, this part of the
 code is not used in the standard model.</p>
 <p>The stress profiles are determined by scanning up from the bottom of the
 model to the top. The stress at the source level is determined by
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:oro_tau">(48)</a> . The saturation stress, <img class="math" src="../_images/math/4fe387d5a2729c6dadeb2e3756fa1900a00766e2.png" alt="\tau^*_\ell"/> at
-each interface is determined by <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tau_i">(53)</a> , and
+<a href="#equation-eq:oro_tau">(48)</a> . The saturation stress, <img class="math" src="../_images/math/4fe387d5a2729c6dadeb2e3756fa1900a00766e2.png" alt="\tau^*_\ell"/> at
+each interface is determined by <a href="#equation-eq:tau_i">(53)</a> , and
 <img class="math" src="../_images/math/80df7635fc3c5ecf2e072a84bb05f84e7ae545fa.png" alt="\tau^*_\ell=0"/> if a critical level is passed. A critical level is
 contained within a layer if
 <img class="math" src="../_images/math/e9de2753321a3faa3d2b6ee1c8557eb828ac0d2c.png" alt="(\overline u^{k+} -c_\ell) / (\overline u^{k-} -c_\ell) &lt; 0"/>.</p>
 <p>Within the molecular diffusion domain, the imaginary part of the
-vertical wavenumber is given by <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:gw_lambdai">(41)</a> . The interface
+vertical wavenumber is given by <a href="#equation-eq:gw_lambdai">(41)</a> . The interface
 stress is then determined from the stress on the interface below by:</p>
-<div class="math">
-<p><img src="../_images/math/f245fe344412d8c59b7c638f88aca477aec2c52e.png" alt="\tau^{k-} = \min \left[ \left(\tau^*\right)^{k-},
+<div class="math" id="equation-eq:tau_km">
+<p><span class="eqno">(58)</span><img src="../_images/math/f245fe344412d8c59b7c638f88aca477aec2c52e.png" alt="\tau^{k-} = \min \left[ \left(\tau^*\right)^{k-},
    \tau^{k+}\exp\left( -2 \lambda_i \frac{R}{g} T^k \delta^k\ln p
         \right) \right] \, ."/></p>
 </div><p>Below the molecular diffusion domain, the exponential term in
-<a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-eq:tau_km">(58)</a>  is omitted.</p>
+<a href="#equation-eq:tau_km">(58)</a>  is omitted.</p>
 <p>Once the complete stress profile has been obtained, the forcing of the
 background wind is determined by differentiating the profile during a
 downward scan:</p>
-<div class="math">
-<p><img src="../_images/math/018fe40fd8031995f43b7726155892f330915e08.png" alt="\frac{\partial \overline u^k_\ell}{\partial t} =
+<div class="math" id="equation-4.e.35">
+<p><span class="eqno">(59)</span><img src="../_images/math/018fe40fd8031995f43b7726155892f330915e08.png" alt="\frac{\partial \overline u^k_\ell}{\partial t} =
     g \frac{\delta^k\tau_\ell}{\delta^k p}
     &lt; \left( \frac{\partial \overline u^k_\ell}{\partial t}\right)^{\rm max}
     \, ."/></p>
-</div><div class="math">
-<p><img src="../_images/math/c402e8c6d224a8f6e69a84d346dc1353c639037f.png" alt="\left( \frac{\partial \overline u^k_\ell}{\partial t}\right)^{\rm max}
+</div><div class="math" id="equation-4.e.36">
+<p><span class="eqno">(60)</span><img src="../_images/math/c402e8c6d224a8f6e69a84d346dc1353c639037f.png" alt="\left( \frac{\partial \overline u^k_\ell}{\partial t}\right)^{\rm max}
   = \min\left[
     \frac{|c_\ell - \overline u^k_\ell|}{2 \delta t}\, ,
     500 {\rm ~m ~s^{-1}~ day^{-1}}
@@ -1342,12 +1346,12 @@ to change the time step, or to write an implicit solver, so an <em>a
 priori</em> bound is used instead. The second bound is used to constrain the
 forcing to lie within a physically plausible range (although the value
 used is extremely large) and is rarely invoked.</p>
-<p>When any of the bounds in <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-4.e.35">(59)</a>  are invoked, conservation of stress
+<p>When any of the bounds in <a href="#equation-4.e.35">(59)</a>  are invoked, conservation of stress
 is violated. In this case, stress conservation is ensured by decreasing
 the stress on the lower interface to match the actual stress divergence
 in the layer:</p>
-<div class="math">
-<p><img src="../_images/math/e12331bd3c7965a8d1d9c5b11f694f2258f560c3.png" alt="\tau^{k+}_\ell = \tau^{k-}_\ell +
+<div class="math" id="equation-4.e.37">
+<p><span class="eqno">(61)</span><img src="../_images/math/e12331bd3c7965a8d1d9c5b11f694f2258f560c3.png" alt="\tau^{k+}_\ell = \tau^{k-}_\ell +
    \frac{\partial \overline u^k}{\partial t}
    \frac{\delta^k p}{g} \, ."/></p>
 </div><p>This has the effect of pushing some of the stress divergence into the
@@ -1356,8 +1360,8 @@ below.</p>
 <p>Finally, the vector momentum forcing by the gravity waves is determined
 by projecting the background wind forcing with the unit vectors of the
 source wind:</p>
-<div class="math">
-<p><img src="../_images/math/c5b812067c3a8f05ec2c16ddb853b45f4bb4c4a2.png" alt="\frac{\partial {\bf V}^k}{\partial t} =  (x_0, y_0) \times E \sum_\ell
+<div class="math" id="equation-4.e.38">
+<p><span class="eqno">(62)</span><img src="../_images/math/c5b812067c3a8f05ec2c16ddb853b45f4bb4c4a2.png" alt="\frac{\partial {\bf V}^k}{\partial t} =  (x_0, y_0) \times E \sum_\ell
       \frac{\partial \overline u^k_\ell}{\partial t}
 \, ."/></p>
 </div><p>In addition, the frictional heating implied by the momentum tendencies,
@@ -1385,8 +1389,8 @@ give the correct surface stress over a given area. The concept of
 effective roughness has been used in several Numerical Weather
 Prediction models (e.g., (<strong>???</strong>); (<strong>???</strong>)).</p>
 <p>In WACCM4 the effective roughness stress is expressed as:</p>
-<div class="math">
-<p><img src="../_images/math/1909f07c76f753df4b19fba72bf98e76695ac5cd.png" alt="\tau = \rho \, C_d \, |{\bf V}| {\bf V} \, ,"/></p>
+<div class="math" id="equation-tms">
+<p><span class="eqno">(63)</span><img src="../_images/math/1909f07c76f753df4b19fba72bf98e76695ac5cd.png" alt="\tau = \rho \, C_d \, |{\bf V}| {\bf V} \, ,"/></p>
 </div><p>where <img class="math" src="../_images/math/9a51ab9a0b521705e1e8762fac6bdd6f11771758.png" alt="\rho"/> is the density and <img class="math" src="../_images/math/15746e47c01eb1c4d15e0409dfd2ae36896638ab.png" alt="C_d"/> is a turbulent drag
 coefficient,</p>
 <div class="math">
@@ -1395,7 +1399,7 @@ coefficient,</p>
 surface; <img class="math" src="../_images/math/021544f44170a0f49c908e326ff0f1e031e7089c.png" alt="z_0"/> is an effective roughness length, defined in terms
 of the standard deviation of unresolved orography; and <img class="math" src="../_images/math/68df65e92b88ad419f3fc9e648dae7b9bbbf877a.png" alt="f(R_i)"/> is
 a function of the Richardson number (see (<strong>???</strong>) for details).</p>
-<p>The stress calculated by <a class="reference internal" href="../cam5_scientific_guide/extensions.html#equation-tms">(63)</a>  is used the model’s nonlocal PBL scheme
+<p>The stress calculated by <a href="#equation-tms">(63)</a>  is used the model’s nonlocal PBL scheme
 to evaluate the PBL height and nonlocal transport, per Eqs.
 (3.10)Ð(3.12) of (<strong>???</strong>). This calculation is carried out only over
 land, and only in grid cells where the height of topography above sea
@@ -1449,16 +1453,16 @@ rates from parameterizations for the lower and upper atmosphere.
 Therefore, we retain the CAM4 parameterizations below <img class="math" src="../_images/math/5649f49c754aa9312b270dfd5f93ce37ff9f26a5.png" alt="\sim 65"/> km
 and use new parameterizations above.</p>
 <p>The merged shortwave and longwave radiative heatings are determined from</p>
-<div class="math">
-<p><img src="../_images/math/e9055752dac439750402e9f822b5d812a9d5f641.png" alt="Q = w_1 \, Q_{CAM3} + w_2 \, Q_{MLT},"/></p>
+<div class="math" id="equation-eq:rad_heat">
+<p><span class="eqno">(64)</span><img src="../_images/math/e9055752dac439750402e9f822b5d812a9d5f641.png" alt="Q = w_1 \, Q_{CAM3} + w_2 \, Q_{MLT},"/></p>
 </div><p>where <img class="math" src="../_images/math/db7ac6fcabaec700e97c4d577828403a7e98a5da.png" alt="w_1(z^*&lt;z_b^*) = 1"/>, <img class="math" src="../_images/math/e609f9089b3bf02229c2ba1c1a977326be550928.png" alt="w_2(z^*&gt;z_t^*) = 1"/> and
 <img class="math" src="../_images/math/cfb5137b467fa94175ec2e6cff3b5df14e066e19.png" alt="z^* =
 \log(10^5/p)"/> is the pressure scale height. The CAM4 radiation
 parameterizations are used below <img class="math" src="../_images/math/335dd868adeabfae90a2da1ad4343b479be2660a.png" alt="z_b^*"/> and the MLT
 parameterizations are used above <img class="math" src="../_images/math/889704139987bcbcf0e99055913b826f00377481.png" alt="z_t^*"/>. For <img class="math" src="../_images/math/0127f687afdfeac863a451789d2af67241ad1827.png" alt="z_b^* &lt; z &lt;
 z_t^*"/>, <img class="math" src="../_images/math/4f5ebbf470d2b192baebb7eab5529460b1ddd89f.png" alt="w_2 = 1 - w_1"/> and</p>
-<div class="math">
-<p><img src="../_images/math/09a748f2142f9f27de4135288cfc8cd09089f9de.png" alt="w_1 = 1 - \tanh\left( \frac{z^* - z_b^*}{z_w*}\right),"/></p>
+<div class="math" id="equation-eq:rad_wght">
+<p><span class="eqno">(65)</span><img src="../_images/math/09a748f2142f9f27de4135288cfc8cd09089f9de.png" alt="w_1 = 1 - \tanh\left( \frac{z^* - z_b^*}{z_w*}\right),"/></p>
 </div><p>where <img class="math" src="../_images/math/760c48134cbc1d80dc2affdad28bd2bb2898a5fd.png" alt="z_w*"/> is the transition width.</p>
 <p>The merging was developed and tested separately for shortwave and
 longwave radiation and the constants are slightly different. For
@@ -1670,8 +1674,8 @@ approach assumes that all the HCl is in the aerosol particle.</p>
 stratospheric clouds (Type 1a, 1b, and 2) are included following the
 approach of (<strong>???</strong>). This approach assumes that the condensed phase
 mass follows a lognormal size distribution taken from (<strong>???</strong>),</p>
-<div class="math">
-<p><img src="../_images/math/f712ddcdb2b19e48fbf5a0d50e91d66af941b9d8.png" alt="N(r) = \frac{N_0}{r \sigma \sqrt{2\pi}}\exp\left[\frac{-\ln (r / r_0)^2}
+<div class="math" id="equation-sizeqn">
+<p><span class="eqno">(66)</span><img src="../_images/math/f712ddcdb2b19e48fbf5a0d50e91d66af941b9d8.png" alt="N(r) = \frac{N_0}{r \sigma \sqrt{2\pi}}\exp\left[\frac{-\ln (r / r_0)^2}
 {2 \sigma ^2}\right]"/></p>
 </div><p>where <img class="math" src="../_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png" alt="N"/> is the aerosol number density (particles
 cm<img class="math" src="../_images/math/704ece9527a4f3d54bd4af0aa6e92781ad9fe92e.png" alt="^{-3}"/>); <img class="math" src="../_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> and <img class="math" src="../_images/math/969e5c9bf57d6c8368dae87af82e3251f1648425.png" alt="r_0"/> are the particle radius
@@ -1861,70 +1865,70 @@ poles, and so less spread when viewed as a geographic zonal mean).</p>
 <td>O</td>
 <td>O(<img class="math" src="../_images/math/2f3b4d4eadd11c44b1b9ee0a71b77e266dd42755.png" alt="^3"/>P)</td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>ubvmr</td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>O1D</td>
 <td>O(<img class="math" src="../_images/math/aad7058e91664e37c55a2abf2733da4dafa66ab5.png" alt="^1"/>D)</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>3</td>
 <td>O3</td>
 <td>O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
 <td>Implicit</td>
 <td>dry</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>4</td>
 <td>O2</td>
 <td>O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>ubvmr</td>
 </tr>
 <tr class="row-even"><td>5</td>
 <td>O2_1S</td>
 <td>O<img class="math" src="../_images/math/715941b062ef35cbf20e0fd66b772cd22708ec00.png" alt="_2(^1\Sigma)"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>6</td>
 <td>O2_1D</td>
 <td>O<img class="math" src="../_images/math/c0bed2ed2b35bb07705b423d0e27c827fa170d55.png" alt="_2(^1\Delta)"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>7</td>
 <td>H</td>
 <td>H</td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>ubvmr</td>
 </tr>
 <tr class="row-odd"><td>8</td>
 <td>OH</td>
 <td>OH</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>9</td>
 <td>HO2</td>
 <td>HO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>10</td>
 <td>H2</td>
 <td>H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr, ubvmr</td>
 </tr>
 <tr class="row-even"><td>11</td>
@@ -1932,41 +1936,41 @@ poles, and so less spread when viewed as a geographic zonal mean).</p>
 <td>H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
 <td>dry, wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>12</td>
 <td>N</td>
 <td>N</td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>ubvmr</td>
 </tr>
 <tr class="row-even"><td>13</td>
 <td>N2D</td>
 <td>N(<img class="math" src="../_images/math/81d4e21093a294aaab4f441ff172923d688c9b7e.png" alt="^2"/>D)</td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>from TIME-GCM</td>
 </tr>
 <tr class="row-odd"><td>14</td>
 <td>N2</td>
 <td>N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Invariant</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>15</td>
 <td>NO</td>
 <td>NO</td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>flux, ubvmr,</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td>lflux, airflux</td>
 </tr>
 <tr class="row-even"><td>16</td>
@@ -1974,133 +1978,133 @@ poles, and so less spread when viewed as a geographic zonal mean).</p>
 <td>NO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
 <td>dry</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>17</td>
 <td>NO3</td>
 <td>NO<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>18</td>
 <td>N2O5</td>
 <td>N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O<img class="math" src="../_images/math/aeb037e278995bb53a86daa9b50303ba48dc09d6.png" alt="_5"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>19</td>
 <td>HNO3</td>
 <td>HNO<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
 <td>Implicit</td>
 <td>dry, wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>20</td>
 <td>HO2NO2</td>
 <td>HO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>NO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
 <td>dry, wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>21</td>
 <td>CL</td>
 <td>Cl</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>22</td>
 <td>CLO</td>
 <td>ClO</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>23</td>
 <td>CL2</td>
 <td>Cl<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>24</td>
 <td>OCLO</td>
 <td>OClO</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>25</td>
 <td>CL2O2</td>
 <td>Cl<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>26</td>
 <td>HCL</td>
 <td>HCl</td>
 <td>Implicit</td>
 <td>wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>27</td>
 <td>HOCL</td>
 <td>HOCl</td>
 <td>Implicit</td>
 <td>wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>28</td>
 <td>ClONO2</td>
 <td>ClONO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
 <td>wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>29</td>
 <td>BR</td>
 <td>Br</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>30</td>
 <td>BRO</td>
 <td>BrO</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>31</td>
 <td>HOBR</td>
 <td>HOBr</td>
 <td>Implicit</td>
 <td>wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>32</td>
 <td>HBR</td>
 <td>HBr</td>
 <td>Implicit</td>
 <td>wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>33</td>
 <td>BrONO 2</td>
 <td>BrONO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
 <td>wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>34</td>
 <td>BRCL</td>
 <td>BrCl</td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -2130,22 +2134,22 @@ poles, and so less spread when viewed as a geographic zonal mean).</p>
 <td>CH4</td>
 <td>CH<img class="math" src="../_images/math/284796e299f67ddec30ffb68aa85adb566a054af.png" alt="_4"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr, airflux</td>
 </tr>
 <tr class="row-odd"><td>36</td>
 <td>CH3O2</td>
 <td>CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Implicit</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>37</td>
 <td>CH3OOH</td>
 <td>CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>OOH</td>
 <td>Implicit</td>
 <td>dry, wet</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>38</td>
 <td>CH2O</td>
@@ -2165,197 +2169,197 @@ poles, and so less spread when viewed as a geographic zonal mean).</p>
 <td>CH3CL</td>
 <td>CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>Cl</td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-even"><td>41</td>
 <td>CH3BR</td>
 <td>CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>Br</td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-odd"><td>42</td>
 <td>CFC11</td>
 <td>CFCl<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-even"><td>43</td>
 <td>CFC12</td>
 <td>CF<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>Cl<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-odd"><td>44</td>
 <td>CFC113</td>
 <td>CCl<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>FCClF<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-even"><td>45</td>
 <td>HCFC22</td>
 <td>CHClF<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-odd"><td>46</td>
 <td>CCL4</td>
 <td>CCl<img class="math" src="../_images/math/284796e299f67ddec30ffb68aa85adb566a054af.png" alt="_4"/></td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-even"><td>47</td>
 <td>CH3CCL3</td>
 <td>CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>CCl<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-odd"><td>48</td>
 <td>CF2CLBR</td>
 <td>CBr<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>F<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> (Halon-1211)</td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-even"><td>49</td>
 <td>CF3BR</td>
 <td>CBrF<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/> (Halon-1301)</td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-odd"><td>50</td>
 <td>H2O</td>
 <td>H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O</td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>flux</td>
 </tr>
 <tr class="row-even"><td>51</td>
 <td>N2O</td>
 <td>N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O</td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr</td>
 </tr>
 <tr class="row-odd"><td>52</td>
 <td>CO2</td>
 <td>CO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>Explicit</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 <td>vmr, ubvmr</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td><strong>Deposition:</strong></td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>wet = wet deposition included</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>dry = surface dry deposition included</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>If there is no designation in the deposition column, this species is not operated on by wet</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>or dry deposition algorthims.</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td><strong>Boundary Condition:</strong></td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>flux = flux lower boundary conditions</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>vmr = fixed volume mixing ratio (vmr) lower boundary condition</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>ubvmr = fixed vmr upper boundary condition</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>lflux = lightning emission included for this species</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>airflux= aircraft emissions included for this species</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>If there is no designation in the Boundary Conditions column, this species has a zero flux</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>boundary condition for the top and bottom of the model domain.</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -2376,9 +2380,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Oxygen Reactions</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>1</td>
 <td>O + O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + M <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/> + M</td>
@@ -2464,8 +2468,8 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>O(<img class="math" src="../_images/math/aad7058e91664e37c55a2abf2733da4dafa66ab5.png" alt="^1"/>D) + CFC11 <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> 3 Cl</td>
 <td>JPL-06; Bloomfield (1994)</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td>for quenching of O(<img class="math" src="../_images/math/aad7058e91664e37c55a2abf2733da4dafa66ab5.png" alt="^1"/>D)</td>
 </tr>
 <tr class="row-odd"><td>22</td>
@@ -2537,9 +2541,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Nitrogen Radicals</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>35</td>
 <td>N(<img class="math" src="../_images/math/81d4e21093a294aaab4f441ff172923d688c9b7e.png" alt="^2"/>D) + O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> NO + O(<img class="math" src="../_images/math/aad7058e91664e37c55a2abf2733da4dafa66ab5.png" alt="^1"/>D)</td>
@@ -2646,9 +2650,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Hydrogen Radicals</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>57</td>
 <td>H + O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + M <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> HO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + M</td>
@@ -2714,9 +2718,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + O <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> OH + HO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>JPL-06</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
 <td>Chlorine Radicals</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>73</td>
 <td>Cl + O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/> <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> ClO + O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
@@ -2785,9 +2789,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>Reactions</td>
 <td>Comments</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Chlorine Radicals Continued</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>86</td>
 <td>ClO + ClO <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> 2 Cl + O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
@@ -2845,9 +2849,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>Reactions</td>
 <td>Comments</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
 <td>Bromine Radicals</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>99</td>
 <td>Br + O<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/> <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> BrO + O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
@@ -2930,9 +2934,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Halogen Radicals</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>115</td>
 <td>CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>Cl + Cl <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> HO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + CO + 2HCl</td>
@@ -2954,9 +2958,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>Br + OH <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> Br + H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O + HO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td>JPL-06</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>CH<img class="math" src="../_images/math/284796e299f67ddec30ffb68aa85adb566a054af.png" alt="_4"/> and Derivatives</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>120</td>
 <td>CH<img class="math" src="../_images/math/284796e299f67ddec30ffb68aa85adb566a054af.png" alt="_4"/> + OH <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O</td>
@@ -3007,9 +3011,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
 <td>Sulfate Aerosol</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>1</td>
 <td>N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O<img class="math" src="../_images/math/aeb037e278995bb53a86daa9b50303ba48dc09d6.png" alt="_5"/> + H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> 2 HNO<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
@@ -3035,9 +3039,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>HOBr + HCl <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> BrCl + H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O</td>
 <td>JPL-06; f (T, P, HCl, HOBr, H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O, r)</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
 <td>NAT Aerosol</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>7</td>
 <td>N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O<img class="math" src="../_images/math/aeb037e278995bb53a86daa9b50303ba48dc09d6.png" alt="_5"/> + H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> 2 HNO<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
@@ -3059,9 +3063,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>BrONO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> HOBr + HNO<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
 <td>JPL-06; <img class="math" src="../_images/math/4da99d9bfd0e059b9a33c943d5203fd61a72d65b.png" alt="\gamma = 0.3"/></td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
 <td>Water-Ice Aerosol</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>12</td>
 <td>N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O<img class="math" src="../_images/math/aeb037e278995bb53a86daa9b50303ba48dc09d6.png" alt="_5"/> + H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O <img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.png" alt="\rightarrow"/> 2 HNO<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/></td>
@@ -3111,29 +3115,29 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>O + O(<img class="math" src="../_images/math/aad7058e91664e37c55a2abf2733da4dafa66ab5.png" alt="^1"/>D)</td>
 <td>Ly-<img class="math" src="../_images/math/877d234f4cec6974ce218fc2e975a486a7972dfd.png" alt="\alpha"/>: Chabrillat and Kockarts (1997, 1998)</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/>(Ly-<img class="math" src="../_images/math/877d234f4cec6974ce218fc2e975a486a7972dfd.png" alt="\alpha"/>): Lacoursiere et al. (1999)</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td>SRB: Koppers and Murtaugh (1996)</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td>For wavelength<img class="math" src="../_images/math/ca3b8fa4180eee2dfc3af9d13fae1da451cd2c31.png" alt="\nu"/> regions not Ly-<img class="math" src="../_images/math/877d234f4cec6974ce218fc2e975a486a7972dfd.png" alt="\alpha"/> or SRB,</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (120-205nm): Brasseur and Solomon (1986);</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (205-240 nm): Yoshino et al. (1988)</td>
 </tr>
 <tr class="row-even"><td>2</td>
@@ -3146,29 +3150,29 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>O(<img class="math" src="../_images/math/aad7058e91664e37c55a2abf2733da4dafa66ab5.png" alt="^1"/>D) + O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (120-136.5nm): Tanaka et al. (1953);</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (136.5-175nm): Ackerman (1971);</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (175-847nm): WMO (1985); except for</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (185-350nm): Molina and Molina (1986)</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> (<img class="math" src="../_images/math/863f524a433d6d1e5715f76f12040c654f10d86d.png" alt="&lt;"/>280nm): Marsh (1999)</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> (<img class="math" src="../_images/math/9d74fb19f4fb5926b6e8801d9aaf22b0976321a0.png" alt="&gt;"/>280nm): JPL-06.</td>
 </tr>
 <tr class="row-odd"><td>4</td>
@@ -3189,7 +3193,7 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <tr class="row-even"><td>7</td>
 <td>NO + h<img class="math" src="../_images/math/ca3b8fa4180eee2dfc3af9d13fae1da451cd2c31.png" alt="\nu"/></td>
 <td>NO<img class="math" src="../_images/math/b8cbe359704eeb7977b6c921447ad0edacc492de.png" alt="^+"/> + e</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>8</td>
 <td>NO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + h<img class="math" src="../_images/math/ca3b8fa4180eee2dfc3af9d13fae1da451cd2c31.png" alt="\nu"/></td>
@@ -3251,24 +3255,24 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>H + OH</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> (Ly-<img class="math" src="../_images/math/877d234f4cec6974ce218fc2e975a486a7972dfd.png" alt="\alpha"/>): Slanger et al. (1982);</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> (105-145nm): Stief et al. (1975);</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> (<img class="math" src="../_images/math/9d74fb19f4fb5926b6e8801d9aaf22b0976321a0.png" alt="&gt;"/>145): JPL-06</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> (120-182nm): Yoshino et al. (1996);</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> (183-194nm): Cantrell et al. (1997)</td>
 </tr>
 </tbody>
@@ -3325,9 +3329,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>Cl + ClOO</td>
 <td>Burkholder et al. (1990);</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td>Stimpfle et al. (2004)</td>
 </tr>
 <tr class="row-even"><td>27</td>
@@ -3430,9 +3434,9 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>CO + O</td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (120-167): Nakata, et al. (1965);</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/> (167-199): Huffman (1971)</td>
 </tr>
 <tr class="row-odd"><td>47</td>
@@ -3440,31 +3444,31 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 <td>H + CH<img class="math" src="../_images/math/2912b78af320853e0afcf706763b5d39b26b5c1e.png" alt="_3"/>O<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></td>
 <td><img class="math" src="../_images/math/011e5790a6c33043ceadca81d9657dde6c61d769.png" alt="\sigma"/>: JPL-06;</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
 <td>based on Brownsword et al. (1997)</td>
 </tr>
 <tr class="row-odd"><td>48</td>
 <td>CH<img class="math" src="../_images/math/284796e299f67ddec30ffb68aa85adb566a054af.png" alt="_4"/> + h<img class="math" src="../_images/math/ca3b8fa4180eee2dfc3af9d13fae1da451cd2c31.png" alt="\nu"/></td>
 <td>H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + 0.18 CH<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O + 0.18 O</td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><ul class="first last simple">
 <li>0.44 CO<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/> + 0.44 H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/></li>
 </ul>
 </td>
 <td>see above</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
 <td><ul class="first last simple">
 <li>0.38 CO + 0.05 H<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d.png" alt="_2"/>O</li>
 </ul>
 </td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -3576,7 +3580,7 @@ N<img class="math" src="../_images/math/ba312cf0eeebc5f3ecc40ece2c744c499d75dc2d
 </tr>
 <tr class="row-even"><td>nm</td>
 <td>ph cm<img class="math" src="../_images/math/39d5a479110f40fa3f7a4162b260e967f3e555bf.png" alt="^{-2}"/>s<img class="math" src="../_images/math/32c47f7597d53ce7f2d3f4de3ce54a8bd5ac5d3c.png" alt="^{-1}"/></td>
-<td>&#160;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>0.05 - 0.4</td>
 <td>5.010e+01</td>
@@ -4207,7 +4211,7 @@ unrealistically large mixing ratios at the model top in polar night.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

@@ -65,7 +65,6 @@ To add new emissions you have to copy the existing list of emisisons to your use
 To add new lower boundary conditions via namelist, you have to add an addition species to the flbc_list and modify the lbc_file:
 
 flbc_file              = '/glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_17500116-20150116_CMIP6_0p5degLat_c180227.nc'
-
 flbc_list              = 'CCL4', 'CF2CLBR', 'CF3BR', 'CFC11', 'CFC113', 'CFC12', 'CH3BR', 'CH3CCL3', 'CH3CL', 'CH4',
          'CO2', 'H2', 'HCFC22', 'N2O', 'CFC114', 'CFC115', 'HCFC141B', 'HCFC142B', 'CH2BR2', 'CHBR3',
          'H2402', 'OCS', 'SF6', 'CFC11eq'

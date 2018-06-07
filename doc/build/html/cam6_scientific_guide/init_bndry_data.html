@@ -2,20 +2,23 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>8. Initial and Boundary Data &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -24,12 +27,13 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -53,7 +57,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/cam6_scientific_guide/init_bndry_data.rst.txt"
+      <li><a href="../_sources/cam6_scientific_guide/init_bndry_data.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -85,31 +89,31 @@ requires its own initial data, as described by <a class="reference internal" hre
 initial data for the model consist of values of <img class="math" src="../_images/math/eaffedb7eaee2ba7294a0e4eae31cef55178fcd8.png" alt="u, v, T, q, \Pi,"/>
 and <img class="math" src="../_images/math/387527ef6fd5f95a4eb4fd1eff3f8f2d3ba4f545.png" alt="\Phi_s"/> on the Gaussian grid at time <img class="math" src="../_images/math/75c6f8d29e1c89c69cf9f075ab7667e2adaec095.png" alt="t=0."/> From these,
 <img class="math" src="../_images/math/55352f34aaa6bf4be43af0a565ecf4867b0c389a.png" alt="U, V, T'"/>, and <img class="math" src="../_images/math/48df4c3c7ccc8857bb1a8690c2b1207275b0a626.png" alt="\Pi"/> are computed on the grid using
-<a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.a.11">(101)</a> , and <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.a.49">(139)</a> . The Fourier coefficients of these variables
+<a href="#equation-3.a.11">(?)</a> , and <a href="#equation-3.a.49">(?)</a> . The Fourier coefficients of these variables
 <img class="math" src="../_images/math/a86de88952f6516e49c84961a5cdead45dcaf91c.png" alt="U^m, V^m, T'^m, \Pi^m,"/> and <img class="math" src="../_images/math/5cae3fd8752d8a464fceaeda5caa2a5b6abf2d97.png" alt="\Phi^m_s"/> are determined via
-an FFT subroutine <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.23">(233)</a> , and the spherical harmonic coefficients
+an FFT subroutine <a href="#equation-3.b.23">(?)</a> , and the spherical harmonic coefficients
 <img class="math" src="../_images/math/5a2bf7f18c2f36e3c895780ef0be7fe533fbe588.png" alt="T'^m_n, \Pi^m_n"/>, and <img class="math" src="../_images/math/586bdbda14fa7c1625f4111877c5a469d4d2f62b.png" alt="\left(\Phi_s \right)^m_n"/> are
-determined by Gaussian quadrature <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.24">(234)</a> . The relative vorticity
+determined by Gaussian quadrature <a href="#equation-3.b.24">(?)</a> . The relative vorticity
 <img class="math" src="../_images/math/1bed834b3e718b4086e9b3c32284be47445d0c27.png" alt="\zeta"/> and divergence <img class="math" src="../_images/math/a702e781dfc76762a3a132c2031fba8898430925.png" alt="\delta"/> spherical harmonic
 coefficients are determined directly from the Fourier coefficients
 <img class="math" src="../_images/math/4d00fe7b33173d342870d6889d3b5f70ad657439.png" alt="U^m"/> and <img class="math" src="../_images/math/a76239d6cd2744e5bc77b2bd3225a293e6746558.png" alt="V^m"/> using the relations,</p>
-<div class="math">
-<p><img src="../_images/math/9a8dd892558695223587a7856502d20dc1465f64.png" alt="\begin{aligned}
+<div class="math" id="equation-7.a.1">
+<p><span class="eqno">(1)</span><img src="../_images/math/9a8dd892558695223587a7856502d20dc1465f64.png" alt="\begin{aligned}
 \zeta &amp; = \frac{1}{a(1 - \mu^2)} \frac{\partial V}{\partial \lambda} -
 \frac{1}{a} \frac{\partial U}{\partial \mu} ,  \\
 \delta &amp; = \frac{1}{a(1 - \mu^2)} \frac{\partial U}{\partial \lambda} +
 \frac{1}{a} \frac{\partial V}{\partial \mu} . \end{aligned}"/></p>
 </div><p>The relative vorticity and divergence coefficients are obtained by
-Gaussian quadrature directly, using <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.27">(237)</a>  for the
-<img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/> –derivative terms and <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.30">(240)</a> for the <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/> –derivatives.</p>
+Gaussian quadrature directly, using <a href="#equation-3.b.27">(?)</a>  for the
+<img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/> –derivative terms and <a href="#equation-3.b.30">(?)</a> for the <img class="math" src="../_images/math/d79e8a2c7ce54906c2b25549da38bdbe02cf40d6.png" alt="\mu"/> –derivatives.</p>
 <p>Once the spectral coefficients of the prognostic variables are
 available, the grid–point values of <img class="math" src="../_images/math/8bd3d8b4c8c75cc4de9a4e18f85f0d36940de1da.png" alt="\zeta, \delta, T', \Pi,"/> and
-<img class="math" src="../_images/math/387527ef6fd5f95a4eb4fd1eff3f8f2d3ba4f545.png" alt="\Phi_s"/> may be calculated from <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.49">(263)</a> , the gradient
-<img class="math" src="../_images/math/3f7590d99221b0edd1f8806e146726aa5072b653.png" alt="\nabla \Pi"/> from <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.52">(266)</a>  and <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.53">(267)</a> , and <img class="math" src="../_images/math/169c982b5e649cd1bd6445df5583affe427ea269.png" alt="U"/> and
-<img class="math" src="../_images/math/fae0e7a73748991e5540d874416000583f64f58e.png" alt="V"/> from <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.58">(271)</a>  and <a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.59">(272)</a> . The absolute vorticity
+<img class="math" src="../_images/math/387527ef6fd5f95a4eb4fd1eff3f8f2d3ba4f545.png" alt="\Phi_s"/> may be calculated from <a href="#equation-3.b.49">(?)</a> , the gradient
+<img class="math" src="../_images/math/3f7590d99221b0edd1f8806e146726aa5072b653.png" alt="\nabla \Pi"/> from <a href="#equation-3.b.52">(?)</a>  and <a href="#equation-3.b.53">(?)</a> , and <img class="math" src="../_images/math/169c982b5e649cd1bd6445df5583affe427ea269.png" alt="U"/> and
+<img class="math" src="../_images/math/fae0e7a73748991e5540d874416000583f64f58e.png" alt="V"/> from <a href="#equation-3.b.58">(?)</a>  and <a href="#equation-3.b.59">(?)</a> . The absolute vorticity
 <img class="math" src="../_images/math/5635a7c34414599c2452d72430811e816b460335.png" alt="\eta"/> is determined from the relative vorticity <img class="math" src="../_images/math/1bed834b3e718b4086e9b3c32284be47445d0c27.png" alt="\zeta"/> by
 adding the appropriate associated Legendre function for <img class="math" src="../_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/>
-<a class="reference internal" href="../cam5_scientific_guide/chapter3.html#equation-3.b.4">(203)</a> . This process gives grid–point fields for all variables,
+<a href="#equation-3.b.4">(?)</a> . This process gives grid–point fields for all variables,
 including the surface geopotential, that are consistent with the
 spectral truncation even if the original grid–point data were not. These
 grid–point values are then convectively adjusted (including the mass and
@@ -170,8 +174,8 @@ not already partitioned into land or ice is regarded as ocean.</p>
 <p>Surface fluxes are then calculated separately for each surface type,
 weighted by the appropriate fractional area, and then summed to provide
 a mean value for a grid box:</p>
-<div class="math">
-<p><img src="../_images/math/4aff17428a7707c402f6041ae510bbb37d9c627e.png" alt="{F_{\psi}}_T = a_i \, {F_{\psi}}_i + a_o \, {F_{\psi}}_o +  a_l \, {F_{\psi}}_l \, \;,"/></p>
+<div class="math" id="equation-eq:fsurftype">
+<p><span class="eqno">(2)</span><img src="../_images/math/4aff17428a7707c402f6041ae510bbb37d9c627e.png" alt="{F_{\psi}}_T = a_i \, {F_{\psi}}_i + a_o \, {F_{\psi}}_o +  a_l \, {F_{\psi}}_l \, \;,"/></p>
 </div><p>where <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> denotes the surface flux of the arbitrary scalar
 quantity <img class="math" src="../_images/math/499a2ee48b33448e80b97af9df9550828bdbfb59.png" alt="\psi"/>, <img class="math" src="../_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> denotes fractional area, and the
 subscripts <img class="math" src="../_images/math/df2d2d60f979a1a719d8a251b09f91515e45dd65.png" alt="T, i, o,"/> and <img class="math" src="../_images/math/b359488b993294ebbc2c7b30ab8f749dcbc6826d.png" alt="l"/> respectively denote the total,
@@ -222,7 +226,7 @@ filter. Values over ocean are set to zero.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

@@ -189,7 +189,7 @@ Topography files
 Meteorological data sets
 ------------------------------
 
-For specified dynamics model simulation, meteorolocial analysis from the  Goddard Earth 
+For specified dynamics model simulations, meteorolocial analysis from the  Goddard Earth 
 Observing System Model, Version 5 (GEOS5) and the Modern-Era Retrospective analysis for 
 Research and Applications, Version 2 (MERRA2) data have been prepared to run CESM and WRF 
 simulations and are available in 3 resolutions, and are availbe on the Research Data 
@@ -203,8 +203,8 @@ and
 MERRA2 1980-close to present (1.9x2.5, 0.9x1.25, and 0.5x0.63 degrees horizontal 
 resolution): https://rda.ucar.edu/datasets/ds313.3/
 
-These datasets and additional resolutions for GEOS5 and MERRA can be found on the NCAR 
-HSI, and on local disk.
+These datasets and additional resolutions for GEOS5, MERRA, and MERRA2 can be found on repository, and on 
+HSI.
 
 ------------------------------
 Solar input files
@@ -285,9 +285,9 @@ Constant year 2000 ::
  
  solar_parms_data_file = '$DIN_LOC_ROOT/atm/waccm/phot/wa_avg_c20170519.nc'
  
-------------------------------
+----------------------------------------
 Additional inputs for WACCM and WACCM-X
-------------------------------
+----------------------------------------
 ================================================
 Geomagnetic coefficients
 ================================================

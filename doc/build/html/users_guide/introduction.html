@@ -2,20 +2,23 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>1. Introduction &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -24,6 +27,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="2. Getting Help" href="getting-help.html" />
     <link rel="prev" title="CAM6 User’s Guide" href="index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -31,7 +36,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -45,21 +50,21 @@
           <a href="index.html" title="CAM6 User’s Guide"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">CAM6 User’s Guide</a></p>
+                        title="previous chapter">CAM6 User&#8217;s Guide</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="getting-help.html"
                         title="next chapter">2. Getting Help</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/introduction.rst.txt"
+      <li><a href="../_sources/users_guide/introduction.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -87,13 +92,13 @@
 It is the latest in a series of global atmosphere models whose development is guided by the <a class="reference external" href="http://www.cesm.ucar.edu/working_groups/Atmosphere/">Atmosphere Model Working Group (AMWG)</a> of the <a class="reference external" href="http://www.cesm.ucar.edu//">Community Earth System Model (CESM)</a> project.
 CAM can be run in many configurations within the CESM; it is the atmosphere
 component in the B, E, F, Q, and P compsets.
-The term “standalone CAM” is often used to refer to a compset which does
+The term &#8220;standalone CAM&#8221; is often used to refer to a compset which does
 not include prognostic ocean and sea ice models.
-When one speaks of “doing CAM simulations” the implication is that it’s a standalone configuration that is being used.
+When one speaks of &#8220;doing CAM simulations&#8221; the implication is that it&#8217;s a standalone configuration that is being used.
 When CAM is coupled to prognostic land, ocean, and sea ice models then we refer
-to it as a “fully coupled CESM simulation” which are implemented in the B compsets.</p>
+to it as a &#8220;fully coupled CESM simulation&#8221; which are implemented in the B compsets.</p>
 <p>To get started running CAM refer to the <a class="reference external" href="http://escomp.github.io/cesm/release-cesm2">CESM2 Quick Start Guide</a> and the
-<a class="reference internal" href="building-and-running-cam.html#building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a> section of this User’s Guide.
+<a class="reference internal" href="building-and-running-cam.html#building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a> section of this User&#8217;s Guide.
 Running CAM using the CESM scripts provides a high level of support for doing production runs of predefined experiments on supported platforms. This is the place to start for most users.</p>
 <p>CAM provides the basic atmospheric physics for several other models included in this release:</p>
 <blockquote>
@@ -105,7 +110,7 @@ Running CAM using the CESM scripts provides a high level of support for doing pr
 </div></blockquote>
 <p>Throughout this document, we will use the name CAM in a generic sense and directions provided will be useful for CAM-chem, WACCM and WACCM-X also.</p>
 <p>It should be noted that in CAM6, we are unable to support reproducibility of CAM4 and CAM5 numerical results with what a user would get running those configurations in CESM1.2 or prior.
-This is due to many factors including code changes and namelist settings.  While a user is still able to set the “-phys” namelist setting to either cam4 or cam5, the results will differ with what a user would get using those settings in CESM1.2. Due to these changes, a number of compsets specific to CAM4 or CAM5 have been removed.  We recommend that if a user wants a pure CAM4 or CAM5 run, that they use CESM1.2 for those runs.  WACCM-X which utilizes CAM4 does not have this issue and it should be run using the CESM2 release of CAM.</p>
+This is due to many factors including code changes and namelist settings.  While a user is still able to set the &#8220;-phys&#8221; namelist setting to either cam4 or cam5, the results will differ with what a user would get using those settings in CESM1.2. Due to these changes, a number of compsets specific to CAM4 or CAM5 have been removed.  We recommend that if a user wants a pure CAM4 or CAM5 run, that they use CESM1.2 for those runs.  WACCM-X which utilizes CAM4 does not have this issue and it should be run using the CESM2 release of CAM.</p>
 </div>
 
 
@@ -127,12 +132,12 @@ This is due to many factors including code changes and namelist settings.  While
           <a href="index.html" title="CAM6 User’s Guide"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

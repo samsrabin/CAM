@@ -101,16 +101,50 @@ Typically users use shortnames in their ``./create_newcase`` commands for exampl
 
   % ./create_newcase --case test_FHIST_shortname --res f09_f09_mg17 --compset FHIST
 
-A user may also use the long name for the compset which specifies all of the various components and versions.  An example to run the FHIST compset using it's longname is:
-::
+-------------------------------------------------------------------------------
+Changing Specified Dynamics Compsets       
+-------------------------------------------------------------------------------
 
-  % ./create_newcase --case test_FHIST_longname --res f09_f09_mg17 --compset HIST_CAM60_CLM50%BGC-CROP_CICE%PRES_DOCN%DOM_MOSART_CISM2%NOEVOLVE_SWAV
+Specified dynamics compsets are setup to use specified meteorological analysis (MERRA2 or GEOS5) to nudge the internally derived meteorology from the model to the analysis fields. Available compsets are only produced for a specific date and resolution.  Meteorological data sets (dates and resolutions) can be downloaded from the repository or from the Research Data Archive.  Information how to download MERRA2 or GEOS5 data sets can be found in 'Meteorological Datasets <https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html>'_. 
 
-Both of the two examples above will create identical results.  The shortname is an easy to use alias for the longname.  If a user wants to make their own user-defined compset, they will need to supply the longname.  For example, if a user wanted to use CAM5.0 instead of CAM6.0, they could supply the following to the ``./create_newcase`` command:
-::
 
-  % ./create_newcase --case test_FHIST_cam5 --res f09_f09_mg17 --compset HIST_CAM50_CLM50%BGC-CROP_CICE%PRES_DOCN%DOM_MOSART_CISM2%NOEVOLVE_SWAV
+To change the start data of a specified dynamics simulation, the new start date and location of the meteorological data have to be adjusted in user_nl_cam, as shown in the following example for Jan 1st 2014 (start date) and using GEOS5 1 deg meteorological analysis. Also met_filenames_list needs to be updated if the simulation covers a different period than included in this file.  One has to make sure to also update nc_data to the start date, even if a branch or hybrid run is performed: ::
 
-It is important to note that CAM5.0 is not tuned in the CAM6.0 version of the model, and while a user may be able to make a run using this user-defined compset, they will need to make a careful examination of their results.
+ met_data_file          = '2014/GEOS5_09x125_20140101.nc'
+ met_data_path          = '/glade/p/cesmdata/cseg/inputdata/atm/cam/met/GEOS5/0.9x1.25'
+ met_filenames_list             = '/glade/p/cesmdata/cseg/inputdata/atm/cam/met/GEOS5/0.9x1.25/filenames_list.txt'
+
+
+The relaxation factor that determines the amount of nudging towards the meteorological analysis is controlled by the user_nl_cam namelist variable  met_rlx_time. The value can be changed and is often set to 5 for a rather strong nudgen (5 hours) or a looser nudging (every 50 hours). 
+
+Changes in specified dynamics simulations may also require to adjust the bnd_top file, that is specific to the resolution of the run and the meteorological analysis fields used, e.g., for GEOS5: ::
+
+ bnd_topo               = '/glade/p/cesmdata/cseg/inputdata/atm/cam/topo/fv_0.9x1.25_nc3000_Nsw042_Nrs008_Co060_Fi001_ZR_geos5_c160702.nc'
+
+
+To create a new bnd_topo file one has to replace the Surface geopotential (PHIS) from CESM with the one from PHIS of one of the meteorological analysis fields.
+
+If the user wants to create a specified dynamics simulation from a F compset, other changes will be required, including specifing the levels (nlev) and the nudging option (offline_dyn) in env_build.xml, for example: ::
+
+<entry id="CAM_CONFIG_OPTS" value="-phys cam6 -age_of_air_trcs -chem waccm_tsmlt_mam4 -offline_dyn -nlev 88
+
+
+Furthermore, if the simulation is meant to include the LEAP year, one has to change the calendar option in env_build.xml to GREGORIAN: ::
+
+<entry id="CALENDAR" value="GREGORIAN">
+
+
+Specified dynamics simulations do not currently run with CISM and simulations have to be setup with SGLC to run, as the case for existing SD compsets. 
+
+
+Specified dynamics simulations can also be performed using internally generated 3 or 6 hour meteorological data produced by CESM. The internal meteorogical fields can be produced from a free running simulation using a new output string with the following fields: ::
+
+ fincl2        = 'FSDS', 'ICEFRAC', 'LANDFRAC', 'OCNFRAC', 'PHIS', 'PS', 'Q', 'QFLX', 'SHFLX', 'T', 'TAUX', 'TAUY', 'TS', 'U', 'V'
+ mfilt          = 1,4
+ nhtfrq         = 0,-6
+
+
+
+From the output a met_data_path, met_data_file and met_filenames_list has to be defined in the specified dynamics simulation.
 
 

@@ -2,20 +2,23 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>2. Introduction &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -24,6 +27,8 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
+    <link rel="up" title="CAM5 Scientific Guide" href="index.html" />
     <link rel="next" title="3. Coupling of Dynamical Core and Parameterization Suite" href="pd_coupling.html" />
     <link rel="prev" title="1. Acknowledgments" href="cover.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -31,7 +36,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -80,7 +85,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/cam5_scientific_guide/introduction.rst.txt"
+      <li><a href="../_sources/cam5_scientific_guide/introduction.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -208,7 +213,7 @@ treatment of boundary-layer processes <a class="reference internal" href="../cam
 simple mass flux representation of moist convection <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#hack94a" id="id22">[Hac94]</a>,
 and the optional incorporation of the Biosphere-Atmosphere Transfer
 Scheme (BATS) of <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#dickinson87" id="id23">[DHSKW87]</a>.  As with previous versions of
-the model, a User’s Guide <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#bath92" id="id24">[BRO92]</a> and model description
+the model, a User&#8217;s Guide <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#bath92" id="id24">[BRO92]</a> and model description
 <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#hack93" id="id25">[HBB+93]</a> were provided to completely document the model
 formalism and implementation.  Control simulation data sets were
 documented in <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#gwilliamson93" id="id26">[Wil93]</a>.</p>
@@ -334,10 +339,10 @@ the AMWG was to retain the spectral Eulerian dynamical core for the
 first official release although the code includes the option to run
 with semi-Lagrange dynamics or with finite-volume dynamics (FV).  The
 addition of FV was a major extension to the model provided through a
-collaboration between NCAR and NASA Goddard’s Data Assimilation Office
+collaboration between NCAR and NASA Goddard&#8217;s Data Assimilation Office
 (DAO). The major changes in the physics included treatment of cloud
 condensed water using a prognostic formulation with a bulk
-microphysical component following <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#rasch98" id="id32">[RK98]</a> and a macroscale
+microphysical component following <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#rasch98" id="id32">[RKristjansson98]</a> and a macroscale
 component following <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#zhang03" id="id33">[ZLB+03]</a>.  The <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#zhang95" id="id34">[ZM95]</a>
 parameterization for deep convection was retained from CCM3.</p>
 <p>A new treatment of geometrical cloud overlap in the radiation
@@ -432,7 +437,7 @@ in-cloud water in the CAM3. This was particularly pervasize in polar
 climates in Winter. These calculation inconsitencies and large cloud
 fractions are significantly reduced with modifications to the
 calculation of stratiform cloud following <a class="reference internal" href="../cam6_scientific_guide/chapter8.html#vavrus08" id="id43">[VW08]</a>.  In the
-lower troposphere a ‘freeze-drying’ process is perfomed whereby cloud
+lower troposphere a &#8216;freeze-drying&#8217; process is perfomed whereby cloud
 fractions were systematically reduced for very low water vaopr
 amounts. The low cloud reduction caused an Arctic-wide drop of 15 W
 m$^{-2}$ in surface cloud radiative forcing (CRF) during winter and
@@ -671,7 +676,7 @@ convection and the diagnosis of regions of frontogenesis in the model.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>

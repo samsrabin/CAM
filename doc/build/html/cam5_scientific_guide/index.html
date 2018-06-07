@@ -2,20 +2,23 @@
 
 <!doctype html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
     <title>CAM5 Scientific Guide &#8212; camdoc  documentation</title>
+    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -24,6 +27,7 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="camdoc  documentation" href="../index.html" />
     <link rel="next" title="1. Acknowledgments" href="cover.html" />
     <link rel="prev" title="CAM6 Scientific Summary" href="../cam6_scientific_summary/index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -31,7 +35,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -58,7 +62,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/cam5_scientific_guide/index.rst.txt"
+      <li><a href="../_sources/cam5_scientific_guide/index.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -103,215 +107,291 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pd_coupling.html">3. Coupling of Dynamical Core and Parameterization Suite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics.html">4. Model Physics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#conversion-to-and-from-dry-and-wet-mixing-ratios-for-trace-constituents-in-the-model">4.1. Conversion to and from dry and wet mixing ratios for trace constituents in the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#deep-convection">4.2. Deep Convection</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#updraft-ensemble">4.2.1. Updraft Ensemble</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#downdraft-ensemble">4.2.2. Downdraft Ensemble</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#closure">4.2.3. Closure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#numerical-approximations">4.2.4. Numerical Approximations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#deep-convective-momentum-transports">4.2.5. Deep Convective Momentum Transports</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#deep-convective-tracer-transport">4.2.6. Deep Convective Tracer Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamics.html">4. Dynamics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html#finite-volume-dynamical-core">4.1. Finite Volume Dynamical Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#overview">4.1.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#the-governing-equations-for-the-hydrostatic-atmosphere">4.1.2. The governing equations for the hydrostatic atmosphere</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-discretization-of-the-transport-process-on-the-sphere">4.1.3. Horizontal discretization of the transport process on the sphere</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#a-vertically-lagrangian-and-horizontally-eulerian-control-volume-discretization-of-the-hydrodynamics">4.1.4. A <em>vertically Lagrangian</em> and <em>horizontally Eulerian</em> control-volume discretization of the hydrodynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#optional-diffusion-operators-in-cam5">4.1.5. Optional diffusion operators in CAM5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#a-mass-momentum-and-total-energy-conserving-mapping-algorithm">4.1.6. A mass, momentum, and total energy conserving mapping algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#a-geopotential-conserving-mapping-algorithm">4.1.7. A geopotential conserving mapping algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#adjustment-of-pressure-to-include-change-in-mass-of-water-vapor">4.1.8. Adjustment of pressure to include change in mass of water vapor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#negative-tracer-fixer">4.1.9. Negative Tracer Fixer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#global-energy-fixer">4.1.10. Global Energy Fixer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#further-discussion">4.1.11. Further discussion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#specified-dynamics-option">4.1.12. Specified Dynamics Option</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#id16">4.1.13. Further discussion</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#evaporation-of-convective-precipitation">4.3. Evaporation of convective precipitation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#prognostic-condensate-and-precipitation-parameterization">4.4. Prognostic Condensate and Precipitation Parameterization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#introductory-comments">4.4.1. Introductory comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html#spectral-element-dynamical-core">4.2. Spectral Element Dynamical Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#continuum-formulation-of-the-equations">4.2.1. Continuum Formulation of the Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#conserved-quantities">4.2.2. Conserved Quantities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-discretization-functional-spaces">4.2.3. Horizontal Discretization: Functional Spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-discretization-differential-operators">4.2.4. Horizontal Discretization: Differential Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-discretization-discrete-inner-product">4.2.5. Horizontal Discretization: Discrete Inner-Product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-discretization-the-projection-operators">4.2.6. Horizontal Discretization: The Projection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-discretization-galerkin-formulation">4.2.7. Horizontal Discretization: Galerkin Formulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#vertical-discretization">4.2.8. Vertical Discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#discrete-formulation-dynamics">4.2.9. Discrete formulation: Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#consistency">4.2.10. Consistency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#time-stepping">4.2.11. Time Stepping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#dissipation">4.2.12. Dissipation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#discrete-formulation-tracer-advection">4.2.13. Discrete formulation: Tracer Advection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#conservation-and-compatibility">4.2.14. Conservation and Compatibility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#cloud-microphysics">4.5. Cloud Microphysics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#overview-of-the-microphysics-scheme">4.5.1. Overview of the microphysics scheme</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#sub-grid-cloud-variability">4.5.1.1. Sub-grid cloud variability</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#diagnostic-treatment-of-precipitation">4.5.1.2. Diagnostic treatment of precipitation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#cloud-and-precipitation-particle-terminal-fallspeeds">4.5.1.3. Cloud and precipitation particle terminal fallspeeds</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#ice-cloud-fraction">4.5.1.4. Ice Cloud Fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html#eulerian-dynamical-core">4.3. Eulerian Dynamical Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#generalized-terrain-following-vertical-coordinates">4.3.1. Generalized terrain-following vertical coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#conversion-to-final-form">4.3.2. Conversion to final form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#continuous-equations-using">4.3.3. Continuous equations using <img class="math" src="../_images/math/fe97902b4016e484299911cff59e358104446bbd.png" alt="\partial\ln(\pi)/\partial t"/></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#semi-implicit-formulation">4.3.4. Semi-implicit formulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#energy-conservation">4.3.5. Energy conservation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-diffusion">4.3.6. Horizontal diffusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#finite-difference-equations">4.3.7. Finite difference equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#time-filter">4.3.8. Time filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#spectral-transform">4.3.9. Spectral transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#spectral-algorithm-overview">4.3.10. Spectral algorithm overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#combination-of-terms">4.3.11. Combination of terms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#transformation-to-spectral-space">4.3.12. Transformation to spectral space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#solution-of-semi-implicit-equations">4.3.13. Solution of semi-implicit equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#id70">4.3.14. Horizontal diffusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#initial-divergence-damping">4.3.15. Initial divergence damping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#transformation-from-spectral-to-physical-space">4.3.16. Transformation from spectral to physical space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#horizontal-diffusion-correction">4.3.17. Horizontal diffusion correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#semi-lagrangian-tracer-transport">4.3.18. Semi-Lagrangian Tracer Transport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#mass-fixers">4.3.19. Mass fixers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#energy-fixer">4.3.20. Energy Fixer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#statistics-calculations">4.3.21. Statistics Calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#reduced-grid">4.3.22. Reduced grid</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#radiative-treatment-of-ice">4.5.2. Radiative Treatment of Ice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#formulations-for-the-microphysical-processes">4.5.3. Formulations for the microphysical processes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#activation-of-cloud-droplets">4.5.3.1. Activation of cloud droplets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#primary-ice-nucleation">4.5.3.2. Primary ice nucleation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#deposition-sublimation-of-ice">4.5.3.3. Deposition/sublimation of ice</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#conversion-of-cloud-water-to-rain">4.5.3.4. Conversion of cloud water to rain</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#conversion-of-cloud-ice-to-snow">4.5.3.5. Conversion of cloud ice to snow</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#other-collection-processes">4.5.3.6. Other collection processes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#freezing-of-cloud-droplets-and-rain-and-ice-multiplication">4.5.3.7. Freezing of cloud droplets and rain and ice multiplication</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#melting-of-cloud-ice-and-snow">4.5.3.8. Melting of cloud ice and snow</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#evaporation-sublimation-of-precipitation">4.5.3.9. Evaporation/sublimation of precipitation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#sedimentation-of-cloud-water-and-ice">4.5.3.10. Sedimentation of cloud water and ice</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#convective-detrainment-of-cloud-water-and-ice">4.5.3.11. Convective detrainment of cloud water and ice</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#numerical-considerations">4.5.3.12. Numerical considerations</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#parameterization-of-cloud-fraction">4.6. Parameterization of Cloud Fraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#aerosols">4.7. Aerosols</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#emissions">4.7.1. Emissions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#chemistry">4.7.2. Chemistry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#secondary-organic-aerosol">4.7.3. Secondary Organic Aerosol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#nucleation">4.7.4. Nucleation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#condensation">4.7.5. Condensation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#coagulation">4.7.6. Coagulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#water-uptake">4.7.7. Water Uptake</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#subgrid-vertical-transport-and-activation-resuspension">4.7.8. Subgrid Vertical Transport and Activation/Resuspension</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#wet-deposition">4.7.9. Wet Deposition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#dry-deposition">4.7.10. Dry Deposition</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#condensed-phase-optics">4.8. Condensed Phase Optics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#tropospheric-aerosol-optics">4.8.1. Tropospheric Aerosol Optics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#stratospheric-volcanic-aerosol-optics">4.8.2. Stratospheric Volcanic Aerosol Optics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#liquid-cloud-optics">4.8.3. Liquid Cloud Optics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#ice-cloud-optics">4.8.4. Ice Cloud Optics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#tests-of-mada">4.8.4.1. Tests of MADA</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#application-to">4.8.4.2. Application to</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#snow-cloud-optics">4.8.5. Snow Cloud Optics</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#radiative-transfer">4.9. Radiative Transfer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#combination-of-aerosol-radiative-properties">4.9.1. Combination of Aerosol Radiative Properties</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#combination-of-cloud-optics">4.9.2. Combination of Cloud Optics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#radiative-fluxes-and-heating-rates">4.9.3. Radiative Fluxes and Heating Rates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#shortwave-radiative-transfer">4.9.3.1. Shortwave Radiative Transfer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#longwave-radiative-transfer">4.9.3.2. Longwave Radiative Transfer</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#surface-radiative-properties">4.9.4. Surface Radiative Properties</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#time-sampling">4.9.5. Time Sampling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#diurnal-cycle-and-earth-orbit">4.9.6. Diurnal Cycle and Earth Orbit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#solar-spectral-irradiance">4.9.7. Solar Spectral Irradiance</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#surface-exchange-formulations">4.10. Surface Exchange Formulations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#land">4.10.1. Land</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#roughness-lengths-and-zero-plane-displacement">4.10.1.1. Roughness lengths and zero-plane displacement</a></li>
-<li class="toctree-l4"><a class="reference internal" href="physics.html#monin-obukhov-similarity-theory">4.10.1.2. Monin-Obukhov similarity theory</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#ocean">4.10.2. Ocean</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics.html#sea-ice">4.10.3. Sea Ice</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#dry-adiabatic-adjustment">4.11. Dry Adiabatic Adjustment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="physics.html#prognostic-greenhouse-gases">4.12. Prognostic Greenhouse Gases</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">5. Extensions to CAM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html#introduction">5.1. Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html#chemistry">5.2. Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#chemistry-schemes">5.2.1. Chemistry Schemes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#the-bulk-aerosol-model">5.2.1.1. The Bulk Aerosol Model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#cam-chem-using-the-modal-aerosol-model">5.2.1.2. CAM-Chem using the Modal Aerosol Model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#trop-mozart-chemistry">5.2.1.3. Trop MOZART Chemistry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#trop-strat-mozart-chemistry">5.2.1.4. Trop-Strat MOZART Chemistry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#soa-calculation-in-cam-chem">5.2.1.5. SOA calculation in CAM-Chem</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#emissions">5.2.2. Emissions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#emissions-of-trace-gases">5.2.2.1. Emissions of Trace Gases</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#biogenic-emissions">5.2.2.2. Biogenic emissions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#boundary-conditions">5.2.3. Boundary conditions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#lower-boundary-conditions">5.2.3.1. Lower boundary conditions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#specified-stratospheric-distributions">5.2.3.2. Specified stratospheric distributions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#upper-boundary-condition">5.2.3.3. Upper boundary condition</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#lightning">5.2.4. Lightning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#dry-deposition">5.2.5. Dry deposition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#wet-removal">5.2.6. Wet removal</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html#photolytic-approach-neutral-species">5.3. Photolytic Approach (Neutral Species)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html#numerical-solution-approach">5.4. Numerical Solution Approach</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html#superfast-chemistry">5.5. Superfast Chemistry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#chemical-mechanism">5.5.1. Chemical mechanism</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#emissions-for-cam4-superfast-chemistry">5.5.2. Emissions for CAM4 superfast chemistry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#linoz">5.5.3. LINOZ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#parameterized-psc-ozone-loss">5.5.4. Parameterized PSC ozone loss</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="extensions.html#physical-parameterizations">5.6. Physical Parameterizations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#domain-and-resolution">5.6.1. Domain and Resolution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#molecular-diffusion-and-constituent-separation">5.6.2. Molecular Diffusion and Constituent Separation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#molecular-viscosity-and-diffusivity">5.6.2.1. Molecular viscosity and diffusivity</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#diffusive-separation-velocities">5.6.2.2. Diffusive separation velocities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#discretization-of-the-vertical-diffusion-equations">5.6.2.3. Discretization of the vertical diffusion equations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#solution-of-the-vertical-diffusion-equations">5.6.2.4. Solution of the vertical diffusion equations</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#gravity-wave-drag">5.6.3. Gravity Wave Drag</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#adiabatic-inviscid-formulation">5.6.3.1. Adiabatic inviscid formulation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#saturation-condition">5.6.3.2. Saturation condition</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#diffusive-damping">5.6.3.3. Diffusive damping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#transport-due-to-dissipating-waves">5.6.3.4. Transport due to dissipating waves</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#heating-due-to-wave-dissipation">5.6.3.5. Heating due to wave dissipation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#orographic-source-function">5.6.3.6. Orographic source function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#non-orographic-source-functions">5.6.3.7. Non-orographic source functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#numerical-approximations">5.6.3.8. Numerical approximations</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#turbulent-mountain-stress">5.6.4. Turbulent Mountain Stress</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#qbo-forcing">5.6.5. QBO Forcing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#radiation">5.6.6. Radiation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#longwave-radiation">5.6.6.1. Longwave radiation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#shortwave-radiation">5.6.6.2. Shortwave radiation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#volcanic-heating">5.6.6.3. Volcanic Heating</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#id40">5.6.7. &nbsp;chemistry</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#chemical-mechanism-neutral-species">5.6.7.1. Chemical Mechanism (Neutral Species)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#stratospheric-aerosols">5.6.7.2. Stratospheric Aerosols</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#sedimentation-of-stratospheric-aerosols">5.6.7.3. Sedimentation of Stratospheric Aerosols</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#ion-chemistry">5.6.7.4. Ion Chemistry</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#electric-field">5.6.8. Electric Field</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#low-and-midlatitude-electric-potential-model">5.6.8.1. Low- and midlatitude electric potential model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#highlatitude-electric-potential-model">5.6.8.2. High–latitude electric potential model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#combing-low-midlatitude-with-the-high-latitude-electric-potential">5.6.8.3. Combing low–/ mid–latitude with the high latitude electric potential</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#calculation-of-electric-field">5.6.8.4. Calculation of electric field</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#calculation-of-electrodynamic-drift-velocity">5.6.8.5. Calculation of electrodynamic drift velocity</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extensions.html#ion-drag-calculation">5.6.8.6. Ion drag calculation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html#id41">5.6.9. Boundary Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html#semi-lagrangian-dynamical-core">4.4. Semi-Lagrangian Dynamical Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#introduction">4.4.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#vertical-coordinate-and-hydrostatic-equation">4.4.2. Vertical coordinate and hydrostatic equation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#semi-implicit-reference-state">4.4.3. Semi-implicit reference state</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#perturbation-surface-pressure-prognostic-variable">4.4.4. Perturbation surface pressure prognostic variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#extrapolated-variables">4.4.5. Extrapolated variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#interpolants">4.4.6. Interpolants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#continuity-equation">4.4.7. Continuity Equation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#thermodynamic-equation">4.4.8. Thermodynamic Equation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#momentum-equations">4.4.9. Momentum equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#development-of-semi-implicit-system-equations">4.4.10. Development of semi-implicit system equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#trajectory-calculation">4.4.11. Trajectory Calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html#mass-and-energy-fixers-and-statistics-calculations">4.4.12. Mass and energy fixers and statistics calculations</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="slab_ocean.html">6. Slab Ocean Model</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="slab_ocean.html#open-ocean-component">6.1. Open Ocean Component</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slab_ocean.html#thermodynamic-sea-ice-model">6.2. Thermodynamic Sea Ice Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slab_ocean.html#evaluation-of-the-ocean-flux">6.3. Evaluation of the Ocean <img class="math" src="../_images/math/331157c6afbd113256867fd408d80277d1a24756.png" alt="Q"/> Flux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">5. Model Physics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#conversion-to-and-from-dry-and-wet-mixing-ratios-for-trace-constituents-in-the-model">5.1. Conversion to and from dry and wet mixing ratios for trace constituents in the model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#deep-convection">5.2. Deep Convection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#updraft-ensemble">5.2.1. Updraft Ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#downdraft-ensemble">5.2.2. Downdraft Ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#closure">5.2.3. Closure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#numerical-approximations">5.2.4. Numerical Approximations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#deep-convective-momentum-transports">5.2.5. Deep Convective Momentum Transports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#deep-convective-tracer-transport">5.2.6. Deep Convective Tracer Transport</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sea_ice.html">7. Sea Ice Thermodynamics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#basic-assumptions">7.1. Basic assumptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#fundamental-equations">7.2. Fundamental Equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#snow-and-ice-albedo">7.3. Snow and Ice Albedo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#ice-to-atmosphere-flux-exchange">7.4. Ice to Atmosphere Flux Exchange</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#ice-to-ocean-flux-exchange">7.5. Ice to Ocean Flux Exchange</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#brine-pockets-and-internal-energy-of-sea-ice">7.6. Brine Pockets and Internal Energy of Sea Ice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#open-water-growth-and-ice-concentration-evolution">7.7. Open-Water Growth and Ice Concentration Evolution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#snow-ice-conversion">7.8. Snow-Ice Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#numerics">7.9. Numerics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-i-snow-accumulated-with-no-melting">7.9.1. Case I: Snow accumulated with no melting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-ii-snow-free-with-no-melting">7.9.2. Case II: Snow free with no melting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-iii-snow-accumulated-with-melting">7.9.3. Case III: Snow accumulated with melting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-iv-no-snow-with-melting">7.9.4. Case IV: No snow with melting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#temperature-adjustment-due-to-melt-growth">7.9.5. Temperature Adjustment Due to Melt/Growth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#evaporation-of-convective-precipitation">5.3. Evaporation of convective precipitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#prognostic-condensate-and-precipitation-parameterization">5.4. Prognostic Condensate and Precipitation Parameterization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#introductory-comments">5.4.1. Introductory comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#cloud-microphysics">5.5. Cloud Microphysics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#overview-of-the-microphysics-scheme">5.5.1. Overview of the microphysics scheme</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#sub-grid-cloud-variability">5.5.1.1. Sub-grid cloud variability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#diagnostic-treatment-of-precipitation">5.5.1.2. Diagnostic treatment of precipitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#cloud-and-precipitation-particle-terminal-fallspeeds">5.5.1.3. Cloud and precipitation particle terminal fallspeeds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#ice-cloud-fraction">5.5.1.4. Ice Cloud Fraction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#radiative-treatment-of-ice">5.5.2. Radiative Treatment of Ice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#formulations-for-the-microphysical-processes">5.5.3. Formulations for the microphysical processes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#activation-of-cloud-droplets">5.5.3.1. Activation of cloud droplets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#primary-ice-nucleation">5.5.3.2. Primary ice nucleation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#deposition-sublimation-of-ice">5.5.3.3. Deposition/sublimation of ice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#conversion-of-cloud-water-to-rain">5.5.3.4. Conversion of cloud water to rain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#conversion-of-cloud-ice-to-snow">5.5.3.5. Conversion of cloud ice to snow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#other-collection-processes">5.5.3.6. Other collection processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#freezing-of-cloud-droplets-and-rain-and-ice-multiplication">5.5.3.7. Freezing of cloud droplets and rain and ice multiplication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#melting-of-cloud-ice-and-snow">5.5.3.8. Melting of cloud ice and snow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#evaporation-sublimation-of-precipitation">5.5.3.9. Evaporation/sublimation of precipitation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#sedimentation-of-cloud-water-and-ice">5.5.3.10. Sedimentation of cloud water and ice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#convective-detrainment-of-cloud-water-and-ice">5.5.3.11. Convective detrainment of cloud water and ice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#numerical-considerations">5.5.3.12. Numerical considerations</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="init_bndry_data.html">8. Initial and Boundary Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="init_bndry_data.html#initial-data">8.1. Initial Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="init_bndry_data.html#boundary-data">8.2. Boundary Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#parameterization-of-cloud-fraction">5.6. Parameterization of Cloud Fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#aerosols">5.7. Aerosols</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#emissions">5.7.1. Emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#chemistry">5.7.2. Chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#secondary-organic-aerosol">5.7.3. Secondary Organic Aerosol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#nucleation">5.7.4. Nucleation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#condensation">5.7.5. Condensation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#coagulation">5.7.6. Coagulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#water-uptake">5.7.7. Water Uptake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#subgrid-vertical-transport-and-activation-resuspension">5.7.8. Subgrid Vertical Transport and Activation/Resuspension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#wet-deposition">5.7.9. Wet Deposition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#dry-deposition">5.7.10. Dry Deposition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#condensed-phase-optics">5.8. Condensed Phase Optics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#tropospheric-aerosol-optics">5.8.1. Tropospheric Aerosol Optics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#stratospheric-volcanic-aerosol-optics">5.8.2. Stratospheric Volcanic Aerosol Optics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#liquid-cloud-optics">5.8.3. Liquid Cloud Optics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#ice-cloud-optics">5.8.4. Ice Cloud Optics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#tests-of-mada">5.8.4.1. Tests of MADA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#application-to">5.8.4.2. Application to</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#snow-cloud-optics">5.8.5. Snow Cloud Optics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#radiative-transfer">5.9. Radiative Transfer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#combination-of-aerosol-radiative-properties">5.9.1. Combination of Aerosol Radiative Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#combination-of-cloud-optics">5.9.2. Combination of Cloud Optics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#radiative-fluxes-and-heating-rates">5.9.3. Radiative Fluxes and Heating Rates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#shortwave-radiative-transfer">5.9.3.1. Shortwave Radiative Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#longwave-radiative-transfer">5.9.3.2. Longwave Radiative Transfer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#surface-radiative-properties">5.9.4. Surface Radiative Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#time-sampling">5.9.5. Time Sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#diurnal-cycle-and-earth-orbit">5.9.6. Diurnal Cycle and Earth Orbit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#solar-spectral-irradiance">5.9.7. Solar Spectral Irradiance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#surface-exchange-formulations">5.10. Surface Exchange Formulations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#land">5.10.1. Land</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#roughness-lengths-and-zero-plane-displacement">5.10.1.1. Roughness lengths and zero-plane displacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="physics.html#monin-obukhov-similarity-theory">5.10.1.2. Monin-Obukhov similarity theory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#ocean">5.10.2. Ocean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics.html#sea-ice">5.10.3. Sea Ice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#dry-adiabatic-adjustment">5.11. Dry Adiabatic Adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics.html#prognostic-greenhouse-gases">5.12. Prognostic Greenhouse Gases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">6. Extensions to CAM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html#introduction">6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html#chemistry">6.2. Chemistry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#chemistry-schemes">6.2.1. Chemistry Schemes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#the-bulk-aerosol-model">6.2.1.1. The Bulk Aerosol Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#cam-chem-using-the-modal-aerosol-model">6.2.1.2. CAM-Chem using the Modal Aerosol Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#trop-mozart-chemistry">6.2.1.3. Trop MOZART Chemistry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#trop-strat-mozart-chemistry">6.2.1.4. Trop-Strat MOZART Chemistry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#soa-calculation-in-cam-chem">6.2.1.5. SOA calculation in CAM-Chem</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#emissions">6.2.2. Emissions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#emissions-of-trace-gases">6.2.2.1. Emissions of Trace Gases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#biogenic-emissions">6.2.2.2. Biogenic emissions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#boundary-conditions">6.2.3. Boundary conditions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#lower-boundary-conditions">6.2.3.1. Lower boundary conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#specified-stratospheric-distributions">6.2.3.2. Specified stratospheric distributions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#upper-boundary-condition">6.2.3.3. Upper boundary condition</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#lightning">6.2.4. Lightning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#dry-deposition">6.2.5. Dry deposition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#wet-removal">6.2.6. Wet removal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html#photolytic-approach-neutral-species">6.3. Photolytic Approach (Neutral Species)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html#numerical-solution-approach">6.4. Numerical Solution Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html#superfast-chemistry">6.5. Superfast Chemistry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#chemical-mechanism">6.5.1. Chemical mechanism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#emissions-for-cam4-superfast-chemistry">6.5.2. Emissions for CAM4 superfast chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#linoz">6.5.3. LINOZ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#parameterized-psc-ozone-loss">6.5.4. Parameterized PSC ozone loss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html#physical-parameterizations">6.6. Physical Parameterizations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#domain-and-resolution">6.6.1. Domain and Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#molecular-diffusion-and-constituent-separation">6.6.2. Molecular Diffusion and Constituent Separation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#molecular-viscosity-and-diffusivity">6.6.2.1. Molecular viscosity and diffusivity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#diffusive-separation-velocities">6.6.2.2. Diffusive separation velocities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#discretization-of-the-vertical-diffusion-equations">6.6.2.3. Discretization of the vertical diffusion equations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#solution-of-the-vertical-diffusion-equations">6.6.2.4. Solution of the vertical diffusion equations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#gravity-wave-drag">6.6.3. Gravity Wave Drag</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#adiabatic-inviscid-formulation">6.6.3.1. Adiabatic inviscid formulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#saturation-condition">6.6.3.2. Saturation condition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#diffusive-damping">6.6.3.3. Diffusive damping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#transport-due-to-dissipating-waves">6.6.3.4. Transport due to dissipating waves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#heating-due-to-wave-dissipation">6.6.3.5. Heating due to wave dissipation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#orographic-source-function">6.6.3.6. Orographic source function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#non-orographic-source-functions">6.6.3.7. Non-orographic source functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#numerical-approximations">6.6.3.8. Numerical approximations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#turbulent-mountain-stress">6.6.4. Turbulent Mountain Stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#qbo-forcing">6.6.5. QBO Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#radiation">6.6.6. Radiation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#longwave-radiation">6.6.6.1. Longwave radiation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#shortwave-radiation">6.6.6.2. Shortwave radiation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#volcanic-heating">6.6.6.3. Volcanic Heating</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#id40">6.6.7. &nbsp;chemistry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#chemical-mechanism-neutral-species">6.6.7.1. Chemical Mechanism (Neutral Species)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#stratospheric-aerosols">6.6.7.2. Stratospheric Aerosols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#sedimentation-of-stratospheric-aerosols">6.6.7.3. Sedimentation of Stratospheric Aerosols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#ion-chemistry">6.6.7.4. Ion Chemistry</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#electric-field">6.6.8. Electric Field</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#low-and-midlatitude-electric-potential-model">6.6.8.1. Low- and midlatitude electric potential model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#highlatitude-electric-potential-model">6.6.8.2. High–latitude electric potential model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#combing-low-midlatitude-with-the-high-latitude-electric-potential">6.6.8.3. Combing low–/ mid–latitude with the high latitude electric potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#calculation-of-electric-field">6.6.8.4. Calculation of electric field</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#calculation-of-electrodynamic-drift-velocity">6.6.8.5. Calculation of electrodynamic drift velocity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extensions.html#ion-drag-calculation">6.6.8.6. Ion drag calculation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="extensions.html#id41">6.6.9. Boundary Conditions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slab_ocean.html">7. Slab Ocean Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slab_ocean.html#open-ocean-component">7.1. Open Ocean Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slab_ocean.html#thermodynamic-sea-ice-model">7.2. Thermodynamic Sea Ice Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slab_ocean.html#evaluation-of-the-ocean-flux">7.3. Evaluation of the Ocean <img class="math" src="../_images/math/331157c6afbd113256867fd408d80277d1a24756.png" alt="Q"/> Flux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sea_ice.html">8. Sea Ice Thermodynamics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#basic-assumptions">8.1. Basic assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#fundamental-equations">8.2. Fundamental Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#snow-and-ice-albedo">8.3. Snow and Ice Albedo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#ice-to-atmosphere-flux-exchange">8.4. Ice to Atmosphere Flux Exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#ice-to-ocean-flux-exchange">8.5. Ice to Ocean Flux Exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#brine-pockets-and-internal-energy-of-sea-ice">8.6. Brine Pockets and Internal Energy of Sea Ice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#open-water-growth-and-ice-concentration-evolution">8.7. Open-Water Growth and Ice Concentration Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#snow-ice-conversion">8.8. Snow-Ice Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sea_ice.html#numerics">8.9. Numerics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-i-snow-accumulated-with-no-melting">8.9.1. Case I: Snow accumulated with no melting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-ii-snow-free-with-no-melting">8.9.2. Case II: Snow free with no melting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-iii-snow-accumulated-with-melting">8.9.3. Case III: Snow accumulated with melting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#case-iv-no-snow-with-melting">8.9.4. Case IV: No snow with melting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sea_ice.html#temperature-adjustment-due-to-melt-growth">8.9.5. Temperature Adjustment Due to Melt/Growth</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="init_bndry_data.html">9. Initial and Boundary Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="init_bndry_data.html#initial-data">9.1. Initial Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init_bndry_data.html#boundary-data">9.2. Boundary Data</a></li>
 </ul>
 </li>
 </ul>
@@ -341,7 +421,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
     </div>
   </body>
 </html>
