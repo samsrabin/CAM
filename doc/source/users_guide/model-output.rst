@@ -34,7 +34,8 @@ The following three namelist variables are arrays up to length 10 which specify 
 There are also namelist settings which control output in a general way.  
 
 - ``empty_htapes`` - turn off all default output and only write out the fields explicitly set via fincl settings
-- ``history_YYY`` - set the history to preset settings for various experiments.  For the complete listing go to the `namelist page <http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html>`_ and search for namelist variables with the ``history_`` prefix (i.e. ``history_amwg``, ``history_clubb``, etc.)
+- ``history_YYY`` - add fields for specific diagnostic purposes to the
+  default output.  For the complete listing go to the `namelist page <http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html>`_ and search for namelist variables with the ``history_`` prefix (i.e. ``history_amwg``, ``history_clubb``, etc.)
 
 
 ----------------------------------------
@@ -135,12 +136,6 @@ CAM is set up by default to output a set of fields to a single monthly average h
 
 **NOTE:**  The master field list tables may contain some fields that are not actually available for output. The presence of a field in the master field list is a necessary, but not sufficient condition that the corresponding field in the history file will contain valid data. This is because in some instances fields are added to the master field list (this is done in the source code) even though that field may not be computed in the configuration that is built (specified via the arguments to ``configure``). When adding non-default fields to the history file it's important to check that the fields contain reasonable data before doing a long run.
 
-The following links provide tables of default and master field lists for some standard model configurations which are characterized by the values of the ``-dyn``, ``-phys``, and ``-chem`` arguments to configure. The source of the information in these tables is CAM's default log file, so you can always look there for any configuration not included in the list below.
+The following links provide tables of default and master field lists for some standard model compsets. The source of the information in these tables is CAM's default log file, so you can always look there for any configuration not included in the list below.
 
-**Eaton -- Do we have CAM6 science supported compset information? If not, should probably delete these examples**
-
-- `fv, cam4, none <http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4.html>`_
-- `fv, cam4, trop_bam <http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4_trop_bam.html>`_
-- `fv, cam5, trop_mam3 <http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam5.html>`_
-- `fv, cam4, waccm_mozart (use_case: waccm_2000_cam4) <http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4_waccm.html>`_
-- `fv, cam4, super_fast_llnl (use_case: 2000_cam4_super_fast_llnl) <http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4_super_fast_llnl.html>`_
+- `F2000climo <http://www.cesm.ucar.edu/models/cesm2/atmosphere/docs/ug6/hist_flds_f2000.html>`_

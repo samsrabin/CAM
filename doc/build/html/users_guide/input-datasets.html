@@ -2,23 +2,20 @@
 
 <!doctype html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>6. Input Datasets &#8212; camdoc  documentation</title>
-    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="camdoc  documentation" href="../index.html" />
-    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="7. Model Output:" href="model-output.html" />
     <link rel="prev" title="5. Customizing CAM runs" href="customizing-compsets.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -36,7 +31,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -50,7 +45,7 @@
           <a href="customizing-compsets.html" title="5. Customizing CAM runs"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -98,7 +93,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/input-datasets.txt"
+      <li><a href="../_sources/users_guide/input-datasets.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -263,7 +258,7 @@ scheme from Zender et la., 2003b, as described in Mahowald et al., 2006.  The re
 distribution of these values are tuned to generate a good distribution as described in
 Albani et al., 2014.</p>
 <p>The file used:
-soil_erod_file         = &#8216;/glade/p/cesmdata/cseg/inputdata/atm/cam/dst/dst_source2x2tunedcam6-2x2-04062017.nc’</p>
+soil_erod_file         = ‘/glade/p/cesmdata/cseg/inputdata/atm/cam/dst/dst_source2x2tunedcam6-2x2-04062017.nc’</p>
 </div>
 <div class="section" id="topography-files">
 <h2>6.4. Topography files<a class="headerlink" href="#topography-files" title="Permalink to this headline">¶</a></h2>
@@ -358,25 +353,25 @@ July 23, 2016.</p>
 <div class="section" id="geomagnetic-coefficients">
 <h3>6.7.1. Geomagnetic coefficients<a class="headerlink" href="#geomagnetic-coefficients" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>igrf_geomag_coefs_file         = &#8216;$DIN_LOC_ROOT/atm/waccm/geomag/igrf_ceofs_c160412.nc&#8217;</div></blockquote>
+<div>igrf_geomag_coefs_file         = ‘$DIN_LOC_ROOT/atm/waccm/geomag/igrf_ceofs_c160412.nc’</div></blockquote>
 </div>
 <div class="section" id="ion-drag">
 <h3>6.7.2. Ion drag<a class="headerlink" href="#ion-drag" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>efield_hflux_file              = &#8216;$DIN_LOC_ROOT/atm/waccm/efld/coeff_hflux.dat&#8217;</p>
-<p>efield_lflux_file              = &#8216;$DIN_LOC_ROOT/atm/waccm/efld/coeff_lflux.dat&#8217;</p>
-<p>efield_wei96_file              = &#8216;$DIN_LOC_ROOT/atm/waccm/efld/wei96.cofcnts&#8217;</p>
+<div><p>efield_hflux_file              = ‘$DIN_LOC_ROOT/atm/waccm/efld/coeff_hflux.dat’</p>
+<p>efield_lflux_file              = ‘$DIN_LOC_ROOT/atm/waccm/efld/coeff_lflux.dat’</p>
+<p>efield_wei96_file              = ‘$DIN_LOC_ROOT/atm/waccm/efld/wei96.cofcnts’</p>
 </div></blockquote>
 </div>
 <div class="section" id="electrons">
 <h3>6.7.3. Electrons<a class="headerlink" href="#electrons" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>electron_file          = &#8216;$DIN_LOC_ROOT/inputdata/atm/waccm/phot/electron_121129.dat&#8217;</div></blockquote>
+<div>electron_file          = ‘$DIN_LOC_ROOT/inputdata/atm/waccm/phot/electron_121129.dat’</div></blockquote>
 </div>
 <div class="section" id="upper-boundary-condition">
 <h3>6.7.4. Upper boundary condition<a class="headerlink" href="#upper-boundary-condition" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>snoe_ubc_file          = &#8216;$DIN_LOC_ROOT/inputdata/atm/waccm/ub/snoe_eof.nc&#8217;</div></blockquote>
+<div>snoe_ubc_file          = ‘$DIN_LOC_ROOT/inputdata/atm/waccm/ub/snoe_eof.nc’</div></blockquote>
 </div>
 </div>
 </div>
@@ -400,12 +395,12 @@ July 23, 2016.</p>
           <a href="customizing-compsets.html" title="5. Customizing CAM runs"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

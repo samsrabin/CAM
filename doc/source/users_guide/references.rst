@@ -1,12 +1,20 @@
-.. references:
+.. _references:
 
 ***************
 References
 ***************
 
-[Conley et al. [2013]] Conley, A.J., J.-F. Lamarque, F. Vitt, W.D. Collins, and J. Kiehl. PORT, a CESM tool for the diagnosis of radiative forcing , Geoscientific Model Development, 6, 469-476, `doi:10.5194/gmd-6-469-2013 <http://dx.doi.org/10.5194/gmd-6-469-2013>`_ , 2013.
+.. _con13:
 
-[Zender et al. [2003a]] Zender, C., Newman, D. & Torres, O. Spatial Heterogeneity in Aerolian Erodibility: Uniform, Topographic, Geomorphic and Hydrologic Hypotheses. J. Geophys. Res. 108, 4543, doi:10.1029/2002JD003039, 2003a.
+[Conley et al. [2013]] Conley, A.J., J.-F. Lamarque, F. Vitt, W.D. Collins,
+and J. Kiehl. PORT, a CESM tool for the diagnosis of radiative forcing ,
+Geoscientific Model Development, 6, 469-476, `doi:10.5194/gmd-6-469-2013
+<http://dx.doi.org/10.5194/gmd-6-469-2013>`_ , 2013.
+
+[Zender et al. [2003a]] Zender, C., Newman, D. & Torres, O. Spatial
+Heterogeneity in Aerolian Erodibility: Uniform, Topographic, Geomorphic and
+Hydrologic Hypotheses. J. Geophys. Res. 108, 4543,
+`doi:10.1029/2002JD003039 <https://doi.org/10.1029/2002JD003039>`_, 2003a.
 
 [Zender et al. [2003a]] Zender, C., Bian, H. & Newman, D. Mineral Dust Entrainment and Deposition (DEAD) model: Description and 1990s dust climatology. J. Geophys. Res. 108, 4416, doi:10.1029/2002JD002775, 2003b.
 

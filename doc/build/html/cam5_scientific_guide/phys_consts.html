@@ -2,23 +2,20 @@
 
 <!doctype html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Physical Constants &#8212; camdoc  documentation</title>
-    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -27,13 +24,12 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="camdoc  documentation" href="../index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!--[if lt IE 9]>
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -54,7 +50,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/cam5_scientific_guide/phys_consts.txt"
+      <li><a href="../_sources/cam5_scientific_guide/phys_consts.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -82,8 +78,8 @@
 uses the International System of Units (SI) (see August 1974 <em>Bulletin
 of the American Meteorological Society</em>, <strong>Vol. 55</strong>, No. 8, pp.
 926-930).</p>
-<div class="math">
-<p><img src="../_images/math/d3974138e009ffd22c6c8ab5f884a73f647c4117.png" alt="\begin{aligned}
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">\begin{aligned}
 \begin{array}{lcll}
 a &amp; = &amp; 6.37122 \times 10^{6} \quad\mathrm{m} &amp; \mathrm{ Radius \: of \: earth} \\
 g &amp; = &amp; 9.80616 \quad\mathrm{m \: s^{-2}} &amp; \mathrm{ Acceleration \: due \: to \: gravity}\\
@@ -108,8 +104,47 @@ c_{pv} &amp; = &amp; 1.81 \times 10^{3} \quad\mathrm{J \: kg^{-1} \: K^{-1}} &am
 T_{melt} &amp; = &amp; 273.16 \quad\mathrm{^{\circ}K} &amp; \mathrm{ Melting \: point \: of \: ice}\\
 p_{std} &amp; = &amp; 1.01325 \times 10^{5} \quad\mathrm{Pa} &amp; \mathrm{ Standard \: pressure}\\
 \rho_{air} &amp; = &amp; p_{std}/(R\,T_{melt}) \quad\mathrm{[kg m^{-3}]} &amp; \mathrm{ Density \: of \: dry \: air \: at \: standard \: pressure/temperature}
-\end{array}\end{aligned}"/></p>
-</div><p>The model code defines these constants to the stated accuracy. We do
+\end{array}\end{aligned}</tt>)</p>
+latex exited with error
+[stdout]
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2016/03/31&gt;
+Babel &lt;3.9r&gt; and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def))
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+&lt;read *&gt; 
+         
+l.9 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</div>
+<p>The model code defines these constants to the stated accuracy. We do
 not mean to imply that these constants are known to this accuracy nor
 that the low-order digits are significant to the physical
 approximations employed.</p>
@@ -137,7 +172,7 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="baede79" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[BJC79]</td><td>A.&nbsp;P.&nbsp;M. Baede, M.&nbsp;Jarraud, and U.&nbsp;Cubasch. Adiabatic formulation and organization of ECMWF&#8216;s model. Technical Report 15, ECMWF, Reading, U.K., 1979.</td></tr>
+<tr><td class="label">[BJC79]</td><td>A.&nbsp;P.&nbsp;M. Baede, M.&nbsp;Jarraud, and U.&nbsp;Cubasch. Adiabatic formulation and organization of ECMWF’s model. Technical Report 15, ECMWF, Reading, U.K., 1979.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="banks-kockarts-73" rules="none">
@@ -155,19 +190,19 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="bath92" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[BRO92]</td><td>L.&nbsp;Bath, J.&nbsp;Rosinski, and J.&nbsp;Olson. User&#8217;s Guide to NCAR CCM2. Technical Report NCAR/TN-379+IA, National Center for Atmospheric Research, Boulder, CO, 1992. 156~pp.</td></tr>
+<tr><td class="label">[BRO92]</td><td>L.&nbsp;Bath, J.&nbsp;Rosinski, and J.&nbsp;Olson. User’s Guide to NCAR CCM2. Technical Report NCAR/TN-379+IA, National Center for Atmospheric Research, Boulder, CO, 1992. 156~pp.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="bath87" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[BDW+87]</td><td>L.&nbsp;M. Bath, M.&nbsp;A. Dias, D.&nbsp;L. Williamson, G.&nbsp;S. Williamson, and R.&nbsp;J. Wolski. User&#8217;s Guide to NCAR CCM1. Technical Report NCAR/TN-286+IA, National Center for Atmospheric Research, Boulder, CO, 1987. 173~pp.</td></tr>
+<tr><td class="label">[BDW+87]</td><td>L.&nbsp;M. Bath, M.&nbsp;A. Dias, D.&nbsp;L. Williamson, G.&nbsp;S. Williamson, and R.&nbsp;J. Wolski. User’s Guide to NCAR CCM1. Technical Report NCAR/TN-286+IA, National Center for Atmospheric Research, Boulder, CO, 1987. 173~pp.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="bonan96a" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Bon96]</td><td>G.&nbsp;B. Bonan. A land surface model (LSM version 1.0) for ecological, hydrological, and atmospheric studies: Technical description and user&#8217;s guide. Technical Report NCAR/TN-417+STR, National Center for Atmospheric Research, Boulder, CO, 1996. 150~pp.</td></tr>
+<tr><td class="label">[Bon96]</td><td>G.&nbsp;B. Bonan. A land surface model (LSM version 1.0) for ecological, hydrological, and atmospheric studies: Technical description and user’s guide. Technical Report NCAR/TN-417+STR, National Center for Atmospheric Research, Boulder, CO, 1996. 150~pp.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="bourke77" rules="none">
@@ -194,12 +229,6 @@ approximations employed.</p>
 <tr><td class="label">[Bri92]</td><td>B.&nbsp;P. Briegleb. Delta-Eddington approximation for solar radiation in the NCAR Community Climate Model. <em>J.~Geophys. Res.</em>, 97:7603–7612, 1992.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="cote-staniforth88" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[CoteS88]</td><td>J.&nbsp;Côté and A.&nbsp;Staniforth. A two-time-level semi-Lagrangian semi-implicit scheme for spectral models. <em>Mon. Wea. Rev.</em>, 116:2003–2012, 1988.</td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="cariolle-et-al-90" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -216,6 +245,12 @@ approximations employed.</p>
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[CW84]</td><td>P.&nbsp;Colella and P.&nbsp;R. Woodward. The piecewise parabolic method (ppm) for gas-dynamical simulations. <em>J.~Comp.~Phys.</em>, 54:174–201, 1984.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="cote-staniforth88" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[CS88]</td><td>J.&nbsp;Côté and A.&nbsp;Staniforth. A two-time-level semi-Lagrangian semi-implicit scheme for spectral models. <em>Mon. Wea. Rev.</em>, 116:2003–2012, 1988.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="daley76" rules="none">
@@ -251,7 +286,7 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="eaton10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Eat10]</td><td>B.&nbsp;E. Eaton. User&#8217;s Guide to the Community Atmosphere Model AM4.0. Technical Report, National Center for Atmospheric Research, Boulder, Colorado, 2010. <span>\tt <a class="reference external" href="#"></a></span>http://www.ccsm.ucar.edu/models/ccsm4.0/cam/docs/users_guide/book1.html.</td></tr>
+<tr><td class="label">[Eat10]</td><td>B.&nbsp;E. Eaton. User’s Guide to the Community Atmosphere Model AM4.0. Technical Report, National Center for Atmospheric Research, Boulder, Colorado, 2010. <span>\tt <a class="reference external" href="#"></a></span>http://www.ccsm.ucar.edu/models/ccsm4.0/cam/docs/users_guide/book1.html.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="emmons-10" rules="none">
@@ -539,7 +574,7 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="manabe69" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Man69]</td><td>S.&nbsp;Manabe. Climate and the ocean circulation: 1. The atmospheric circulation and the hydrology of the earth&#8217;s surface. <em>Mon. Wea. Rev.</em>, 97:739–774, 1969.</td></tr>
+<tr><td class="label">[Man69]</td><td>S.&nbsp;Manabe. Climate and the ocean circulation: 1. The atmospheric circulation and the hydrology of the earth’s surface. <em>Mon. Wea. Rev.</em>, 97:739–774, 1969.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="mcavaney78" rules="none">
@@ -653,7 +688,7 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="rasch98" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[RKristjansson98]</td><td>P.&nbsp;J. Rasch and J.&nbsp;E. Kristjánsson. A comparison of the CCM3 model climate using diagnosed and predicted condensate parameterizations. <em>J.~Climate</em>, 11:1587–1614, 1998.</td></tr>
+<tr><td class="label">[RK98]</td><td>P.&nbsp;J. Rasch and J.&nbsp;E. Kristjánsson. A comparison of the CCM3 model climate using diagnosed and predicted condensate parameterizations. <em>J.~Climate</em>, 11:1587–1614, 1998.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="rasch90" rules="none">
@@ -725,13 +760,13 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="sangster60" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[San60]</td><td>W.&nbsp;E. Sangster. <em>A meteorological coordinate system in which the Earth&#8217;s surface is a coordinate surface</em>. PhD thesis, University of Chicago, Department of Geophysical Sciences, 1960.</td></tr>
+<tr><td class="label">[San60]</td><td>W.&nbsp;E. Sangster. <em>A meteorological coordinate system in which the Earth’s surface is a coordinate surface</em>. PhD thesis, University of Chicago, Department of Geophysical Sciences, 1960.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="sato83" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[SBWW83]</td><td>R.&nbsp;K. Sato, L.&nbsp;M. Bath, D.&nbsp;L. Williamson, and G.&nbsp;S. Williamson. User&#8217;s guide to NCAR CCMOB. Technical Report NCAR/TN-211+IA, National Center for Atmospheric Research, Boulder, Colorado, 1983. 133~pp.</td></tr>
+<tr><td class="label">[SBWW83]</td><td>R.&nbsp;K. Sato, L.&nbsp;M. Bath, D.&nbsp;L. Williamson, and G.&nbsp;S. Williamson. User’s guide to NCAR CCMOB. Technical Report NCAR/TN-211+IA, National Center for Atmospheric Research, Boulder, Colorado, 1983. 133~pp.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="satoh04" rules="none">
@@ -857,7 +892,7 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="wang05" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[WLS05]</td><td>Y.-M. Wang, J.L. Lean, and N.R. Sheeley. Modeling the sun&#8217;s magnetic field and irradiance since 1713. <em>The Astrophysical Journal</em>, 2005. URL: <a class="reference external" href="http://stacks.iop.org/0004-637X/625/i=1/a=522">http://stacks.iop.org/0004-637X/625/i=1/a=522</a>.</td></tr>
+<tr><td class="label">[WLS05]</td><td>Y.-M. Wang, J.L. Lean, and N.R. Sheeley. Modeling the sun’s magnetic field and irradiance since 1713. <em>The Astrophysical Journal</em>, 2005. URL: <a class="reference external" href="http://stacks.iop.org/0004-637X/625/i=1/a=522">http://stacks.iop.org/0004-637X/625/i=1/a=522</a>.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="washington82" rules="none">
@@ -965,7 +1000,7 @@ approximations employed.</p>
 <table class="docutils citation" frame="void" id="rancic96" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[RanvcicPM96]</td><td>M.&nbsp;Rančić, R.J. Purser, and F.&nbsp;Mesinger. A global shallow-water model using an expanded spherical cube: gnomonic versus conformal coordinates. <em>Q.~J.~R.~Meteorol. Soc.</em>, 122:959–982, 1996.</td></tr>
+<tr><td class="label">[RancicPM96]</td><td>M.&nbsp;Rančić, R.J. Purser, and F.&nbsp;Mesinger. A global shallow-water model using an expanded spherical cube: gnomonic versus conformal coordinates. <em>Q.~J.~R.~Meteorol. Soc.</em>, 122:959–982, 1996.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="sander-etal-06" rules="none">
@@ -994,7 +1029,7 @@ approximations employed.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

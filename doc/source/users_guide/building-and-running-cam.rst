@@ -69,4 +69,8 @@ For example, to change the CO2 volume mixing ratio to 400.e-6, modify **user_nl_
 
 To see the result, call ``preview_namelists`` and verify that the new value appears in **CaseDocs/atm_in**.  The exception to this are variables within the **camexp** namelist group (as listed in the link immediately below).  Variables within this group are used internally by CAM's build-namelist utility and modify the resulting namelist. They will not be written out to the the atm_in file.
 
-A complete listing of all of CAM's namelists is available at `CAM's namelist variables <http://www.cesm.ucar.edu/models/cesm2/component_settings/cam_nml.html>`_  More details on changing CAM's namelist can be found at :ref:`customizing compsets<customizing-compsets>`.
+A complete listing of all of CAM's namelists is available at `CAM's
+namelist variables
+<http://www.cesm.ucar.edu/models/cesm2/component_settings/cam_nml.html>`_
+More details on changing CAM's namelist can be found at :ref:`customizing
+compsets<customizing-compsets>`.

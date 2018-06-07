@@ -2,23 +2,20 @@
 
 <!doctype html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>5. Customizing CAM runs &#8212; camdoc  documentation</title>
-    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="camdoc  documentation" href="../index.html" />
-    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="6. Input Datasets" href="input-datasets.html" />
     <link rel="prev" title="4. Atmospheric configurations (compsets)" href="atmospheric-configurations.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -36,7 +31,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -50,7 +45,7 @@
           <a href="atmospheric-configurations.html" title="4. Atmospheric configurations (compsets)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -63,7 +58,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#changing-cam-namelist-options">5.2. Changing CAM namelist options</a><ul>
-<li><a class="reference internal" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions">5.2.1. Modifying Namelist settings:  Detailed Example &#8211; Using CMIP5 emissions</a></li>
+<li><a class="reference internal" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions">5.2.1. Modifying Namelist settings:  Detailed Example – Using CMIP5 emissions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#user-defined-compsets">5.3. User-Defined Compsets</a></li>
@@ -81,7 +76,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/customizing-compsets.txt"
+      <li><a href="../_sources/users_guide/customizing-compsets.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -114,14 +109,14 @@
 </ul>
 </dd>
 </dl>
-<p>Users need to be careful when modifying CAM&#8217;s configuration and namelists as it is very easy to create an invalid run.  An example would be with the <code class="docutils literal"><span class="pre">-nlev</span></code> configuration setting as input files are dependent on this setting and may not exist for the requested dynamics/nlev combination.</p>
+<p>Users need to be careful when modifying CAM’s configuration and namelists as it is very easy to create an invalid run.  An example would be with the <code class="docutils literal"><span class="pre">-nlev</span></code> configuration setting as input files are dependent on this setting and may not exist for the requested dynamics/nlev combination.</p>
 <div class="section" id="changing-cam-configurations">
 <h2>5.1. Changing CAM configurations<a class="headerlink" href="#changing-cam-configurations" title="Permalink to this headline">¶</a></h2>
 <p>All configure options change the way that CAM is built and need to be applied before <code class="docutils literal"><span class="pre">case.build</span></code> is run.  Changing the configuration is done by issuing an <code class="docutils literal"><span class="pre">xmlchange</span></code> command for <strong>CAM_CONFIG_OPTS</strong>.  It is important to make sure that you use the <code class="docutils literal"><span class="pre">--append</span></code> flag to maintain configuration options that are set by the compset.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">append</span> <span class="n">CAM_CONFIG_OPTS</span><span class="o">=</span><span class="s1">&#39;-nthreads 2&#39;</span>
 </pre></div>
 </div>
-<p>CAM has numerous options which can modify it&#8217;s configuration.  A few of the more widely used settings will be discussed here.  The complete listing of configure options is at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  More information on xmlchange can be found at the <a class="reference external" href="http://esmci.github.io/cime/Tools_user/xmlchange.html">xmlchange web page</a>.</p>
+<p>CAM has numerous options which can modify it’s configuration.  A few of the more widely used settings will be discussed here.  The complete listing of configure options is at <a class="reference internal" href="appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  More information on xmlchange can be found at the <a class="reference external" href="http://esmci.github.io/cime/Tools_user/xmlchange.html">xmlchange web page</a>.</p>
 <div class="section" id="changing-the-physics">
 <h3>5.1.1. Changing the physics<a class="headerlink" href="#changing-the-physics" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
@@ -137,9 +132,9 @@
 </div>
 <div class="section" id="changing-cam-namelist-options">
 <h2>5.2. Changing CAM namelist options<a class="headerlink" href="#changing-cam-namelist-options" title="Permalink to this headline">¶</a></h2>
-<p>There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at <a class="reference internal" href="model-output.html#model-output"><span class="std std-ref">Model Output</span></a>. .  A complete listing of all of CAM&#8217;s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">CAM&#8217;s namelist variables</a></p>
+<p>There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at <a class="reference internal" href="model-output.html#model-output"><span class="std std-ref">Model Output</span></a>. .  A complete listing of all of CAM’s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">CAM’s namelist variables</a></p>
 <div class="section" id="modifying-namelist-settings-detailed-example-using-cmip5-emissions">
-<h3>5.2.1. Modifying Namelist settings:  Detailed Example &#8211; Using CMIP5 emissions<a class="headerlink" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions" title="Permalink to this headline">¶</a></h3>
+<h3>5.2.1. Modifying Namelist settings:  Detailed Example – Using CMIP5 emissions<a class="headerlink" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions" title="Permalink to this headline">¶</a></h3>
 <p>The following steps illustrate how to change the CMIP emissions back to the CMIP5 version.  If a user desires to do this, they may cut/paste the ext_frc_specifier and srf_emis_specifier settings below and put them into their own user_nl_cam.</p>
 <p>First the user must create a case and set it up</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
@@ -193,7 +188,7 @@
 </div>
 <div class="section" id="changing-specified-dynamics-compsets">
 <h2>5.4. Changing Specified Dynamics Compsets<a class="headerlink" href="#changing-specified-dynamics-compsets" title="Permalink to this headline">¶</a></h2>
-<p>Specified dynamics compsets are setup to use specified meteorological analysis (MERRA2 or GEOS5) to nudge the internally derived meteorology from the model to the analysis fields. Available compsets are only produced for a specific date and resolution.  Meteorological data sets (dates and resolutions) can be downloaded from the repository or from the Research Data Archive.  Information how to download MERRA2 or GEOS5 data sets can be found in &#8216;Meteorological Datasets &lt;<a class="reference external" href="https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html">https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html</a>&gt;&#8217;_.</p>
+<p>Specified dynamics compsets are setup to use specified meteorological analysis (MERRA2 or GEOS5) to nudge the internally derived meteorology from the model to the analysis fields. Available compsets are only produced for a specific date and resolution.  Meteorological data sets (dates and resolutions) can be downloaded from the repository or from the Research Data Archive.  Information how to download MERRA2 or GEOS5 data sets can be found in ‘Meteorological Datasets &lt;<a class="reference external" href="https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html">https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html</a>&gt;’_.</p>
 <p>To change the start data of a specified dynamics simulation, the new start date and location of the meteorological data have to be adjusted in user_nl_cam, as shown in the following example for Jan 1st 2014 (start date) and using GEOS5 1 deg meteorological analysis. Also met_filenames_list needs to be updated if the simulation covers a different period than included in this file.  One has to make sure to also update nc_data to the start date, even if a branch or hybrid run is performed:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">met_data_file</span>          <span class="o">=</span> <span class="s1">&#39;2014/GEOS5_09x125_20140101.nc&#39;</span>
 <span class="n">met_data_path</span>          <span class="o">=</span> <span class="s1">&#39;/glade/p/cesmdata/cseg/inputdata/atm/cam/met/GEOS5/0.9x1.25&#39;</span>
@@ -244,12 +239,12 @@
           <a href="atmospheric-configurations.html" title="4. Atmospheric configurations (compsets)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

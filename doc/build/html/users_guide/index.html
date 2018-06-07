@@ -2,23 +2,20 @@
 
 <!doctype html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>CAM6 User’s Guide &#8212; camdoc  documentation</title>
-    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -27,7 +24,6 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="camdoc  documentation" href="../index.html" />
     <link rel="next" title="1. Introduction" href="introduction.html" />
     <link rel="prev" title="Welcome to the CAM documentation" href="../index.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -35,7 +31,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -62,7 +58,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/index.txt"
+      <li><a href="../_sources/users_guide/index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -85,7 +81,7 @@
           <div class="body" role="main">
             
   <div class="section" id="cam6-user-s-guide">
-<span id="users-guide"></span><h1>CAM6 User&#8217;s Guide<a class="headerlink" href="#cam6-user-s-guide" title="Permalink to this headline">¶</a></h1>
+<span id="users-guide"></span><h1>CAM6 User’s Guide<a class="headerlink" href="#cam6-user-s-guide" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
@@ -96,7 +92,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="building-and-running-cam.html">3. Building and Running the atmospheric model within CESM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="building-and-running-cam.html#modifying-cam-s-compiled-code-base-configuration">3.1. Modifying CAM&#8217;s compiled code base (configuration)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building-and-running-cam.html#modifying-cam-s-compiled-code-base-configuration">3.1. Modifying CAM’s compiled code base (configuration)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building-and-running-cam.html#modifying-namelist-settings-in-cam-run">3.2. Modifying namelist settings in CAM run</a></li>
 </ul>
 </li>
@@ -146,7 +142,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="customizing-compsets.html#changing-cam-namelist-options">5.2. Changing CAM namelist options</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="customizing-compsets.html#modifying-namelist-settings-detailed-example-using-cmip5-emissions">5.2.1. Modifying Namelist settings:  Detailed Example &#8211; Using CMIP5 emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="customizing-compsets.html#modifying-namelist-settings-detailed-example-using-cmip5-emissions">5.2.1. Modifying Namelist settings:  Detailed Example – Using CMIP5 emissions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="customizing-compsets.html#user-defined-compsets">5.3. User-Defined Compsets</a></li>
@@ -200,12 +196,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="physics-modifications-via-the-namelist.html">8. Physics modifications via the namelist</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#radiative-constituents">8.1. Radiative Constituents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="physics-modifications-via-the-namelist.html#default-rad-climate-for-cam4-physics">8.1.1. Default rad_climate for cam4 physics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="physics-modifications-via-the-namelist.html#default-rad-climate-for-cam5-physics">8.1.2. Default rad_climate for cam5 physics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="physics-modifications-via-the-namelist.html#default-rad-climate-for-cam6-physics">8.1.1. Default rad_climate for cam6 physics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-modify-a-radiatively-active-gas">8.2. Example - Modify a radiatively active gas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-diagnostic-radiative-forcing">8.3. Example - Diagnostic radiative forcing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#diagnostic-radiative-forcing">8.3. Diagnostic radiative forcing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-aerosol-radiative-forcing">8.4. Example - Aerosol radiative forcing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="physics-modifications-via-the-namelist.html#example-black-carbon-radiative-forcing">8.5. Example - Black carbon radiative forcing</a></li>
 </ul>
@@ -228,39 +223,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="appendices.html">11. Appendices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="appendices.html#the-configure-utility">11.1. The configure utility</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#how-configure-is-called-from-the-cesm-scripts">11.1.1. How configure is called from the CESM scripts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#arguments-to-configure">11.1.2. Arguments to configure</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="appendices.html#cam-configuration">11.1.2.1. CAM configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="appendices.html#scam-configuration">11.1.2.2. SCAM configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="appendices.html#cam-parallelization">11.1.2.3. CAM parallelization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="appendices.html#general-options-to-configure">11.1.2.4. General options to configure</a></li>
-<li class="toctree-l4"><a class="reference internal" href="appendices.html#surface-components-used-in-standalone-cam">11.1.2.5. Surface components used in standalone CAM</a></li>
-<li class="toctree-l4"><a class="reference internal" href="appendices.html#cam-standalone-build">11.1.2.6. CAM standalone build</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#arguments-to-configure">11.1.1. Arguments to configure</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="appendices.html#the-build-namelist-utility">11.2. The build-namelist utility</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#options-to-build-namelist">11.2.1. Options to build namelist</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#environment-variables-used-by-build-namelist">11.2.2. Environment variables used by build namelist</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#cam-namelist-variables">11.2.3. CAM Namelist variables</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="appendices.html#sample-interactive-session">11.3. Sample Interactive Session</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#configuring-cam-for-serial-execution">11.3.1. Configuring CAM for serial execution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#specifying-the-fortran-compiler">11.3.2. Specifying the Fortran compiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#dealing-with-compiler-wrappers">11.3.3. Dealing with compiler wrappers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#configuring-cam-for-parallel-execution">11.3.4. Configuring CAM for parallel execution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#building-cam">11.3.5. Building CAM</a></li>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#building-the-namelist">11.3.6. Building the Namelist</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="appendices.html#example-use-build-namelist-to-specify-a-dataset-in-a-non-default-location">11.4. Example: Use build-namelist to specify a dataset in a non-default location.</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#acquiring-input-datasets">11.4.1. Acquiring Input Datasets</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="appendices.html#acquire-missing-dataset">11.5. Acquire missing dataset</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="appendices.html#running-cam">11.5.1. Running CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#arguments-to-build-namelist">11.2.1. Arguments to build namelist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#cam-namelist-variables">11.2.2. CAM Namelist variables</a></li>
 </ul>
 </li>
 </ul>
@@ -293,7 +261,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

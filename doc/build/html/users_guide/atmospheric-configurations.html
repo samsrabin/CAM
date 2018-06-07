@@ -2,23 +2,20 @@
 
 <!doctype html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>4. Atmospheric configurations (compsets) &#8212; camdoc  documentation</title>
-    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="camdoc  documentation" href="../index.html" />
-    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="5. Customizing CAM runs" href="customizing-compsets.html" />
     <link rel="prev" title="3. Building and Running the atmospheric model within CESM" href="building-and-running-cam.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -36,7 +31,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -50,7 +45,7 @@
           <a href="building-and-running-cam.html" title="3. Building and Running the atmospheric model within CESM"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -113,7 +108,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/atmospheric-configurations.txt"
+      <li><a href="../_sources/users_guide/atmospheric-configurations.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -148,8 +143,8 @@
 <p>The predefined compsets exist with one of three levels of support.</p>
 <ul class="simple">
 <li><strong>Scientifically supported</strong>:  Specific compset/resolution pairs which have had significant, multi-year runs made and have been studied scientifically.  It is important to note that resolutions which are not listed, are not scientifically supported, have not had tunings performed and should not be used for scientific studies without careful examination of the results.</li>
-<li><strong>Tested</strong>: One or more tests for this compset have been made using at least one resolution.  Extensive scientific study has not been performed.  The designation of &#8220;Tested&#8221; simply acknowledges that one or more compset/resolution pair(s) have been confirmed to run without crashing.  No attempts have been made to validate the scientific quality of these runs and tunings have NOT been performed on them.</li>
-<li><strong>Unsupported</strong>:  These compsets are setup as a &#8220;convenience&#8221; for various reasons and they are not supported for science runs.  If a user decides to use one of these compsets, they must also supply the &#8211;run-unsupported flag to create_newcase.  These compsets may not even compile and run successfully as they have not been tested.</li>
+<li><strong>Tested</strong>: One or more tests for this compset have been made using at least one resolution.  Extensive scientific study has not been performed.  The designation of “Tested” simply acknowledges that one or more compset/resolution pair(s) have been confirmed to run without crashing.  No attempts have been made to validate the scientific quality of these runs and tunings have NOT been performed on them.</li>
+<li><strong>Unsupported</strong>:  These compsets are setup as a “convenience” for various reasons and they are not supported for science runs.  If a user decides to use one of these compsets, they must also supply the –run-unsupported flag to create_newcase.  These compsets may not even compile and run successfully as they have not been tested.</li>
 </ul>
 <p>CAM compsets include the F, P and Q compsets.</p>
 <ul class="simple">
@@ -228,19 +223,19 @@ degree fv dycore</td>
 T85z30_T85_mg17,
 T85z60_T85_mg17</td>
 <td>Generic adiabatic simple model</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>FSCAM</td>
 <td>T42_T42</td>
 <td>Single column CAM</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-even"><td>FHS94</td>
 <td>T42z30_T42_mg17,
 T85z30_T85_mg17,
 T85z60_T85_mg17</td>
 <td>Held-Suarez simpler model</td>
-<td>&nbsp;</td>
+<td>&#160;</td>
 </tr>
 <tr class="row-odd"><td>QPC6</td>
 <td>f09_f09_mg17,
@@ -262,10 +257,10 @@ f19_f19_mg17</td>
 <dl class="docutils">
 <dt>Aquaplanet compsets which have been tested, but are not scientifically supported:</dt>
 <dd><ul class="first last simple">
-<li>QPC5 &#8211; Prescribed SST Aquaplanet using CAM5</li>
-<li>QPC4 &#8211; Prescribed SST Aquaplanet using CAM4</li>
-<li>QSC5 &#8211; Slab-Ocean Aquaplanet for CAM5</li>
-<li>QSC4 &#8211; Slab-Ocean Aquaplanet for CAM4</li>
+<li>QPC5 – Prescribed SST Aquaplanet using CAM5</li>
+<li>QPC4 – Prescribed SST Aquaplanet using CAM4</li>
+<li>QSC5 – Slab-Ocean Aquaplanet for CAM5</li>
+<li>QSC4 – Slab-Ocean Aquaplanet for CAM4</li>
 </ul>
 </dd>
 </dl>
@@ -280,7 +275,7 @@ f19_f19_mg17</td>
 <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>By default initial conditions from a previous aquaplanet simulation are used. The SST pattern is the APE &#8220;QOBS&#8221; option, which is used in APE and CFMIP protocols. The atmospheric ozone is specified to be that used for APE. Aerosol emissions are neglected except for sea salt (which is diagnostic), see Medeiros et al. <a class="footnote-reference" href="#id5" id="id4">[1]</a> for details.</p>
+<p>By default initial conditions from a previous aquaplanet simulation are used. The SST pattern is the APE “QOBS” option, which is used in APE and CFMIP protocols. The atmospheric ozone is specified to be that used for APE. Aerosol emissions are neglected except for sea salt (which is diagnostic), see Medeiros et al. <a class="footnote-reference" href="#id5" id="id4">[1]</a> for details.</p>
 </div>
 <div class="section" id="example-2-default-aquaplanet-with-slab-ocean-model">
 <h4>4.2.1.2. Example 2: Default Aquaplanet with Slab-Ocean Model<a class="headerlink" href="#example-2-default-aquaplanet-with-slab-ocean-model" title="Permalink to this headline">¶</a></h4>
@@ -293,7 +288,7 @@ f19_f19_mg17</td>
 <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>Note that the slab-ocean model has no ocean heat transport by default; the user must specify an appropriate &#8220;qflux&#8221; file. To specify such a file:</p>
+<p>Note that the slab-ocean model has no ocean heat transport by default; the user must specify an appropriate “qflux” file. To specify such a file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">file</span> <span class="n">env_run</span><span class="o">.</span><span class="n">xml</span> <span class="o">--</span><span class="nb">id</span> <span class="n">DOCN_SOM_FILENAME</span> <span class="o">--</span><span class="n">val</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">nc</span>
 </pre></div>
 </div>
@@ -309,7 +304,7 @@ f19_f19_mg17</td>
 <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>The example uses the 3KEQ SST pattern, which is specified with &#8220;AQP7&#8221; in the compset name. The analytical SST profiles are defined in the source code (cime/src/components/data_comps/docn/docn_comp_mod.F90). Also note this example switched to CAM5 physics by specifying &#8220;CAM50&#8221; in the compset name. The run-unsupported flag is required.</p>
+<p>The example uses the 3KEQ SST pattern, which is specified with “AQP7” in the compset name. The analytical SST profiles are defined in the source code (cime/src/components/data_comps/docn/docn_comp_mod.F90). Also note this example switched to CAM5 physics by specifying “CAM50” in the compset name. The run-unsupported flag is required.</p>
 </div>
 <div class="section" id="example-4-aquaplanet-with-user-specified-sst-dataset">
 <h4>4.2.1.4. Example 4: Aquaplanet with user-specified SST dataset<a class="headerlink" href="#example-4-aquaplanet-with-user-specified-sst-dataset" title="Permalink to this headline">¶</a></h4>
@@ -421,7 +416,7 @@ mfilt = 1,5
 ndens = 1,1
 </pre></div>
 </div>
-<p>Note: It has been found that sampling every 73&#8217;rd time step is a good balance of computational cost
+<p>Note: It has been found that sampling every 73’rd time step is a good balance of computational cost
 and size of data for dtime = 1800 and a 2-degree horizontal resolution. <a class="footnote-reference" href="#id9" id="id8">[4]</a></p>
 <table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -437,8 +432,8 @@ and size of data for dtime = 1800 and a 2-degree horizontal resolution. <a class
 <span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>After your job completes, you will have a number of files, including ones with filenames containing &#8220;cam.h1&#8221;.
-The &#8220;cam.h1&#8221; files contain the radiation history which was specified by the namelist and will be used in the
+<p>After your job completes, you will have a number of files, including ones with filenames containing “cam.h1”.
+The “cam.h1” files contain the radiation history which was specified by the namelist and will be used in the
 next step.</p>
 </div>
 <div class="section" id="port-validation">
@@ -550,12 +545,12 @@ nhtfrq = 0,73
 </div>
 <div class="section" id="cam-single-column-fscam-compset">
 <h3>4.2.3. CAM single column (FSCAM compset)<a class="headerlink" href="#cam-single-column-fscam-compset" title="Permalink to this headline">¶</a></h3>
-<p>SCAM cases are set up for a small set of different locations/dates, called an Intensive Observing Period (IOP).  Each of these IOP&#8217;s have separate preconfigured settings which are referenced by create_new_case using the &#8211;user-mods-dir flag.</p>
+<p>SCAM cases are set up for a small set of different locations/dates, called an Intensive Observing Period (IOP).  Each of these IOP’s have separate preconfigured settings which are referenced by create_new_case using the –user-mods-dir flag.</p>
 <p>The list of the available configurations and the associated usermods_dirs directory are:</p>
 <blockquote>
 <div><ul class="simple">
 <li><strong>ARM95</strong>: scam_arm95</li>
-<li><strong>ARM97</strong>: scam_arm97 &#8211; <em>default</em></li>
+<li><strong>ARM97</strong>: scam_arm97 – <em>default</em></li>
 <li><strong>ATEX</strong>: scam_atex</li>
 <li><strong>BOMEX</strong>: scam_bomex</li>
 <li><strong>CGILSS11</strong>: scam_cgilsS11</li>
@@ -592,7 +587,7 @@ nhtfrq = 0,73
 </div>
 <div class="section" id="example-setting-up-a-scam-run">
 <h4>4.2.3.2. Example:  Setting up a SCAM run<a class="headerlink" href="#example-setting-up-a-scam-run" title="Permalink to this headline">¶</a></h4>
-<p>Users specify the directory containing the specifications for running an IOP using the &#8211;user-mods-dir flag.  In this example we are using the MPACE IOP.  Note that the default settings are to run for all of the observations within the IOP, but a user may shorten that by issuing an xmlchange for the STOP_N setting.  In this example we will limit the run to 600 timesteps</p>
+<p>Users specify the directory containing the specifications for running an IOP using the –user-mods-dir flag.  In this example we are using the MPACE IOP.  Note that the default settings are to run for all of the observations within the IOP, but a user may shorten that by issuing an xmlchange for the STOP_N setting.  In this example we will limit the run to 600 timesteps</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_scam_mpace</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FSCAM</span> <span class="o">--</span><span class="n">res</span> <span class="n">T42_T42</span> <span class="o">--</span><span class="n">user</span><span class="o">-</span><span class="n">mods</span><span class="o">-</span><span class="nb">dir</span> <span class="o">../../</span><span class="n">components</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">cime_config</span><span class="o">/</span><span class="n">usermods_dirs</span><span class="o">/</span><span class="n">scam_mpace</span>
 <span class="o">%</span> <span class="n">cd</span> <span class="n">test_scam_mpace</span>
@@ -602,12 +597,12 @@ nhtfrq = 0,73
 <span class="o">%</span> <span class="o">./</span><span class="n">case</span><span class="o">.</span><span class="n">submit</span>
 </pre></div>
 </div>
-<p>If user neglects to specify a &#8211;use-mods-dir, then it defaults to a shortened run of ARM97.</p>
+<p>If user neglects to specify a –use-mods-dir, then it defaults to a shortened run of ARM97.</p>
 <p>The user may modify the sample script <strong>components/cam/bld/scripts/create_scam6_iop</strong>.</p>
 </div>
 <div class="section" id="example-efficient-way-to-cycle-over-several-scam-iop-locations">
 <h4>4.2.3.3. Example:  Efficient way to cycle over several SCAM IOP locations<a class="headerlink" href="#example-efficient-way-to-cycle-over-several-scam-iop-locations" title="Permalink to this headline">¶</a></h4>
-<p>While a user can use the above directions for running multiple IOP&#8217;s, rebuilding the executable for each IOP is time-consuming and unnecessary as the same executable may be used for multiple IOP&#8217;s.  A more efficient way to run over several IOP&#8217;s is to use create_newcase using the scam_mandatory setup and then using create_clone for all SCAM IOP&#8217;s.  This example, will make runs for TWP06 and SPARTICUS by running create_newcase using the setup in scam_mandatory and then using create_clone for test_scam_twp06 and test_scam_sparticus.  Note the addition of the flag &#8211;keepexe on the create_clone command to indicate that the executable will be used from the test_scam_mandatory case.</p>
+<p>While a user can use the above directions for running multiple IOP’s, rebuilding the executable for each IOP is time-consuming and unnecessary as the same executable may be used for multiple IOP’s.  A more efficient way to run over several IOP’s is to use create_newcase using the scam_mandatory setup and then using create_clone for all SCAM IOP’s.  This example, will make runs for TWP06 and SPARTICUS by running create_newcase using the setup in scam_mandatory and then using create_clone for test_scam_twp06 and test_scam_sparticus.  Note the addition of the flag –keepexe on the create_clone command to indicate that the executable will be used from the test_scam_mandatory case.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">cd</span> <span class="n">cime</span><span class="o">/</span><span class="n">scripts</span>
 <span class="o">%</span> <span class="o">./</span><span class="n">create_newcase</span> <span class="o">--</span><span class="n">case</span> <span class="n">test_scam_mandatory</span> <span class="o">--</span><span class="n">compset</span> <span class="n">FSCAM</span> <span class="o">--</span><span class="n">res</span> <span class="n">T42_T42</span> <span class="o">--</span><span class="n">user</span><span class="o">-</span><span class="n">mods</span><span class="o">-</span><span class="nb">dir</span> <span class="o">../../</span><span class="n">components</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">cime_config</span><span class="o">/</span><span class="n">usermods_dirs</span><span class="o">/</span><span class="n">scam_mandatory</span>
 <span class="o">%</span> <span class="n">cd</span> <span class="n">test_scam_mandatory</span>
@@ -642,7 +637,7 @@ nhtfrq = 0,-3
 avgflag_pertape = &#39;A&#39;,&#39;I&#39;
 </pre></div>
 </div>
-<p>Averaging can be either &#8216;I&#8217;nstantaneous or &#8216;A&#8217; average for fincl2
+<p>Averaging can be either ‘I’nstantaneous or ‘A’ average for fincl2
 This produces 3 hourly output at a point for fincl2 fields on an h1 file.</p>
 <p>2. Run following script on resulting h1 files:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">components</span><span class="o">/</span><span class="n">cam</span><span class="o">/</span><span class="n">bld</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">camfv2iop</span><span class="o">.</span><span class="n">ncl</span>
@@ -653,14 +648,12 @@ This produces 3 hourly output at a point for fincl2 fields on an h1 file.</p>
 <li>Run the User IOP case.</li>
 </ol>
 <p>To run the user iop with SCAM, follow the following steps (here it is a test case over the Labrador Sea from a CAM Run)</p>
-<ul>
-<li><p class="first">Decide your iop name (e.g. usrLabSea)</p>
-</li>
-<li><p class="first">Add this IOP to the script create_scam6_iop</p>
-</li>
+<ul class="simple">
+<li>Decide your iop name (e.g. usrLabSea)</li>
+<li>Add this IOP to the script create_scam6_iop</li>
 <li><dl class="first docutils">
-<dt>In the tag you have downloaded, go to the &#8216;usermods_dirs&#8217; directory</dt>
-<dd><ul class="first last simple">
+<dt>In the tag you have downloaded, go to the ‘usermods_dirs’ directory</dt>
+<dd><ul class="first last">
 <li>cam6_0_000/components/cam/cime_config/usermods_dirs</li>
 </ul>
 </dd>
@@ -668,7 +661,7 @@ This produces 3 hourly output at a point for fincl2 fields on an h1 file.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Copy one of the directories for the IOP cases, e.g.</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>cp -r scam_arm97 scam_usrLabSea</li>
 </ul>
 </dd>
@@ -676,15 +669,14 @@ This produces 3 hourly output at a point for fincl2 fields on an h1 file.</p>
 </li>
 <li><dl class="first docutils">
 <dt>Change files in this directory</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li><strong>shell_commands</strong>: XML change commands: Typically the LAT, LON, STARTDATE, START_TOD, STOP_OPTION and STOP_N</li>
 <li><strong>sser_nl_cam</strong>:  usually just iopfile. May also want to change mfilt (to keep all times on one file)</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">Run create_scam6_iop script with apprpriate IOP (e.g. IOP=scam_usrLabSea in this case)</p>
-</li>
+<li>Run create_scam6_iop script with apprpriate IOP (e.g. IOP=scam_usrLabSea in this case)</li>
 </ul>
 </div>
 <div class="section" id="other-cam-compsets">
@@ -933,7 +925,7 @@ land and MEGAN2.1</td>
 </div>
 <div class="section" id="scientifically-supported-coupled-waccm-compsets">
 <h3>4.6.3. Scientifically supported coupled WACCM compsets<a class="headerlink" href="#scientifically-supported-coupled-waccm-compsets" title="Permalink to this headline">¶</a></h3>
-<p><strong>AUTHOR QUESTION:</strong> Should coupled compsets be left out of the CAM user&#8217;s guide?</p>
+<p><strong>AUTHOR QUESTION:</strong> Should coupled compsets be left out of the CAM user’s guide?</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -963,7 +955,7 @@ MEGAN2.1</td>
 </div>
 <div class="section" id="tested-coupled-waccm-compsets">
 <h3>4.6.4. Tested coupled WACCM compsets<a class="headerlink" href="#tested-coupled-waccm-compsets" title="Permalink to this headline">¶</a></h3>
-<p><strong>AUTHOR QUESTION:</strong> Should coupled compsets be left out of the CAM user&#8217;s guide?</p>
+<p><strong>AUTHOR QUESTION:</strong> Should coupled compsets be left out of the CAM user’s guide?</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="12%" />
@@ -1068,12 +1060,12 @@ above.</p>
           <a href="building-and-running-cam.html" title="3. Building and Running the atmospheric model within CESM"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

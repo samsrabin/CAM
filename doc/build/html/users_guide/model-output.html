@@ -2,23 +2,20 @@
 
 <!doctype html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>7. Model Output: &#8212; camdoc  documentation</title>
-    
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -27,8 +24,6 @@
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="camdoc  documentation" href="../index.html" />
-    <link rel="up" title="CAM6 User’s Guide" href="index.html" />
     <link rel="next" title="8. Physics modifications via the namelist" href="physics-modifications-via-the-namelist.html" />
     <link rel="prev" title="6. Input Datasets" href="input-datasets.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -36,7 +31,7 @@
     <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
     <![endif]-->
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -50,7 +45,7 @@
           <a href="input-datasets.html" title="6. Input Datasets"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -83,7 +78,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/users_guide/model-output.txt"
+      <li><a href="../_sources/users_guide/model-output.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -130,12 +125,13 @@
 <p>There are also namelist settings which control output in a general way.</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">empty_htapes</span></code> - turn off all default output and only write out the fields explicitly set via fincl settings</li>
-<li><code class="docutils literal"><span class="pre">history_YYY</span></code> - set the history to preset settings for various experiments.  For the complete listing go to the <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">namelist page</a> and search for namelist variables with the <code class="docutils literal"><span class="pre">history_</span></code> prefix (i.e. <code class="docutils literal"><span class="pre">history_amwg</span></code>, <code class="docutils literal"><span class="pre">history_clubb</span></code>, etc.)</li>
+<li><code class="docutils literal"><span class="pre">history_YYY</span></code> - add fields for specific diagnostic purposes to the
+default output.  For the complete listing go to the <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html">namelist page</a> and search for namelist variables with the <code class="docutils literal"><span class="pre">history_</span></code> prefix (i.e. <code class="docutils literal"><span class="pre">history_amwg</span></code>, <code class="docutils literal"><span class="pre">history_clubb</span></code>, etc.)</li>
 </ul>
 </div>
 <div class="section" id="general-features-of-history-files">
 <h2>7.3. General Features of History Files<a class="headerlink" href="#general-features-of-history-files" title="Permalink to this headline">¶</a></h2>
-<p>Each time sample in a history file has an associated timestamp which conforms to the <a class="reference external" href="http://cfconventions.org/">CF metadata conventions</a>. The time unit used in CAM&#8217;s output files is &#8220;days since reference date&#8221; where the reference date is the run start date by default, but can be customized via the <code class="docutils literal"><span class="pre">ref_ymd</span> <span class="pre">and</span> <span class="pre">ref_tod</span></code> namelist variables. The variables relevant to the timestamps are the following (from the output of the NetCDF <code class="docutils literal"><span class="pre">ncdump</span></code> utility):</p>
+<p>Each time sample in a history file has an associated timestamp which conforms to the <a class="reference external" href="http://cfconventions.org/">CF metadata conventions</a>. The time unit used in CAM’s output files is “days since reference date” where the reference date is the run start date by default, but can be customized via the <code class="docutils literal"><span class="pre">ref_ymd</span> <span class="pre">and</span> <span class="pre">ref_tod</span></code> namelist variables. The variables relevant to the timestamps are the following (from the output of the NetCDF <code class="docutils literal"><span class="pre">ncdump</span></code> utility):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">time</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="p">;</span>
         <span class="n">time</span><span class="p">:</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;time&quot;</span> <span class="p">;</span>
         <span class="n">time</span><span class="p">:</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;days since 0000-01-01 00:00:00&quot;</span> <span class="p">;</span>
@@ -152,7 +148,7 @@
         <span class="n">datesec</span><span class="p">:</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">&quot;current seconds of current date&quot;</span> <span class="p">;</span>
 </pre></div>
 </div>
-<p>The variable names, <code class="docutils literal"><span class="pre">time</span></code>, <code class="docutils literal"><span class="pre">time_bnds</span></code>, <code class="docutils literal"><span class="pre">date</span></code>, and <code class="docutils literal"><span class="pre">datesec</span></code> are all local conventions. What makes the history files CF compliant is that the time coordinate, <code class="docutils literal"><span class="pre">time</span></code>, can be identified by it&#8217;s units attribute &#8220;days since 0000-01-01 00:00:00&#8221;. The reference date is in the form YYYY-MM-DD HH:MM:SS where YYYY, MM, DD, HH, MM, SS are year, month, day, hour, minute, second respectively, and a missing timezone defaults to UTC. The <code class="docutils literal"><span class="pre">calendar</span></code> and <code class="docutils literal"><span class="pre">bounds</span></code> attributes are also part of CF. The <code class="docutils literal"><span class="pre">calendar</span></code> value <code class="docutils literal"><span class="pre">&quot;noleap&quot;</span></code> denotes the Gregorian calendar with no leap years. The bounds value <code class="docutils literal"><span class="pre">time_bnds</span></code> denotes that the variable with the name <code class="docutils literal"><span class="pre">time_bnds</span></code> contains the timestamps that bound the time intervals over which an operation such as computing an averager or a minimum or maximum value has been applied. Whether or not the interval specified by <code class="docutils literal"><span class="pre">time_bnds</span></code> is relevent depends on the individual variables, e.g., a single file can contain both instantaneous and time averaged fields. The type of the time operation that has been applied is contained in the <code class="docutils literal"><span class="pre">cell_methods</span></code> attribute of each variable, e.g.,</p>
+<p>The variable names, <code class="docutils literal"><span class="pre">time</span></code>, <code class="docutils literal"><span class="pre">time_bnds</span></code>, <code class="docutils literal"><span class="pre">date</span></code>, and <code class="docutils literal"><span class="pre">datesec</span></code> are all local conventions. What makes the history files CF compliant is that the time coordinate, <code class="docutils literal"><span class="pre">time</span></code>, can be identified by it’s units attribute “days since 0000-01-01 00:00:00”. The reference date is in the form YYYY-MM-DD HH:MM:SS where YYYY, MM, DD, HH, MM, SS are year, month, day, hour, minute, second respectively, and a missing timezone defaults to UTC. The <code class="docutils literal"><span class="pre">calendar</span></code> and <code class="docutils literal"><span class="pre">bounds</span></code> attributes are also part of CF. The <code class="docutils literal"><span class="pre">calendar</span></code> value <code class="docutils literal"><span class="pre">&quot;noleap&quot;</span></code> denotes the Gregorian calendar with no leap years. The bounds value <code class="docutils literal"><span class="pre">time_bnds</span></code> denotes that the variable with the name <code class="docutils literal"><span class="pre">time_bnds</span></code> contains the timestamps that bound the time intervals over which an operation such as computing an averager or a minimum or maximum value has been applied. Whether or not the interval specified by <code class="docutils literal"><span class="pre">time_bnds</span></code> is relevent depends on the individual variables, e.g., a single file can contain both instantaneous and time averaged fields. The type of the time operation that has been applied is contained in the <code class="docutils literal"><span class="pre">cell_methods</span></code> attribute of each variable, e.g.,</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">T</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">lev</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span> <span class="p">;</span>
         <span class="n">T</span><span class="p">:</span><span class="n">mdims</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">;</span>
         <span class="n">T</span><span class="p">:</span><span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;K&quot;</span> <span class="p">;</span>
@@ -161,12 +157,12 @@
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">cell_methods</span></code> attribute for the temperature variable indicates that it is being output as a time averaged field. If temperature was instantaneous then the <code class="docutils literal"><span class="pre">cell_methods</span></code> attribute would not be present since instantaneous is the default.</p>
-<p>The variables <code class="docutils literal"><span class="pre">date</span></code> and <code class="docutils literal"><span class="pre">datesec</span></code> are for convenience only; they don&#8217;t play any role in terms of CF compliance. The <code class="docutils literal"><span class="pre">date</span></code> variable is an integer which is encoded to contain the digits YYYYMMDD where YYYY, MM, and DD are the year, month, and day of month respectively. <code class="docutils literal"><span class="pre">datesec</span></code> is the integer number of seconds past 0Z in the current day. The variables <code class="docutils literal"><span class="pre">date</span></code> and <code class="docutils literal"><span class="pre">datesec</span></code> are redundant in the sense that they can be recovered from the time variable via a date calculation using the specified calendar.</p>
+<p>The variables <code class="docutils literal"><span class="pre">date</span></code> and <code class="docutils literal"><span class="pre">datesec</span></code> are for convenience only; they don’t play any role in terms of CF compliance. The <code class="docutils literal"><span class="pre">date</span></code> variable is an integer which is encoded to contain the digits YYYYMMDD where YYYY, MM, and DD are the year, month, and day of month respectively. <code class="docutils literal"><span class="pre">datesec</span></code> is the integer number of seconds past 0Z in the current day. The variables <code class="docutils literal"><span class="pre">date</span></code> and <code class="docutils literal"><span class="pre">datesec</span></code> are redundant in the sense that they can be recovered from the time variable via a date calculation using the specified calendar.</p>
 </div>
 <div class="section" id="timestamps-and-time-intervals">
 <h2>7.4. Timestamps and time intervals<a class="headerlink" href="#timestamps-and-time-intervals" title="Permalink to this headline">¶</a></h2>
 <p><strong>The timestamp associated with each time sample in a history file is the model time at the end of the timestep during which the model writes data to the disk.</strong> In the case of instantaneous data the meaning is clear. However when the data is representative of a time interval, the timestamp corresponds to <strong>the end of the interval</strong>.</p>
-<p>This is often a point of confusion when looking at history files. Since the endpoint of one interval is the same as the beginning of the next interval, when looking at a monthly average for January, which has a timestamp of 0Z on Feb 01, at first glance the timestamp would seem to correspond to a February average. Hence it&#8217;s important for post processing tools to make use of the data in the <code class="docutils literal"><span class="pre">time_bnds</span></code> variable so that the time interval endpoints can be used to compute an interval midpoint which is the more appropriate timestamp to associate with the interval.</p>
+<p>This is often a point of confusion when looking at history files. Since the endpoint of one interval is the same as the beginning of the next interval, when looking at a monthly average for January, which has a timestamp of 0Z on Feb 01, at first glance the timestamp would seem to correspond to a February average. Hence it’s important for post processing tools to make use of the data in the <code class="docutils literal"><span class="pre">time_bnds</span></code> variable so that the time interval endpoints can be used to compute an interval midpoint which is the more appropriate timestamp to associate with the interval.</p>
 <div class="section" id="example-timestamps-for-a-year-of-monthly-averages">
 <h3>7.4.1. Example: Timestamps for a year of monthly averages<a class="headerlink" href="#example-timestamps-for-a-year-of-monthly-averages" title="Permalink to this headline">¶</a></h3>
 <p>Here are the timestamps and corresponding time interval bounds for a one year sequence of monthly averages starting at 0000-01-01 00:00:00.</p>
@@ -189,7 +185,7 @@
 </div>
 <div class="section" id="multiple-time-samples-in-a-single-file">
 <h2>7.5. Multiple time samples in a single file<a class="headerlink" href="#multiple-time-samples-in-a-single-file" title="Permalink to this headline">¶</a></h2>
-<p>CAM&#8217;s default history output is a sequence of monthly averaged fields, written with one time sample per file. This restriction is related to the default file naming scheme which uses the string &#8220;YYYY-MM&#8221; to indicate the year and month of the average contained in the file. However in general it is possible to write multiple time samples in any of the history file streams that don&#8217;t contain monthly time intervals. However there is one somewhat unexpected &#8220;feature&#8221; of multiple time sample files that we wish to point out here.</p>
+<p>CAM’s default history output is a sequence of monthly averaged fields, written with one time sample per file. This restriction is related to the default file naming scheme which uses the string “YYYY-MM” to indicate the year and month of the average contained in the file. However in general it is possible to write multiple time samples in any of the history file streams that don’t contain monthly time intervals. However there is one somewhat unexpected “feature” of multiple time sample files that we wish to point out here.</p>
 <div class="section" id="example-timestamps-for-five-daily-averages">
 <h3>7.5.1. Example: Timestamps for five daily averages<a class="headerlink" href="#example-timestamps-for-five-daily-averages" title="Permalink to this headline">¶</a></h3>
 <p>Here are the timestamps and corresponding time interval bounds for all time samples written to a single file from a 5 day run starting at 0000-01-01 00:00:00.</p>
@@ -202,21 +198,16 @@
 <span class="mi">6</span>           <span class="mi">5</span>      <span class="mi">106</span>     <span class="mi">0</span>         <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>Instead of ending up with a file containing five time samples, i.e., a daily average for each of the first five days of January, we get six time samples. The first one looks a bit strange since the time bounds are indicating an interval of zero duration. But in fact that&#8217;s correct for the first time sample which is instantaneous data representing the initial conditions which have only been modify by a partial first step up to the point of the radiation calculation. This &#8220;extra&#8221; time sample from the initialization phase is included in every history file except for the monthly average file. An unfortunate consequence of this extra time sample is that it&#8217;s not possible to create a sequence of files with the same number of time intervals since the first file in the sequence will always have one fewer time interval than the rest due to the inclusion of the time zero sample.</p>
+<p>Instead of ending up with a file containing five time samples, i.e., a daily average for each of the first five days of January, we get six time samples. The first one looks a bit strange since the time bounds are indicating an interval of zero duration. But in fact that’s correct for the first time sample which is instantaneous data representing the initial conditions which have only been modify by a partial first step up to the point of the radiation calculation. This “extra” time sample from the initialization phase is included in every history file except for the monthly average file. An unfortunate consequence of this extra time sample is that it’s not possible to create a sequence of files with the same number of time intervals since the first file in the sequence will always have one fewer time interval than the rest due to the inclusion of the time zero sample.</p>
 </div>
 </div>
 <div class="section" id="example-default-history-fields-and-master-field-lists">
 <h2>7.6. Example: Default History Fields and Master Field Lists<a class="headerlink" href="#example-default-history-fields-and-master-field-lists" title="Permalink to this headline">¶</a></h2>
-<p>CAM is set up by default to output a set of fields to a single monthly average history file. There is a much larger set of available fields, known as the &#8220;master field list,&#8221; from which the user can choose fields of interest to add to the history file via namelist settings. Both the set of default fields and the master field list depend on how CAM is configured. Due to the large number of fields we have chosen to make lists of fields for some standard configuration available via linked documents rather than to inline the lists here. Each of the field list documents is comprised of tables containing the lists of fields that are output by default as well as the master field list.</p>
-<p><strong>NOTE:</strong>  The master field list tables may contain some fields that are not actually available for output. The presence of a field in the master field list is a necessary, but not sufficient condition that the corresponding field in the history file will contain valid data. This is because in some instances fields are added to the master field list (this is done in the source code) even though that field may not be computed in the configuration that is built (specified via the arguments to <code class="docutils literal"><span class="pre">configure</span></code>). When adding non-default fields to the history file it&#8217;s important to check that the fields contain reasonable data before doing a long run.</p>
-<p>The following links provide tables of default and master field lists for some standard model configurations which are characterized by the values of the <code class="docutils literal"><span class="pre">-dyn</span></code>, <code class="docutils literal"><span class="pre">-phys</span></code>, and <code class="docutils literal"><span class="pre">-chem</span></code> arguments to configure. The source of the information in these tables is CAM&#8217;s default log file, so you can always look there for any configuration not included in the list below.</p>
-<p><strong>Eaton &#8211; Do we have CAM6 science supported compset information? If not, should probably delete these examples</strong></p>
+<p>CAM is set up by default to output a set of fields to a single monthly average history file. There is a much larger set of available fields, known as the “master field list,” from which the user can choose fields of interest to add to the history file via namelist settings. Both the set of default fields and the master field list depend on how CAM is configured. Due to the large number of fields we have chosen to make lists of fields for some standard configuration available via linked documents rather than to inline the lists here. Each of the field list documents is comprised of tables containing the lists of fields that are output by default as well as the master field list.</p>
+<p><strong>NOTE:</strong>  The master field list tables may contain some fields that are not actually available for output. The presence of a field in the master field list is a necessary, but not sufficient condition that the corresponding field in the history file will contain valid data. This is because in some instances fields are added to the master field list (this is done in the source code) even though that field may not be computed in the configuration that is built (specified via the arguments to <code class="docutils literal"><span class="pre">configure</span></code>). When adding non-default fields to the history file it’s important to check that the fields contain reasonable data before doing a long run.</p>
+<p>The following links provide tables of default and master field lists for some standard model compsets. The source of the information in these tables is CAM’s default log file, so you can always look there for any configuration not included in the list below.</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4.html">fv, cam4, none</a></li>
-<li><a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4_trop_bam.html">fv, cam4, trop_bam</a></li>
-<li><a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam5.html">fv, cam5, trop_mam3</a></li>
-<li><a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4_waccm.html">fv, cam4, waccm_mozart (use_case: waccm_2000_cam4)</a></li>
-<li><a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/cam/docs/ug5_3/hist_flds_fv_cam4_super_fast_llnl.html">fv, cam4, super_fast_llnl (use_case: 2000_cam4_super_fast_llnl)</a></li>
+<li><a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2/atmosphere/docs/ug6/hist_flds_f2000.html">F2000climo</a></li>
 </ul>
 </div>
 </div>
@@ -240,12 +231,12 @@
           <a href="input-datasets.html" title="6. Input Datasets"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User&#8217;s Guide</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CAM6 User’s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>
