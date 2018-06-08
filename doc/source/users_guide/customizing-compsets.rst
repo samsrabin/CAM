@@ -19,7 +19,7 @@ Changing CAM configurations
 All configure options change the way that CAM is built and need to be applied before ``case.build`` is run.  Changing the configuration is done by issuing an ``xmlchange`` command for **CAM_CONFIG_OPTS**.  It is important to make sure that you use the ``--append`` flag to maintain configuration options that are set by the compset.
 ::
 
-   %./xmlchange --append CAM_CONFIG_OPTS='-nthreads 2'
+   %./xmlchange --append CAM_CONFIG_OPTS='-cosp'
 
 
 CAM has numerous options which can modify it's configuration.  A few of the more widely used settings will be discussed here.  The complete listing of configure options is at :ref:`arguments to configure<arguments-to-configure>`.  More information on xmlchange can be found at the `xmlchange web page <http://esmci.github.io/cime/Tools_user/xmlchange.html>`_.
