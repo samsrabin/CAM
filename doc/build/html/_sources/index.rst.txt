@@ -17,8 +17,11 @@ Table of contents
    :maxdepth: 1
       
    users_guide/index.rst
-   cam6_sci_guide_coming_soon.rst
    cam6_scientific_summary/index.rst
+
+.. toctree::
+   :maxdepth: 1
+
    cam5_scientific_guide/index.rst
 ..   cam6_scientific_guide/index.rst
 
