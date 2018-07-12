@@ -96,10 +96,10 @@
 <p>CESM2.0 supports 6 chemical mechanism (as listed in the Table). The CESM chemical mechanism is a set used to calculate chemical reactions using the chemical preprocessor (<a class="reference external" href="http://www.cesm.ucar.edu/working_groups/Chemistry/chemistry.preprocessor.pdf">http://www.cesm.ucar.edu/working_groups/Chemistry/chemistry.preprocessor.pdf</a>). For existing compsets the preprocessor has been used to compile fortran routines required to run the model: under $CCSMROOT/components/cam/src/chemistry/.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="32%" />
-<col width="26%" />
-<col width="19%" />
-<col width="23%" />
+<col width="30%" />
+<col width="33%" />
+<col width="17%" />
+<col width="20%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head"><div class="first last line-block">
@@ -108,6 +108,7 @@
 </div>
 </th>
 <th class="head"><div class="first last line-block">
+<div class="line">Model:</div>
 <div class="line">Description</div>
 </div>
 </th>
@@ -127,17 +128,17 @@
 <div class="line">(pp_waccm_tsmlt_mam4)</div>
 </div>
 </td>
-<td>Troposphere,
-stratosphere,
-mesosphere, and
-lower thermosphere</td>
+<td>WACCM: Troposphere,
+stratosphere, mesosphere,
+and lower thermosphere</td>
 <td><div class="first last line-block">
 <div class="line">231 solution,</div>
 <div class="line">2 invariant</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line">583 (433 kinetic,</div>
+<div class="line">583
+(433 kinetic,</div>
 <div class="line">150 photolysis)</div>
 </div>
 </td>
@@ -147,15 +148,16 @@ lower thermosphere</td>
 <div class="line">(pp_trop_strat_mam4_vbs)</div>
 </div>
 </td>
-<td>Troposphere
-and stratosphere</td>
+<td>CAM-chem: Troposphere and
+stratosphere</td>
 <td><div class="first last line-block">
 <div class="line">221 solution,</div>
 <div class="line">3 invariant</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line">528 (405 kinetic,</div>
+<div class="line">528
+(405 kinetic,</div>
 <div class="line">123 photolysis)</div>
 </div>
 </td>
@@ -165,17 +167,17 @@ and stratosphere</td>
 <div class="line">(pp_waccm_ma_mam4)</div>
 </div>
 </td>
-<td>Middle atmosphere:
-stratosphere,
-mesosphere, and lower
-thermosphere</td>
+<td>WACCM: Middle atmosphere
+(stratosphere, mesosphere,
+and lower thermosphere)</td>
 <td><div class="first last line-block">
 <div class="line">98 solution,</div>
 <div class="line">2 invariant</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line">298 (207 kinetic,</div>
+<div class="line">298
+(207 kinetic,</div>
 <div class="line">91 photolysis)</div>
 </div>
 </td>
@@ -185,15 +187,16 @@ thermosphere</td>
 <div class="line">(pp_waccm_mad_mam4)</div>
 </div>
 </td>
-<td>Middle atmosphere plus
-D-region ion chemistry</td>
+<td>WACCM: Middle atmosphere
+plus D-region ion chemistry</td>
 <td><div class="first last line-block">
 <div class="line">135 solution,</div>
 <div class="line">2 invariant</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line">593 (489 kinetic,</div>
+<div class="line">593
+(489 kinetic,</div>
 <div class="line">104 photolysis)</div>
 </div>
 </td>
@@ -203,22 +206,21 @@ D-region ion chemistry</td>
 <div class="line">(pp_waccm_sc_mam4)</div>
 </div>
 </td>
-<td>Specified chemistry
-for WACCM</td>
+<td>WACCM: Specified chemistry</td>
 <td><div class="first last line-block">
 <div class="line">29 solution,</div>
 <div class="line">8 invariant</div>
 </div>
 </td>
 <td><div class="first last line-block">
-<div class="line">12 (11 kinetic,</div>
+<div class="line">12
+(11 kinetic,</div>
 <div class="line">1 photolysis)</div>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td>CAM</td>
-<td>Simplified chemistry
-for CAM aerosols</td>
+<td>CAM: Aerosol chemistry</td>
 <td><div class="first last line-block">
 <div class="line">25 solution,</div>
 <div class="line">7 invariant</div>
