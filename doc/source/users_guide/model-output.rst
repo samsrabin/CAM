@@ -20,7 +20,7 @@ History files may be visualized using various commercial or freely available too
 
 CAM writes a sequence of time samples to each of its specified history files.  By default, CAM will output a set of fields to a single monthly average history file.  There are namelist parameters which allow the user to customize output from their run. Up to ten history file streams may be output, each with its own set of characteristics.  This section will highlight some of the most commonly used history namelist settings.
 
-The following namelist settings are specified to customize each output stream desired.  Within the file, individual fields may be specified to be instantaneous or averaged along with other settings.  See the `namelist page <http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html>`_ and review the fincl defintion for more options for the fields.
+The following namelist settings are specified to customize each output stream desired.  Within the file, individual fields may be specified to be instantaneous or averaged along with other settings.  See the `namelist page <http://www.cesm.ucar.edu/models/cesm2/settings/current/cam_nml.html>`_ and review the fincl defintion for more options for the fields.
 
 - ``finclX`` - List the fields to include in the output file #X (X=1-10)
 - ``fexclX`` - List the fields to exclude from the output file #X (X=1-10)
@@ -35,7 +35,7 @@ There are also namelist settings which control output in a general way.
 
 - ``empty_htapes`` - turn off all default output and only write out the fields explicitly set via fincl settings
 - ``history_YYY`` - add fields for specific diagnostic purposes to the
-  default output.  For the complete listing go to the `namelist page <http://www.cesm.ucar.edu/models/cesm2.0/component_namelists/cam_nml.html>`_ and search for namelist variables with the ``history_`` prefix (i.e. ``history_amwg``, ``history_clubb``, etc.)
+  default output.  For the complete listing go to the `namelist page <http://www.cesm.ucar.edu/models/cesm2/settings/current/cam_nml.html>`_ and search for namelist variables with the ``history_`` prefix (i.e. ``history_amwg``, ``history_clubb``, etc.)
 
 
 ----------------------------------------

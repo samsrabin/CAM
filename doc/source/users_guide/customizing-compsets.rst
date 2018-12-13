@@ -37,7 +37,7 @@ There are a number of settings which can change the physics which is run.  Some 
 -------------------------------------------------------------------------------
 Changing CAM namelist options
 -------------------------------------------------------------------------------
-There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at :ref:`Model Output<model-output>`. .  A complete listing of all of CAM's namelists is available at `CAM's namelist variables <http://www.cesm.ucar.edu/models/cesm2.0/component_settings/cam_nml.html>`_ 
+There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at :ref:`Model Output<model-output>`. .  A complete listing of all of CAM's namelists is available at `CAM's namelist variables <http://www.cesm.ucar.edu/models/cesm2/settings/current/cam_nml.html>`_ 
 
 #######################################################################
 Modifying Namelist settings:  Detailed Example -- Using CMIP5 emissions

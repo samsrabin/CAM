@@ -381,5 +381,5 @@ CAM Namelist variables
 
 Follow link for a searchable (or browsable) page containing all 
 `CAM namelist variables
-<http://www.cesm.ucar.edu/models/cesm2//component_settings/cam_nml.html>`_
+<http://www.cesm.ucar.edu/models/cesm2/settings/current/cam_nml.html>`_
 

@@ -71,6 +71,6 @@ To see the result, call ``preview_namelists`` and verify that the new value appe
 
 A complete listing of all of CAM's namelists is available at `CAM's
 namelist variables
-<http://www.cesm.ucar.edu/models/cesm2/component_settings/cam_nml.html>`_
+<http://www.cesm.ucar.edu/models/cesm2/settings/current/cam_nml.html>`_
 More details on changing CAM's namelist can be found at :ref:`customizing
 compsets<customizing-compsets>`.

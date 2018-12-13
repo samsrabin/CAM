@@ -38,13 +38,13 @@ CAM has a number of compsets/resolutions which are supported scientifically.  Th
 +--------------+----------------------+-----------------------------------------+-------------+
 | Compset Name | supported resolution |Description                              | Period      |
 +==============+======================+=========================================+=============+
-| FHIST        | f09_f09_mg17         | Historical CAM6 using 1-degree finite   | 1979 to 2015|
+| FHIST        | f09_f09_mg17         | Historical CAM6 using 1 degree finite   | 1979 to 2015|
 |              |                      | volume dycore *[Note - this is similar  |             |
 |              |                      | to the obsolete CAM5 FAMIP compset]*    |             |
 +--------------+----------------------+-----------------------------------------+-------------+
-| F2000climo   | f09_f09_mg17         | Climatological present day climate      | 1995-2005   |
-|              |                      | (year 2000) with CAM6 physics           | average     |
-|              |                      | using 1-degree fv dycore                | climo       |
+| F2000climo   | f09_f09_mg17         | Climatological present day climate      | Climos over |
+|              |                      | (year 2000) with CAM6 physics           |  1995-2005  |
+|              |                      | using 1 degree fv dycore                |  1995-2005  |
 +--------------+----------------------+-----------------------------------------+-------------+
 
 To run the FHIST compset, and create a case called fhist, simply run the following commands::
@@ -518,8 +518,6 @@ To run the user iop with SCAM, follow the following steps (here it is a test cas
 	- **user_nl_cam**:  usually just iopfile. May also want to change mfilt (to keep all times on one file) 
 - Run create_scam6_iop script with appropriate IOP (e.g. IOP=scam_usrLabSea in this case)
 
- **Important note**: For reproducing a SCAM case, it is necessary to validate that the atm_in settings for your SCAM run are the same as for the underlying CAM run (in the run directories for both simulations). This can be done by differencing the atm_in files. Many CAM compsets will have different emissions files or tuning parameters than a default SCAM case. So, user_nl_cam for the SCAM case should be modified to read in the same emissions and set parameters as the original run.
-
 	
 -------------------------------------------------------------------------------
 Other CAM compsets
@@ -573,25 +571,22 @@ to run with 32 levels that are not availble at this point. Half-degree SD compse
 +--------------+-----------------------+-----------------------------------------+-------------+
 | Compset Name | tested resolution     |Description                              | Period      |
 +==============+=======================+=========================================+=============+
-| FCHIST       | f09_f09_mg17          | Historical CAM6-chem using 1-degree FV  | 1979 to 2015|
+| FCHIST       | f09_f09_mg17          | Historical CAM6-chem using 1 degree FV  | 1979 to 2015|
 |              |                       | dycore, using CMIP6 emissions, coupled  |             |
 |              |                       | to interactive land and MEGAN2.1        |             |
 +--------------+-----------------------+-----------------------------------------+-------------+
-| FCSD         | f09_f09_mg17          | Historical CAM6-chem 1-degree compset   |             |
-|              |                       | using MERRA2 analsysis with a 50-hour   | 1980 to 2015|
+| FCSD         | f09_f09_mg17          | Historical CAM6-chem 1deg compset using |             |
+|              |                       | MERRA2 analsysis with a 50-hour         | 1980 to 2015|
 |              |                       | relaxation. See details in the text     |             |
 +--------------+-----------------------+-----------------------------------------+-------------+
-| FCSD         | f05_f05_mg17          | Historical CAM6-chem half-degree        | 1980 to 2015|
-|              |                       | resolution compset using MERRA2 analysis|             |
+| FCSD         | f05_f05_mg17          | Historical CAM6-chem half deg compset   | 1980 to 2015|
+|              |                       | using MERRA2 analysis                   |             |
 +--------------+-----------------------+-----------------------------------------+-------------+
-| FC2000climo  | f09_f09_mg17          | Climatological CAM6-chem using 1-degree | 1995-2005   |
-|              |                       | FV dycore, averaged SSTs, emissions, and| average     |
-|              |                       | lower boundary conditions (1995-2005)   | climo       |
+| FC2010climo  | f09_f09_mg17          | Climatological CAM6-chem using 1 degree | 2010        |
+|              |                       | FV dycore, averaged SSTs, emissions, and|             |
+|              |                       | lower boundary conditions (2005-2015)   |             |
 +--------------+-----------------------+-----------------------------------------+-------------+
-| FC2010climo  | f09_f09_mg17          | Climatological CAM6-chem using 1-degree | 2006-2014   |
-|              |                       | FV dycore, averaged SSTs, emissions, and| average     |
-|              |                       | lower boundary conditions (2006-2014)   | climo       |
-+--------------+-----------------------+-----------------------------------------+-------------+
+
 
 
 -------------------------------------------------------------------------------
