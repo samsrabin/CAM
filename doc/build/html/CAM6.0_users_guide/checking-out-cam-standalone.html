@@ -1,0 +1,164 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10. Downloading CAM standalone &#8212; camdoc  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. Downloading CAM standalone</a><ul>
+<li><a class="reference internal" href="#downloading-the-cam-standalone-code">10.1. Downloading the CAM standalone code</a></li>
+<li><a class="reference internal" href="#checkout-out-the-externals">10.2. Checkout out the externals</a></li>
+<li><a class="reference internal" href="#useful-svn-commands">10.3. Useful svn commands</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/CAM6.0_users_guide/checking-out-cam-standalone.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="downloading-cam-standalone">
+<span id="checking-out-cam-standalone"></span><h1>10. Downloading CAM standalone<a class="headerlink" href="#downloading-cam-standalone" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="downloading-the-cam-standalone-code">
+<h2>10.1. Downloading the CAM standalone code<a class="headerlink" href="#downloading-the-cam-standalone-code" title="Permalink to this headline">¶</a></h2>
+<p>It is important to note that if a user downloads a CAM standalone tag, they
+will not be able to run a fully coupled model.  Checking out CAM standalone
+should only be done by users to run E, F, Q, or P compsets.</p>
+<p>CAM development tags are available through a Subversion
+repository to <strong>users who have developer access</strong>.  Access to the development code requires Subversion client software
+in place that is compatible with our Subversion server software, such
+as a recent version of the command line client, svn. Currently, our
+server software is at version 1.8.17. We recommend using a client at
+version 1.8 or later, though older versions may suffice. For more information or to
+download open source tools, visit <a class="reference external" href="http://subversion.apache.org/">Subversion</a>.</p>
+<p>If you do not have developer access, please use the directions for <a class="reference external" href="http://escomp.github.io/cesm/release-cesm2/downloading_cesm.html">downloading CESM</a> and you should ignore the rest of this chapter.</p>
+<p>With a valid svn client installed on the machine where CAM will be
+built and run, the user may download the latest version of the development
+code. First view the available versions with the
+following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">svn</span> <span class="nb">list</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">-</span><span class="n">ccsm</span><span class="o">-</span><span class="n">models</span><span class="o">.</span><span class="n">cgd</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">cam1</span><span class="o">/</span><span class="n">trunk_tags</span>
+</pre></div>
+</div>
+<p>Note that when you are contacting the Subversion server for the first time, you may need to accept an authentication certification.</p>
+<p>Be aware that the request is set to the current machine login id and you
+must enter the CESM registered name given to you when you requested developer access.</p>
+<p>You may be prompted several times for the username and password when
+checking out the code for the first time from this new Subversion path.
+This is because the code is distributed across a number of different
+Subversion repositories and each repository requires authentication.</p>
+<p>Once correctly entered, the username and password will be cached in a
+protected subdirectory of the user’s home directory so that repeated
+entry of this information will not be required for a given machine.</p>
+<p>The following example shows how to checkout CAM standalone tag cam6_0_002:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">svn</span> <span class="n">co</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="o">-</span><span class="n">ccsm</span><span class="o">-</span><span class="n">models</span><span class="o">.</span><span class="n">cgd</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">cam1</span><span class="o">/</span><span class="n">trunk_tags</span><span class="o">/</span><span class="n">cam6_0_002</span>
+</pre></div>
+</div>
+<p>If a problem was encountered during checkout, which may happen with an older version of the client software, it may appear to have downloaded successfully, but in fact only a partial checkout has occurred. To ensure a successful download, make sure the last line of svn output has the following statement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Checked</span> <span class="n">out</span> <span class="n">revision</span> <span class="n">XXXXX</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This will create a directory called <code class="docutils literal notranslate"><span class="pre">cam6_0_002</span></code> that can be used to
+modify, build, and run the model.</p>
+</div>
+<div class="section" id="checkout-out-the-externals">
+<h2>10.2. Checkout out the externals<a class="headerlink" href="#checkout-out-the-externals" title="Permalink to this headline">¶</a></h2>
+<p>Once the CAM code has been checked out, but before it can be used, the external libraries that CAM uses must be checked out.</p>
+<p>To get the externals, users need to cd to the main CAM directory and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">manage_externals</span><span class="o">/</span><span class="n">checkout_externals</span>
+</pre></div>
+</div>
+<p>This will create and populate all of the external directories.</p>
+<p>Note – You will get an error message if you try to cd into manage_externals and run checkout_externals from that directory.</p>
+</div>
+<div class="section" id="useful-svn-commands">
+<h2>10.3. Useful svn commands<a class="headerlink" href="#useful-svn-commands" title="Permalink to this headline">¶</a></h2>
+<p>For various information regarding the version checked out…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">svn</span> <span class="n">info</span>
+</pre></div>
+</div>
+<p>For a listing of files that have changed since checkout…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">svn</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>For a description of the changes made to the working copy…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">svn</span> <span class="n">diff</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017 UCAR.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+  </body>
+</html>

@@ -9,10 +9,12 @@
     <title>5. Dynamics &#8212; camdoc  documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -32,7 +34,7 @@
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">5. Dynamics</a><ul>
 <li><a class="reference internal" href="#finite-volume-dynamical-core">5.1. Finite Volume Dynamical Core</a><ul>
@@ -71,7 +73,7 @@
 <li><a class="reference internal" href="#eulerian-dynamical-core">5.3. Eulerian Dynamical Core</a><ul>
 <li><a class="reference internal" href="#generalized-terrain-following-vertical-coordinates">5.3.1. Generalized terrain-following vertical coordinates</a></li>
 <li><a class="reference internal" href="#conversion-to-final-form">5.3.2. Conversion to final form</a></li>
-<li><a class="reference internal" href="#continuous-equations-using">5.3.3. Continuous equations using <img class="math" src="../_images/math/fe97902b4016e484299911cff59e358104446bbd.png" alt="\partial\ln(\pi)/\partial t"/></a></li>
+<li><a class="reference internal" href="#continuous-equations-using-partial-ln-pi-partial-t">5.3.3. Continuous equations using <img class="math" src="../_images/math/fe97902b4016e484299911cff59e358104446bbd.png" alt="\partial\ln(\pi)/\partial t"/></a></li>
 <li><a class="reference internal" href="#semi-implicit-formulation">5.3.4. Semi-implicit formulation</a></li>
 <li><a class="reference internal" href="#energy-conservation">5.3.5. Energy conservation</a></li>
 <li><a class="reference internal" href="#horizontal-diffusion">5.3.6. Horizontal diffusion</a></li>
@@ -139,8 +141,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <span class="target" id="dynamics"></span><div class="section" id="id1">
-<h1>5. Dynamics<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dynamics">
+<span id="id1"></span><h1>5. Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="finite-volume-dynamical-core">
 <span id="sec-finite-volume"></span><h2>5.1. Finite Volume Dynamical Core<a class="headerlink" href="#finite-volume-dynamical-core" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="overview">
@@ -678,7 +680,7 @@ large-time-step transport perspective, the small-time-step integration
 of the 2D Lagrangian dynamics can be regarded as a very accurate
 iterative solver, with <em>m</em> iterations, for computing the time mean winds
 and the mass fluxes, analogous in functionality to a semi-implicit
-algorithm’s elliptic solver (<em>e.g</em>., <a class="reference internal" href="chapter8.html#ringler00" id="id12">[RHR00]</a>). Besides accuracy, the merit of an “explicit” versus
+algorithm’s elliptic solver (<em>e.g</em>., <a class="reference internal" href="chapter8.html#ringler00" id="id12">[RHaDAR00]</a>). Besides accuracy, the merit of an “explicit” versus
 “semi-implicit” algorithm ultimately depends on the computational
 efficiency of each approach. In light of the advantage of the explicit
 algorithm in parallelization, we do not regard the explicit algorithm
@@ -2363,8 +2365,8 @@ will be done in section [ssec:finitediffeqs]. In the case that
 <a class="reference internal" href="../cam5_scientific_guide/dynamics.html#equation-3-a-23">(113)</a> - <a class="reference internal" href="../cam5_scientific_guide/dynamics.html#equation-3-a-32">(122)</a> can be reduced to the set of equations solved by
 CCM1.</p>
 </div>
-<div class="section" id="continuous-equations-using">
-<h3>5.3.3. Continuous equations using <img class="math" src="../_images/math/fe97902b4016e484299911cff59e358104446bbd.png" alt="\partial\ln(\pi)/\partial t"/><a class="headerlink" href="#continuous-equations-using" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="continuous-equations-using-partial-ln-pi-partial-t">
+<h3>5.3.3. Continuous equations using <img class="math" src="../_images/math/fe97902b4016e484299911cff59e358104446bbd.png" alt="\partial\ln(\pi)/\partial t"/><a class="headerlink" href="#continuous-equations-using-partial-ln-pi-partial-t" title="Permalink to this headline">¶</a></h3>
 <p>In practice, the solutions generated by solving the above equations are
 excessively noisy. This problem appears to arise from aliasing problems
 in the hydrostatic equation <a class="reference internal" href="../cam5_scientific_guide/dynamics.html#equation-3-a-30">(120)</a>. The <img class="math" src="../_images/math/a1015909871cfc6e5391294e07770a374880437f.png" alt="\ln p"/> integral
@@ -5117,7 +5119,7 @@ These are described in sections [massfixers], [energyfixer], and
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
     </div>
   </body>
 </html>

@@ -9,10 +9,12 @@
     <title>8. Physics modifications via the namelist &#8212; camdoc  documentation</title>
     <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <script type="text/javascript" src="../_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -41,7 +43,7 @@
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">8. Physics modifications via the namelist</a><ul>
 <li><a class="reference internal" href="#radiative-constituents">8.1. Radiative Constituents</a><ul>
@@ -455,8 +457,8 @@ needed to create a desired dataset.</p>
 <h3>8.6.2. Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
 <p>Nudging is implemented as a relaxation tendency between the current model state and
 a desired target state.</p>
-<div class="math" id="equation-nudging">
-<p><span class="eqno">(1)<a class="headerlink" href="#equation-nudging" title="Permalink to this equation">¶</a></span><img src="../_images/math/622dad3ef970d7ff9626d9f7dc8962f918396072.png" alt="F_{nudge} = { \alpha \over \Delta t_{nudge} } \left( S_{target} - S_{model} \right),"/></p>
+<div class="math">
+<p><img src="../_images/math/622dad3ef970d7ff9626d9f7dc8962f918396072.png" alt="F_{nudge} = { \alpha \over \Delta t_{nudge} } \left( S_{target} - S_{model} \right),"/></p>
 </div><p>where S is one of the prognostic variables [U,V,T,Q], <img class="math" src="../_images/math/877d234f4cec6974ce218fc2e975a486a7972dfd.png" alt="\alpha"/> is a noramlized
 strength coeffcient between [0,1], and <img class="math" src="../_images/math/8f89cba7358e5df49104206eb03d4e48fa38f8be.png" alt="\Delta t_{nudge}"/> is the time scale for
 the relaxation. Currently there are two options for the target state. The first uses
@@ -755,7 +757,7 @@ compliment.</td>
 the model toward reanalyses values outside the CONUS region, while the model evolves freely
 in the interior.</p>
 <div class="figure align-center">
-<img alt="../_images/Example_HorizontalProfile.png" src="../_images/Example_HorizontalProfile.png" />
+<img alt="../_images/Example_HorizontalProfile1.png" src="../_images/Example_HorizontalProfile1.png" />
 </div>
 <p><strong>Surface Nudging of Q</strong></p>
 <p>Since the nudging tendencies are applied separately from the convective parameterizations,
@@ -771,7 +773,7 @@ window illustrate how to nudge only at the surface for a 32 level model.</p>
 </pre></div>
 </div>
 <div class="figure align-center">
-<img alt="../_images/Example_VerticalProfile.png" src="../_images/Example_VerticalProfile.png" />
+<img alt="../_images/Example_VerticalProfile1.png" src="../_images/Example_VerticalProfile1.png" />
 </div>
 </div>
 </div>
@@ -801,7 +803,7 @@ window illustrate how to nudge only at the surface for a 32 level model.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017 UCAR.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
     </div>
   </body>
 </html>

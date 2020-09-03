@@ -1,0 +1,334 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>9. Chemistry specific modifications &#8212; camdoc  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Chemistry specific modifications</a><ul>
+<li><a class="reference internal" href="#chemical-mechanisms">9.1. Chemical mechanisms</a></li>
+<li><a class="reference internal" href="#modifications-of-the-chemical-mechanisms">9.2. Modifications of the Chemical Mechanisms</a></li>
+<li><a class="reference internal" href="#adding-emissions-and-lower-boundary-conditions">9.3. Adding emissions and lower boundary conditions</a></li>
+<li><a class="reference internal" href="#adding-species-and-changing-the-mechanism">9.4. Adding species and changing the mechanism</a></li>
+<li><a class="reference internal" href="#running-with-prognostic-fire-emissions">9.5. Running with prognostic fire emissions</a></li>
+<li><a class="reference internal" href="#running-with-fixed-land-data">9.6. Running with fixed land data</a></li>
+<li><a class="reference internal" href="#running-with-interactiv-prescribed-biogenic-emissions">9.7. Running with interactiv / prescribed biogenic emissions</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/CAM6.0_users_guide/CAM-chem-specifics.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="chemistry-specific-modifications">
+<span id="cam-chem-specifics"></span><h1>9. Chemistry specific modifications<a class="headerlink" href="#chemistry-specific-modifications" title="Permalink to this headline">¶</a></h1>
+<p>CESM2.0 supports one standard mechanisms for CAM, CAM-chem, and WACCM (see details in the cam6_scientific_guide). Here, we describe details on how the chemical mechanism is compiled and how to perform modifications of chemistry in the model, including adding or removing chemical and aerosol species, which requires changing the chemical mechanism and if applicable changes to wet and dry deposition.  Additional changes may be required in the namelist, e.g., adding our removing output, changing deposition species etc., as described in Section 5.2.  Furthermore, code changes may be required, depending of the specifics of the changes.</p>
+<div class="section" id="chemical-mechanisms">
+<span id="id1"></span><h2>9.1. Chemical mechanisms<a class="headerlink" href="#chemical-mechanisms" title="Permalink to this headline">¶</a></h2>
+<p>CESM2.0 supports 6 chemical mechanism (as listed in the Table). The CESM chemical mechanism is a set used to calculate chemical reactions using the chemical preprocessor (<a class="reference external" href="http://www.cesm.ucar.edu/working_groups/Chemistry/chemistry.preprocessor.pdf">http://www.cesm.ucar.edu/working_groups/Chemistry/chemistry.preprocessor.pdf</a>). For existing compsets the preprocessor has been used to compile fortran routines required to run the model: under $CCSMROOT/components/cam/src/chemistry/.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="33%" />
+<col width="17%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><div class="first last line-block">
+<div class="line">Mechanism</div>
+<div class="line">(pre-processor code)</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">Model:</div>
+<div class="line">Chemistry Description</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">#Species</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">#Reactions</div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">TSMLT1</div>
+<div class="line">(pp_waccm_tsmlt_mam4)</div>
+</div>
+</td>
+<td>WACCM: Troposphere,
+stratosphere, mesosphere,
+and lower thermosphere</td>
+<td><div class="first last line-block">
+<div class="line">231 solution,</div>
+<div class="line">2 invariant</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">583
+(433 kinetic,</div>
+<div class="line">150 photolysis)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">TS1</div>
+<div class="line">(pp_trop_strat_mam4_vbs)</div>
+</div>
+</td>
+<td>CAM-chem: Troposphere and
+stratosphere</td>
+<td><div class="first last line-block">
+<div class="line">221 solution,</div>
+<div class="line">3 invariant</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">528
+(405 kinetic,</div>
+<div class="line">123 photolysis)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">MA</div>
+<div class="line">(pp_waccm_ma_mam4)</div>
+</div>
+</td>
+<td>WACCM: Middle atmosphere
+(stratosphere, mesosphere,
+and lower thermosphere)</td>
+<td><div class="first last line-block">
+<div class="line">98 solution,</div>
+<div class="line">2 invariant</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">298
+(207 kinetic,</div>
+<div class="line">91 photolysis)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">MAD</div>
+<div class="line">(pp_waccm_mad_mam4)</div>
+</div>
+</td>
+<td>WACCM: Middle atmosphere
+plus D-region ion chemistry</td>
+<td><div class="first last line-block">
+<div class="line">135 solution,</div>
+<div class="line">2 invariant</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">593
+(489 kinetic,</div>
+<div class="line">104 photolysis)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">SC</div>
+<div class="line">(pp_waccm_sc_mam4)</div>
+</div>
+</td>
+<td>WACCM: Specified chemistry</td>
+<td><div class="first last line-block">
+<div class="line">29 solution,</div>
+<div class="line">8 invariant</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">12
+(11 kinetic,</div>
+<div class="line">1 photolysis)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>CAM</td>
+<td>CAM: Aerosol chemistry</td>
+<td><div class="first last line-block">
+<div class="line">25 solution,</div>
+<div class="line">7 invariant</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">7 (6 kinetic,</div>
+<div class="line">1 photolysis)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="modifications-of-the-chemical-mechanisms">
+<h2>9.2. Modifications of the Chemical Mechanisms<a class="headerlink" href="#modifications-of-the-chemical-mechanisms" title="Permalink to this headline">¶</a></h2>
+<p>To modify the chemical mechanism, including changing reaction rates requires the following steps:</p>
+<ul class="simple">
+<li>Check out an existing compset that you would like to modify and compile and build your case</li>
+<li>Copy the existing chemical mechanism in $CASEROOT/CaseDocs/chem_mech.in to a location (e.g., /glade/u/home/$USER/mechanism/chem_mech_changed.in)</li>
+<li>Alter your mechanism as desired (see details in CAMchem Wiki page)</li>
+<li>Point to the new mechanism file in $CASEROOT/env_build.xml, for example::  &lt;entry id=”CAM_CONFIG_OPTS” value=”-phys cam6 -age_of_air_trcs -chem waccm_tsmlt_mam4 -usr_mech_infile /glade/u/home/$USER$/mechanism/chem_mech_changed.in”&gt;</li>
+<li>Changing the chemical mechanism requires to rebuild your case</li>
+</ul>
+</div>
+<div class="section" id="adding-emissions-and-lower-boundary-conditions">
+<h2>9.3. Adding emissions and lower boundary conditions<a class="headerlink" href="#adding-emissions-and-lower-boundary-conditions" title="Permalink to this headline">¶</a></h2>
+<p>Adding new chemical or aerosol species requires to include their sources (emissions) and sinks (deposition, see below).
+Sources can be either emissions (surface or vertical, see Section 6.1) or concentrations in form of lower boundary conditions.
+To add new emissions you have to copy the existing list of emisisons to your user_nl_cam file and add the additional species (See Section 5.2.1).</p>
+<p>To add new lower boundary conditions via namelist, you have to add an addition species to the flbc_list and modify the lbc_file:</p>
+<p>flbc_file              = ‘/glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_17500116-20150116_CMIP6_0p5degLat_c180227.nc’
+flbc_list              = ‘CCL4’, ‘CF2CLBR’, ‘CF3BR’, ‘CFC11’, ‘CFC113’, ‘CFC12’, ‘CH3BR’, ‘CH3CCL3’, ‘CH3CL’, ‘CH4’,</p>
+<blockquote>
+<div>‘CO2’, ‘H2’, ‘HCFC22’, ‘N2O’, ‘CFC114’, ‘CFC115’, ‘HCFC141B’, ‘HCFC142B’, ‘CH2BR2’, ‘CHBR3’,
+‘H2402’, ‘OCS’, ‘SF6’, ‘CFC11eq’</div></blockquote>
+</div>
+<div class="section" id="adding-species-and-changing-the-mechanism">
+<h2>9.4. Adding species and changing the mechanism<a class="headerlink" href="#adding-species-and-changing-the-mechanism" title="Permalink to this headline">¶</a></h2>
+<p>The addition of species with dry and wet deposition requires code changes. This requires to add information of the Henry’s law coefficient:</p>
+<ul>
+<li><p class="first">Copy $CCSMROOT/cime/src/drivers/mct/shr/seq_drydep_mod.F90 in to your  $CASEROOTSourceMods/src.share directory and modify the following. You can also map the new new species to deposit with the same rates as a species already undergoing wet deposition and therefore skip this step.</p>
+<blockquote>
+<div><ul class="simple">
+<li>In this code, there are several arrays containing: 1) species names, 2) reactivity factors (f0), 3) henry’s law constants, and 4) molecular weights. Add your new species characteristics at the end of each of these arrays.</li>
+<li>Update the variable “maxspc” to be the total number of species you are dry depositing.</li>
+<li>Update the variable “n_species_table” to the total number of species listed in these arrays.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Additional routines may have to be modified:</dt>
+<dd><ul class="first last simple">
+<li>$CCSMROOT/components/cam/src/chemistry/mozart/mo_neu_wetdep.F90</li>
+<li>$CCSMROOT/components/cam/src/chemistry/mo_drydep.F90 (subroutine drydep_xactive)</li>
+<li>$CCSMROOT/components/clm/src/biogeochem/DryDepVelocity.F90</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Add new species to the masterlist (to be automatically included in your namelists). If you don’t include your species to the mastlist you have to include those in your user_nl_cam namelist.</dt>
+<dd><ul class="first last simple">
+<li>$CCSMROOT/components/cam/bld/namelist_files including master_drydep_list.xml, master_gas_wetdep_list.xml, master_aer_drydep_list.xml, master_aer_wetdep_list.xml</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="running-with-prognostic-fire-emissions">
+<h2>9.5. Running with prognostic fire emissions<a class="headerlink" href="#running-with-prognostic-fire-emissions" title="Permalink to this headline">¶</a></h2>
+<p>This option will be added in CESM2.1</p>
+</div>
+<div class="section" id="running-with-fixed-land-data">
+<h2>9.6. Running with fixed land data<a class="headerlink" href="#running-with-fixed-land-data" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="running-with-interactiv-prescribed-biogenic-emissions">
+<h2>9.7. Running with interactiv / prescribed biogenic emissions<a class="headerlink" href="#running-with-interactiv-prescribed-biogenic-emissions" title="Permalink to this headline">¶</a></h2>
+<p>Running with interactive biogenic emissions:</p>
+<ul class="simple">
+<li>The default setting in CESM2 CAM-chem and WACCM configuration is to run with interactive biogenic emissions, while CAM6 and WACCM SC do not use biogenic emissions. To run with interactive biogenic emissions, this file needs to be specified:</li>
+</ul>
+<p>megan_factors_file = ‘/glade/p/cesmdata/cseg/inputdata/atm/cam/chem/trop_mozart/emis/megan21_emis_factors_78pft_c20161108.nc’</p>
+<ul class="simple">
+<li>This file contains the emission factors at standard temperature and pressure for each compound for each plant functional type, as well as the other model parameters. The compound names are given in the variable “Comp_Name”. The default file works with 78 plant function types (PFTs).</li>
+<li>CLM/MEGAN-v2.1 includes an option for using a map of emission factors for isoprene. The map in the current release is out of date and SHOULD NOT BE USED.  Under megan_emis_nl, in drv_flds_on or user_nl_cam: megan_mapped_emisfctrs = .false.</li>
+</ul>
+<p>Running with prescribed biogenic emissions:</p>
+<p>To turn run with prescribed biogenic emissions requires including those emissions in the namelist for surface emission files that are not indluced in the namelist by default. Additionally, one needs to turn off interactive biogenic emissions, if using a CAMchem or WACCM TSML compset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">megan_emis_nl</span>
+ <span class="n">megan_factors_file</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+ <span class="n">megan_specifier</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+<span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>History output:</p>
+<ul class="simple">
+<li>To save the MEGAN emissions in the CAM history files, include the desired MEG_{species} variables in the fincl* fields of user_nml_cam. The SF{species} variables are the total emissions fluxes for each species, so will include all sources if an emissions file was also read for other sources (such as bb).</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">camdoc  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017 UCAR.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.3.
+    </div>
+  </body>
+</html>
