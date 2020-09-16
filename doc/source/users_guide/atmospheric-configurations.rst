@@ -14,7 +14,7 @@ There are a number of atmospheric models which can run within CESM.  While CAM i
 
 Each of these models have a number of atmospheric configurations provided to run them.  These component sets known as **compsets** are used to supply both configure and namelist settings for predefined experiments.
 
-The predefined compsets exist with one of four levels of support.
+The predefined compsets exist with one of three levels of support.
 
 - **Scientifically supported**:  Specific compset/resolution pairs which have had significant, multi-year runs made and have been studied scientifically.  It is important to note that resolutions which are not listed, are not scientifically supported, have not had tunings performed and should not be used for scientific studies without careful examination of the results.
 - **Tested**: One or more tests for this compset have been made using at least one resolution.  Extensive scientific study has not been performed.  The designation of "Tested" simply acknowledges that one or more compset/resolution pair(s) have been confirmed to run without crashing.  No attempts have been made to validate the scientific quality of these runs and tunings have NOT been performed on them.
