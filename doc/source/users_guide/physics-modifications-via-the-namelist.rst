@@ -398,6 +398,86 @@ values are also adjusted to account for topographical differences between CESM a
 the reanalyses models. See the README files for an overview of the script settings
 needed to create a desired dataset. 
 
+Some recently revised versions of the processing scripts are also available in the 
+https://github.com/NCAR/IPT/tree/master/Meterological_Reanalysis_Data
+repository. The processing scripts are slightly different for the two available dycores, 
+so they are contained in separate directories. in each directory, there is a README that 
+provides general guidance for setting the script variables for a desired reanalysis product.
+
++--------------------------+---------------------------+
+|    Finite_volume_dycore/ | README                    | 
+|                          |                           |
+|                          | Gen_Data_f09/             |
+|                          |                           |
++--------------------------+---------------------------+
+| Spectral_element_dycore/ |  README                   |
+|                          |                           |
+|                          |  Gen_Data_ne30/           |
+|                          |                           |
+|                          |  Gen_Data_ne30np3/        |
+|                          |                           |
+|                          |  Gen_Data_ne0CONUSne30x8/ |
+|                          |                           |
+|                          |  Gen_Data_NEWGRID/        |
+|                          |                           |
++--------------------------+---------------------------+
+
+For the FV dycore, the directory Gen_Data_f09 has processing scripts set up for a 1 degree 
+grid. Within this directory, there are two csh scripts, one configured for processing 
+MERRA2 data and the other for processing ERA-Interim data. If a user desires data from 
+either of these reanalysis products, then all that is needed is to adjust the dates for 
+processing, the paths for input/output files, and any changes in vertical grid or 
+topography values. For other reanalysis products, the NCL scripts are pre-configured for a 
+number of available options (see makeIC_extract_analysis_info.ncl), so converting to one of 
+those will just involve editing a csh script to set the paths and processing options 
+consistent with the product. See the README for guidance. If, on the other hand, a user 
+has a newer or other reanalysis product, then a template must be added in the NCL programs 
+to define the structure of the input dataset. For this case, the user should use a known 
+and familiar existing template in the NCL programs as a guide.
+
+In the Spectral_element_dycore directory, there are sub-directories containing scripts 
+that are configured for a particular SE grid. The Gen_Data_ne30 directory has scripts set 
+up for a uniform 1 degree spectral element grid, Gen_Data_ne30pg3 is set up for a physics 
+grid, and Gen_Data_ne0CONUSne30x8 is configured for the variable resolution CONUS grid. 
+In each of these, there are Gen_*.csh scripts set up for MERRA2 and other reanalysis 
+products. As for the FV dycore, the README provides some guidance in making modifications 
+to these scripts. There is also a directory that can be used as a template when tailoring 
+the scripts for a user defined grid.
+
+One substantial difference with the FV processing is in the horizontal interpolation. 
+When the scripts for the SE grids were being developed, there were significant errors in 
+the ESMF processing at the poles and for wrap around gridpoints. Complicating the 
+development, was the fact that each update to the ESMF routines within NCL would result 
+in failures in the processing scripts. For this reason, a version of the ESMF processing 
+routines that contain fixes for these errors is included with the reanalysis processing 
+scripts in the Gen_Data directory (ESMF_regridding.ncl). From the user stand point, this 
+means that for each horizontal SE grid, the user must edit makeIC_se_002.ncl and set a 
+hardcoded path to the SCRIP file for that grid. Note that the ESMF processing routines 
+have been substantially improved since this time, but it is not known if the pole problems 
+have been resolved. So a user may wish to revise the scripts to eliminate the ESMF code 
+and use the up to date ESMF routines in NCL instead. The plan moving forward is for this 
+processing step to be carried out at run time directly from the reanalysis archives 
+(making these scripts unnecessary), so for the time being these scripts will continue as 
+is without further development.
+
+
+**The WRAPIT Problem**:
+
+The NCL scripts depend on FORTRAN subroutines which must be pre-compiled to create a 
+shared library (MAKEIC.so) using the WRAPIT command. This command has lead to some 
+problems in the past. As NCL was updated, this command would occasionally fail to work. 
+Since NCL is no longer under development, this should not be a problem, but if users 
+have errors due this command not working correctly, a work around is to reference 
+that command from a previous release of NCL.
+
+The other problem is for users that need to process a large amount of data. The processing 
+scripts can take quite a long time to run, so to speed up the process a RUNNUM variable 
+was added to the script so that multiple copies can be run at the same time. Since 
+the processing is in a common directory, the WRAPIT command from one instance clobbers 
+the shared library used by all. This would result in total failure. Users who need to 
+run in this manner must comment out the WRAPIT command in the script and run it to 
+create the library prior to submitting the processing scripts.
+
 ----------------
 Implementation
 ----------------
@@ -624,4 +704,443 @@ window illustrate how to nudge only at the surface for a 32 level model.
 
 .. figure:: Example_VerticalProfile.png
     :align: center
+
+--------------------
+EXAMPLE: Setting Up and Running A Nudging Experiment
+--------------------
+
+In order to set up and run a physics-side nudging experiment, the user must first 
+generate a set of target data to nudge toward. Once the data has been prepared, then 
+after the desired case has been created, the nudging is applied by setting the 
+namelist variables outlined above. As an example of this process, consider a 
+Spectral Element variable resolution grid with a base resolution of ne30 and a 
+refinement to ne120 over the South American continent. 
+
+**Modifying the Scripts For a Newly Created Grid:**
+
+For our **ne0np4.SAM01.ne30x4** grid, we would like to nudge the model toward MERRA2 
+reanalysis data, begin by making a copy of the NEWGRID directory for your new grid.
+::
+
+ cheyenne% cp -r Gen_Data_NEWGRID Gen_Data_ne0np4.SAM01.ne30x4 
+ cheyenne% cd Gen_Data_ne0np4.SAM01.ne30x4
+ cheyenne% mv Gen_MERRA2_NEWGRID.csh Gen_MERRA2_ne0np4.SAM01.ne30x4.csh 
+
+Now edit your new script, and set the BATCH commands.
+
++---------------------------------------------------------------+
+| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                           |
++===============================================================+
+|                                                               |
+|                                                               |
+|  #!/bin/csh                                                   |
+|                                                               |
+|  #                                                            |
+|                                                               |
+|  #SBATCH -J **Gen_MERRA2_ne0np4.SAM01.ne30x4.csh**            |
+|                                                               |
+|  #SBATCH -n 1                                                 |
+|                                                               |
+|  #SBATCH --ntasks-per-node=1                                  |
+|                                                               |
+|  #SBATCH -t 24:00:00                                          |
+|                                                               |
+|  #SBATCH -A **Pxxxxxxx**                                      |
+|                                                               |
+|  #SBATCH -p dav                                               |
+|                                                               |
+|  #SBATCH -e **Log.Gen_MERRA2_SAM01**.err.%J                   |
+|                                                               |
+|  #SBATCH -o **Log.Gen_MERRA2_SAM01**.out.%J                   |
+|                                                               |
+|  #SBATCH --mail-type=ALL                                      |
+|                                                               |
+|  #SBATCH --mail-user= **me@ucar.edu**                         |
+|                                                               |
+|  #----------------------------------------------------------  |
+|                                                               |
+|                                                               |
++---------------------------------------------------------------+
+
+In the Configuration section, set the reference date corresponding to the first day 
+of data you desire, then number of days of data to process from that date, and the 
+path where you wish to have the data stored.
+
++--------------------------------------------------------------------------------------------------+
+| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                                                              |
++==================================================================================================+
+|                                                                                                  |
+|                                                                                                  |
+| #=============================================================                                   |
+|                                                                                                  |
+| # CONFIGURATION SECTION:                                                                         |
+|                                                                                                  |
+| #=============================================================                                   |
+|                                                                                                  |
+|                                                                                                  |
+| # Set a REFERENCE (Starting) Date and the number of days to process                              |
+|                                                                                                  |
+| #----------------------------------------------------------------------                          |
+|                                                                                                  |
+| set RUNNUM=01                                                                                    |
+|                                                                                                  |
+| set REF_DATE='**20121201**'                                                                      |
+|                                                                                                  |
+| set NUM_DAYS= **400**                                                                            |
+|                                                                                                  |
+|                                                                                                  |
+| # Set INPUT/OUTPUT/TMP directories                                                               |
+|                                                                                                  |
+| #--------------------------------------------------------                                        |
+|                                                                                                  |
+| set NAMELIST='./Config/Config_makeIC-'$RUNNUM'.nl'                                               |
+|                                                                                                  |
+| set MYLOGDIR='./LOG/LOG_002.'$RUNNUM'/'                                                          |
+|                                                                                                  |
+| set MYTMPDIR='./TMP/TMP_002.'$RUNNUM'/'                                                          |
+|                                                                                                  |
+| set MYOUTDIR='**/path/to/my/repo/ne0np4.SAM01.ne30x4/nudging/MERRA2/**'                          |
+|                                                                                                  |
+| set INPUTDIR='/glade/collections/rda/data/ds313.3/orig_res/'                                     |
+|                                                                                                  |
+|                                                                                                  |
+| # Set ESMF options                                                                               |
+|                                                                                                  |
+| #---------------------------                                                                     |
+|                                                                                                  |
+| set ESMF_interp='conserve'                                                                       |
+|                                                                                                  |
+| set ESMF_pole='none'                                                                             |
+|                                                                                                  |
+| set ESMF_clean='False'                                                                           |
+|                                                                                                  |
+| set ESMF_clean='True'                                                                            |
++--------------------------------------------------------------------------------------------------+
+
+For the processing options, set the ``CASE`` name. This is the root filename for your 
+nudging data files. Note that some reanalysis datasets store winds in the form of 
+vorticity and divergence values rather then U,V. It is important that the VORT_DIV_TO_UV 
+flag is set to True for these datasets, this is a common source of processing errors. 
+Finally, set the ``fname_grid_info`` value to point to a file containing the desired ouput 
+grid, and set ``fname_phis_output`` to point to a file containing the model topography.
+
++------------------------------------------------------------------------------------------+
+| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                                                      |
++==========================================================================================+
+|                                                                                          |
+|                                                                                          | 
+| # Set Processing options                                                                 | 
+|                                                                                          | 
+| #-------------------------------------                                                   | 
+|                                                                                          | 
+| set CASE   = '**MERRA2_ne0np4.SAM01.ne30x4_L32**'                                        | 
+|                                                                                          | 
+| set DYCORE     = 'se'                                                                    | 
+|                                                                                          | 
+| set PRECISION = 'float'                                                                  | 
+|                                                                                          | 
+| set VORT_DIV_TO_UV = 'False'                                                             | 
+|                                                                                          | 
+| set SST_MASK           = 'False'                                                         | 
+|                                                                                          | 
+| set ICE_MASK           = 'False'                                                         | 
+|                                                                                          | 
+| set OUTPUT_PHIS      = 'True'                                                            | 
+|                                                                                          | 
+| set REGRID_ALL        = 'False'                                                          | 
+|                                                                                          | 
+| set ADJUST_STATE_FROM_TOPO = 'True'                                                      | 
+|                                                                                          | 
+| set MASS_FIX           = 'True'                                                          | 
+|                                                                                          | 
+|                                                                                          | 
+| # Set files containing OUTPUT Grid structure and topography                              | 
+|                                                                                          | 
+| #------------------------------------------------------------------------------------    | 
+|                                                                                          | 
+| set fname_grid_info = '**/path/to/my/repo/ne0np4.SAM01.ne30x4/inic/**                    |
+| **cami-mam4_0000-01-01_ne0np4.SAM01.ne30x4_L32_c200309.nc**'                             |
+|                                                                                          | 
+| set fname_phis_output = '**/path/to/my/repo/ne0np4.SAM01.ne30x4/topo/**                  |
+| **topo_ne30np4.SAM01.ne30x4_blin_200309.nc**'                                            |
+|                                                                                          | 
+| set ftype_phis_output = 'SE_TOPOGRAPHY'                                                  | 
+|                                                                                          | 
++------------------------------------------------------------------------------------------+
+
+For MERRA2, the 8X time daily reanalysis data is stored in daily files with 8 time slices 
+in each file. For ERAI data, on the other hand, the 4x times daily data are stored in 
+6 hourly files with one time slice per file. The user must configure the script to accomodate 
+these differences in the data formats, as well as specify a template for the file names.
+
++--------------------------------------------------------------------------------------------------+
+| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                                                              |
++==================================================================================================+
+|                                                                                                  |
+|                                                                                                  | 
+| # *set hoursec = ( 00000 21600 43200 64800)*                                                     | 
+|                                                                                                  | 
+| # *set hourstr = (   00    06    12    18  )*                                                    | 
+|                                                                                                  | 
+| # *set fname[1] = "ei.oper.an.ml/YYYYMM/ei.oper.an.ml.regn128sc.YYYYMMDDHH"*                     | 
+|                                                                                                  | 
+| # *set ftype[1] = "Era_Interim_627.0_sc"*                                                        | 
+|                                                                                                  | 
+| # *set ftime[1] = "1X"*                                                                          | 
+|                                                                                                  | 
+|                                                                                                  | 
+| **set hoursec = ( 00000 10800 21600 32400 43200 54000 64800 75600)**                             | 
+|                                                                                                  | 
+| **set hourstr = (   00    03    06    09    12    15    18     21   )**                          | 
+|                                                                                                  | 
+| **set fname[1] = "YYYY/MERRA2_orig_res_YYYYMMDD.nc"**                                            | 
+|                                                                                                  | 
+| **set ftype[1] = "MERRA2"**                                                                      | 
+|                                                                                                  | 
+| **set ftime[1] = "8X"**                                                                          | 
+|                                                                                                  | 
+|                                                                                                  | 
+|          : :    : :     : :                                                                      | 
+|                                                                                                  | 
+|          : :    : :     : :                                                                      | 
+|                                                                                                  | 
+|                                                                                                  | 
+|   # Loop over the hourly values (4X daily)                                                       | 
+|                                                                                                  | 
+|   #========================================                                                      | 
+|                                                                                                  | 
+| #  *foreach hnum ( 1 2 3 4 )*                                                                    | 
+|                                                                                                  | 
+|   **foreach hnum ( 1 2 3 4 5 6 7 8 )**                                                           | 
+|                                                                                                  | 
+|                                                                                                  | 
+|          : :    : :     : :                                                                      | 
+|                                                                                                  | 
+|          : :    : :     : :                                                                      | 
+|                                                                                                  | 
+|                                                                                                  | 
+|                                                                                                  | 
+|   # Set Values dependend upon $hnum, clean                                                       | 
+|                                                                                                  | 
+|   # up TMP files at the end of each DAY                                                          | 
+|                                                                                                  | 
+|   #----------------------------------------------------------------------                        | 
+|                                                                                                  | 
+|   set datestr = $Yearstr$Monstr$Daystr$hoursec[$hnum]                                            | 
+|                                                                                                  | 
+|   set LOGFILE = $MYLOGDIR'/LogNCL.'$Yearstr$Monstr$Daystr$hoursec[$hnum]                         | 
+|                                                                                                  | 
+| #  *if( $hnum == 4 ) then*                                                                       | 
+|                                                                                                  | 
+|   **if( $hnum == 8 ) then**                                                                      | 
+|     set TMP_clean   = 'True'                                                                     | 
+|   else                                                                                           | 
+|     set TMP_clean   = 'False'                                                                    | 
+|   endif                                                                                          | 
+|                                                                                                  | 
++--------------------------------------------------------------------------------------------------+
+
+The last modification that is needed for this example is to edit the file 
+**makeIC_se_002.ncl**. At about line 430, the ``dstGridName`` variable has to be 
+set to use the SCRIP file for your new grid.
+
++--------------------------------------------------------------------------------------------------+
+| makeIC_se_002.ncl:                                                                               |
++==================================================================================================+
+|                                                                                                  |
+|                                                                                                  | 
+| ;*****************************************************************                               | 
+|                                                                                                  | 
+| ; WORK AROUND: the 'unstructured_to_ESMF' routine is                                             | 
+|                                                                                                  | 
+| ;           not good for non-graphic interpolation.                                              | 
+|                                                                                                  | 
+| ;           It's okay for plotting values, but not                                               | 
+|                                                                                                  | 
+| ;           for the mapping we want to do. For now a                                             | 
+|                                                                                                  | 
+| ;           SCRIP file for ne30 will be sliced in so                                             | 
+|                                                                                                  | 
+| ;           we can get some work done.                                                           | 
+|                                                                                                  | 
+| ;           RHS updated this for SE-RR these are SCRIP files                                     | 
+|                                                                                                  | 
+| ;-------------------------------------------------------------------                             | 
+|                                                                                                  | 
+| ; dstGridName=mytmpdir+"/DstGrid"+dstlab+".nc"                                                   | 
+|                                                                                                  | 
+| ; dstGridName="/glade/p/cesmdata/cseg/mapping/grids/ne120np4_pentagons_100310.nc"                | 
+|                                                                                                  | 
+| ; dstGridName="/glade/p/cesmdata/cseg/mapping/grids/ne30np4_091226_pentagons.nc"                 | 
+|                                                                                                  | 
+| dstGridName="**/path/to/my/repo/ne0np4.SAM01.ne30x4/grids/SAM01_ne30x4_SCRIP.nc**"               | 
+|                                                                                                  | 
+| ;*******************************************************************                             | 
++--------------------------------------------------------------------------------------------------+
+
+With these changes, the script can be submitted to generate the desired 400 days of 
+data. The user must alway check the Log and output file to verify that the dataset 
+was processed correctly. Serching the Log files for the string 
+'SUCCESSFULLY COMPLETED PROCESSING' is a good quick check if the processing scripts 
+have run correctly. The number of occurances of this string should match the number 
+of log files. 
+::
+
+ cheyenne% cd LOG/LOG_001.01
+ cheyenne% grep 'SUCCESSFULLY COMPLETED PROCESSING' LogNCL.* | cat -n | tail
+
+Also, selecting some files and browsing variables for valid values using ncdump can save 
+a lot of time and effort if there were problems during the processing. In particular, the 
+``U`` and ``V`` fields should be check to verify that they contain non-zero data. 
+
+
+**Creating A Newcase For Your Nudging Experiment:**
+
+For available compsets and supported grids, a new case is created with the CIME 
+*create_newcase* command using the desired compset and resolution options. The example 
+here is for a user created grid whose resolution dependent input files are located in a 
+user repositiory ``/path/to/my/repo/ne0np4.SAM01.ne30x4/``. This requires the addional 
+*--user-mods-dir* argument to the create_newcase command.
+::
+
+ cheyenne% ./create_newcase --case /path/to/my/cases/MyCase_SAM01_01 --compset FHIST 
+        --mach cheyenne --run-unsupported 
+        --res ne0np4.SAM01.ne30x4_mt12 --user-mods-dir /path/to/my/repo/ne0np4.SAM01.ne30x4
+
+
+**Modifying The** &nudging_nl **Namelist:**
+
+Consider an example in which we would like to start the model from the MERRA2 reanalysis 
+file on 12/16/2012 for the SAM01 grid. The **bnd_topo** and **ncdata** values in 
+*&cam_initfiles_nl* need to be set to user the corrsponding reanalysis and topography 
+file as indicated below. 
+
+Assume the the model is running with a 15 minute time step for this grid and we wish
+to apply nudging to U and V using the MERRA2 dataset we just created. Assume further 
+that we wish to apply the strong nudging option to data that is linearly interpolated
+inbetween reanalysis times. 
+
+For this experiment the ``user_nl_cam`` file in the new case directory needs to have 
+the *&nudging_nl* namelist added with the corresponding settings. Values that differ 
+from their default values are indicated in bold font. (The default *\*_Hwin_\** and 
+*\*_Vwin_\** values at the bottom are for no spatial windowing of the applied nudging.) 
+Nudging is switched on with the *Nudge_Model* value, with the *Nudge_Path* and 
+*Nudge_File_Template* values set according to the path and case name used in the 
+processing scripts. The *Nudge_Times_Per_Day* is set for the MERRA2 data which is 
+available 8 times per day and *Model_Times_Per_Day* values is set so that the applied 
+nudging tendencies are updated every model time step. 
+For nudging to be applied to U and V only, the *Nudge_Uprof* and *Nudge_Vprof* 
+values are set to 1. Finally, the time window of applied nudging is set to begin 
+on 12/16/2012 and end on 4/5/2013. 
+
+
++--------------------------------------------------------------------------------------------------+
+| user_nl_cam:                                                                                     |
++==================================================================================================+
+|                                                                                                  |
+|                                                                                                  | 
+| &cam_initfiles_nl                                                                                | 
+|                                                                                                  | 
+| bnd_topo       = '**/path/to/my/repo/ne0np4.SAM01.ne30x4/**                                      |
+|                   **topo/topo_ne0np4.SAM01.ne30x4_blin_200708.nc**'                              | 
+|                                                                                                  | 
+| ncdata='**/path/to/my/repo/ne0np4.SAM01.ne30x4/**                                                |
+|         **nudging/MERRA2/MERRA2_ne0np4.SAM01.ne30x4_L32.2012-12-16-00000.nc**'                   | 
+| /                                                                                                | 
+|                                                                                                  | 
+| &nudging_nl                                                                                      | 
+|                                                                                                  | 
+| Nudge_Model        =  **.true.**                                                                 | 
+|                                                                                                  | 
+| Nudge_Path         = '**/path/to/my/repo/ne0np4.SAM01.ne30x4/nudging/MERRA2/**'                  | 
+|                                                                                                  | 
+| Nudge_File_Template= '**MERRA2_ne0np4.SAM01.ne30x4_L32**.%y-%m-%d-%s.nc'                         | 
+|                                                                                                  | 
+| Nudge_Force_Opt     = **1**                                                                      | 
+|                                                                                                  | 
+| Nudge_TimeScale_Opt = **1**                                                                      | 
+|                                                                                                  | 
+| Nudge_Times_Per_Day= **8**                                                                       | 
+|                                                                                                  | 
+| Model_Times_Per_Day= **96**                                                                      | 
+|                                                                                                  | 
+| Nudge_Uprof  = **1**                                                                             | 
+|                                                                                                  | 
+| Nudge_Ucoef  =1.00                                                                               | 
+|                                                                                                  | 
+| Nudge_Vprof  = **1**                                                                             | 
+|                                                                                                  | 
+| Nudge_Vcoef  =1.00                                                                               | 
+|                                                                                                  | 
+| Nudge_Tprof  =0                                                                                  | 
+|                                                                                                  | 
+| Nudge_Tcoef  =1.00                                                                               | 
+|                                                                                                  | 
+| Nudge_Qprof  =0                                                                                  | 
+|                                                                                                  | 
+| Nudge_Qcoef  =1.00                                                                               | 
+|                                                                                                  | 
+| Nudge_PSprof =0                                                                                  | 
+|                                                                                                  | 
+| Nudge_PScoef =0.00                                                                               | 
+|                                                                                                  | 
+| Nudge_Beg_Year = **2012**                                                                        | 
+|                                                                                                  | 
+| Nudge_Beg_Month= **12**                                                                          | 
+|                                                                                                  | 
+| Nudge_Beg_Day  = **16**                                                                          | 
+|                                                                                                  | 
+| Nudge_End_Year = **2013**                                                                        | 
+|                                                                                                  | 
+| Nudge_End_Month= **4**                                                                           | 
+|                                                                                                  | 
+| Nudge_End_Day  = **5**                                                                           | 
+|                                                                                                  | 
+| Nudge_Hwin_lat0    =0.0                                                                          | 
+|                                                                                                  | 
+| Nudge_Hwin_latWidth=999.0                                                                        | 
+|                                                                                                  | 
+| Nudge_Hwin_latDelta=2.0                                                                          | 
+|                                                                                                  | 
+| Nudge_Hwin_lon0    =180.                                                                         | 
+|                                                                                                  | 
+| Nudge_Hwin_lonWidth=999.                                                                         | 
+|                                                                                                  | 
+| Nudge_Hwin_lonDelta=5.                                                                           | 
+|                                                                                                  | 
+| Nudge_Hwin_Invert  =.false.                                                                      | 
+|                                                                                                  | 
+| Nudge_Vwin_Hindex  =33.                                                                          | 
+|                                                                                                  | 
+| Nudge_Vwin_Hdelta  =0.001                                                                        | 
+|                                                                                                  | 
+| Nudge_Vwin_Lindex  =32.                                                                          | 
+|                                                                                                  | 
+| Nudge_Vwin_Ldelta  =0.001                                                                        | 
+|                                                                                                  | 
+| Nudge_Vwin_Invert  =.false.                                                                      | 
+|                                                                                                  | 
+| /                                                                                                | 
+|                                                                                                  | 
+|                                                                                                  | 
+| &cam_inparm                                                                                      | 
+|                                                                                                  | 
+|  fincl1='U','V','T','Q','PS','Nudge_U','Nudge_V','Nudge_T','Nudge_Q'                             | 
+|                                                                                                  | 
+|  fincl2='U','V','T','Q','PS','Nudge_U','Nudge_V','Nudge_T','Nudge_Q'                             | 
+|                                                                                                  | 
+|  fincl3='U','V','T','Q','PS','Nudge_U','Nudge_V','Nudge_T','Nudge_Q',                            |
+|                          'Target_U','Target_V','Target_T','Target_Q'                             | 
+|                                                                                                  | 
+|  nhtfrq=0,-3,1                                                                                   | 
+|                                                                                                  | 
+|  mfilt =1,8,96                                                                                   | 
+|                                                                                                  | 
+| /                                                                                                | 
+|                                                                                                  | 
++--------------------------------------------------------------------------------------------------+
+
+The *&cam_inparm* settings show an example of saving the applied nudging tendencies and the 
+nudging target data values to history files. Note that for this case, the outputs for T and Q
+would contain only zeros.
 

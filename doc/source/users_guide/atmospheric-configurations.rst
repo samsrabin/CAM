@@ -113,6 +113,37 @@ and `Herrington et al. (2019b) <https://agupubs.onlinelibrary.wiley.com/doi/10.1
 
 **Functionally supported variable resolution CAM compsets**
 
+*CONUS Grid*
+
+The **CONUS** variable resolution grid is a 1 degree horizontal resolution grid with 
+a regional refinement of 1/8 degree resolution over the continential United States.
+
+
+.. image:: Grid_CONUS.png   
+    :width: 350px
+    :height: 350px
+    :align: center
+
+*ARCTIC Grids*
+
+Two variable resolution grids are available for the Artic region. The **ARCTIC** grid, 
+which is a 1 degree horizontal resolution grid with regional refinement of 1/4 degree 
+resolution over the broader Arctic region and the **ARCTICGRIS** grid which 
+additionally refines a patch covering the Greenland with 1/8 degree resolution.
+
+
+.. |img1| image:: Grid_ARCTIC.png   
+    :width: 350px
+    :height: 350px
+
+.. |img2| image:: Grid_ARCTICGRIS.png   
+    :width: 350px                 
+    :height: 350px                
+
++--------+--------+
+| |img1| | |img2| |
++--------+--------+
+
 +-----------------------------------------------+---------------------------------+--------------------+
 | Tested resolution                             | Description                     | Compsets           |
 +===============================================+=================================+====================+

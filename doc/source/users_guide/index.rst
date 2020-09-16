@@ -17,6 +17,7 @@ CAM6.3 User's Guide
    getting-help.rst
    building-and-running-cam.rst
    atmospheric-configurations.rst
+   variable-resolution-configurations.rst
    customizing-compsets.rst
    input-datasets.rst
    model-output.rst
