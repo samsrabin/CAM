@@ -171,7 +171,9 @@ CAM Simple Models
 -------------------------------------------------------------------------------
 
 There are several simpler configurations in which CAM can be run.  These include:
- - Generic adiabatic simple model (FDABIP04)
+ - Generic adiabatic configuration (FADIAB)
+ - Specific adiabatic configuration (FDABIP04)
+ - Baroclinic wave with Kessler microphysics and terminator chemistry (FKESSLER)
  - Held-Suarez simple model (FHS94)
  - Moist Held-Suarez simple model (FTJ16)
  - Aquaplanet (QP and QS compsets)
@@ -202,7 +204,7 @@ For more information on the CESM Simpler Models project see http://www.cesm.ucar
 +--------------+----------------------+-----------------------------------------+-------------+
 | FKESSLER     | f09_f09_mg17,        | Ulrich et al. baroclinic wave with      |             |
 |              | ne30_ne30_mg17,      | Kessler microphysics and terminator     |             |
-|              | ne30pg3_ne30_pg3_mg17| chemistry Kessler                       |             |
+|              | ne30pg3_ne30_pg3_mg17| chemistry                               |             |
 +--------------+----------------------+-----------------------------------------+-------------+
 | QPC6         | f09_f09_mg17,        | Prescribed SST Aquaplanet using CAM6    | 2000 to 2015|
 |              | f19_f19_mg17         |                                         |             |
