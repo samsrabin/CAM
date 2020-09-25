@@ -37,8 +37,10 @@ What's new in the CAM6.3 release?
 The CAM6.3 is a developmental release mostly centered around new dynamical core configurations and capabilities. New configurations/capabilities include:
 
  - The Spectral-Element (SE) dynamical core has been further developed since the `CESM2.0 release <https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2017MS001257>`_. Algorithmic improvements include:
-   - New Exner function pressure gradient formulation and new reference profiles for damping to improve flow over orography.
-   - New vertical remapping algorithms.
+
+   * New Exner function pressure gradient formulation and new reference profiles for damping to improve flow over orography.
+   * New vertical remapping algorithms.
+     
  - Extensive new capabilities for variable resolution SE applications which include three new resolutions/configurations (CONUS, ARCTIC and ARCTICGRIS) and tools for making new grids are.
  - Developmental setups for coupled simulations using CAM-SE and CAM-SE-CSLAM (Conservative Semi-Lagrangian multi-tracer transport scheme).
  - NOAA's FV3 dynamical core used operationally by EMC (Environmental Modeling Center) has been coupled with CAM6 physics.
