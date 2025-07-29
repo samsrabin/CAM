@@ -1,6 +1,3 @@
-.. _variable-resolution-configurations:
-
-
 ***********************************************
 User Defined Variable Resolution Configurations
 ***********************************************

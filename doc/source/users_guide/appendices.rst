@@ -1,5 +1,3 @@
-.. _appendices:
-
 ***************
 Appendices
 ***************
@@ -8,7 +6,7 @@ Appendices
 The configure utility
 ======================
 
-.. _arguments-to-configure:
+.. _ug70-arguments-to-configure:
 
 ----------------------------------------------
 Arguments to configure

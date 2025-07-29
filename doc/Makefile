@@ -3,8 +3,8 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-#SPHINXBUILD   = /usr/bin/sphinx-build
-SPHINXBUILD   = /usr/local/anaconda/bin/sphinx-build
+SPHINXBUILD   = sphinx-build
+#SPHINXBUILD   = /usr/local/anaconda/bin/sphinx-build
 SPHINXPROJ    = camdoc
 SOURCEDIR     = source
 BUILDDIR      = build

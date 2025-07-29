@@ -1,5 +1,3 @@
-.. _physics-modifications-via-the-namelist:
-
 *******************************************
 Physics modifications via the namelist
 *******************************************
@@ -7,7 +5,7 @@ Physics modifications via the namelist
 This chapter contains a few examples of customizing
 CAM's run time configuration. General instructions
 for modifying namelists using the user_nl_cam file were given
-in :ref:`Building and Running CAM within CESM <building-and-running-cam>`.
+in :ref:`Building and Running CAM within CESM <ug63-building-and-running-cam>`.
 The examples below focus on some specific modifications that would
 be included in user_nl_cam.
 
@@ -34,7 +32,7 @@ package. Following that are some examples of how to modify the
 default namelist settings.
 
 
-.. _def-rad-clim:
+.. _ug63-def-rad-clim:
 
 -------------------------------------------
 Default rad_climate for cam6 physics
@@ -287,7 +285,7 @@ that contain it. This is a bit more complicated that the previous example
 where we were able to remove entire modes from the value of
 ``rad_diag_1``. Removing species from modes requires us to create new mode
 definitions. Using black carbon as a specific example, we see from the
-default definitions of the ``trop_mam4`` :ref:`modes <def-rad-clim>` that
+default definitions of the ``trop_mam4`` :ref:`modes <ug63-def-rad-clim>` that
 black carbon is contained in ``mam4_mode1`` and ``mam4_mode4``. The best
 way to create the definition of a new mode which doesn't contain black
 carbon is to copy the definition of modes 1 and 4, change their names, and
@@ -486,7 +484,6 @@ Nudging is implemented as a relaxation tendency between the current model state 
 a desired target state.
 
 .. math::
-   :label: Nudging
  
    F_{nudge} = { \alpha \over \Delta t_{nudge} } \left( S_{target} - S_{model} \right),
 
@@ -728,95 +725,56 @@ reanalysis data, begin by making a copy of the NEWGRID directory for your new gr
 
 Now edit your new script, and set the BATCH commands.
 
-+---------------------------------------------------------------+
-| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                           |
-+===============================================================+
-|                                                               |
-|                                                               |
-|  #!/bin/csh                                                   |
-|                                                               |
-|  #                                                            |
-|                                                               |
-|  #SBATCH -J **Gen_MERRA2_ne0np4.SAM01.ne30x4.csh**            |
-|                                                               |
-|  #SBATCH -n 1                                                 |
-|                                                               |
-|  #SBATCH --ntasks-per-node=1                                  |
-|                                                               |
-|  #SBATCH -t 24:00:00                                          |
-|                                                               |
-|  #SBATCH -A **Pxxxxxxx**                                      |
-|                                                               |
-|  #SBATCH -p dav                                               |
-|                                                               |
-|  #SBATCH -e **Log.Gen_MERRA2_SAM01**.err.%J                   |
-|                                                               |
-|  #SBATCH -o **Log.Gen_MERRA2_SAM01**.out.%J                   |
-|                                                               |
-|  #SBATCH --mail-type=ALL                                      |
-|                                                               |
-|  #SBATCH --mail-user= **me@ucar.edu**                         |
-|                                                               |
-|  #----------------------------------------------------------  |
-|                                                               |
-|                                                               |
-+---------------------------------------------------------------+
+.. code-block::
+   :caption: Gen_MERRA2_ne0np4.SAM01.ne30x4.csh
+   :emphasize-lines: 3,7,9,10,12
+
+   #!/bin/csh
+   #
+   #SBATCH -J Gen_MERRA2_ne0np4.SAM01.ne30x4.csh
+   #SBATCH -n 1
+   #SBATCH --ntasks-per-node=1
+   #SBATCH -t 24:00:00
+   #SBATCH -A Pxxxxxxx
+   #SBATCH -p dav
+   #SBATCH -e Log.Gen_MERRA2_SAM01.err.%J
+   #SBATCH -o Log.Gen_MERRA2_SAM01.out.%J
+   #SBATCH --mail-type=ALL
+   #SBATCH --mail-user= me@ucar.edu
 
 In the Configuration section, set the reference date corresponding to the first day 
 of data you desire, then number of days of data to process from that date, and the 
 path where you wish to have the data stored.
 
-+--------------------------------------------------------------------------------------------------+
-| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                                                              |
-+==================================================================================================+
-|                                                                                                  |
-|                                                                                                  |
-| #=============================================================                                   |
-|                                                                                                  |
-| # CONFIGURATION SECTION:                                                                         |
-|                                                                                                  |
-| #=============================================================                                   |
-|                                                                                                  |
-|                                                                                                  |
-| # Set a REFERENCE (Starting) Date and the number of days to process                              |
-|                                                                                                  |
-| #----------------------------------------------------------------------                          |
-|                                                                                                  |
-| set RUNNUM=01                                                                                    |
-|                                                                                                  |
-| set REF_DATE='**20121201**'                                                                      |
-|                                                                                                  |
-| set NUM_DAYS= **400**                                                                            |
-|                                                                                                  |
-|                                                                                                  |
-| # Set INPUT/OUTPUT/TMP directories                                                               |
-|                                                                                                  |
-| #--------------------------------------------------------                                        |
-|                                                                                                  |
-| set NAMELIST='./Config/Config_makeIC-'$RUNNUM'.nl'                                               |
-|                                                                                                  |
-| set MYLOGDIR='./LOG/LOG_002.'$RUNNUM'/'                                                          |
-|                                                                                                  |
-| set MYTMPDIR='./TMP/TMP_002.'$RUNNUM'/'                                                          |
-|                                                                                                  |
-| set MYOUTDIR='**/path/to/my/repo/ne0np4.SAM01.ne30x4/nudging/MERRA2/**'                          |
-|                                                                                                  |
-| set INPUTDIR='/glade/collections/rda/data/ds313.3/orig_res/'                                     |
-|                                                                                                  |
-|                                                                                                  |
-| # Set ESMF options                                                                               |
-|                                                                                                  |
-| #---------------------------                                                                     |
-|                                                                                                  |
-| set ESMF_interp='conserve'                                                                       |
-|                                                                                                  |
-| set ESMF_pole='none'                                                                             |
-|                                                                                                  |
-| set ESMF_clean='False'                                                                           |
-|                                                                                                  |
-| set ESMF_clean='True'                                                                            |
-+--------------------------------------------------------------------------------------------------+
+.. code-block::
+   :caption: Gen_MERRA2_ne0np4.SAM01.ne30x4.csh
+   :emphasize-lines: 8,9,16
 
+   #=============================================================
+   # CONFIGURATION SECTION:
+   #=============================================================
+  
+   # Set a REFERENCE (Starting) Date and the number of days to process
+   #----------------------------------------------------------------------
+   set RUNNUM=01
+   set REF_DATE= 20121201
+   set NUM_DAYS= 400
+  
+   # Set INPUT/OUTPUT/TMP directories
+   #--------------------------------------------------------
+   set NAMELIST='./Config/Config_makeIC-'$RUNNUM'.nl'
+   set MYLOGDIR='./LOG/LOG_002.'$RUNNUM'/'
+   set MYTMPDIR='./TMP/TMP_002.'$RUNNUM'/'
+   set MYOUTDIR='/path/to/my/repo/ne0np4.SAM01.ne30x4/nudging/MERRA2/'
+   set INPUTDIR='/glade/collections/rda/data/ds313.3/orig_res/'
+  
+   # Set ESMF options
+   #---------------------------
+   set ESMF_interp='conserve'
+   set ESMF_pole='none'
+   set ESMF_clean='False'
+   set ESMF_clean='True'
+  
 For the processing options, set the ``CASE`` name. This is the root filename for your 
 nudging data files. Note that some reanalysis datasets store winds in the form of 
 vorticity and divergence values rather then U,V. It is important that the VORT_DIV_TO_UV 
@@ -824,159 +782,97 @@ flag is set to True for these datasets, this is a common source of processing er
 Finally, set the ``fname_grid_info`` value to point to a file containing the desired ouput 
 grid, and set ``fname_phis_output`` to point to a file containing the model topography.
 
-+------------------------------------------------------------------------------------------+
-| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                                                      |
-+==========================================================================================+
-|                                                                                          |
-|                                                                                          | 
-| # Set Processing options                                                                 | 
-|                                                                                          | 
-| #-------------------------------------                                                   | 
-|                                                                                          | 
-| set CASE   = '**MERRA2_ne0np4.SAM01.ne30x4_L32**'                                        | 
-|                                                                                          | 
-| set DYCORE     = 'se'                                                                    | 
-|                                                                                          | 
-| set PRECISION = 'float'                                                                  | 
-|                                                                                          | 
-| set VORT_DIV_TO_UV = 'False'                                                             | 
-|                                                                                          | 
-| set SST_MASK           = 'False'                                                         | 
-|                                                                                          | 
-| set ICE_MASK           = 'False'                                                         | 
-|                                                                                          | 
-| set OUTPUT_PHIS      = 'True'                                                            | 
-|                                                                                          | 
-| set REGRID_ALL        = 'False'                                                          | 
-|                                                                                          | 
-| set ADJUST_STATE_FROM_TOPO = 'True'                                                      | 
-|                                                                                          | 
-| set MASS_FIX           = 'True'                                                          | 
-|                                                                                          | 
-|                                                                                          | 
-| # Set files containing OUTPUT Grid structure and topography                              | 
-|                                                                                          | 
-| #------------------------------------------------------------------------------------    | 
-|                                                                                          | 
-| set fname_grid_info = '**/path/to/my/repo/ne0np4.SAM01.ne30x4/inic/**                    |
-| **cami-mam4_0000-01-01_ne0np4.SAM01.ne30x4_L32_c200309.nc**'                             |
-|                                                                                          | 
-| set fname_phis_output = '**/path/to/my/repo/ne0np4.SAM01.ne30x4/topo/**                  |
-| **topo_ne30np4.SAM01.ne30x4_blin_200309.nc**'                                            |
-|                                                                                          | 
-| set ftype_phis_output = 'SE_TOPOGRAPHY'                                                  | 
-|                                                                                          | 
-+------------------------------------------------------------------------------------------+
+.. code-block::
+   :caption: Gen_MERRA2_ne0np4.SAM01.ne30x4.csh
+   :emphasize-lines: 3,17,19
+
+   # Set Processing options
+   #-------------------------------------
+   set CASE   = 'MERRA2_ne0np4.SAM01.ne30x4_L32'
+   set DYCORE     = 'se'
+   set PRECISION = 'float'
+   set VORT_DIV_TO_UV = 'False'
+   set SST_MASK           = 'False'
+   set ICE_MASK           = 'False'
+   set OUTPUT_PHIS      = 'True'
+   set REGRID_ALL        = 'False'
+   set ADJUST_STATE_FROM_TOPO = 'True'
+   set MASS_FIX           = 'True'
+  
+   # Set files containing OUTPUT Grid structure and topography
+   #------------------------------------------------------------------------------------
+   set fname_grid_info = \
+   '/path/to/my/repo/ne0np4.SAM01.ne30x4/inic/cami-mam4_0000-01-01_ne0np4.SAM01.ne30x4_L32_c200309.nc'
+   set fname_phis_output = \
+   '/path/to/my/repo/ne0np4.SAM01.ne30x4/topo/topo_ne30np4.SAM01.ne30x4_blin_200309.nc'
+   set ftype_phis_output = 'SE_TOPOGRAPHY'
 
 For MERRA2, the 8X time daily reanalysis data is stored in daily files with 8 time slices 
 in each file. For ERAI data, on the other hand, the 4x times daily data are stored in 
 6 hourly files with one time slice per file. The user must configure the script to accomodate 
 these differences in the data formats, as well as specify a template for the file names.
 
-+--------------------------------------------------------------------------------------------------+
-| Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:                                                              |
-+==================================================================================================+
-|                                                                                                  |
-|                                                                                                  | 
-| # *set hoursec = ( 00000 21600 43200 64800)*                                                     | 
-|                                                                                                  | 
-| # *set hourstr = (   00    06    12    18  )*                                                    | 
-|                                                                                                  | 
-| # *set fname[1] = "ei.oper.an.ml/YYYYMM/ei.oper.an.ml.regn128sc.YYYYMMDDHH"*                     | 
-|                                                                                                  | 
-| # *set ftype[1] = "Era_Interim_627.0_sc"*                                                        | 
-|                                                                                                  | 
-| # *set ftime[1] = "1X"*                                                                          | 
-|                                                                                                  | 
-|                                                                                                  | 
-| **set hoursec = ( 00000 10800 21600 32400 43200 54000 64800 75600)**                             | 
-|                                                                                                  | 
-| **set hourstr = (   00    03    06    09    12    15    18     21   )**                          | 
-|                                                                                                  | 
-| **set fname[1] = "YYYY/MERRA2_orig_res_YYYYMMDD.nc"**                                            | 
-|                                                                                                  | 
-| **set ftype[1] = "MERRA2"**                                                                      | 
-|                                                                                                  | 
-| **set ftime[1] = "8X"**                                                                          | 
-|                                                                                                  | 
-|                                                                                                  | 
-|          : :    : :     : :                                                                      | 
-|                                                                                                  | 
-|          : :    : :     : :                                                                      | 
-|                                                                                                  | 
-|                                                                                                  | 
-|   # Loop over the hourly values (4X daily)                                                       | 
-|                                                                                                  | 
-|   #========================================                                                      | 
-|                                                                                                  | 
-| #  *foreach hnum ( 1 2 3 4 )*                                                                    | 
-|                                                                                                  | 
-|   **foreach hnum ( 1 2 3 4 5 6 7 8 )**                                                           | 
-|                                                                                                  | 
-|                                                                                                  | 
-|          : :    : :     : :                                                                      | 
-|                                                                                                  | 
-|          : :    : :     : :                                                                      | 
-|                                                                                                  | 
-|                                                                                                  | 
-|                                                                                                  | 
-|   # Set Values dependend upon $hnum, clean                                                       | 
-|                                                                                                  | 
-|   # up TMP files at the end of each DAY                                                          | 
-|                                                                                                  | 
-|   #----------------------------------------------------------------------                        | 
-|                                                                                                  | 
-|   set datestr = $Yearstr$Monstr$Daystr$hoursec[$hnum]                                            | 
-|                                                                                                  | 
-|   set LOGFILE = $MYLOGDIR'/LogNCL.'$Yearstr$Monstr$Daystr$hoursec[$hnum]                         | 
-|                                                                                                  | 
-| #  *if( $hnum == 4 ) then*                                                                       | 
-|                                                                                                  | 
-|   **if( $hnum == 8 ) then**                                                                      | 
-|     set TMP_clean   = 'True'                                                                     | 
-|   else                                                                                           | 
-|     set TMP_clean   = 'False'                                                                    | 
-|   endif                                                                                          | 
-|                                                                                                  | 
-+--------------------------------------------------------------------------------------------------+
+.. code-block::
+   :caption: Gen_MERRA2_ne0np4.SAM01.ne30x4.csh
+   :emphasize-lines: 7-13,18-20,29
+
+   # set hoursec = ( 00000 21600 43200 64800)
+   # set hourstr = (   00    06    12    18  )
+   # set fname[1] = "ei.oper.an.ml/YYYYMM/ei.oper.an.ml.regn128sc.YYYYMMDDHH"
+   # set ftype[1] = "Era_Interim_627.0_sc"
+   # set ftime[1] = "1X"
+  
+   set hoursec = ( 00000 10800 21600 32400 43200 54000 64800 75600)
+   set hourstr = (   00    03    06    09    12    15    18     21   )
+   set fname[1] = "YYYY/MERRA2_orig_res_YYYYMMDD.nc"
+   set ftype[1] = "MERRA2"
+   set ftime[1] = "8X"
+            : :    : :     : :
+            : :    : :     : :
+  
+   # Loop over the hourly values (4X daily)
+   #========================================
+   #  foreach hnum ( 1 2 3 4 )
+   foreach hnum ( 1 2 3 4 5 6 7 8 )
+            : :    : :     : :
+            : :    : :     : :
+  
+   # Set Values dependend upon $hnum, clean
+   # up TMP files at the end of each DAY
+   #----------------------------------------------------------------------
+   set datestr = $Yearstr$Monstr$Daystr$hoursec[$hnum]
+   set LOGFILE = $MYLOGDIR'/LogNCL.'$Yearstr$Monstr$Daystr$hoursec[$hnum]
+  
+   #  if( $hnum == 4 ) then
+   if( $hnum == 8 ) then
+      set TMP_clean   = 'True'
+   else
+      set TMP_clean   = 'False'
+   endif
 
 The last modification that is needed for this example is to edit the file 
 **makeIC_se_002.ncl**. At about line 430, the ``dstGridName`` variable has to be 
 set to use the SCRIP file for your new grid.
 
-+--------------------------------------------------------------------------------------------------+
-| makeIC_se_002.ncl:                                                                               |
-+==================================================================================================+
-|                                                                                                  |
-|                                                                                                  | 
-| ;*****************************************************************                               | 
-|                                                                                                  | 
-| ; WORK AROUND: the 'unstructured_to_ESMF' routine is                                             | 
-|                                                                                                  | 
-| ;           not good for non-graphic interpolation.                                              | 
-|                                                                                                  | 
-| ;           It's okay for plotting values, but not                                               | 
-|                                                                                                  | 
-| ;           for the mapping we want to do. For now a                                             | 
-|                                                                                                  | 
-| ;           SCRIP file for ne30 will be sliced in so                                             | 
-|                                                                                                  | 
-| ;           we can get some work done.                                                           | 
-|                                                                                                  | 
-| ;           RHS updated this for SE-RR these are SCRIP files                                     | 
-|                                                                                                  | 
-| ;-------------------------------------------------------------------                             | 
-|                                                                                                  | 
-| ; dstGridName=mytmpdir+"/DstGrid"+dstlab+".nc"                                                   | 
-|                                                                                                  | 
-| ; dstGridName="/glade/p/cesmdata/cseg/mapping/grids/ne120np4_pentagons_100310.nc"                | 
-|                                                                                                  | 
-| ; dstGridName="/glade/p/cesmdata/cseg/mapping/grids/ne30np4_091226_pentagons.nc"                 | 
-|                                                                                                  | 
-| dstGridName="**/path/to/my/repo/ne0np4.SAM01.ne30x4/grids/SAM01_ne30x4_SCRIP.nc**"               | 
-|                                                                                                  | 
-| ;*******************************************************************                             | 
-+--------------------------------------------------------------------------------------------------+
+.. code-block::
+   :caption: makeIC_se_002.ncl
+   :emphasize-lines: 13
+
+   ;*****************************************************************
+   ; WORK AROUND: the 'unstructured_to_ESMF' routine is
+   ;           not good for non-graphic interpolation.
+   ;           It's okay for plotting values, but not
+   ;           for the mapping we want to do. For now a
+   ;           SCRIP file for ne30 will be sliced in so
+   ;           we can get some work done.
+   ;           RHS updated this for SE-RR these are SCRIP files
+   ;-------------------------------------------------------------------
+   ; dstGridName=mytmpdir+"/DstGrid"+dstlab+".nc"
+   ; dstGridName="/glade/p/cesmdata/cseg/mapping/grids/ne120np4_pentagons_100310.nc"
+   ; dstGridName="/glade/p/cesmdata/cseg/mapping/grids/ne30np4_091226_pentagons.nc"
+   dstGridName="/path/to/my/repo/ne0np4.SAM01.ne30x4/grids/SAM01_ne30x4_SCRIP.nc"
+   ;*******************************************************************
+
 
 With these changes, the script can be submitted to generate the desired 400 days of 
 data. The user must alway check the Log and output file to verify that the dataset 
@@ -1041,11 +937,12 @@ on 12/16/2012 and end on 4/5/2013.
 |                                                                                                  | 
 | &cam_initfiles_nl                                                                                | 
 |                                                                                                  | 
-| bnd_topo       = '**/path/to/my/repo/ne0np4.SAM01.ne30x4/**                                      |
-|                   **topo/topo_ne0np4.SAM01.ne30x4_blin_200708.nc**'                              | 
+| bnd_topo='**/path/to/my/repo/**                                                                  |
+| **ne0np4.SAM01.ne30x4/topo/topo_ne0np4.SAM01.ne30x4_blin_200708.nc**'                            |
 |                                                                                                  | 
-| ncdata='**/path/to/my/repo/ne0np4.SAM01.ne30x4/**                                                |
-|         **nudging/MERRA2/MERRA2_ne0np4.SAM01.ne30x4_L32.2012-12-16-00000.nc**'                   | 
+| ncdata='**/path/to/my/repo/**                                                                    |
+| **ne0np4.SAM01.ne30x4/nudging/MERRA2/MERRA2_ne0np4.SAM01.ne30x4_L32.2012-12-16-00000.nc**'       |
+|                                                                                                  | 
 | /                                                                                                | 
 |                                                                                                  | 
 | &nudging_nl                                                                                      | 

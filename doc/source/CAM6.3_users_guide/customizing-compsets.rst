@@ -1,4 +1,4 @@
-.. _customizing-compsets:
+.. _ug63-customizing-compsets:
 
 **************************************
 Customizing CAM runs
@@ -22,7 +22,12 @@ All configure options change the way that CAM is built and need to be applied be
    %./xmlchange --append CAM_CONFIG_OPTS='-cosp'
 
 
-CAM has numerous options which can modify it's configuration.  A few of the more widely used settings will be discussed here.  The complete listing of configure options is at :ref:`arguments to configure<arguments-to-configure>`.  More information on xmlchange can be found at the `xmlchange web page <http://esmci.github.io/cime/versions/cesm2.2/html/Tools_user/xmlchange.html>`_.
+CAM has numerous options which can modify it's configuration.  A few of the
+more widely used settings will be discussed here.  The complete listing of
+configure options is at :ref:`arguments to
+configure<ug63-arguments-to-configure>`.  More information on xmlchange can
+be found at the `xmlchange web page
+<http://esmci.github.io/cime/versions/cesm2.2/html/Tools_user/xmlchange.html>`_.
 
 #########################################
 Changing the physics
@@ -37,7 +42,16 @@ There are a number of settings which can change the physics which is run.  Some 
 -------------------------------------------------------------------------------
 Changing CAM namelist options
 -------------------------------------------------------------------------------
-There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at :ref:`Model Output<model-output>`. .  A complete listing of all of CAM's namelists is available at `CAM's namelist variables <http://www.cesm.ucar.edu/models/cesm2/settings/2.2.0/cam_nml.html>`_ 
+
+There are a number of ways that CAM can be modified via namelist settings.
+These values control the way the code is run and do not require a recompile
+of the code after they are changed.  CAM namelist variables include
+settings to tune the model for various quantities, control over output and
+many other options.  An example using CMIP5 emissions will be described
+here and a full explanation of controlling CAM output can be found at
+:ref:`Model Output<ug63-model-output>`.  A complete listing of all of CAM's
+namelists is available at `CAM's namelist variables
+<http://www.cesm.ucar.edu/models/cesm2/settings/2.2.0/cam_nml.html>`_
 
 #######################################################################
 Modifying Namelist settings:  Detailed Example -- Using CMIP5 emissions
@@ -105,8 +119,13 @@ Typically users use shortnames in their ``./create_newcase`` commands for exampl
 Changing Specified Dynamics Compsets       
 -------------------------------------------------------------------------------
 
-Specified dynamics compsets are setup to use specified meteorological analysis (MERRA2 or GEOS5) to nudge the internally derived meteorology from the model to the analysis fields. Available compsets are only produced for a specific date and resolution.  Meteorological data sets (dates and resolutions) can be downloaded from the repository or from the Research Data Archive.  Information how to download MERRA2 or GEOS5 data sets can be found in 'Meteorological Datasets <https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html>'_. 
-
+Specified dynamics compsets are setup to use specified meteorological
+analysis (MERRA2 or GEOS5) to nudge the internally derived meteorology from
+the model to the analysis fields. Available compsets are only produced for
+a specific date and resolution.  Meteorological data sets (dates and
+resolutions) can be downloaded from the repository or from the Research
+Data Archive.  Information how to download MERRA2 or GEOS5 data sets can be
+found in :ref:`Meteorological Datasets <ug63-meteorological-datasets>`.
 
 To change the start data of a specified dynamics simulation, the new start date and location of the meteorological data have to be adjusted in user_nl_cam, as shown in the following example for Jan 1st 2014 (start date) and using GEOS5 1 deg meteorological analysis. Also met_filenames_list needs to be updated if the simulation covers a different period than included in this file.  One has to make sure to also update nc_data to the start date, even if a branch or hybrid run is performed: ::
 
