@@ -1,4 +1,4 @@
-.. _atmospheric-configurations:
+.. _ug63-atmospheric-configurations:
  
 
 **************************************
@@ -747,7 +747,7 @@ Scientifically supported WACCM atmosphere compsets
 ========================================================
 
 Scientifically supported WACCM atmosphere configurations for CESM2.0 use TSMLT1 chemistry 
-(see :ref:`chemical mechanisms <chemical-mechanisms>` ) and 
+(see :ref:`chemical mechanisms <ug63-chemical-mechanisms>` ) and 
 0.95° latitude x 1.25° longitude horizontal resolution (f09_f09_mg17). 
 Additional scientifically validated configurations will be available in CESM2.1.
 
@@ -786,7 +786,7 @@ Tested WACCM atmosphere compsets
 
 Tested WACCM atmosphere configurations for CESM2.0 use middle atmosphere (MA) and 
 middle atmosphere plus D-region (MAD) chemistry (see 
-:ref:`chemical mechanisms <chemical-mechanisms>` ) and 
+:ref:`chemical mechanisms <ug63-chemical-mechanisms>` ) and 
 0.95° latitude x 1.25° longitude horizontal resolution (f09_f09_mg17).
 
 +---------+------------+-----------------------------------------+-------------+

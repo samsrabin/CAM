@@ -1,5 +1,3 @@
-.. _checking-out-cam-standalone:
-
 ***********************************
  Downloading CAM standalone
 ***********************************

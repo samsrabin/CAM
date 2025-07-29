@@ -1,5 +1,3 @@
-.. _introduction:
-
 **************************
 Introduction 
 **************************
@@ -16,7 +14,7 @@ to it as a "fully coupled CESM simulation" which are implemented in the B compse
 
 To get started running CAM refer to the `CESM2 Quick Start Guide
 <https://escomp.github.io/CESM/versions/cesm2.2/html/quickstart.html>`_ and the 
-:ref:`Building and Running CAM within CESM <building-and-running-cam>` section of this User's Guide.
+:ref:`Building and Running CAM within CESM <ug70-building-and-running-cam>` section of this User's Guide.
 Running CAM using the CESM scripts provides a high level of support for doing production runs of predefined experiments on supported platforms. This is the place to start for most users.
 
 CAM provides the basic atmospheric physics for several other models included in this release:

@@ -51,7 +51,7 @@
 <p>This chapter contains a few examples of customizing
 CAM’s run time configuration. General instructions
 for modifying namelists using the user_nl_cam file were given
-in <a class="reference internal" href="../users_guide/building-and-running-cam.html#building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a>.
+in <a class="reference internal" href="building-and-running-cam.html#building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a>.
 The examples below focus on some specific modifications that would
 be included in user_nl_cam.</p>
 <section id="radiative-constituents">
@@ -299,7 +299,7 @@ that contain it. This is a bit more complicated that the previous example
 where we were able to remove entire modes from the value of
 <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code>. Removing species from modes requires us to create new mode
 definitions. Using black carbon as a specific example, we see from the
-default definitions of the <code class="docutils literal notranslate"><span class="pre">trop_mam4</span></code> <a class="reference internal" href="../users_guide/physics-modifications-via-the-namelist.html#def-rad-clim"><span class="std std-ref">modes</span></a> that
+default definitions of the <code class="docutils literal notranslate"><span class="pre">trop_mam4</span></code> <a class="reference internal" href="#def-rad-clim"><span class="std std-ref">modes</span></a> that
 black carbon is contained in <code class="docutils literal notranslate"><span class="pre">mam4_mode1</span></code> and <code class="docutils literal notranslate"><span class="pre">mam4_mode4</span></code>. The best
 way to create the definition of a new mode which doesn’t contain black
 carbon is to copy the definition of modes 1 and 4, change their names, and

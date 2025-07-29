@@ -3,11 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. _users-guide:
-
-#####################################
+###################
 CAM6.3 User's Guide
-#####################################
+###################
 
 .. toctree::
    :maxdepth: 4

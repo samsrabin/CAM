@@ -6,16 +6,19 @@
 Welcome to the CAM documentation
 ==================================
 
-This document has one major sections.
-
-The :ref:`CAM user's guide <users-guide>` is a basic guide in utilizing the CIME scripting infrastructure.
-
-Table of contents
------------------
+Scientific Guides
+---------------------
 
    `CAM6 Scientific Summary <https://ncar.github.io/CAM_SciDoc/doc/build/html/cam6_scientific_summary/index.html>`_
 
    `CAM5 Scientific Guide <https://ncar.github.io/CAM_SciDoc/doc/build/html/cam5_scientific_guide/index.html>`_
+
+User's Guides
+---------------------
+
+.. note::
+
+   The CAM7.0 User's Guide is under active development.
 
 .. toctree::
    :maxdepth: 1

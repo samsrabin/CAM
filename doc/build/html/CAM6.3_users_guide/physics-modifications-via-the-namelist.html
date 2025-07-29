@@ -47,11 +47,11 @@
           <div class="body" role="main">
             
   <section id="physics-modifications-via-the-namelist">
-<span id="id1"></span><h1><span class="section-number">9. </span>Physics modifications via the namelist<a class="headerlink" href="#physics-modifications-via-the-namelist" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">9. </span>Physics modifications via the namelist<a class="headerlink" href="#physics-modifications-via-the-namelist" title="Link to this heading">¶</a></h1>
 <p>This chapter contains a few examples of customizing
 CAM’s run time configuration. General instructions
 for modifying namelists using the user_nl_cam file were given
-in <a class="reference internal" href="../users_guide/building-and-running-cam.html#building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a>.
+in <a class="reference internal" href="building-and-running-cam.html#ug63-building-and-running-cam"><span class="std std-ref">Building and Running CAM within CESM</span></a>.
 The examples below focus on some specific modifications that would
 be included in user_nl_cam.</p>
 <section id="radiative-constituents">
@@ -74,7 +74,7 @@ default specification for the cam6 physics
 package. Following that are some examples of how to modify the
 default namelist settings.</p>
 <section id="default-rad-climate-for-cam6-physics">
-<span id="def-rad-clim"></span><h3><span class="section-number">9.1.1. </span>Default rad_climate for cam6 physics<a class="headerlink" href="#default-rad-climate-for-cam6-physics" title="Link to this heading">¶</a></h3>
+<span id="ug63-def-rad-clim"></span><h3><span class="section-number">9.1.1. </span>Default rad_climate for cam6 physics<a class="headerlink" href="#default-rad-climate-for-cam6-physics" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">cam6</span></code> physics package uses prescribed gases (except for water
 vapor), prognostic modal aerosols, and prescribed bulk
 aerosols. <code class="docutils literal notranslate"><span class="pre">rad_climate</span></code> is the namelist variable which holds the
@@ -299,7 +299,7 @@ that contain it. This is a bit more complicated that the previous example
 where we were able to remove entire modes from the value of
 <code class="docutils literal notranslate"><span class="pre">rad_diag_1</span></code>. Removing species from modes requires us to create new mode
 definitions. Using black carbon as a specific example, we see from the
-default definitions of the <code class="docutils literal notranslate"><span class="pre">trop_mam4</span></code> <a class="reference internal" href="../users_guide/physics-modifications-via-the-namelist.html#def-rad-clim"><span class="std std-ref">modes</span></a> that
+default definitions of the <code class="docutils literal notranslate"><span class="pre">trop_mam4</span></code> <a class="reference internal" href="#ug63-def-rad-clim"><span class="std std-ref">modes</span></a> that
 black carbon is contained in <code class="docutils literal notranslate"><span class="pre">mam4_mode1</span></code> and <code class="docutils literal notranslate"><span class="pre">mam4_mode4</span></code>. The best
 way to create the definition of a new mode which doesn’t contain black
 carbon is to copy the definition of modes 1 and 4, change their names, and
@@ -475,8 +475,8 @@ create the library prior to submitting the processing scripts.</p>
 <h3><span class="section-number">9.6.2. </span>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">¶</a></h3>
 <p>Nudging is implemented as a relaxation tendency between the current model state and
 a desired target state.</p>
-<div class="math" id="equation-nudging">
-<p><span class="eqno">(1)<a class="headerlink" href="#equation-nudging" title="Link to this equation">¶</a></span><img src="../_images/math/bfca40d1b04b4a034d04243a15aa85dedb01c4df.png" alt="F_{nudge} = { \alpha \over \Delta t_{nudge} } \left( S_{target} - S_{model} \right),"/></p>
+<div class="math">
+<p><img src="../_images/math/bfca40d1b04b4a034d04243a15aa85dedb01c4df.png" alt="F_{nudge} = { \alpha \over \Delta t_{nudge} } \left( S_{target} - S_{model} \right),"/></p>
 </div><p>where S is one of the prognostic variables [U,V,T,Q], <img class="math" src="../_images/math/2f5aa019312e1bbc969deab8dca8b00f76025404.png" alt="\alpha"/> is a noramlized
 strength coeffcient between [0,1], and <img class="math" src="../_images/math/a723d68f184dbfbf9e20b4f4604b547fd470167a.png" alt="\Delta t_{nudge}"/> is the time scale for
 the relaxation. Currently there are two options for the target state. The first uses
@@ -805,180 +805,150 @@ reanalysis data, begin by making a copy of the NEWGRID directory for your new gr
 </pre></div>
 </div>
 <p>Now edit your new script, and set the BATCH commands.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>#!/bin/csh</p>
-<p>#</p>
-<p>#SBATCH -J <strong>Gen_MERRA2_ne0np4.SAM01.ne30x4.csh</strong></p>
-<p>#SBATCH -n 1</p>
-<p>#SBATCH –ntasks-per-node=1</p>
-<p>#SBATCH -t 24:00:00</p>
-<p>#SBATCH -A <strong>Pxxxxxxx</strong></p>
-<p>#SBATCH -p dav</p>
-<p>#SBATCH -e <strong>Log.Gen_MERRA2_SAM01</strong>.err.%J</p>
-<p>#SBATCH -o <strong>Log.Gen_MERRA2_SAM01</strong>.out.%J</p>
-<p>#SBATCH –mail-type=ALL</p>
-<p>#SBATCH –mail-user= <strong>me&#64;ucar.edu</strong></p>
-<p>#———————————————————-</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Gen_MERRA2_ne0np4.SAM01.ne30x4.csh</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/csh</span>
+<span class="c1">#</span>
+<span class="hll"><span class="c1">#SBATCH -J Gen_MERRA2_ne0np4.SAM01.ne30x4.csh</span>
+</span><span class="c1">#SBATCH -n 1</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH -t 24:00:00</span>
+<span class="hll"><span class="c1">#SBATCH -A Pxxxxxxx</span>
+</span><span class="c1">#SBATCH -p dav</span>
+<span class="hll"><span class="c1">#SBATCH -e Log.Gen_MERRA2_SAM01.err.%J</span>
+</span><span class="hll"><span class="c1">#SBATCH -o Log.Gen_MERRA2_SAM01.out.%J</span>
+</span><span class="c1">#SBATCH --mail-type=ALL</span>
+<span class="hll"><span class="c1">#SBATCH --mail-user= me@ucar.edu</span>
+</span></pre></div>
+</div>
+</div>
 <p>In the Configuration section, set the reference date corresponding to the first day
 of data you desire, then number of days of data to process from that date, and the
 path where you wish to have the data stored.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>#=============================================================</p>
-<p># CONFIGURATION SECTION:</p>
-<p>#=============================================================</p>
-<p># Set a REFERENCE (Starting) Date and the number of days to process</p>
-<p>#———————————————————————-</p>
-<p>set RUNNUM=01</p>
-<p>set REF_DATE=’<strong>20121201</strong>’</p>
-<p>set NUM_DAYS= <strong>400</strong></p>
-<p># Set INPUT/OUTPUT/TMP directories</p>
-<p>#——————————————————–</p>
-<p>set NAMELIST=’./Config/Config_makeIC-‘$RUNNUM’.nl’</p>
-<p>set MYLOGDIR=’./LOG/LOG_002.’$RUNNUM’/’</p>
-<p>set MYTMPDIR=’./TMP/TMP_002.’$RUNNUM’/’</p>
-<p>set MYOUTDIR=’<strong>/path/to/my/repo/ne0np4.SAM01.ne30x4/nudging/MERRA2/</strong>’</p>
-<p>set INPUTDIR=’/glade/collections/rda/data/ds313.3/orig_res/’</p>
-<p># Set ESMF options</p>
-<p>#—————————</p>
-<p>set ESMF_interp=’conserve’</p>
-<p>set ESMF_pole=’none’</p>
-<p>set ESMF_clean=’False’</p>
-<p>set ESMF_clean=’True’</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Gen_MERRA2_ne0np4.SAM01.ne30x4.csh</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#=============================================================
+# CONFIGURATION SECTION:
+#=============================================================
+
+# Set a REFERENCE (Starting) Date and the number of days to process
+#----------------------------------------------------------------------
+set RUNNUM=01
+<span class="hll">set REF_DATE= 20121201
+</span><span class="hll">set NUM_DAYS= 400
+</span>
+# Set INPUT/OUTPUT/TMP directories
+#--------------------------------------------------------
+set NAMELIST=&#39;./Config/Config_makeIC-&#39;$RUNNUM&#39;.nl&#39;
+set MYLOGDIR=&#39;./LOG/LOG_002.&#39;$RUNNUM&#39;/&#39;
+set MYTMPDIR=&#39;./TMP/TMP_002.&#39;$RUNNUM&#39;/&#39;
+<span class="hll">set MYOUTDIR=&#39;/path/to/my/repo/ne0np4.SAM01.ne30x4/nudging/MERRA2/&#39;
+</span>set INPUTDIR=&#39;/glade/collections/rda/data/ds313.3/orig_res/&#39;
+
+# Set ESMF options
+#---------------------------
+set ESMF_interp=&#39;conserve&#39;
+set ESMF_pole=&#39;none&#39;
+set ESMF_clean=&#39;False&#39;
+set ESMF_clean=&#39;True&#39;
+</pre></div>
+</div>
+</div>
 <p>For the processing options, set the <code class="docutils literal notranslate"><span class="pre">CASE</span></code> name. This is the root filename for your
 nudging data files. Note that some reanalysis datasets store winds in the form of
 vorticity and divergence values rather then U,V. It is important that the VORT_DIV_TO_UV
 flag is set to True for these datasets, this is a common source of processing errors.
 Finally, set the <code class="docutils literal notranslate"><span class="pre">fname_grid_info</span></code> value to point to a file containing the desired ouput
 grid, and set <code class="docutils literal notranslate"><span class="pre">fname_phis_output</span></code> to point to a file containing the model topography.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p># Set Processing options</p>
-<p>#————————————-</p>
-<p>set CASE   = ‘<strong>MERRA2_ne0np4.SAM01.ne30x4_L32</strong>’</p>
-<p>set DYCORE     = ‘se’</p>
-<p>set PRECISION = ‘float’</p>
-<p>set VORT_DIV_TO_UV = ‘False’</p>
-<p>set SST_MASK           = ‘False’</p>
-<p>set ICE_MASK           = ‘False’</p>
-<p>set OUTPUT_PHIS      = ‘True’</p>
-<p>set REGRID_ALL        = ‘False’</p>
-<p>set ADJUST_STATE_FROM_TOPO = ‘True’</p>
-<p>set MASS_FIX           = ‘True’</p>
-<p># Set files containing OUTPUT Grid structure and topography</p>
-<p>#————————————————————————————</p>
-<p>set fname_grid_info = ‘<strong>/path/to/my/repo/ne0np4.SAM01.ne30x4/inic/</strong>
-<strong>cami-mam4_0000-01-01_ne0np4.SAM01.ne30x4_L32_c200309.nc</strong>’</p>
-<p>set fname_phis_output = ‘<strong>/path/to/my/repo/ne0np4.SAM01.ne30x4/topo/</strong>
-<strong>topo_ne30np4.SAM01.ne30x4_blin_200309.nc</strong>’</p>
-<p>set ftype_phis_output = ‘SE_TOPOGRAPHY’</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Gen_MERRA2_ne0np4.SAM01.ne30x4.csh</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set Processing options</span>
+<span class="c1">#-------------------------------------</span>
+<span class="hll"><span class="nb">set</span> <span class="n">CASE</span>   <span class="o">=</span> <span class="s1">&#39;MERRA2_ne0np4.SAM01.ne30x4_L32&#39;</span>
+</span><span class="nb">set</span> <span class="n">DYCORE</span>     <span class="o">=</span> <span class="s1">&#39;se&#39;</span>
+<span class="nb">set</span> <span class="n">PRECISION</span> <span class="o">=</span> <span class="s1">&#39;float&#39;</span>
+<span class="nb">set</span> <span class="n">VORT_DIV_TO_UV</span> <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+<span class="nb">set</span> <span class="n">SST_MASK</span>           <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+<span class="nb">set</span> <span class="n">ICE_MASK</span>           <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+<span class="nb">set</span> <span class="n">OUTPUT_PHIS</span>      <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+<span class="nb">set</span> <span class="n">REGRID_ALL</span>        <span class="o">=</span> <span class="s1">&#39;False&#39;</span>
+<span class="nb">set</span> <span class="n">ADJUST_STATE_FROM_TOPO</span> <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+<span class="nb">set</span> <span class="n">MASS_FIX</span>           <span class="o">=</span> <span class="s1">&#39;True&#39;</span>
+
+<span class="c1"># Set files containing OUTPUT Grid structure and topography</span>
+<span class="c1">#------------------------------------------------------------------------------------</span>
+<span class="nb">set</span> <span class="n">fname_grid_info</span> <span class="o">=</span> \
+<span class="hll"><span class="s1">&#39;/path/to/my/repo/ne0np4.SAM01.ne30x4/inic/cami-mam4_0000-01-01_ne0np4.SAM01.ne30x4_L32_c200309.nc&#39;</span>
+</span><span class="nb">set</span> <span class="n">fname_phis_output</span> <span class="o">=</span> \
+<span class="hll"><span class="s1">&#39;/path/to/my/repo/ne0np4.SAM01.ne30x4/topo/topo_ne30np4.SAM01.ne30x4_blin_200309.nc&#39;</span>
+</span><span class="nb">set</span> <span class="n">ftype_phis_output</span> <span class="o">=</span> <span class="s1">&#39;SE_TOPOGRAPHY&#39;</span>
+</pre></div>
+</div>
+</div>
 <p>For MERRA2, the 8X time daily reanalysis data is stored in daily files with 8 time slices
 in each file. For ERAI data, on the other hand, the 4x times daily data are stored in
 6 hourly files with one time slice per file. The user must configure the script to accomodate
 these differences in the data formats, as well as specify a template for the file names.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Gen_MERRA2_ne0np4.SAM01.ne30x4.csh:</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p># <em>set hoursec = ( 00000 21600 43200 64800)</em></p>
-<p># <em>set hourstr = (   00    06    12    18  )</em></p>
-<p># <em>set fname[1] = “ei.oper.an.ml/YYYYMM/ei.oper.an.ml.regn128sc.YYYYMMDDHH”</em></p>
-<p># <em>set ftype[1] = “Era_Interim_627.0_sc”</em></p>
-<p># <em>set ftime[1] = “1X”</em></p>
-<p><strong>set hoursec = ( 00000 10800 21600 32400 43200 54000 64800 75600)</strong></p>
-<p><strong>set hourstr = (   00    03    06    09    12    15    18     21   )</strong></p>
-<p><strong>set fname[1] = “YYYY/MERRA2_orig_res_YYYYMMDD.nc”</strong></p>
-<p><strong>set ftype[1] = “MERRA2”</strong></p>
-<p><strong>set ftime[1] = “8X”</strong></p>
-<blockquote>
-<div><blockquote>
-<div><p>: :    : :     : :</p>
-<p>: :    : :     : :</p>
-</div></blockquote>
-<p># Loop over the hourly values (4X daily)</p>
-<p>#========================================</p>
-</div></blockquote>
-<p>#  <em>foreach hnum ( 1 2 3 4 )</em></p>
-<blockquote>
-<div><p><strong>foreach hnum ( 1 2 3 4 5 6 7 8 )</strong></p>
-<blockquote>
-<div><p>: :    : :     : :</p>
-<p>: :    : :     : :</p>
-</div></blockquote>
-<p># Set Values dependend upon $hnum, clean</p>
-<p># up TMP files at the end of each DAY</p>
-<p>#———————————————————————-</p>
-<p>set datestr = $Yearstr$Monstr$Daystr$hoursec[$hnum]</p>
-<p>set LOGFILE = $MYLOGDIR’/LogNCL.’$Yearstr$Monstr$Daystr$hoursec[$hnum]</p>
-</div></blockquote>
-<p>#  <em>if( $hnum == 4 ) then</em></p>
-<blockquote>
-<div><dl class="simple">
-<dt><strong>if( $hnum == 8 ) then</strong></dt><dd><p>set TMP_clean   = ‘True’</p>
-</dd>
-<dt>else</dt><dd><p>set TMP_clean   = ‘False’</p>
-</dd>
-</dl>
-<p>endif</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Gen_MERRA2_ne0np4.SAM01.ne30x4.csh</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># set hoursec = ( 00000 21600 43200 64800)
+# set hourstr = (   00    06    12    18  )
+# set fname[1] = &quot;ei.oper.an.ml/YYYYMM/ei.oper.an.ml.regn128sc.YYYYMMDDHH&quot;
+# set ftype[1] = &quot;Era_Interim_627.0_sc&quot;
+# set ftime[1] = &quot;1X&quot;
+
+<span class="hll">set hoursec = ( 00000 10800 21600 32400 43200 54000 64800 75600)
+</span><span class="hll">set hourstr = (   00    03    06    09    12    15    18     21   )
+</span><span class="hll">set fname[1] = &quot;YYYY/MERRA2_orig_res_YYYYMMDD.nc&quot;
+</span><span class="hll">set ftype[1] = &quot;MERRA2&quot;
+</span><span class="hll">set ftime[1] = &quot;8X&quot;
+</span><span class="hll">         : :    : :     : :
+</span><span class="hll">         : :    : :     : :
+</span>
+# Loop over the hourly values (4X daily)
+#========================================
+#  foreach hnum ( 1 2 3 4 )
+<span class="hll">foreach hnum ( 1 2 3 4 5 6 7 8 )
+</span><span class="hll">         : :    : :     : :
+</span><span class="hll">         : :    : :     : :
+</span>
+# Set Values dependend upon $hnum, clean
+# up TMP files at the end of each DAY
+#----------------------------------------------------------------------
+set datestr = $Yearstr$Monstr$Daystr$hoursec[$hnum]
+set LOGFILE = $MYLOGDIR&#39;/LogNCL.&#39;$Yearstr$Monstr$Daystr$hoursec[$hnum]
+
+#  if( $hnum == 4 ) then
+<span class="hll">if( $hnum == 8 ) then
+</span>   set TMP_clean   = &#39;True&#39;
+else
+   set TMP_clean   = &#39;False&#39;
+endif
+</pre></div>
+</div>
+</div>
 <p>The last modification that is needed for this example is to edit the file
 <strong>makeIC_se_002.ncl</strong>. At about line 430, the <code class="docutils literal notranslate"><span class="pre">dstGridName</span></code> variable has to be
 set to use the SCRIP file for your new grid.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>makeIC_se_002.ncl:</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>;*****************************************************************</p>
-<p>; WORK AROUND: the ‘unstructured_to_ESMF’ routine is</p>
-<p>;           not good for non-graphic interpolation.</p>
-<p>;           It’s okay for plotting values, but not</p>
-<p>;           for the mapping we want to do. For now a</p>
-<p>;           SCRIP file for ne30 will be sliced in so</p>
-<p>;           we can get some work done.</p>
-<p>;           RHS updated this for SE-RR these are SCRIP files</p>
-<p>;——————————————————————-</p>
-<p>; dstGridName=mytmpdir+”/DstGrid”+dstlab+”.nc”</p>
-<p>; dstGridName=”/glade/p/cesmdata/cseg/mapping/grids/ne120np4_pentagons_100310.nc”</p>
-<p>; dstGridName=”/glade/p/cesmdata/cseg/mapping/grids/ne30np4_091226_pentagons.nc”</p>
-<p>dstGridName=”<strong>/path/to/my/repo/ne0np4.SAM01.ne30x4/grids/SAM01_ne30x4_SCRIP.nc</strong>”</p>
-<p>;*******************************************************************</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">makeIC_se_002.ncl</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span><span class="o">*****************************************************************</span>
+<span class="p">;</span> <span class="n">WORK</span> <span class="n">AROUND</span><span class="p">:</span> <span class="n">the</span> <span class="s1">&#39;unstructured_to_ESMF&#39;</span> <span class="n">routine</span> <span class="ow">is</span>
+<span class="p">;</span>           <span class="ow">not</span> <span class="n">good</span> <span class="k">for</span> <span class="n">non</span><span class="o">-</span><span class="n">graphic</span> <span class="n">interpolation</span><span class="o">.</span>
+<span class="p">;</span>           <span class="n">It</span><span class="s1">&#39;s okay for plotting values, but not</span>
+<span class="p">;</span>           <span class="k">for</span> <span class="n">the</span> <span class="n">mapping</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="n">do</span><span class="o">.</span> <span class="n">For</span> <span class="n">now</span> <span class="n">a</span>
+<span class="p">;</span>           <span class="n">SCRIP</span> <span class="n">file</span> <span class="k">for</span> <span class="n">ne30</span> <span class="n">will</span> <span class="n">be</span> <span class="n">sliced</span> <span class="ow">in</span> <span class="n">so</span>
+<span class="p">;</span>           <span class="n">we</span> <span class="n">can</span> <span class="n">get</span> <span class="n">some</span> <span class="n">work</span> <span class="n">done</span><span class="o">.</span>
+<span class="p">;</span>           <span class="n">RHS</span> <span class="n">updated</span> <span class="n">this</span> <span class="k">for</span> <span class="n">SE</span><span class="o">-</span><span class="n">RR</span> <span class="n">these</span> <span class="n">are</span> <span class="n">SCRIP</span> <span class="n">files</span>
+<span class="p">;</span><span class="o">-------------------------------------------------------------------</span>
+<span class="p">;</span> <span class="n">dstGridName</span><span class="o">=</span><span class="n">mytmpdir</span><span class="o">+</span><span class="s2">&quot;/DstGrid&quot;</span><span class="o">+</span><span class="n">dstlab</span><span class="o">+</span><span class="s2">&quot;.nc&quot;</span>
+<span class="p">;</span> <span class="n">dstGridName</span><span class="o">=</span><span class="s2">&quot;/glade/p/cesmdata/cseg/mapping/grids/ne120np4_pentagons_100310.nc&quot;</span>
+<span class="p">;</span> <span class="n">dstGridName</span><span class="o">=</span><span class="s2">&quot;/glade/p/cesmdata/cseg/mapping/grids/ne30np4_091226_pentagons.nc&quot;</span>
+<span class="hll"><span class="n">dstGridName</span><span class="o">=</span><span class="s2">&quot;/path/to/my/repo/ne0np4.SAM01.ne30x4/grids/SAM01_ne30x4_SCRIP.nc&quot;</span>
+</span><span class="p">;</span><span class="o">*******************************************************************</span>
+</pre></div>
+</div>
+</div>
 <p>With these changes, the script can be submitted to generate the desired 400 days of
 data. The user must alway check the Log and output file to verify that the dataset
 was processed correctly. Serching the Log files for the string
@@ -1031,12 +1001,10 @@ on 12/16/2012 and end on 4/5/2013.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>&amp;cam_initfiles_nl</p>
-<dl class="simple">
-<dt>bnd_topo       = ‘<strong>/path/to/my/repo/ne0np4.SAM01.ne30x4/</strong></dt><dd><p><strong>topo/topo_ne0np4.SAM01.ne30x4_blin_200708.nc</strong>’</p>
-</dd>
-<dt>ncdata=’<strong>/path/to/my/repo/ne0np4.SAM01.ne30x4/</strong></dt><dd><p><strong>nudging/MERRA2/MERRA2_ne0np4.SAM01.ne30x4_L32.2012-12-16-00000.nc</strong>’</p>
-</dd>
-</dl>
+<p>bnd_topo=’<strong>/path/to/my/repo/</strong>
+<strong>ne0np4.SAM01.ne30x4/topo/topo_ne0np4.SAM01.ne30x4_blin_200708.nc</strong>’</p>
+<p>ncdata=’<strong>/path/to/my/repo/</strong>
+<strong>ne0np4.SAM01.ne30x4/nudging/MERRA2/MERRA2_ne0np4.SAM01.ne30x4_L32.2012-12-16-00000.nc</strong>’</p>
 <p>/</p>
 <p>&amp;nudging_nl</p>
 <p>Nudge_Model        =  <strong>.true.</strong></p>

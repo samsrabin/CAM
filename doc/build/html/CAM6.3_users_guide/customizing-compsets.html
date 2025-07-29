@@ -47,7 +47,7 @@
           <div class="body" role="main">
             
   <section id="customizing-cam-runs">
-<span id="customizing-compsets"></span><h1><span class="section-number">6. </span>Customizing CAM runs<a class="headerlink" href="#customizing-cam-runs" title="Link to this heading">¶</a></h1>
+<span id="ug63-customizing-compsets"></span><h1><span class="section-number">6. </span>Customizing CAM runs<a class="headerlink" href="#customizing-cam-runs" title="Link to this heading">¶</a></h1>
 <p>Compsets are useful for easily setting up standard runs of CAM.  Sometimes though a user wants to customize a run.  The first step in doing this is to start with a compset which is close to what a user wants to run and then applying the appropriate modifications.  Users must be mindful of using a compset which has appropriate settings for the experiment to be run.</p>
 <dl class="simple">
 <dt>It is important to understand that there are two main ways that CAM runs can be modified.</dt><dd><ul class="simple">
@@ -63,7 +63,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">append</span> <span class="n">CAM_CONFIG_OPTS</span><span class="o">=</span><span class="s1">&#39;-cosp&#39;</span>
 </pre></div>
 </div>
-<p>CAM has numerous options which can modify it’s configuration.  A few of the more widely used settings will be discussed here.  The complete listing of configure options is at <a class="reference internal" href="../users_guide/appendices.html#arguments-to-configure"><span class="std std-ref">arguments to configure</span></a>.  More information on xmlchange can be found at the <a class="reference external" href="http://esmci.github.io/cime/versions/cesm2.2/html/Tools_user/xmlchange.html">xmlchange web page</a>.</p>
+<p>CAM has numerous options which can modify it’s configuration.  A few of the
+more widely used settings will be discussed here.  The complete listing of
+configure options is at <a class="reference internal" href="appendices.html#ug63-arguments-to-configure"><span class="std std-ref">arguments to
+configure</span></a>.  More information on xmlchange can
+be found at the <a class="reference external" href="http://esmci.github.io/cime/versions/cesm2.2/html/Tools_user/xmlchange.html">xmlchange web page</a>.</p>
 <section id="changing-the-physics">
 <h3><span class="section-number">6.1.1. </span>Changing the physics<a class="headerlink" href="#changing-the-physics" title="Link to this heading">¶</a></h3>
 <dl class="simple">
@@ -78,7 +82,14 @@
 </section>
 <section id="changing-cam-namelist-options">
 <h2><span class="section-number">6.2. </span>Changing CAM namelist options<a class="headerlink" href="#changing-cam-namelist-options" title="Link to this heading">¶</a></h2>
-<p>There are a number of ways that CAM can be modified via namelist settings.  These values control the way the code is run and do not require a recompile of the code after they are changed.  CAM namelist variables include settings to tune the model for various quantities, control over output and many other options.  An example using CMIP5 emissions will be described here and a full explanation of controlling CAM output can be found at <a class="reference internal" href="../users_guide/model-output.html#model-output"><span class="std std-ref">Model Output</span></a>. .  A complete listing of all of CAM’s namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2/settings/2.2.0/cam_nml.html">CAM’s namelist variables</a></p>
+<p>There are a number of ways that CAM can be modified via namelist settings.
+These values control the way the code is run and do not require a recompile
+of the code after they are changed.  CAM namelist variables include
+settings to tune the model for various quantities, control over output and
+many other options.  An example using CMIP5 emissions will be described
+here and a full explanation of controlling CAM output can be found at
+<a class="reference internal" href="model-output.html#ug63-model-output"><span class="std std-ref">Model Output</span></a>.  A complete listing of all of CAM’s
+namelists is available at <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2/settings/2.2.0/cam_nml.html">CAM’s namelist variables</a></p>
 <section id="modifying-namelist-settings-detailed-example-using-cmip5-emissions">
 <h3><span class="section-number">6.2.1. </span>Modifying Namelist settings:  Detailed Example – Using CMIP5 emissions<a class="headerlink" href="#modifying-namelist-settings-detailed-example-using-cmip5-emissions" title="Link to this heading">¶</a></h3>
 <p>The following steps illustrate how to change the CMIP emissions back to the CMIP5 version.  If a user desires to do this, they may cut/paste the ext_frc_specifier and srf_emis_specifier settings below and put them into their own user_nl_cam.</p>
@@ -134,7 +145,13 @@
 </section>
 <section id="changing-specified-dynamics-compsets">
 <h2><span class="section-number">6.4. </span>Changing Specified Dynamics Compsets<a class="headerlink" href="#changing-specified-dynamics-compsets" title="Link to this heading">¶</a></h2>
-<p>Specified dynamics compsets are setup to use specified meteorological analysis (MERRA2 or GEOS5) to nudge the internally derived meteorology from the model to the analysis fields. Available compsets are only produced for a specific date and resolution.  Meteorological data sets (dates and resolutions) can be downloaded from the repository or from the Research Data Archive.  Information how to download MERRA2 or GEOS5 data sets can be found in ‘Meteorological Datasets &lt;<a class="reference external" href="https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html">https://ncar.github.io/CAM/doc/build/html/users_guide/input-datasets.html#meteorological-data-sets.html</a>&gt;’_.</p>
+<p>Specified dynamics compsets are setup to use specified meteorological
+analysis (MERRA2 or GEOS5) to nudge the internally derived meteorology from
+the model to the analysis fields. Available compsets are only produced for
+a specific date and resolution.  Meteorological data sets (dates and
+resolutions) can be downloaded from the repository or from the Research
+Data Archive.  Information how to download MERRA2 or GEOS5 data sets can be
+found in <a class="reference internal" href="input-datasets.html#ug63-meteorological-datasets"><span class="std std-ref">Meteorological Datasets</span></a>.</p>
 <p>To change the start data of a specified dynamics simulation, the new start date and location of the meteorological data have to be adjusted in user_nl_cam, as shown in the following example for Jan 1st 2014 (start date) and using GEOS5 1 deg meteorological analysis. Also met_filenames_list needs to be updated if the simulation covers a different period than included in this file.  One has to make sure to also update nc_data to the start date, even if a branch or hybrid run is performed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">met_data_file</span>          <span class="o">=</span> <span class="s1">&#39;2014/GEOS5_09x125_20140101.nc&#39;</span>
 <span class="n">met_data_path</span>          <span class="o">=</span> <span class="s1">&#39;/glade/p/cesmdata/cseg/inputdata/atm/cam/met/GEOS5/0.9x1.25&#39;</span>

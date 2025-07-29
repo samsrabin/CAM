@@ -1,4 +1,4 @@
-.. _building-and-running-cam:
+.. _ug70-building-and-running-cam:
 
 **********************************************************
 Building and Running the atmospheric model within CESM
@@ -12,9 +12,34 @@ CAM runs are setup, built, and submitted via the CIME scripts.  These directions
 
 The case name is used as the name of the new directory which will contain all the information needed to configure, build, and run the case as well as serving as the case title of the CAM model run. 
 
-The compset is chosen from a set of named configurations that provide defaults for making one of several common types of runs. Examples of compset choices include configuring CAM to run in parallel with other components or specifying a particular set of physics parameterizations to reproduce a well known intermodel comparison or perhaps configuring CAM with the appropriate input data to run for different time periods (historical, present-day, future).  The compset determines the general type of run to be made and the other elements of the CIME case control system allow the user to fine-tune the particulars of CAM's physics and dynamics to meet each user's requirements. Compsets will be described in much more detail in :ref:`Atmospheric configurations <atmospheric-configurations>`.  For this chapter, we will be using the compset FHIST.
+The compset is chosen from a set of named configurations that provide
+defaults for making one of several common types of runs. Examples of
+compset choices include configuring CAM to run in parallel with other
+components or specifying a particular set of physics parameterizations to
+reproduce a well known intermodel comparison or perhaps configuring CAM
+with the appropriate input data to run for different time periods
+(historical, present-day, future).  The compset determines the general type
+of run to be made and the other elements of the CIME case control system
+allow the user to fine-tune the particulars of CAM's physics and dynamics
+to meet each user's requirements. Compsets will be described in much more
+detail in :ref:`Atmospheric configurations <ug70-atmospheric-configurations>`.
+For this chapter, we will be using the compset FHIST.
 
-The resolution parameter of create_newcase, like the compset name, is chosen from a set of grid configurations. These grid configurations determine which dynamical core will be used in CAM as well as the spatial resolution of the grids for each component model participating in the compset. CAM currently supports the Finite Volume (FV), Spectral Element (SE), and Eulerian (EUL) dynamical cores. This release adds developmental support for NOAA’s Finite Volume Cubed Sphere (FV3) dynamical core. The grid name is usually given in a shortened form called an alias which lists the grids used by the atmosphere, land, and ocean/ice components. CAM grid names begin with a letter or two denoting the dynamical core followed by a string of digits representing the grid resolution. The Finite Volume Grids begin with the letter 'f', SE grid names begin with 'ne', Eulerian grids begin with 'T', and FV3 grid names begin with the letter 'C'. Grid resolutions will be covered in detail in the next section  :ref:`Atmospheric configurations <atmospheric-configurations>`.
+The resolution parameter of create_newcase, like the compset name, is
+chosen from a set of grid configurations. These grid configurations
+determine which dynamical core will be used in CAM as well as the spatial
+resolution of the grids for each component model participating in the
+compset. CAM currently supports the Finite Volume (FV), Spectral Element
+(SE), and Eulerian (EUL) dynamical cores. This release adds developmental
+support for NOAA’s Finite Volume Cubed Sphere (FV3) dynamical core. The
+grid name is usually given in a shortened form called an alias which lists
+the grids used by the atmosphere, land, and ocean/ice components. CAM grid
+names begin with a letter or two denoting the dynamical core followed by a
+string of digits representing the grid resolution. The Finite Volume Grids
+begin with the letter 'f', SE grid names begin with 'ne', Eulerian grids
+begin with 'T', and FV3 grid names begin with the letter 'C'. Grid
+resolutions will be covered in detail in the next section :ref:`Atmospheric
+configurations <ug70-atmospheric-configurations>`.
 
 
 A simple session to configure, build, and run CAM for a historical simulation is illustrated as follows:
@@ -58,8 +83,19 @@ Users are encouraged to review these sections of the CIME user's guide as they f
 Modifying CAM's compiled codebase (configuration)
 -------------------------------------------------------
 
-- **CAM_CONFIG_OPTS**:  The settings in this variable are passed directly to CAM's configure command and are normally set as part of a compset definition. Expert users can modify this variable to add or change the default parameters passed to configure.  Some examples of modifiable options include changing the physics version (cam4, cam5, cam6) or enabling the COSP simulator package, etc...
-  The list of possible options are detailed at :ref:`arguments to configure<arguments-to-configure>`.  It is important to note that CAM compsets already have this variable set and that a user will most likely want to append flags as opposed to replacing them.  If the append flag is not used, this variable is reset to only include the values specified and all preset values are removed.  More details on changing CAM's configuration can be found at :ref:`customizing compsets<customizing-compsets>`.
+- **CAM_CONFIG_OPTS**: The settings in this variable are passed directly to
+  CAM's configure command and are normally set as part of a compset
+  definition. Expert users can modify this variable to add or change the
+  default parameters passed to configure.  Some examples of modifiable
+  options include changing the physics version (cam4, cam5, cam6) or
+  enabling the COSP simulator package, etc...  The list of possible options
+  are detailed at :ref:`arguments to configure<arguments-to-configure>`.
+  It is important to note that CAM compsets already have this variable set
+  and that a user will most likely want to append flags as opposed to
+  replacing them.  If the append flag is not used, this variable is reset
+  to only include the values specified and all preset values are removed.
+  More details on changing CAM's configuration can be found at
+  :ref:`customizing compsets<ug70-customizing-compsets>`.
 
 ::
 
@@ -82,4 +118,4 @@ A complete listing of all of CAM's namelists is available at `CAM's
 namelist variables
 <http://www.cesm.ucar.edu/models/cesm2/settings/2.2.0/cam_nml.html>`_
 More details on changing CAM's namelist can be found at :ref:`customizing
-compsets<customizing-compsets>`.
+compsets<ug70-customizing-compsets>`.

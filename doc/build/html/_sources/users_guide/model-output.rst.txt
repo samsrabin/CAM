@@ -1,4 +1,4 @@
-.. _model-output:
+.. _ug70-model-output:
 
 **************************
 Model Output:

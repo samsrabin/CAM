@@ -1,5 +1,3 @@
-.. _input-datasets:
-
 ***************************
 Input Datasets
 ***************************
@@ -184,6 +182,8 @@ Topography files
 Topography files are generated with the NCAR Global Model Topography Generation Software for Unstructured Grids:
 
 https://github.com/NCAR/Topo/tree/TopoCESM2
+
+.. _ug70-meteorological-datasets:
 
 ------------------------------
 Meteorological data sets

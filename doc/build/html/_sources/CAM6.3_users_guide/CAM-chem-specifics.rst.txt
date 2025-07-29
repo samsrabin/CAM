@@ -1,12 +1,10 @@
-.. _cam-chem-specifics:
-
 **********************************************************
 Chemistry specific modifications 
 **********************************************************
 
 CESM2.0 supports one standard mechanisms for CAM, CAM-chem, and WACCM (see details in the cam6_scientific_guide). Here, we describe details on how the chemical mechanism is compiled and how to perform modifications of chemistry in the model, including adding or removing chemical and aerosol species, which requires changing the chemical mechanism and if applicable changes to wet and dry deposition.  Additional changes may be required in the namelist, e.g., adding our removing output, changing deposition species etc., as described in Section 5.2.  Furthermore, code changes may be required, depending of the specifics of the changes.
 
-.. _chemical-mechanisms:
+.. _ug63-chemical-mechanisms:
 
 ----------------------------------------------------------------
 Chemical mechanisms
