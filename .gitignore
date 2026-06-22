@@ -2,4 +2,6 @@
 *~
 
 # Ignore doc/build/doctrees
-doc/build/doctrees
+doc/_build
+doc/_publish
+
