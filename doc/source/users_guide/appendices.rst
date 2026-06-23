@@ -2,39 +2,26 @@
 Appendices
 ***************
 
-.. _ug70-configure-utility:
-
 ======================
 The configure utility
 ======================
 
-All CAM specific build time configuration options are specified using
-command-line arguments to CAM's ``configure`` script (a Perl script).  The
-expert knowledge to determine what parameterizations are run by the
-specified physics package is hardcoded in the ``configure`` script's logic.
-Optional arguments not specified on the command-line may be set to
-hard-coded default values which come from the definition file
-(``$COMP_ROOT_DIR_ATM/bld/config_files/definition.xml``) or from the script
-itself.  ``configure`` contains logic to check for consistency among the
-many options, and will fail with an informative message when a check fails.
+.. _ug63-arguments-to-configure:
 
-The output from ``configure`` is written to
-``$CASEROOT/Buildconf/camconf/`` and includes the following:
-
-* ``CESM_cppdefs`` -- Preprocessor macros to be included in the CESM Makefile.
-* ``Filepath`` -- Filepaths for all source code to be compiled.
-* ``config_cache.xml`` -- Storage of all configuration parameters.  This
-  file is read by ``build-namelist`` to obtain the build configuration.
-
-Some components of CAM may be built as separate libraries, for example the
-MPAS and FV3 dynamical cores and the COSP diagnostic package.  If CAM is
-configured to use any of those packages then ``configure`` writes Makefiles
-for them and the main CESM Makefile (``$SRCROOT/cime/CIME/Tools/Makefile``)
-will issue sub-make commands to build the libraries.
-
---------------------------------------------
+----------------------------------------------
 Arguments to configure
---------------------------------------------
+----------------------------------------------
+
+All configuration options can be specified using command line arguments to
+CAM's ``configure`` script (a Perl script).  Options not specified on the
+command line will be set to default values which are either hard-coded, or
+come from the definition file
+``components/cam/bld/config_files/definition.xml``.  Those that depend on
+the values of other options are set by logic contained in ``configure``.
+
+The user is able to pass arguments to CAM's configure by issuing an
+``xlmchange`` command for **CAM_CONFIG_OPTS**.  It is important to use the
+``--append`` option if a compset's settings are to be maintained.
 
 The options may all be specified with either one or two leading dashes,
 e.g., ``-help`` or ``--help``.  A consequence of allowing long names with
@@ -42,233 +29,237 @@ single leading dashes is that the few options that can be expressed as
 single letter switches may **not** be bundled, e.g., ``-h -s -v`` may NOT
 be expressed as ``-hsv``.
 
-User supplied values in the description below are denoted in angle brackets
-"<>".  Any value that contains white-space must be quoted.  For options
-that can be set from small set of legal values, those values are given as a
-vertical bar separated list. ::
+User supplied values are denoted in angle brackets "<>".  Any value that contains
+white-space must be quoted.  For options that can be set from small set of
+legal values, those values are given as a vertical bar separated list.
 
-  -[no]age_of_air_trcs
-                     Switch on [off] age of air tracers. Default: on for
-                     waccm_phys, otherwise off. 
+The arguments to ``configure`` are:
+::
 
-  -analytic_ic       Enables generating initial conditions using analytic expressions
-                     which are determined by the namelist variable "analytic_ic_type".
-                     Default: off.
+     -[no]age_of_air_trcs
+                        Switch on [off] age of air tracers. Default: on for waccm_phys, otherwise off.
 
-  -aquaplanet        Switch for aqua-planet mode.  Default: off.
+     -analytic_ic       Enables the (namelist controlled) dycore testing infrastructure.
 
-  -build_chem_proc   Switch forces the build of the chemistry preprocessor
-                     (primarily for testing).  Default: off.
+     -aquaplanet        Switch on aqua-planet mode.
 
-  -camiop            Configure CAM to generate an IOP file that can be used
-                     to drive SCAM. This switch only works with the
-                     Spectral Element dycore.
-                     Default: off.
+     -build_chem_proc   Switch forces the build of the chemistry preprocessor (primarily for testing).
 
-  -carma <name>      Build CAM with specified CARMA microphysics model
-                     [ none | bc_strat | cirrus | cirrus_dust | dust |
-                       meteor_impact | meteor_smoke | mixed_sulfate | pmc |
-                       pmc_sulfate | sea_salt | sulfate | tholin |
-                       test_detrain | test_growth | test_passive |
-                       test_radiative | test_swelling | test_tracers |
-                       test_tracers2 | trop_strat_soa1 | trop_strat_soa5 ]
-                     Default: none.
+     -cache <file>      Name of output cache file which contains all configuration parameters
+                        set by configure script.
+                        Default: config_cache.xml
 
-  -chem <name>       Build CAM with specified prognostic chemistry package
-                     [ none | ghg_mam4 | terminator | trop_mam3 | trop_mam4 |
-                       trop_mam7 | trop_mozart | trop_strat_mam4_ts2 |
-                       trop_strat_mam4_vbs | trop_strat_mam4_vbsext |
-                       trop_strat_mam5_ts2 | trop_strat_mam5_ts4 |
-                       trop_strat_mam5_vbs | trop_strat_mam5_vbsext |
-                       trop_strat_noaero | waccm_ma | waccm_mad |
-                       waccm_ma_sulfur | waccm_sc | waccm_sc_mam4 |
-                       waccm_mad_mam4 | waccm_ma_mam4 | waccm_tsmlt_mam4 |
-                       waccm_tsmlt_mam4_vbsext | waccm_mad_mam5 |
-                       waccm_ma_mam5 | waccm_tsmlt_mam5 |
-                       waccm_tsmlt_mam5_vbsext | waccm_t4ma_mam5 |
-                       waccm_ma_noaero | geoschem_mam4 ]
-                     Defaults: ghg_mam4 for cam7, trop_mam4 for cam6, and
-                               trop_mam3 for cam5.  Otherwise none.
+     -cachedir <file>   Name of directory where output cache file is written.
+                        Default: current working directory
 
-  -[no]clubb_sgs     Switch on [off] CLUBB_SGS.
-                     Defaults: on for cam7 and cam6, otherwise off.
+     -camiop            Configure CAM to generate an IOP file that can be used to drive SCAM.
+                        This switch only works with the Eulerian dycore.
 
-  -clubb_opts <list> Comma separated list of CLUBB options to turn on.
-                     [clubb_do_adv (Advect CLUBB moments)]
-                     Default: none.
+     -carma <name>      Build CAM with specified CARMA microphysics model
+                        [ none (disabled) | bc_strat (Stratospheric Black Carbon) |
+                          cirrus (Cirrus Clouds) | cirrus_dust (Cirrus Clouds with dust) |
+                          dust (Dust) | meteor_impact (Meteor Impact) | meteor_smoke (Meteor Smoke) |
+                          mixed_sulfate (Meteor Smoke and Sulfate) | pmc (Polar Mesospheric Clouds) |
+                          pmc_sulfate (PMC and Sulfate) | sea_salt (Sea Salt) |
+                          sulfate (Sulfate Aerosols) | tholin (early earth haze) |
+                          test_detrain (Detrainment) | test_growth (Particle Growth) |
+                          test_passive (Passive Dust) | test_radiative (Radiatively Active Dust) |
+                          test_swelling (Sea Salt) | test_tracers (Asian Monsoon) |
+                          test_tracers2 (Guam)].
+                        Default: none.
 
-  -co2_cycle         Turn on the CO2 cycle code for biogeochemistry.  Adds the
-                     advected constituents CO2_OCN, CO2_FFF, CO2_LND, CO2.
-                     Default: off.
+     -chem <name>       Build CAM with specified prognostic chemistry package
+                        [ trop_mam3 | trop_mam4 | trop_mam7 | trop_mozart | trop_strat_mam4_vbs | 
+                          trop_bam | trop_ghg | waccm_ma | waccm_mad_mam4 | waccm_ma_mam4 | 
+                          waccm_ma_sulfur | waccm_sc | waccm_sc_mam4 | waccm_tsmlt |
+                          waccm_tsmlt_mam4 | waccm_tsmlt_sulfur | super_fast_llnl |
+                          super_fast_llnl_mam3 | terminator | none ].
+                        Default: trop_mam4 for cam6, trop_mam3 for cam5,
+                                 otherwise none.
 
-  -cosp              Enable the COSP satellite simulator diagnostics.
-                     Default: off.
+     -[no]clubb_sgs     Switch on [off] CLUBB_SGS.  Default: on for cam6, otherwise off.
 
-  -dyn <name>        Dynamical core option.  This is set using the value of
-                     the "--res" argument from "create_newcase".  Do
-                     not change this setting via "CAM_CONFIG_OPTS".
-                     [ se (Spectral Element) | fv (Finite Volume) |
-                       mpas (MPAS-ATM) | fv3 (FV3 -- FV on cubed sphere)]
-                     Default: none.
+     -clubb_opts <list> Comma separated list of CLUBB options to turn on.
+                        [clubb_do_adv (Advect CLUBB moments)]
 
-  -edit_chem_mech    Invokes CAMCHEM_EDITOR to allow the user to edit the
-                     chemistry mechanism file. 
+     -co2_cycle         Switch to turn on the carbon cycle code (adds 4 advected constituents)
 
-  -help [or -h]      Print usage to STDOUT.
+     -cosp              Enable the COSP simulator.
 
-  -hgrid <name>      Specify horizontal grid.  This is set using the value of
-                     the "--res" argument from "create_newcase".  The
-                     valid grid specifiers are located in the file
-                     $SRCROOT/ccs_config/component_grids_nuopc.xml.  Do
-                     not change this setting via "CAM_CONFIG_OPTS".
-                     Default: none.
+     -dyn <name>        Dynamical core option.
+                        [eul (Eulerian) | fv (Finite Volume)].
 
-  -ionosphere        Ionophere module used in WACCMX [ none | wxie ].
-                     Default: none.
+     -edit_chem_mech    Invokes CAMCHEM_EDITOR to allow the user to edit the chemistry mechanism file.
 
-  -macrophys <name>  Set the macrophysics package.
-                     [rk | park | clubb_sgs | none ]
-                     Defaults: clubb_sgs for cam6 or cam7; park for cam5;
-                     rk for cam4.
+     -help [or -h]      Print usage to STDOUT.
 
-  -max_n_rad_cnst <n> Maximum number of constituents that are either radiatively
-                     active, or in any single diagnostic list for the radiation.
-                     Default: 80.
+     -hgrid <name>      Specify horizontal grid. For spectral grids use nlatxnlon where
+                        nlat and nlon are the number of latitude and longitude grid
+                        points respectively in the global Gaussian grid (e.g., T42 is
+                        specified 64x128). For FV grids use dlatxdlon where dlat and
+                        dlon are the grid cell size in degrees for latitude and longitude
+                        respectively (e.g., 1.9x2.5).
 
-  -microphys <name>  Set the microphysics package.
-                     [ rk | mg1 | mg2 | mg3 | pumas | none ].
-                     Defaults: mg3 for cam7; mg2 for cam6; mg1 for cam5;
-                     rk for cam4.
+     -ionosphere        Ionophere module used in WACCMX [ none | wxi | wxie ].
+                        Default: none
 
-  -model_top <name>  Specify the model_top option for cam7.  This is set
-                     using the value of the "--compset" argument for
-                     "create_newcase".    Do not change this setting
-                     via "CAM_CONFIG_OPTS". 
-                     [ lt | mt | ht | xt ].
-                     Default: none.
+     -macrophys <name>  Override the default macrophysics set by the physics package
+                        [rk | park | clubb_sgs | spcam_sam1mom | spcam_m2005]
+                        Defaults:
+                        clubb_sgs if cam6
+                        park if cam6 and noclubb_sgs, or cam5
+                        rk if cam3 or cam4
 
-  -nadv <N>          Set the total number of advected species to N.
-                     Default: set by configure depending on the specified
-                     physics and chemistry packages.
+     -max_n_rad_cnst <n> Maximum number of constituents that are either radiatively
+                        active, or in any single diagnostic list for the radiation.
+                        Default: 30
 
-  -nadv_tt <N>       Set number of advected test tracers to N.
-                     Default: 0
+     -microphys <name>  Override the microphysics set by the physics package
+                        [mg1 | mg2 | rk | spcam_m2005 | spcam_sam1mom].
+                        Defaults:
+                        mg2 if cam6
+                        mg1 if cam5
+                        rk if cam3 or cam4
 
-  -nlev <N>          Set the number of vertical levels to N.
-                     Defaults: 58 for cam7-lt or simple physics;
-                       93 for cam7-mt; 135 for cam7-ht; 189 for cam7-xt;
-                       32 for cam6; 30 for cam5; 26 for cam4;
-                       66 for waccm w/ cam4; 70 for waccm w/ cam5 or cam6;
-                       126 for waccmx w/ cam4 or cam5;
-                       130 for waccmx w/ cam6.
+     -nadv <n>          Override the total number of advected species set by the
+                        physics and chemistry packages.
 
-  -offline_drv <name> Specify offline unit driver.
-                      [rad (PORT) | aur (aurora) | stub]
-                      Default: stub
+     -nadv_tt <n>       Set number of advected test tracers.
+                        Default: 0
 
-  -offline_dyn       Enable offline driver for FV dycore.
-                     Default: off.
+     -nlev <n>          Override the number of levels set by the physics or chemistry package.
+                        Default:
+                          32 if cam6
+                          30 if cam5, simple physics, or spcam_m2005
+                          26 if cam3, cam4, or spcam_sam1mom
+                          66 if waccm and cam4
+                          70 if waccm and cam5 or cam6
+                          81 if waccmx
+                         126 if waccmx and ionosphere is wxie
 
-  -pbl <name>        Set the PBL scheme.
-                     [ clubb_sgs | uw | hb | none ].
-                     Default PBL schemes: clubb_sgs for cam6 and cam7;
-                       uw for cam5; hb for cam4.
+     -offline_drv <name> Specify offline unit driver.
+                         [rad (PORT)]
 
-  -pcols <n>         Maximum number of columns in a chunk.
-                     Default: 16, or if SCAM mode then 1.
+     -offline_dyn       Enable offline driver for FV dycore.
 
-  -pergro            Switch enables building CAM for perturbation growth tests.
-                     Only valid with cam4 physics.
+     -ocn <name>        Allows build system to inform CAM which ocean component is being used.
+                        This information is stored in the cache file and used by build-namelist
+                        for selecting the default values of some tuning parameters.
+                        [docn | som | socn | aquaplanet | pop].
 
-  -phys <name>       Physics option.  This is set using the value of the
-                     "--compset" argument for "create_newcase".  Do not
-                     change this setting via "CAM_CONFIG_OPTS".
-                     [ cam4 | cam5 | cam6 | cam7 | held_suarez | adiabatic | kessler | 
-                       tj2016 | grayrad].
-                     Default: none.
+     -pbl <name>        Override the PBL scheme set by the physics package.
+                        [clubb_sys | uw | hb | spcam_sam1mom | spcam_m2005].
+                        Default PBL schemes:
+                          clubb_sgs if cam6
+                          uw if cam5
+                          hb if cam3 or cam4
+                          spacm_m2005 if the physics package is spcam_m2005
+                          spacm_sam1mom if the physics package is spcam_sam1mom
 
-  -prog_species <list>
-                     Comma-separate list of prognostic mozart species packages.
-                     Currently available: DST,SSLT,SO4,GHG,OC,BC,CARBON16
-                     Default: none.
+     -pcols <n>         Maximum number of columns in a chunk.
+                        Default: 16, or if SCAM mode then 1.
 
-  -psubcols <n>      Maximum number of sub-columns in a grid column.
-                     Default: 1
+     -pergro            Switch enables building CAM for perturbation growth tests.
+                        Only valid with cam3 or cam4 physics.
 
-  -rad <name>        Set the radiation scheme.
-                     [ rrtmgp | rrtmg | camrt | none ].
-                     Default: rrtmgp for cam7; rrtmg for cam5 or cam6;
-                       camrt for cam4.
+     -phys <name>       Physics option.
+                        [cam3 | cam4 | cam5 | cam6 | held_suarez | adiabatic | kessler | 
+                         spcam_sam1mom | spcam_m2005].
+                        Default: cam6, or if waccmx then cam4.
 
-  -scam <iop>        Build model in single column (SCAM) mode for the
-                     specified IOP.  Only works with Spectral Element dycore.
-                     [ arm95 | arm97 | atex | bomex | cgilss11 | cgilss12 |
-                       cgilss6 | dycomsrf01 | dycomsrf02 | gateiii | mpace |
-                       rico | sas | sparticus | togaii | twp06 | camfrc |
-                       none ]
-                     Default: none
+     -prog_species <list>Comma-separate list of prognostic mozart species packages.
+                        Currently available: DST,SSLT,SO4,GHG,OC,BC,CARBON16
 
-  -silent [or -s]    Turns on silent mode - only fatal messages issued.
-                     Default: off.
+     -psubcols <n>      Maximum number of sub-columns in a grid column.
+                        Default: 1
 
-  -silhs             Switch on SILHS.
-                     Default: off.
+     -rad <name>        Override the radiation scheme set by the physics package.
+                        [rrtmg | camrt].
+                        Default radiation scheme:
+                          rrtmg if cam5, cam6, or spcam_m2005
+                          camrt if cam3, cam4, or spcam_sam1mom
 
-  -usr_mech_infile   Absolute pathname of the user supplied chemistry
-                     mechanism file.
-                     Default: none.
+     -scam              Compiles model in single column (SCAM) mode.
+                        Only works with Eulerian dycore.
 
-  -usr_src <dir1>[,<dir2>[,<dir3>[...]]]
-                     Directories containing user source code.  Note that
-                     these directories will also be searched for modified
-                     versions of the files needed by the build-namelist
-                     script, e.g., the namelist definition, defaults, and
-                     use case files.  Set by "buildcpp" to
-                     "$CASEROOT/SourceMods/src.cam".  Do not change this
-                     setting via "CAM_CONFIG_OPTS".
+     -silent [or -s]    Turns on silent mode - only fatal messages issued.
 
-  -verbose [or -v]   Turn on verbose echoing of settings made by configure.
-                     Default: off.
+     -[no]smp           Switch on [off] SMP parallelism (OpenMP)
 
-  -version           Echo the tag name of the CAM component.
+     -spcam_clubb_sgs   Turn on the SPCAM version of CLUBB
 
-  -waccm_phys        Switch enables the use of WACCM physics in any
-                     chemistry configuration.
-                     Default: off unless one of the waccm chemistry options is chosen.
+     -spcam_nx <n>      SPCAM x-grid.  (note the CRM requires spcam_nx to be greater
+                        than or equal to 4)
+                        Default: 4 
 
-  -waccmx            Build CAM/WACCM with WACCM upper
-                     Thermosphere/Ionosphere extended package. 
-                     Default: This is set using the value of the
-                     "--compset" argument for "create_newcase".  Do not
-                     change this setting via "CAM_CONFIG_OPTS".
+     -spcam_ny <n>      SPCAM y-grid.
+                        Default: 1
 
-.. _ug70-build-namelist-utility:
+     -spcam_dx <n>      SPCAM horizontal grid spacing.
+
+     -spcam_dt <n>      SPCAM timestep in seconds.
+
+     -[no]spmd          Switch on [off] SPMD parallelism (MPI).
+
+     -unicon            Switch to turn on the UNICON scheme.
+
+     -usr_mech_infile   Absolute pathname of the user supplied chemistry mechanism file.
+
+     -usr_src <dir1>[,<dir2>[,<dir3>[...]]]
+                        Directories containing user source code.  Note that these
+                        directories will also be searched for modified versions of the
+                        files needed by the build-namelist script, e.g., the
+                        namelist definition, defaults, and use case files.
+
+     -verbose [or -v]   Turn on verbose echoing of settings made by configure.
+
+     -version           Echo the tag name of the CAM component.
+
+     -waccm_phys        Switch enables the use of WACCM physics in any chemistry configuration.
+                        Default: off unless one of the waccm chemistry options is chosen.
+
+     -waccmx            Build CAM/WACCM with WACCM upper Thermosphere/Ionosphere extended package.
+
+     -zmconv_org        Enable sub-grid scale convective organization for the ZM deep
+                        convective scheme based on Mapes and Neale (2011)
+   
 
 ===========================
 The build-namelist utility
 ===========================
 
-The ``build-namelist`` utility produces namelists for the CAM component (in
-the file ``atm_in``), and namelists for the control of dry deposition which
-is shared by CAM and CLM (in the file ``drv_flds_in``).  These files are
-written in the directory ``$CASEROOT/Buildconf/camconf/``.
+The ``build-namelist`` utility produces namelists for the CAM
+component (in the file ``atm_in``), and namelists for the control of dry
+deposition which is shared by CAM and CLM (in the file ``drv_flds_in``).
+
+The task of constructing a correct namelist is extremely complex
+due to the large number of configurations supported by CAM. Editing
+namelists by hand is a fragile process due to the number of variables that
+need to be set, and to the many interdependencies among them. **We strongly
+discourage editing namelists by hand.** All customizations of the CAM
+namelist are possible by making use of the ``build-namelist`` command line
+options.  The most common way to do this is by adding customized variables
+to the ``user_nl_cam`` file which is then processed by ``build-namelist``
+via the ``-infile`` option.
 
 Some of the important features of ``build-namelist`` are:
 
-* All valid namelist variables are defined in the file
-  ``$COMP_ROOT_DIR_ATM/bld/namelist_files/namelist_definition.xml``.  An
-  invalid variable specified by the user will cause ``build-namelist`` to
+* All valid namelist variables are known to ``build-namelist``. So an
+  invalid variable specified by the user (supplied either by the
+  ``-infile`` or ``-namelist`` options) will cause ``build-namelist`` to
   fail with an error message telling which namelist variable is
-  invalid. This allows catching errors before they cause a runtime failure
-  which is typically harder to track down.  In fact catching namelist
-  errors can be done before building the model by running the
-  ``preview_namelists`` utility after running ``case.setup`` from the case
-  directory.
+  invalid. This is a big improvement over a runtime failure caused by an
+  invalid variable which typically gives no hint as to which variable
+  caused the problem.
 
 * In addition to knowing all valid variable names and their types,
-  ``build-namelist`` also knows which namelist group each variable belongs
-  to. This means that the user only needs to specify variable name and
-  value pairs in ``user_nl_cam``, not the group names.
+  ``build-namelist`` also knows which namelist group each variable
+  belongs to. This means that the user only needs to specify variable
+  names to ``build-namelist`` and not the group names. The ``-infile``
+  and ``-namelist`` options still require valid namelist syntax as
+  input, but the group name is ignored. So all variables can be put in
+  a single group with an arbitrary name, for example, "&xxx ... /"
+  where "xxx" is the namelist group name.
 
 * Since ``build-namelist`` knows all namelist variables specified by
   the user it is able to do consistency checking. In general however,
@@ -282,6 +273,14 @@ Some of the important features of ``build-namelist`` are:
   these variables. When an appropriate default value cannot be found
   then ``build-namelist`` will fail with an informative message.
 
+* When running a configuration for the first time there are often many
+  input datasets that may not be in the local input data directory. In
+  order to facilitate getting the required datasets ``build-namelist``
+  has an option, ``-test``, that can be used to produce a complete
+  list of required datasets and report status of whether or not they
+  are present in the local filesystem. This list can then be used to
+  obtain the needed datasets from the CESM SVN input data repository.
+
 * One required input for ``build-namelist`` is a configuration cache
   file produced by a previous invocation of ``configure``
   (``config_cache.xml`` by default). ``build-namelist`` looks at this
@@ -289,54 +288,36 @@ Some of the important features of ``build-namelist`` are:
   dynamical core and horizontal resolution, that affect the default
   specifications for namelist variables. The default values themselves
   are specified in the file
-  ``$COMP_ROOT_DIR_ATM/bld/namelist_files/namelist_defaults_cam.xml``,
+  ``components/cam/bld/namelist_files/namelist_defaults_cam.xml``,
   and in the use case files located in the directory
-  ``$COMP_ROOT_DIR_ATM/bld/namelist_files/use_cases/``.
+  ``components/cam/bld/namelist_files/use_cases/``.
 
-* The other required input for ``build-namelist`` is the root directory for
-  the input datasets. This is required since nearly all input files must be
-  specified using absolute filepaths, but the *defaults* are stored as
-  filepaths which are relative to the root directory. It is expected that
-  the actual location of the root directory is something that will be
-  resolved at the time the ``atm_in`` file is produced.  This information
-  is provided by the CIME interface code in ``buildnml`` and is contained
-  in ``$DIN_LOC_ROOT``.  Note that this variable may be used in pathnames
-  provided by the user in the ``user_nl_cam`` file.
-
-* When running a configuration for the first time there are often many
-  input datasets that may not be in the local input data directory. In
-  order to facilitate getting the required datasets, the ``build-namelist``
-  option ``-inputdata`` is set by ``buildnml`` to to produce a complete
-  list of required datasets in the file
-  ``$CASEROOT/Buildconf/cam.input_data_list``.  The ``case.submit`` script
-  runs the ``check_input_data`` script to check whether input datasets are
-  present on local disk (in directory ``$DIN_LOC_ROOT``) and will attempt
-  to download any missing files from the CESM SVN input data repository.
-  The ``check_input_data`` script may also be run by the user from the case
-  directory before issuing the ``case.submit`` command.
+* The other required input for ``build-namelist`` is the root
+  directory for the input datasets. This is required since nearly all
+  input files must be specified using absolute filepaths, but the
+  defaults are stored as filepaths which are relative to the root
+  directory. It is expected that the actual location of the root
+  directory is something that will be resolved at runtime. The way
+  this is done is to either specify it using the ``-csmdata``
+  argument, or to set the environment variable ``CSMDATA``.
 
 The methods for setting the values of namelist variables, listed from
 highest to lowest precedence, are:
 
-#. Using the ``-namelist`` option.  ``buildnml`` sets the values in
-   ``CAM_NAMELIST_OPTS`` with this option.  ``CAM_NAMELIST_OPTS`` is set
-   from the compset definition.
+1. using the ``-namelist`` option,
+2. setting values in a file specified by ``-infile``,
+3. specifying a ``-use_case`` option,
+4. setting values in the namelist defaults file.
 
-#. Setting values in a file specified by ``-infile``.  ``buildnml`` sets
-   the values from the ``user_nl_cam`` file using this option.
+* The first three of these methods for specifying namelist variables
+  are the ones available to the user without requiring code
+  modification. Any namelist variable recognized by CAM can be
+  modified using method 1 or 2. The final two methods represent
+  defaults that are hard coded as part of the code base.
 
-#. Specifying a ``-use_case`` option.  ``buildnml`` gets the use case name
-   from the variable ``CAM_NML_USE_CASE`` which is set from the compset
-   definition.  The user may customize a use case file and add it to the
-   directory for source code modifications,
-   ``$CASEROOT/SourceMods/src.cam``
-
-#. Setting values in the namelist defaults file.  This requires source code
-   modifications to the file 
-   ``$COMP_ROOT_DIR_ATM/bld/namelist_files/namelist_defaults_cam.xml``.
 
 ----------------------------------------------
-Arguments to build-namelist
+Arguments to build namelist
 ----------------------------------------------
 
 The options may all be specified with either one or two leading dashes,
@@ -345,75 +326,49 @@ single leading dashes is that the few options that can be expressed as
 single letter switches may **not** be bundled, e.g., ``-h -s -v`` may NOT
 be expressed as ``-hsv``.
 
-.. note::
+User supplied values are denoted in angle brackets "<>".  Any value that contains
+white-space must be quoted.  For options that can be set from small set of
+legal values, those values are given as a vertical bar separated list.
+::
 
-   ``buildnml`` does not provide a way to supply ``build-namelist`` options
-   directly.  It only allows setting namelist variable and value pairs.
-   However, developers may find it convenient to execute ``build-namelist``
-   directly when implementing changes or new namelists.  The ``configure``
-   script needs to be executed prior to ``build-namelist`` in this
-   scenario.
-
-User supplied values in the description below are denoted in angle brackets
-"<>".  Any value that contains white-space must be quoted.  For options
-that can be set from small set of legal values, those values are given as a
-vertical bar separated list.  ::
-
-     -config <filepath>    Read the given configuration cache file to
-                           determine the configuration of the CAM
-                           executable.
-                           Default: "$CASEROOT/Buildconf/camconf/config_cache.xml".
+     -config <filepath>    Read the given configuration cache file to determine the configuration
+                           of the CAM executable.
+                           Default: "config_cache.xml".
 
      -csmdata <dir>        Root directory of CESM input data.
-                           Default: "$DIN_LOC_ROOT".
+                           Can also be set by using the CSMDATA environment variable.
 
      -dir <directory>      Directory where output namelist files will be written,
-                           Default: "$CASEROOT/Buildconf/camconf".
+                           i.e., atm_in, and drv_flds_in.
+                           Default: current working directory.
 
      -help [or -h]         Print usage to STDOUT.
 
-     -ignore_ic_date       Ignore the "ic_ymd" attribute of the initial
-                           condition files when searching for matches in
-                           defaults file.  "buildnml" sets this option
-                           unless the "RUN_STARTDATE" is Jan 1 or Sep 1.
+     -ignore_ic_date       Ignore the date of the initial condition files
+                           when determining the default.
 
-     -ignore_ic_year       Ignore just the year part of the "ic_ymd"
-                           attribute of the initial condition files when
-                           searching for matches in the defaults file.
-                           "buildnml" sets this option when the
-                           "RUN_STARTDATE" is Jan 1 or Sep 1.
+     -ignore_ic_year       Ignore just the year part of the date of the initial condition files
+                           when determining the default.
 
-     -infile <filepath>    Specify a file containing namelists to read
-                           values from.  "buildnml" uses this option for
-                           the values set in "user_nl_cam".
+     -infile <filepath>    Specify a file containing namelists to read values from.
 
-     -inputdata <filepath> Writes out a list containing pathnames for
-                           required input datasets to the specified
-                           filepath.
-                           Default: "$CASEROOT/Buildconf/cam.input_data_list"
+     -inputdata <filepath> Writes out a list containing pathnames for required input datasets to
+                           the specified filepath.
 
-     -namelist <namelist>  Specify namelist settings directly on the
-                           command-line by supplying a string containing
-                           namelist syntax.
-                           Default: "&atmexp $CAM_NAMELIST_OPTS /"
+     -namelist <namelist>  Specify namelist settings directly on the commandline by supplying
+                           a string containing FORTRAN namelist syntax, e.g.,
+                              -namelist "&camexp state_debug_checks=.true. /"
 
-     -ntasks <n>           Specify the number of MPI tasks being used by the run.
-                           This is used to set a default decomposition for
-                           the FV dycore only (npr_yz).
-                           Default: $NTASKS_PER_INST_ATM
+     -ntasks <n>           Specify the number of MPI tasks being used by the run.  This is used
+                           to set a default decomposition for the FV dycore only (npr_yz).
 
-     -silent [-s]          Turns on silent mode - only fatal messages
-                           issued.  Default: off.
+     -silent [-s]          Turns on silent mode - only fatal messages issued.
 
-     -test                 Enable checking that input datasets exist on
-                           local filesystem.
-                           Default: off.
+     -test                 Enable checking that input datasets exist on local filesystem.
 
-     -use_case             Specify a use case file for setting defaults.
-                           Default: "$CAM_NML_USE_CASE"
+     -use_case             Specify a use case.
 
-     -verbose [or -v]      Turn on verbose echoing of informational
-                           messages.  Default: off.
+     -verbose [or -v]      Turn on verbose echoing of informational messages.
 
      -version              Echo the tag name of the CAM component.
 
@@ -424,5 +379,5 @@ CAM Namelist variables
 
 Follow link for a searchable (or browsable) page containing all 
 `CAM namelist variables
-<http://www.cesm.ucar.edu/models/cesm2/settings/2.2.0/cam_nml.html>`__.
+<http://www.cesm.ucar.edu/models/cesm2/settings/2.2.0/cam_nml.html>`_
 

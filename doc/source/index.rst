@@ -16,24 +16,10 @@ Scientific Guides
 User's Guides
 ---------------------
 
-.. note::
-
-   The CAM7.0 User's Guide is under active development.
-
 .. toctree::
    :maxdepth: 1
 
    users_guide/index.rst
-
-.. toctree::
-   :maxdepth: 1
-
-   CAM6.3_users_guide/index.rst
-
-.. toctree::
-   :maxdepth: 1
-
-   CAM6.0_users_guide/index.rst
 
 
 Indices and tables

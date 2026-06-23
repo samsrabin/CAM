@@ -1,0 +1,3 @@
+[submodule "doc/doc-builder"]
+	path = doc/doc-builder
+	url = ../../ESMCI/doc-builder.git

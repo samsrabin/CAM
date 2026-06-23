@@ -1,141 +1,124 @@
-.. _ug70-atmospheric-configurations:
+.. _ug63-atmospheric-configurations:
  
 
-**************************
-Atmosphere configurations
-**************************
+**************************************
+Atmospheric configurations (compsets)
+**************************************
 
-There are a number of atmospheric models which can run within CESM.  While
-CAM is the basic atmospheric model within CESM, there are several models
-with significant extensions to CAM which may also be run within CESM.  The
-available atmospheric models in CESM3 are:
+There are a number of atmospheric models which can run within CESM.  While CAM is the basic atmospheric model within CESM, there are several models with significant extensions to CAM which may also be run within CESM.  The available atmospheric models in CESM2 are:
 
-* **CAM**:  Community Atmosphere Model
-* **CAM-chem**: Community Atmosphere Model with Chemistry  
-* **WACCM**: Whole Atmosphere Community Climate Model
-* **WACCM-X**: Whole Atmosphere Community Climate Model with thermosphere
-  and ionosphere extension
-* **CAM Simple Models**: Atmospheres with idealized physics, idealized
-  surfaces, single columns, and offline drivers.
+- **CAM**:  Community Atmosphere Model
+- **CAM-chem**: Community Atmosphere Model with Chemistry  
+- **WACCM**: Whole Atmosphere Community Climate Model
+- **WACCM-X**: Whole Atmosphere Community Climate Model with thermosphere and ionosphere extension
 
-Each of these models has a number of standalone CAM configurations provided
-to run them.  These configurations are implemented in the CIME framework
-via **compsets** as discussed in `CESM2 Component Sets
-<https://escomp.github.io/CESM/versions/cesm2.2/html/cesm_configurations.html#cesm2-component-sets>`__.
-The predefined compsets have the support levels:
+Each of these models have a number of atmospheric configurations provided to run them.  These component sets known as **compsets** are used to supply both configure and namelist settings for predefined experiments.
 
-* **Scientific support**:  Specific compset/resolution pairs which
-  have had significant, multi-year runs made and have been studied
-  scientifically.  It is important to note that resolutions which are not
-  listed, are not scientifically supported, have not had tunings performed
-  and should not be used for scientific studies without careful examination
-  of the results.
+The predefined compsets exist with one of three levels of support.
 
-* **Functional support**: One or more tests for this compset have been made
-  using at least one resolution.  Extensive scientific study has not been
-  performed.  No attempts have been made to validate the scientific quality
-  of these runs and tunings have NOT been performed on them.
+- **Scientifically supported**:  Specific compset/resolution pairs which have had significant, multi-year runs made and have been studied scientifically.  It is important to note that resolutions which are not listed, are not scientifically supported, have not had tunings performed and should not be used for scientific studies without careful examination of the results.
+- **Developmental support**: Developmental configurations that are being evaluated. These are not fully scientifically supported in the sense of extensive tuning, testing and vetting. 
+- **Tested**: One or more tests for this compset have been made using at least one resolution.  Extensive scientific study has not been performed.  The designation of "Tested" simply acknowledges that one or more compset/resolution pair(s) have been confirmed to run without crashing.  No attempts have been made to validate the scientific quality of these runs and tunings have NOT been performed on them.
+- **Unsupported**:  These compsets are setup as a "convenience" for various reasons and they are not supported for science runs.  If a user decides to use one of these compsets, they must also supply the --run-unsupported flag to create_newcase.  These compsets may not even compile and run successfully as they have not been tested.
 
-* **Unsupported**: These compsets are setup as a convenience for various
-  reasons and they are not supported for science runs.  If a user decides
-  to use one of these compsets, they must also supply the
-  ``--run-unsupported`` flag to ``create_newcase``.  These compsets may not
-  even compile and run successfully as they are not regularly tested.
+CAM compsets include the F, P and Q compsets.
 
-The compsets for standalone CAM are the F, P, and Q compsets (F, P, and Q
-are the first letters of the compset aliases).  They are broadly defined as
-follows:
+- **F**: CAM standalone runs, using an active Atmosphere and Land with prescribed Sea-Surface Temperatures (SSTs) and sea-ice extent. 
+- **P**: Parallel offline radiation tool (PORT)
+- **Q**: Aquaplanet with either prescribed ocean (QP) or slab ocean(QS)
 
-* **F compsets** use CAM and active Land (CTSM) with prescribed Sea-Surface
-  Temperatures (SSTs) and sea-ice extent (other components are stubs).
+This chapter will discuss some of the atmospheric compsets in more detail, but a complete listing of all compsets is found at `CESM2 Component Configurations (compsets) <http://www.cesm.ucar.edu/models/cesm2.0/cesm/compsets.html>`_.  The complete listing of grid resolutions can be found at `CESM2 Grid Resolutions <http://www.cesm.ucar.edu/models/cesm2.0/cesm/grids.html>`_.
 
-* **P compsets** use only the CAM component configured to run only the
-  radiation code driven by data collected from a previous run.  This
-  configuration is called PORT -- Parallel Offline Radiation Tool.
+-------------------------------------------------------------------------------
+CAM scientifically supported compsets
+-------------------------------------------------------------------------------
+CAM has a number of compsets/resolutions which are supported scientifically.  These compsets are detailed in the following table.  A specific compset may be listed below, but unless the resolution is also listed, that compset/resolution combination is not scientifically supported.  Different resolutions exhibit different behavior and as a result require different tunings.  The scientifically supported designation is limited to the specific compset/resolution pairs listed in the following tables.
 
-* **Q compsets** use CAM with a data ocean.  CAM is configured to run
-  aquaplanet simulations with either prescribed ocean (QP) or slab
-  ocean(QS). 
+**Scientifically supported CAM compsets**
 
-This chapter will discuss some of the atmospheric compsets in more detail,
-but a complete listing of all compsets is found at `CESM2 Component
-Configurations (compsets)
-<https://docs.cesm.ucar.edu/models/cesm2/config/compsets.html>`__.  The
-complete listing of grid resolutions can be found at `CESM2 Grid
-Resolutions <http://www.cesm.ucar.edu/models/cesm2.0/cesm/grids.html>`__.
++--------------+----------------------+-----------------------------------------+-------------+
+| Compset Name | supported resolution |Description                              | Period      |
++==============+======================+=========================================+=============+
+| FHIST        | f09_f09_mg17         | Historical CAM6 using 1 degree finite   | 1979 to 2015|
+|              |                      | volume dycore *[Note - this is similar  |             |
+|              |                      | to the obsolete CAM5 FAMIP compset]*    |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| F2000climo   | f09_f09_mg17         | Climatological present day climate      | Climos over |
+|              |                      | (year 2000) with CAM6 physics           |  1995-2005  |
+|              |                      | using 1 degree fv dycore                |  1995-2005  |
++--------------+----------------------+-----------------------------------------+-------------+
 
-============
-Grids
-============
+To run the FHIST compset, and create a case called fhist, simply run the following commands::
 
--------------
-Uniform grids
--------------
+  % cd cime/scripts
+  % ./create_newcase --case fhist --compset FHIST --res f09_f09_mg17 
+  % cd fhist
+  % ./case.setup
+  % ./case.build
+  % ./case.submit
 
-CAM7 does not support running with the Finite Volume dycore.  It must be
-run using the Spectral Element (SE) dycore.  The following describes some
-of the uniform resolution grids available:
+To run the F2000climo compset, and create a case called f_present_day, simply run the following commands::
 
-* **ne3pg3_ne3pg3_mt232**
+  % cd cime/scripts
+  % ./create_newcase --case f_present_day --compset F2000climo --res f09_f09_mg17 
+  % cd f_present_day
+  % ./case.setup
+  % ./case.build
+  % ./case.submit
 
-  * Approximately 10 degree CAM-SE-CSLAM
+  
+An important reminder: On cheyenne, if you are building on a login node, you must say::
 
-* **ne30_ne30_mt232**
+  % qcmd -- ./case.build
+  
+It should be noted that a number of CAM4 and CAM5-specific compsets have been eliminated from the CAM6 release.
+The rationale behind this is that due to changes in code and namelist settings, a user is unable to numerically reproduce CAM4 or CAM5 runs similar to what they would get running CESM1.2.
+It is recommended that if a user wants to make a true CAM4 or CAM5 run, that they do so using CESM1.2 instead of CESM2.0.
 
-  * Approximately 1 degree CAM-SE
+-------------------------------------------------------------------------------
+CAM developmental compsets
+-------------------------------------------------------------------------------
 
-* **ne30pg3_ne30pg3_mt232**
+The CAM6.3 has a number of developmental compsets that are being evaluated for candidate CESM3 applications. They currently require the "run-unsupported" flag
 
-  * Approximately 1 degree CAM-SE-CSLAM
+  % ./create_newcase --case ... --compset ... --run-unsupported
 
-* **ne30pg2_ne30pg2_mt232**
+**Uniform resolution developmental CAM compsets**
 
-  * Approximately 1 degree CAM-SE-CSLAM with a lower resolution physics
-    grid (approximately 1.5 degrees)
++------------------------+-------------------------------------------+-------------------------------------+
+| Resolution             | Description                               | Compsets                            |
++========================+===========================================+=====================================+
+| ne30_ne30_mg17         | Approximately 1 degree CAM-SE             | F2000climo, F1850, FHIST, FHIST_BGC |
+|                        |                                           |                                     |
++------------------------+-------------------------------------------+-------------------------------------+
+| ne30pg3_ne30pg3_mg17   | Approximately 1 degree CAM-SE-CSLAM       | F2000climo, F1850, FHIST, FHIST_BGC,|
+|                        |                                           | B1850                               |
+|                        |                                           |                                     |
++------------------------+-------------------------------------------+-------------------------------------+
+| ne30pg2_ne30pg2_mg17   | Approximately 1 degree CAM-SE-CSLAM       | F2000climo, F1850, FHIST, FHIST_BGC |
+|                        | with a lower resolution physics grid      |                                     |
+|                        | (approximately 1.5 degrees)               |                                     |
++------------------------+-------------------------------------------+-------------------------------------+
+| ne120pg3_ne120pg3_mt13 | Approximately 1/4 degree CAM-SE-CSLAM     | F2000climo, F1850                   |
+|                        |                                           |                                     |
++------------------------+-------------------------------------------+-------------------------------------+
+| ne120pg2_ne120pg2_mt12 | Approximately 1/4 degree CAM-SE-CSLAM     | F2000climo, F1850                   |
+|                        | with a lower resolution physics grid      |                                     |
+|                        | (approximately 3/8 degree)                |                                     |
++------------------------+-------------------------------------------+-------------------------------------+
+| C96_C96_mg17           | Approximately 1 degree CAM-FV3            | F2000climo, F1850, FHIST, FHIST_BGC,|
+|                        |                                           | B1850                               |
++------------------------+-------------------------------------------+-------------------------------------+
 
-* **ne120pg3_ne120pg3_mt13**
+In physics grid (pg) configurations using CAM-SE-CSLAM each element is divided in 3x3 (pg3) or
+2x2 (pg2) quasi-uniform resolution physics columns. The pg3 and pg2 configurations are documented in 
+`Herrington et al. (2019a) <https://journals.ametsoc.org/mwr/article/147/1/69/103200/Physics-Dynamics-Coupling-with-Element-Based-High>`_
+and `Herrington et al. (2019b) <https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019MS001684>`_, respectively.
 
-  * Approximately 1/4 degree CAM-SE-CSLAM
 
-* **ne120pg2_ne120pg2_mt12**
+**Variable resolution developmental CAM compsets**
 
-  * Approximately 1/4 degree CAM-SE-CSLAM with a lower resolution physics
-    grid (approximately 3/8 degree)
-
-In physics grid (pg) configurations using CAM-SE-CSLAM each element is
-divided in 3x3 (pg3) or 2x2 (pg2) quasi-uniform resolution physics
-columns. The pg3 and pg2 configurations are documented in `Herrington et
-al. (2019a)
-<https://journals.ametsoc.org/mwr/article/147/1/69/103200/Physics-Dynamics-Coupling-with-Element-Based-High>`_
-and `Herrington et al. (2019b)
-<https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2019MS001684>`_,
-respectively.
-
--------------------------
-Variable resolution grids
--------------------------
-
-The following variable resolution grids have been tested with the listed compsets:
-
-* **ne0CONUSne30x8_ne0CONUSne30x8_mt12**
-
-  * Approximately 1/4 degree resolution over the Contiguous United States
-    and approximately 1 degree elsewhere
-  * compsets?
-
-* **ne0ARCTICne30x4_ne0ARCTICne30x4_mt12**
-
-  * Approximately 1/4 degree resolution over Greenland and approximately 1
-    degree elsewhere
-  * compsets?
-
-* **ne0ARCTICGRISne30x8_ne0ARCTICGRISne30x8_mt12**
-
-  * Approximately 1/8 degree resolution over Greenland, otherwise identical
-    to the ne0ARCTICne30x4 grid elsewhere
-  * compsets?
-
-**CONUS Grid**
+*CONUS Grid*
 
 The **CONUS** variable resolution grid is a 1 degree horizontal resolution grid with 
 a regional refinement of 1/8 degree resolution over the continential United States.
@@ -146,7 +129,7 @@ a regional refinement of 1/8 degree resolution over the continential United Stat
     :height: 350px
     :align: center
 
-**ARCTIC Grids**
+*ARCTIC Grids*
 
 Two variable resolution grids are available for the Artic region. The **ARCTIC** grid, 
 which is a 1 degree horizontal resolution grid with regional refinement of 1/4 degree 
@@ -166,605 +149,212 @@ additionally refines a patch covering the Greenland with 1/8 degree resolution.
 | |img1| | |img2| |
 +--------+--------+
 
-============
-CAM compsets
-============
-
-CAM7 has a number of compsets/resolutions which are supported
-scientifically.  These compsets are detailed in the following table.  A
-specific compset may be listed below, but unless the resolution is also
-listed, that compset/resolution combination is not scientifically
-supported.  Different resolutions exhibit different behavior and as a
-result require different tunings.  The scientifically supported designation
-is limited to the specific compset/resolution pairs listed in the following
-tables.
-
-CAM7 is released with two supported model tops.  The "low top" version
-(CAM7-LT) has the top at about 40-km which is the same as the previous
-CAM4, CAM5, CAM6 models, but has 58 vertical layers and thus a higher
-vertical resolution than the previous models which used 26, 30, and 32
-layers respectively.  The "medium top" version (CAM7-MT) has the top at
-about 80-km and uses 93 vertical layers.
-
-**Scientifically supported compsets**
-
-* **FHISTC_LTso**
-
-  * Historical CAM7-LT
-  * ne30pg3_ne30pg3_mt232
-  * 1979 to 2015
-
-* **FHISTC_MTso**
-
-  * Historical CAM7-MT
-  * ne30pg3_ne30pg3_mt232
-  * 1979 to 2015
-
-**Tested compsets**
-
-* **F1850**
-
-  * CAM6, 1850 climatology
-  * f10_f10_mt232
-
-* **F2000climo**
-
-  * CAM6, 2000 climatology
-  * f19_f19_mt232, mpasa480_mpasa480_mt232, mpasa120_mpasa120_mt232, C96_C96_mt232
-
-* **F2010climo**
-
-  * CAM6, 2010 climatology
-  * f09_f09_mt232,
-
-* **FHIST**
-
-  * CAM6, Historical
-  * f19_f19_mt232, f09_f09_mt232, f10_f10_mt232, ne3pg3_ne3pg3_mt232,
-    ne0ARCTICne30x4_ne0ARCTICne30x4_mt12
-
-* **FHIST_BDRD**
-
-  * CAM6 with carbon cycle, Historical
-  * f09_f09_mt232
-
-* **FHIST_C5**
-
-  * CAM5, Historical
-  * f10_f10_mt232, f19_f19_mt232, ne3pg3_ne3pg3_mt232
-
-* **F1850_C4**
-
-  * CAM4, 1850 climatology
-  * ne3pg3_ne3pg3_mt232
-
-* **FHIST_C4**
-
-  * CAM4, Historical
-  * ne16pg3_ne16pg3_mt232
-    
-
-
-=================
-CAM-chem compsets
-=================
-
-**Tested compsets**
-
-In CESM3 new compsets have been included and existing ones have been
-slightly changed with regard to starting dates and available resolutions.
-In particular, new resolutions for running the spectral element dynamical
-core have been added as have new compsets that use :ref:`meteorological
-nudging <ug70-nudging>` using MERRA2 on CESM model levels.  Starting dates
-have been changed to start in 2010-2014 using default CMIP6 emissions,
-besides for the regional refined grid over CONUS.  Other anthropogenic and
-biomass burning emissions are available covering different periods.  New
-`emission regridding tools <https://github.com/NCAR/IPT>`__ are available.
-These compsets have functional support and have been tested with the listed
-grids and time periods:
-
-* **FC2010climo**
-
-  * Climatological CAM6-chem using TS1 chemistry, 1 deg horizontal
-    resolution, different dycores, averaged SSTs, emis, lower boundary
-    conditions (2005-2015)
-
-  * f09_f09_mg17, ne30_ne30_mg17, ne30pg3_ne30pg3_mg17
-
-  * 2010
-
-* **FCHIST**
-
-  * Historical CAM6-chem using TS1 chemistry, 1 deg horizontal resolution,
-    different dycores, CMIP6 emissions, coupled to interactive land and
-    MEGAN2.1
-              
-  * f09_f09_mt232, ne30_ne30_mt232, ne30pg3_ne30pg3_mt232
-
-  * 2010-2014
-
-* **FCnudged**
-
-  * As FCHIST, but nudged to U,V,T from MERRA2 analsysis with a 50-hours
-    interpolated to CAM6 (32) model levels
-
-  * f09_f09_mt232, ne30_ne30_mt232, ne30pg3_ne30pg3_mt232,
-    ne0CONUSne30x8_ne0CONUSne30x8_mt12 (for 2013 only)
-
-  * 2010-2014
-
-* **FCts2nudged**
-
-  * As FCnudged, but using TS2 chemistry
-
-  * f09_f09_mt232, ne30_ne30_mt232, ne30pg3_ne30pg3_mt232,
-    ne0CONUSne30x8_ne0CONUSne30x8_mt12 (for 2013 only)
-
-  * 2010-2014
-     
-* **FCSD**
-
-  * Historical CAM6-chem 1deg compset using MERRA2 analsysis with a 50-hour
-    relaxation, using MERRA vertical levels
-
-  * f09_f09_mg17
-
-  * 1980-2015
-
-==============
-WACCM compsets
-==============
-
-**Scientifically supported compsets**
-
-Scientifically supported WACCM atmosphere configurations use
-TSMLT1 chemistry (see :ref:`chemical mechanisms <ug70-chemical-mechanisms>`
-) and the ne30pg3_ne30pg3_mt232 grid for the listed time periods:
-
-* **FW1850**
-
-  * Pre-industrial control WACCM6 using 1-degree SE dycore, TSMLT1, CMIP6
-    piControl emissions, year 1850 SSTs, coupled to interactive land and
-    MEGAN2.1
-
-  * 1850
-
-* **FWHIST**
-
-  * Historical WACCM6 using 1-degree SE dycore, TSMLT1, CMIP6 emissions,
-    historical SSTs, coupled to interactive land and MEGAN2.1
-
-  * 1974-2015
-
-* **FW2000**
-
-  * Year 2000 WACCM6 1deg compset using 1-degree SE dycore, TSMLT1, year
-    2000 CMIP6 emissions, year 2000 SSTs, coupled to interactive land and
-    MEGAN2.1
-
-  * 2000
-
-* **FWSD**
-
-  * Historical SD-WACCM6 using GEOS5 analysis with a 50-hour relaxation,
-    TSMLT1, CMIP6 emissions, historical SSTs, coupled to interactive land
-    and MEGAN2.1
-
-  * 2005-2015
-
-* **FWscHIST**
-
-  * Historical SC-WACCM6 using 1-degree SE dycore, specified chemistry,
-    historical SSTs
-
-  * 1976-2015
-
-**Tested compsets**
-
-Tested WACCM atmosphere configurations use middle atmosphere (MA) and
-middle atmosphere plus D-region (MAD) chemistry (see :ref:`chemical
-mechanisms <ug70-chemical-mechanisms>` ) and the ``ne30pg3_ne30pg3_mt232``
-grid for the listed time periods:
-
-* **FWmaHIST**
-
-  * Historical WACCM6 using 1-degree SE dycore, MA chemistry, CMIP6
-    emissions, historical SSTs, coupled to interactive land and MEGAN2.1
-
-  * 1974-2015
-
-* **FWmadHIST**
-
-  * Historical WACCM6 using 1-degree SE dycore, MAD chemistry, CMIP6
-    emissions, historical SSTs, coupled to interactive land and MEGAN2.1
-
-  * 1974-2015
-
-* **FWmaSD**
-
-  * Historical SD-WACCM6 using GEOS5 analysis with a 50-hour relaxation, MA
-    chemistry, CMIP6 emissions, historical SSTs, coupled to interactive
-    land and MEGAN2.1
-
-  * 2005-2015
-
-* **FWmadSD**
-
-  * Historical SD-WACCM6 using GEOS5 analysis with a 50-hour relaxation,
-    MAD chemistry, CMIP6 emissions, historical SSTs, coupled to interactive
-    land and MEGAN2.1
-
-  * 2005-2015
-
-================
-WACCM-X compsets
-================
-
-**Scientifically supported compsets**
-
-Scientifically support WACCM-X compsets use the ne30pg3_ne30pg3_mt232 grid
-for the listed time periods:
-
-* **FXHIST**
-
-  * Historical WACCM-X based on CAM4 using 1 degree SE dycore, MA
-    chemistry, CCMI emissions, historical SSTs, coupled to land, prescribed
-    ice, river
-
-  * 2000-2015
-
-* **FX2000**
-
-  * Year 2000 WACCM-X based on CAM4 1 degree SE dycore, using MA chemistry,
-    year 2000 CCMI emissions and SSTs, coupled to interactive land,
-    prescribed ice, river
-
-  * 2000
-
-* **FXSD**
-
-  * Historical SD-WACCM-X based on CAM4 using 1 degree SE dycore, MERRA1
-    with a 50-hour relaxation, MA chemistry, CCMI emissions, historical
-    SSTs, coupled to interactive land, prescribed ice, river
-
-  * 2000-2015
-
-
-=================
++-----------------------------------------------+---------------------------------+--------------------+
+| Resolution                                    | Description                     | Compsets           |
++===============================================+=================================+====================+
+| ne0CONUSne30x8_ne0CONUSne30x8_mt12            | Approximately 1/4 degree        | F2000climo, F1850, |
+|                                               | resolution over the Contiguous  | FHIST, FHIST_BGC   |
+|                                               | United States and approximately |                    |
+|                                               | 1 degree elsewhere              |                    |
++-----------------------------------------------+---------------------------------+--------------------+
+| ne0ARCTICne30x4_ne0ARCTICne30x4_mt12          | Approximately 1/4 degree        | F2000climo, F1850, |
+|                                               | resolution over Greenland and   | FHIST, FHIST_BGC   |
+|                                               | approximately 1 degree elsewhere|                    |  
++-----------------------------------------------+---------------------------------+--------------------+
+| ne0ARCTICGRISne30x8_ne0ARCTICGRISne30x8_mt12  | Approximately 1/8 degree        | F2000climo, F1850, |
+|                                               | resolution over Greenland,      | FHIST, FHIST_BGC   |
+|                                               | otherwise identical to the      |                    |
+|                                               | ne0ARCTICne30x4 grid elsewhere  |                    |
++-----------------------------------------------+---------------------------------+--------------------+
+
+-------------------------------------------------------------------------------
 CAM Simple Models
-=================
+-------------------------------------------------------------------------------
 
-There are many simpler configurations in which CAM can be run.  These include:
+There are several simpler configurations in which CAM can be run.  These include:
+ - Generic adiabatic configuration (FADIAB)
+ - Specific adiabatic configuration (FDABIP04)
+ - Baroclinic wave with Kessler microphysics and terminator chemistry (FKESSLER)
+ - Held-Suarez simple model (FHS94)
+ - Moist Held-Suarez simple model (FTJ16)
+ - Aquaplanet (QP and QS compsets)
+ - PORT - Parallel Offline Radiation Tool (P compsets)
+ - SCAM - single column model (FSCAM compset)
 
-* Idealized physics/chemistry
-* Aquaplanet
-* SCAM - Single column model
-* PORT - Parallel Offline Radiation Tool
-
-.. note::
-
-  For more information on running these compsets and for sample outputs to
-  aid in verifying that the model is running correctly see the `CESM
-  Simpler Models <http://www.cesm.ucar.edu/models/simpler-models>`__
-  project.
+For more information on the CESM Simpler Models project see http://www.cesm.ucar.edu/models/simpler-models/
    
-----------------------
-Ideal physics compsets
-----------------------
+**Scientifically supported CAM simpler model compsets**
 
-* **FADIAB**
++--------------+----------------------+-----------------------------------------+-------------+
+| Compset Name | supported resolution |Description                              | Period      |
++==============+======================+=========================================+=============+
+| FADIAB       | f09_f09_mg17         | Generic adiabatic configuration         |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| FDABIP04     | T42z30_T42_mg17,     | Specific adiabatic configuration,       |             |
+|              | T85z30_T85_mg17,     | Polvani et al. baroclinic wave          |             |
+|              | T85z60_T85_mg17      |                                         |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| FSCAM        | T42_T42              | Single column CAM                       |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| FHS94        | T42z30_T42_mg17,     | Held-Suarez simpler model               |             |
+|              | T85z30_T85_mg17,     |                                         |             |
+|              | T85z60_T85_mg17,     |                                         |             |
+|              | f09_f09_mg17         |                                         |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| FTJ16        | f09_f09_mg17         | Moist Held-Suarez simpler model         |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| FKESSLER     | f09_f09_mg17,        | Ulrich et al. baroclinic wave with      |             |
+|              | ne30_ne30_mg17,      | Kessler microphysics and terminator     |             |
+|              | ne30pg3_ne30_pg3_mg17| chemistry                               |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| QPC6         | f09_f09_mg17,        | Prescribed SST Aquaplanet using CAM6    | 2000 to 2015|
+|              | f19_f19_mg17         |                                         |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| QSC6         | f09_f09_mg17,        | Slab-Ocean Aquaplanet using CAM6        | 2000 to 2015|
+|              | f19_f19_mg17         |                                         |             |
++--------------+----------------------+-----------------------------------------+-------------+
 
-  * Generic adiabatic configuration.  All physics turned off.
+Note that FADIAB, FHS94, FTJ16, FKESSLER, and QPC6 compset's can be run  with  the FV, FV3,
+SE and SE-CSLAM dynamical cores using the "run-unsupported" flag
 
-* **FHS94**
-
-  * Dry Held-Suarez as described in `Held and Suarez (1994)
-    <https://journals.ametsoc.org/view/journals/bams/75/10/1520-0477_1994_075_1825_apftio_2_0_co_2.xml>`__.
-
-* **FTJ16**
-
-  * Moist Held-Suarez following `Thatcher and Jablonowski (2016)
-    <https://gmd.copernicus.org/articles/9/1263/2016/>`__.  Based on the
-    Held-Suarez physics configuration but including a simple representation
-    of the large scale condensation of moisture and the diabatic heating.
-
-* **FKESSLER**
-
-  * `Ulrich et al. (2014)
-    <https://rmets.onlinelibrary.wiley.com/doi/10.1002/qj.2241>`__
-    baroclinic wave with `Kessler (1969)
-    <https://www.sciencedirect.com/science/article/abs/pii/016980959400090Z?via%3Dihub>`__
-    microphysics and the `Lauritzen et al. (2015)
-    <https://gmd.copernicus.org/articles/8/1299/2015/>`__ terminator toy
-    chemistry.
-
-* **FGRAYRAD**
-
-  * Idealized gray radiation configuration following the protocol of
-    `Frierson et al (2006)
-    <https://journals.ametsoc.org/view/journals/atsc/63/10/jas3753.1.xml>`__.
-
-Note that the ideal physics compsets can be run with any of the dycores
-provided in CAM (FV, FV3, SE, SE-CSLAM and MPAS).  They are set up by
-default to use the CAM7-LT vertical grid (40 km top with 58 layers).  There
-are many more compset/grid combinations than are tested by CAM's regression
-tests.  An untested combination will cause ``create_newcase`` to stop with
-the following message::
-
- STOP:  
- This compset and grid combination is untested in CESM.
- Override this warning with the --run-unsupported option to create_newcase.
-
-To continue using the untested combination just reissue the
-``create_newcase`` command and append the "run-unsupported" flag::
-
-  % ./create_newcase --case ... --compset ... --res ... --run-unsupported
+  % ./create_newcase --case ... --compset ... --run-unsupported
 
 
---------------
-CAM aquaplanet
---------------
+====================================================================================
+CAM aquaplanet (QP and QS compsets)
+====================================================================================
 
-The aquaplanet configuration allows the user to run CAM above an entirely
-ocean covered surface.  The standard protocol for aquaplanet experiments
-comes from the AquaPlanet Experiment project (APE; Neale & Hoskins [2]_,
-Williamson et al. [3]_).  The advantage of an aquaplanet configuration is
-that it allows the user to run the full CAM parameterization suite while
-retaining much simpler surface conditions than the complex combination of
-land, ocean, and sea-ice in the real world.  The CAM5 aquaplanet
-configuration is described in detail by Medeiros et al. [1]_.
+Aquaplanets are configurations of global atmospheric models that have no landmasses and saturated lower boundaries. The aquaplanet compsets in CESM2 provide a convenient way to configure CAM with prescribed, zonally symmetric SST, a user-supplied SST dataset, or a slab-ocean lower boundary. The surface is controlled through the data ocean model. There are a standard set of SST profiles based on the AquaPlanet Experiment project (APE; Neale & Hoskins [2]_, Williamson et al. [3]_). The advantage of an aquaplanet configuration is that it allows the user to run the full CAM parameterization suite while retaining much simpler surface conditions than the complex combination of land, ocean, and sea-ice in the real world.  The CAM5 aquaplanet configuration is described by Medeiros et al. [1]_
 
-**Prescribed SST**
 
-The aquaplanet compsets use the data ocean model to provide the prescribed
-SST.  By default the SST pattern is the APE "QOBS" option (provided by the
-component ``_DOCN%AQP3_``), which is used in APE and CFMIP protocols.
-There are compsets for running with all the available CAM physics packages:
+Aquaplanet compsets which have been tested, but are not scientifically supported: 
+ - QPC5 -- Prescribed SST Aquaplanet using CAM5
+ - QPC4 -- Prescribed SST Aquaplanet using CAM4
+ - QSC5 -- Slab-Ocean Aquaplanet for CAM5
+ - QSC4 -- Slab-Ocean Aquaplanet for CAM4
 
-* **QPC7** -- Prescribed SST Aquaplanet using CAM7-LT
-* **QPC6** -- Prescribed SST Aquaplanet using CAM6
-* **QPC5** -- Prescribed SST Aquaplanet using CAM5
-* **QPC4** -- Prescribed SST Aquaplanet using CAM4
+###############################################################
+Example 1: Default Aquaplanet with prescribed SST
+###############################################################
+To run the standard CAM6 aquaplanet, simply supply the compset name::
 
-Several compset/grid combinations are tested by CAM's regression test
-suite.  But if a combination of interest is not tested, then supplying the
-``--run-unsupported`` option to ``create_newcase`` will allow the desired
-case to be created.  The tested combinations have spun up initial
-conditions files available.  If a combination of interest doesn't have an
-appropriate initial file, then build-namelist will fail with the message::
+  % cd cime/scripts
+  % ./create_newcase --case aqua_case --compset QPC6 --res f09_f09_mg17 
+  % cd aqua_case
+  % ./case.setup
+  % ./case.build
+  % ./case.submit
 
-  CAM build-namelist - ERROR: No default value found for ncdata
+By default, initial conditions from a previous aquaplanet simulation are used. The SST pattern is the APE "QOBS" option, which is used in APE and CFMIP protocols. The atmospheric ozone is specified to be that used for APE. Aerosol emissions are neglected except for sea salt (which is diagnostic), see Medeiros et al. [1]_ for details.
 
-In this case the easiest way forward is to start the run from analytic
-initial conditions as described in the section ":ref:`Use analytic initial
-conditions <ug70-use-analytic-ics>`".
+###############################################################
+Example 2: Default Aquaplanet with Slab-Ocean Model
+###############################################################
+To run the standard CAM6 aquaplanet with a 30 m uniform slab-ocean, simply supply the compset name::
 
-**Alternate Prescribed SST**
+  % cd cime/scripts
+  % ./create_newcase --case aqua_case --compset QSC6 --res f09_f09_mg17
+  % cd aqua_case
+  % ./case.setup
+  % ./case.build
+  % ./case.submit
+ 
+Note that the slab-ocean model has no ocean heat transport by default; the user must specify an appropriate "qflux" file. To specify such a file::
 
-All of the APE SST profiles are available from the data ocean model. To use
-them invoke the long compset name with the user compset option, e.g.::
+  % ./xmlchange DOCN_SOM_FILENAME="path/to/file.nc"
 
-  % ./create_newcase --case ... --compset 2000_CAM50_SLND_SICE_DOCN%AQP7_SROF_SGLC_SWAV \
-    --res ... --run-unsupported
+where path/to/file.nc is the path to the ppropriate "qflux" file.
 
-.. note::
+###############################################################
+Example 3: Aquaplanet with alternate prescribed SST
+###############################################################
+All of the APE SST profiles are available. To use them invoke the long compset name with the user compset option::
 
-  You may see a message "Did not find an alias or longname compset
-  match...".  This message may be ignored.
+  % cd cime/scripts
+  % ./create_newcase --case cam5_3keq --compset 2000_CAM50_SLND_SICE_DOCN%AQP7_SROF_SGLC_SWAV --res f09_f09_mg17 --run-unsupported
+     (Note that you may see a message "Did not find an alias or longname compset match..."  This message may be ignored)
+  % cd cam5_3keq
+  % ./case.setup
+  % ./case.build
+  % ./case.submit
 
-This example uses the 3KEQ SST pattern, which is specified with
-``_DOCN%AQP7_`` in the compset name. The analytical SST profiles are
-defined in the source code
-``$COMP_ROOT_DIR_OCN/docn_datamode_aquaplanet_mod.F90``.  Also note this
-example switched to CAM5 physics by specifying "CAM50" in the compset
-name. The ``--run-unsupported`` option is required.
+The example uses the 3KEQ SST pattern, which is specified with "AQP7" in the compset name. The analytical SST profiles are defined in the source code (cime/src/components/data_comps/docn/docn_comp_mod.F90). Also note this example switched to CAM5 physics by specifying "CAM50" in the compset name. The run-unsupported flag is required.
 
-**User-specified Prescribed SST dataset**
+###############################################################
+Example 4: Aquaplanet with user-specified SST dataset
+###############################################################
+An arbitrary SST dataset can be specified instead of the default APE SST. To do that, start with the default case, and then change the data ocean mode and specify the file::
 
-An arbitrary SST dataset can be specified instead of the default APE
-SST. To do that, start by setting up the case with the desired compset/grid
-combination, and then change the data
-ocean mode and specify the file.  For example, from the case directory
-modify the following CIME variables::
-
+  % cd cime/scripts
+  % ./create_newcase --case aqua_sst_case --compset QPC4 --res f19_f19_mg17  --run-unsupported
+  % cd aqua_sst_case
+  % ./case.setup
   % ./xmlchange DOCN_MODE=sst_aquapfile 
-  % ./xmlchange DOCN_AQP_FILENAME=/my_data/sst.nc
+  % ./xmlchange DOCN_AQP_FILENAME=sst.nc
+  % ./case.build
+  % ./case.submit
 
-Where ``/my_data/sst.nc`` is the user-supplied SST file, which follows the
-same conventions as SST files used for F compsets.
+Where sst.nc is the user-supplied SST file, which follows the same conventions as SST files used for F compsets. Note this example switches to CAM4 physics on a 2-degree grid, so requires the run-unsupported flag.
 
-**Aquaplanet with Slab-Ocean Model**
+.. [1] Medeiros, B., D. L. Williamson, and J. G. Olson, 2016: Reference aquaplanet climate in the community atmosphere model, version 5. Journal of Advances in Modeling Earth Systems, doi: http://dx.doi.org/10.1002/2015MS000593
 
-The data ocean model has a slab-ocean configuration which may be used with
-the aquaplanet configuration.  The following SOM-Aquaplanet compsets are
-available:
+.. [2] Neale, R. B. and B. J. Hoskins, 2000a: A standard test for AGCMs including their physical parametrizations. I: The proposal. Atmos. Sci. Lett., 1, 101-107. http://dx.doi.org/10.1006/asle.2000.0022
 
-* **QSC6** -- Slab-Ocean Aquaplanet for CAM6
-* **QSC5** -- Slab-Ocean Aquaplanet for CAM5
-* **QSC4** -- Slab-Ocean Aquaplanet for CAM4
+.. [3] Williamson, D. L., and Coauthors, 2012: The APE atlas. NCAR Technical Note NCAR/TN-484+STR, doi:10.5065/D6FF3QBR. http://dx.doi.org/10.5065/D6FF3QBR
 
-These compsets all use the ``_DOCN%SOMAQP_`` component to provide the slab-ocean.
-Note that the slab-ocean model has no ocean heat transport by default; the
-user must specify an appropriate "qflux" file. To specify such a file issue
-the following command from the case directory::
+====================================================================================
+CAM Parallel Offline Radiation Tool (PORT - P compsets)
+====================================================================================
+PORT is used as part of the process for computing radiative forcing and instantaneous radiative forcing.
+For effective radiative forcing please see the documentation related to F-case runs.
 
-  % ./xmlchange DOCN_SOM_FILENAME="/path/to/file.nc"
+PORT uses instantaneous samples of the model state to compute the radiative fluxes and heating rates
+through the atmosphere.  This computation does not include middle and upper atmospheric radiative
+transfer as implemented in WACCM.  The only prognostic variable is temperature, in the specific PORT
+configuration to compute radiative forcing that includes the stratospheric adjustment (fixed dynamical heating).
 
-where ``/path/to/file.nc`` is the path to the ppropriate "qflux" file.
+##########################################################################
+PORT Compsets
+##########################################################################
 
++------------+-----------------------------------------------+
+| short name | long name                                     |
++============+===============================================+
+| PC4        | 2000_CAM40%PORT_SLND_SICE_SOCN_SROF_SGLC_SWAV |
++------------+-----------------------------------------------+
+| PC5        | 2000_CAM50%PORT_SLND_SICE_SOCN_SROF_SGLC_SWAV |
++------------+-----------------------------------------------+
+| PC6        | 2000_CAM60%PORT_SLND_SICE_SOCN_SROF_SGLC_SWAV |
++------------+-----------------------------------------------+
 
-**References**
+The user is required to supply radiation input datasets via one of the namelist options:
 
-.. [1] Medeiros, B., D. L. Williamson, and J. G. Olson, 2016: Reference
-       aquaplanet climate in the community atmosphere model,
-       version 5. Journal of Advances in Modeling Earth Systems,
-       http://dx.doi.org/10.1002/2015MS000593
+- **offline_driver_infile** (for single input file)
+- **offline_driver_fileslist** (sequential list of input files)
 
-.. [2] Neale, R. B. and B. J. Hoskins, 2000a: A standard test for AGCMs
-       including their physical parametrizations. I: The
-       proposal. Atmos. Sci. Lett., 1,
-       101-107. http://dx.doi.org/10.1006/asle.2000.0022
+These can be set in the **user_nl_cam** file found in the CESM case directory.
 
-.. [3] Williamson, D. L., and Coauthors, 2012: The APE atlas. NCAR
-       Technical Note NCAR/TN-484+STR, doi:10.5065/D6FF3QBR.
-       `https://opensky.ucar.edu/islandora/object/%3A3825
-       <https://opensky.ucar.edu/islandora/object/%3A3825>`__.
-
---------------------------------------
-Radiative Convective Equilibrium World
---------------------------------------
-
-This configuration is derived to be compatible with the RCEMIP experimental
-protocol. It defaults to using the spectral element dynamical core and CAM6
-physics. There is no planetary rotation, insolation is uniform and constant
-with a reduced solar constant, and the prescribed sea-surface temperature
-is uniform. The default initial conditions are derived from an analytical
-expression.
-
-The implementation of RCE builds upon the aquaplanet configuration.  It
-uses a data ocean model option which allows a uniform constant value
-``_DOCN%AQPCONST_``. The calculation of the cosine of the solar zenith
-angle was modified to allow a specified angle to be used.
-
-There is currently just one compset for this configuration:
-
-* **QPRCEMIP** -- RCEMIP configuration for CAM6
-
-See the `Simpler Models <http://www.cesm.ucar.edu/models/simple/rce>`__
-site for information about running this compset.
-
-
-=======================
-CAM Single Column Model
-=======================
-
-SCAM cases are set up for a small set of different locations/dates, called
-an Intensive Observing Period (IOP).  Each of these IOPs have separate
-preconfigured settings which are built into the compset definitions.
-The currently available compsets, listed below, use the CAM6 physics
-package.  See
-`The Single Column Atmosphere Model Version 6 (SCAM6)
-<https://doi.org/10.1029/2018MS001578>`__ for details.
-
-* **FSCAMARM95** -- arm95 IOP
-* **FSCAMARM97** -- arm97 IOP
-* **FSCAMATEX** -- atex IOP
-* **FSCAMBOMEX** -- bomex IOP
-* **FSCAMCGILSS11** -- cgilsS11 IOP
-* **FSCAMCGILSS12** -- cgilsS12 IOP
-* **FSCAMCGILSS6** -- cgilsS6 IOP
-* **FSCAMDYCOMSRF01** -- dycomsRF01 IOP
-* **FSCAMDYCOMSRF02** -- dycomsRF02 IOP
-* **FSCAMGATEIII** -- gateIII IOP
-* **FSCAMMPACE** -- mpace IOP
-* **FSCAMRICO** -- rico IOP
-* **FSCAMSPARTICUS** -- sparticus IOP
-* **FSCAMTOGAII** -- togaII IOP
-* **FSCAMTWP06** -- twp06 IOP
-* **FSCAMCAMFRC** -- CAM forcing
-
-The initial condition file used by these compsets is on the ``ne3np4``
-spectral element grid.  To run them issue a ``create_newcase`` command like
-the following::
-
-  ./create_newcase --case ... --res ne3_ne3_mg37 --compset FSCAMTWP06 --run-unsupported
-
---------------------------
-SCAM Configuration Options
---------------------------
-
-The default SCAM settings read in initial conditions for aerosols off of an
-initial condition file: typically a CAM initial condition file. The
-aerosols and the Temperature field are relaxed to the initial conditions
-with a variable timescale from 10 days at the bottom of the model to 2 days
-at the top of the model. U and V wind are taken from the IOP file. This
-ensures that aerosols and temperature do not drift too far in the upper
-troposphere and above: where advection for aerosols is important, and where
-non-represented dynamical forcing would dominate the temperature field. Any
-field can be relaxed using this method if the user desires it.
-
-Emissions of constituents from the surface occur as in a standard CAM
-simulation, reading off climatological emissions files for the year 2000.
-
-Default Settings:
-::
-
-  scm_use_obs_uv         = .true.
-  scm_relaxation         = .true.
-  scm_relax_fincl        = 'T', 'bc_a1', 'bc_a4', 'dst_a1', 'dst_a2',
-                           'dst_a3', 'ncl_a1', 'ncl_a2', 'ncl_a3', 'num_a1',
-                           'num_a2', 'num_a3', 'num_a4', 'pom_a1', 'pom_a4',
-                           'so4_a1', 'so4_a2', 'so4_a3', 'soa_a1', 'soa_a2'
-  scm_relax_bot_p        = 105000.
-  scm_relax_top_p        = 200.
-  scm_relax_linear       = .true.
-  scm_relax_tau_bot_sec  = 864000.
-  scm_relax_tau_top_sec  = 172800.
-
-==========================================
-CAM Parallel Offline Radiation Tool (PORT)
-==========================================
-
-PORT is a configuration of CAM, driven by model-generated datasets, that
-can be used for any radiation calculation that the underlying radiative
-transfer schemes can perform, such as diagnosing radiative forcing.  See
-`PORT, a CESM tool for the diagnosis of radiative forcing
-<https://doi.org/10.5194/gmd-6-469-2013>`__.
-
-The PORT functionality is implemented in CAM making use of its offline
-driver capabilities.  A CAM model run can be configured to produce datasets
-containing the input fields to the radiation parameterization.  A
-subsequent CAM run can be configured to read those generated datasets and
-use that data to drive the radiation scheme as a standalone model.  The
-model-generated datasets can be selectively modified, producing modified
-outputs from the radiation scheme which can be used, for example, to
-diagnose radiative forcing.
-
-PORT uses instantaneous samples of the model state to compute the radiative
-fluxes and heating rates through the atmosphere.  This computation does not
-include middle and upper atmospheric radiative transfer as implemented in
-WACCM.  The only prognostic variable is temperature, in the specific PORT
-configuration to compute radiative forcing that includes the stratospheric
-adjustment (fixed dynamical heating).
-
-The following compsets have been defined for running experiments with PORT:
-
-* **PC7** -- Offline RRTMGP driven by CAM7-LT data.
-* **PC6** -- Offline RRTMG driven by CAM6 data.
-* **PC5** -- Offline RRTMG driven by CAM5 data.
-* **PC4** -- Offline CAM-RT driven by CAM4 data.
-
-These compsets are for driving the radiation parameterization using
-previously generated data.  The radiation input datasets must be specified
-via one of the namelist options:
-
-* ``offline_driver_infile`` (for single input file)
-* ``offline_driver_fileslist`` (sequential list of input files)
-
-The driving datasets are generated by running the CAM configuration of
-interest and using namelist modifications as illustrated in the following
-example.
-
-------------------------------------------------------------
+##########################################################################
 Example: Using PORT to study flux differences due to 2 x CO2
-------------------------------------------------------------
+##########################################################################
 
-**Sample the base run**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sample the base run
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Create the base sampling case::
   
   % cd cime/scripts
-  % ./create_newcase --case base_run_case --res ne16pg3_ne16pg3_mt232 --compset FHISTC_LTso
+  % ./create_newcase --case base_run_case --res f09_f09_mg17 --compset F2000climo
   % cd base_run_case
   % ./case.setup
 
-Set up the ``user_nl_cam`` file for the base run::
+Set up the **user_nl_cam** file for the base run::
 
   ! Output the radiation data
   rad_data_output=.true.
 
-  ! Specify the radiation data be written to history file number 2
-  ! (rad_data will be in files with cam.h1i. in their name)
+  ! Specify the radiation data be written to history file number 2 (rad_data will be in files with cam.h1 in their name)
   rad_data_histfile_num=2
 
   ! Write out the instantaneous rad_data and radiation diagnostics
@@ -787,44 +377,41 @@ Set up the ``user_nl_cam`` file for the base run::
   ! double precision output
   ndens = 1,1
 
-.. note::
+Note: It has been found that sampling every 73'rd time step is a good balance of computational cost
+and size of data for dtime = 1800 and a 2-degree horizontal resolution. [4]_
 
-   It has been found for diagnosing radiative forcing that sampling every
-   73'rd time step is a good balance of computational cost and size of data
-   for a model timestep of 1800 seconds and a 2-degree horizontal
-   resolution.
-
+.. [4] Conley, A. J., Lamarque, J.-F., Vitt, F., Collins, W. D., and Kiehl, J.: PORT, a CESM tool for the diagnosis of radiative forcing, Geosci. Model Dev., 6, 469-476, https://doi.org/10.5194/gmd-6-469-2013, 2013.
+  
 
 Build and submit this sampling run data::
 
- % ./xmlchange STOP_OPTION=nmonths,STOP_N=16
+ % ./xmlchange STOP_N=16
+ % ./xmlchange STOP_OPTION=nmonths
  % ./case.build
  % ./case.submit
 
-After this job completes, you will have a number of files, including ones
-with filenames containing ``cam.h1i``.  The ``cam.h1i`` files contain the
-radiation history which was specified by the namelist and will be used in
-the next step.
+After your job completes, you will have a number of files, including ones with filenames containing "cam.h1".
+The "cam.h1" files contain the radiation history which was specified by the namelist and will be used in the
+next step.  
 
-**PORT validation**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PORT validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   
 Create the PORT validation run::
   
-  % cd cime/scripts
-  % ./create_newcase --case port_run_case --res ne16pg3_ne16pg3_mt232 --compset PC7 --run-unsupported
+  % ./create_newcase --case port_run_case --res f09_f09_mg17 --compset PC6
   % cd port_run_case
-  % ./case.setup
 
-Set up the ``user_nl_cam`` file for the PORT run::
+Set up the **user_nl_cam** file for the PORT run::
 
   ! PORT input data
-  offline_driver_infile = '/path/base_run_case.cam.h1i.1979-01-02-45000.nc'
+  offline_driver_infile = '/path/base_run_case.cam.h1.0001-01-01-00000.nc'
 
   ! Output the radiation data
   rad_data_output=.true.
 
-  ! Specify the radiation data be written to history file number 2
-  ! (rad_data will be in files with cam.h1i in their name)
+  ! Specify the radiation data be written to history file number 2 (rad_data will be in files with cam.h1 in their name)
   rad_data_histfile_num=2
 
   ! Write out the instantaneous rad_data and radiation diagnostics
@@ -847,50 +434,45 @@ Set up the ``user_nl_cam`` file for the PORT run::
   ! double precision output
   ndens = 1,1
 
-For verification tests the run time length should be long enough to include
-at least a few sampling times.
+For verification tests the run time length should be long enough to include at least a few sampling times.
 
 Build and submit this validation run data::
 
- % ./xmlchange STOP_OPTION=ndays,STOP_N=5
+ % ./case.setup
+ % ./xmlchange STOP_N=5
+ % ./xmlchange STOP_OPTION=ndays
  % ./case.build
  % ./case.submit
 
-The differences in radiation diagnostics (FLNT,FLNR,FLNS,FSNT,FSNR,FSNS) in
-the the sampling base run and the PORT run should be zero (or within
-roundoff).
+The differences in radiation diagnostics (FLNT,FLNR,FLNS,FSNT,FSNR,FSNS) in the the sampling base run and the
+PORT run should be zero (or within roundoff).
 
-**Compute forcing due to a change in composition (CO2, as an example)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Compute forcing due to a change in composition (CO2, as an example)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this case we are doubling the CO2 and modifying this via the netcdf
-utility, ncap for each file.  Further documentation on ncap can be found in
-the `NCO User Guide <http://nco.sourceforge.net/nco.html>`__.
+In this case we are doubling the CO2 and modifying this via the netcdf utility, ncap for each file.
+Further documentation on ncap can be found in the `NCO User Guide <http://nco.sourceforge.net/nco.html>`_.
 
 Modify the composition in the sample files.  For each file listed in /path/samples.inputs::
   
-  % for fin in base_run_case.cam.h1i*nc; do
-      fout="${fin/cam.h1i/cam.h1i-2xCO2}";
-      ncap2 -s "rad_CO2=2.0*rad_CO2" $fin $fout;
-    done 
+  % for fin in base_run_case.cam.h1*nc; do fout="${fin/cam.h1/cam.h1-2xCO2}"; ncap2 -s "rad_CO2=2.0*rad_CO2" $fin $fout; done
 
 Prepare sequential list of input files for the PORT run::
 
-  % ls -1 /path/base_run_case.cam.h1i-2xCO2.*nc > /path/samples2xCO2.inputs
+  % ls -1 /path/base_run_case.cam.h1-2xCO2.*nc > /path/samples2xCO2.inputs
 
 Prepare the PORT run::
   
-  % ./create_newcase --case port_2xCO2_case --res ne16pg3_ne16pg3_mt232 \
-                     --compset PC7 --run-unsupported
+  % ./create_newcase --case port_2xCO2_case --res f09_f09_mg17 --compset PC6
   % cd port_2xCO2_case
-  % ./case.setup
 
-Set up the ``user_nl_cam`` file for the PORT run::
+Set up the **user_nl_cam** file for the PORT run::
 
   ! Sequential list of input files
   offline_driver_fileslist = '/path/samples2xCO2.inputs'
 
-  ! Allow temperatures above the tropopause to equilibrate under the
-  ! assumption of fixed dynamical heating
+  ! Allow temperatures above the tropopause to equilibrate under the assumption of fixed dynamical heating
   rad_data_fdh = .true.
 
   ! Write out the instantaneous radiation diagnostics
@@ -908,6 +490,7 @@ Set up the ``user_nl_cam`` file for the PORT run::
 
 Build and submit::
 
+ % ./case.setup
  % ./xmlchange STOP_N=16
  % ./xmlchange STOP_OPTION=nmonths
  % ./case.build
@@ -917,6 +500,355 @@ Forcing is the difference between:
  - the net flux at the tropopause (FLNR-FSNR) from the last 12 months of the sample files  AND
  - the net flux at the tropopause (FLNR-FSNR) from the last 12 months of the 2xCO2sample files
 
+===============================================================================
+CAM single column (FSCAM compset)
+===============================================================================
+
+SCAM cases are set up for a small set of different locations/dates, called an Intensive Observing Period (IOP).  Each of these IOP's have separate preconfigured settings which are referenced by create_new_case using the --user-mods-dir flag. 
+
+The list of the available configurations and the associated usermods_dirs directory are:
+
+ -  **ARM95**: scam_arm95
+ -  **ARM97**: scam_arm97 -- *default*
+ -  **ATEX**: scam_atex
+ -  **BOMEX**: scam_bomex
+ -  **CGILSS11**: scam_cgilsS11
+ -  **CGILSS12**: scam_cgilsS12
+ -  **CGILSS6**: scam_cgilsS6
+ -  **DYCOMSRF01**: scam_dycomsRF01
+ -  **DYCOMSRF02**: scam_dycomsRF02
+ -  **GATEIII**: scam_gateIII
+ -  **MPACE**: scam_mpace
+ -  **RICO**: scam_rico
+ -  **SPARTICUS**: scam_sparticus
+ -  **TOGAII**: scam_togaII
+ -  **TWP06**: scam_twp06
+ -  Mandatory settings: scam_mandatory (used by all SCAM runs, and not to be modified by the user)
+
+#########################################################################################
+SCAM Configuration Options
+#########################################################################################
+
+The default SCAM settings read in initial conditions for aerosols off of an initial condition file: typically a CAM initial condition file. The aerosols and the Temperature field are relaxed to the initial conditions with a variable timescale from 10 days at the bottom of the model to 2 days at the top of the model. U and V wind are taken from the IOP file. This ensures that aerosols and temperature do not drift too far in the upper troposphere and above: where advection for aerosols is important, and where non-represented dynamical forcing would dominate the temperature field. Any field can be relaxed using this method if the user desires it. 
+
+Emissions of constituents from the surface occur as in a standard CAM simulation, reading off climatological emissions files for the year 2000.
+
+Default Settings:
+::
+
+	scm_use_obs_uv         = .true.
+	scm_relaxation         = .true.
+	scm_relax_fincl = 'T', 'bc_a1', 'bc_a4', 'dst_a1', 'dst_a2', 'dst_a3', 'ncl_a1', 'ncl_a2',
+	                  'ncl_a3', 'num_a1', 'num_a2', 'num_a3',
+	                  'num_a4', 'pom_a1', 'pom_a4', 'so4_a1', 'so4_a2', 'so4_a3', 'soa_a1', 'soa_a2'
+	scm_relax_bot_p        = 105000.
+	scm_relax_top_p        = 200.
+	scm_relax_linear       = .true.
+	scm_relax_tau_bot_sec  = 864000.
+	scm_relax_tau_top_sec  = 172800.
+
+
+#########################################################################################
+Example:  Setting up a SCAM run 
+#########################################################################################
+Users specify the directory containing the specifications for running an IOP using the --user-mods-dir flag.  In this example we are using the MPACE IOP.  Note that the default settings are to run for all of the observations within the IOP, but a user may shorten that by issuing an xmlchange for the STOP_N setting.  In this example we will limit the run to 600 timesteps
+::
+
+	% cd cime/scripts
+	% ./create_newcase --case test_scam_mpace --compset FSCAM --res T42_T42 --user-mods-dir ../../components/cam/cime_config/usermods_dirs/scam_mpace
+	% cd test_scam_mpace
+	% ./case.setup
+	% ./xmlchange STOP_N=600
+	% ./case.build
+	% ./case.submit
+
+If the user neglects to specify a --use-mods-dir, then it defaults to a shortened run of ARM97.
+
+The user may also find it useful to modify the sample script **components/cam/bld/scripts/create_scam6_iop**.
+ 
+#########################################################################################
+Example:  Efficient way to cycle over several SCAM IOP locations 
+#########################################################################################
+While a user can use the above directions for running multiple IOP's, rebuilding the executable for each IOP is time-consuming and unnecessary as the same executable may be used for multiple IOP's.  A more efficient way to run over several IOP's is to use create_newcase using the scam_mandatory setup and then using create_clone for all SCAM IOP's.  This example, will make runs for TWP06 and SPARTICUS by running create_newcase using the setup in scam_mandatory and then using create_clone for test_scam_twp06 and test_scam_sparticus.  Note the addition of the flag --keepexe on the create_clone command to indicate that the executable will be used from the test_scam_mandatory case.
+::
+
+        % cd cime/scripts
+        % ./create_newcase --case test_scam_mandatory --compset FSCAM --res T42_T42 --user-mods-dir ../../components/cam/cime_config/usermods_dirs/scam_mandatory
+        % cd test_scam_mandatory
+        % ./case.setup
+        % ./case.build
+
+        % cd ..
+        % ./create_clone --case test_scam_twp06 --clone test_scam_mandatory --user-mods-dir ../../components/cam/cime_config/usermods_dirs/scam_twp06 --keepexe
+        % cd test_scam_twp06
+        % ./case.submit
+
+        % cd ..
+        % ./create_clone --case test_scam_sparticus --clone test_scam_mandatory --user-mods-dir ../../components/cam/cime_config/usermods_dirs/scam_sparticus --keepexe
+        % cd test_scam_sparticus
+        % ./case.submit
+
+The user may modify the sample script **components/cam/bld/scripts/create_scam6_iop_multi**.
+
+#########################################################################################
+Example:  Setting up User Defined IOP for SCAM  
+#########################################################################################
+
+If a user wishes to run SCAM with an IOP location that is not already predefined, the following directions may be used to generate a user defined IOP.  This example will assume that the user wishes to create an IOP at 305 degrees E and 62 degrees N over the Labrador Sea.  It is important to note that the user needs to have the NetCDF Command Language (NCL) and NetCDF Operators (NCO) installed on their machine as the generation scripts utilize this library.
+
+
+1. First, run CAM (in any desired configuration ) with following namelist, specifying fields at a point (305 degrees E, 62 degrees N)
+
+::
+   
+        fincl2=U, V, T, Q, OMEGA, TTEND_TOT, PTTEND, TAQ, TS,PS,PSL
+        fincl2lonlat = ‘305e_62n’
+        nhtfrq = 0,-3
+        avgflag_pertape = 'A','I'
+
+Averaging can be either 'I'nstantaneous or 'A' average for fincl2
+This produces 3 hourly output at a point for fincl2 fields on an h1 file.
+
+2. Run the following script on the resulting h1 files: 
+
+::
+
+        ./components/cam/bld/scripts/camfv2iop.ncl
+
+This uses NCL and NCO to create a SCAM IOP file. See internal to the script for documentation on what needs to be changed for a particular case.
+
+3. Generating Initial Conditions
+
+To generate initial conditions for SCAM, they need to be interpolated from the Finite Volume (FV) grid of standard CAM6 to the Eulerian Grid (EUL) through which SCAM currently runs. There is an NCL script for this: ``remapfv2eul.ncl`` in the ``components/cam/bld/scripts`` directory of the CAM source code. 
+
+These steps rely on the NCAR Command Language (NCL) and the NetCDF Operators (NCO). Here ``<case>`` is the case name of a CAM simulation.
+
+
+	3.1  Run the ``remapfv2eul.ncl`` script with the source file set to the initial condition file (``SRC = <case>.cam.i.<month>`` file) that is output from the CAM simulation.
+
+
+	3.2 Re-run the ``remapfv2eul.ncl`` script with the source file set to one of the monthly (h0) files (``SRC = <case>.cam.h0.<month>`` file). This allows the monthly averaged aerosols to be used for the relaxation.
+
+	3.3 Copy the re-gridded initial condition file to make a new one. E.g.: ``cp <case>.cam.i.<date>.regrid.Gaus_64x128.nc <case>.cam.i.regrid.Gaus_64x128.nc``
+
+	3.4 Use the ncks NCO command to move averaged aerosols from the regridded monthly file to the regridded initial condition file: 
 	
+	``ncks -A -v "bc_a1", "dst_a1", "dst_a3", "ncl_a1", "ncl_a2", "ncl_a3", "num_a1", "num_a2", "num_a3", "pom_a1", "so4_a1", "so4_a2", "so4_a3", "soa_a1", "soa_a2", "bc_a4" ,"num_a4", "pom_a4" <case>.cam.h0.<month>.regrid.Gaus_64x128.nc <case>.cam.i.regrid.Gaus_64x128.nc``
+	
+	3.5 Finally, one last step is to 'fix' the attributes for aerosol number. The initial condition file needs a mixing ratio, whereas number units in the h0 files used to make the initial condition file are actually 1/kg. Again using NCO: 
+
+``ncatted -O -a units,num_a1,o,c,"kg/kg" -a units,num_a2,o,c,"kg/kg" -a units,num_a3,o,c,"kg/kg" -a units,num_a4,o,c,"kg/kg" <case>.cam.i.regrid.Gaus_64x128.nc``
+ 
+4. Run the User IOP case.
+
+To run the user iop with SCAM, follow the following steps (here it is a test case over the Labrador Sea from a CAM Run)
+
+- Decide your iop name (e.g. usrLabSea)
+- Add this IOP to the script create_scam6_iop
+- In the tag you have downloaded, go to the 'usermods_dirs' directory
+	- cam6_0_000/components/cam/cime_config/usermods_dirs
+- Copy one of the directories for the IOP cases, e.g.
+        - cp -r scam_arm97 scam_usrLabSea
+- Change files in this directory
+	- **shell_commands**: XML change commands: Typically the LAT, LON, STARTDATE, START_TOD, STOP_OPTION and STOP_N
+	- **user_nl_cam**:  usually just iopfile. May also want to change mfilt (to keep all times on one file) 
+- Run create_scam6_iop script with appropriate IOP (e.g. IOP=scam_usrLabSea in this case)
+
+	
+-------------------------------------------------------------------------------
+Other CAM compsets
+-------------------------------------------------------------------------------
+
+There are a number of other CAM compsets which have not been described in this document. The complete listing of all compsets is found `here <http://www.cesm.ucar.edu/models/cesm2.0/cesm/compsets.html>`_.  Users are cautioned about using compsets that are not scientifically supported or tested.  These compsets are not supported and users may encounter problems or get invalid results using them.
+
+===============================================================================
+Super-parameterized CAM (SPCAM)
+===============================================================================
+
+Another set of compsets which require a brief description are ones for Super-parameterized CAM (SPCAM). SPCAM implements a 2D cloud resolving model (the System for Atmospheric Modeling SAM, Version 6.10.4) in CAM6.0 to replace its conventional parameterization for moist convection and large-scale condensation [5]_. Four different compsets are provided. FSPCAMS uses one moment SAM microphysics, and is based on Khairoutdinov and Randall [6]_. FSPCAMM uses two moment microphysics from Morrison et al [7]_, and its implementation is based on Wang et al. [5]_; [8]_; [9]_. FSPCAMCLBS and FSPCAMCLBM are the same as FSPCAMS and FSPCAMM respectivly, but are coupled with a higher-order turbulence closure scheme, CLUBB [5]_.  In FSPCAMM ad FSPCAMCLBM, the Explicit-Cloud-Parameterized-Pollutant (ECPP) approach is used to treat cloud processing of aerosols with statistics of cloud properties resolved by the cloud resolving model (Gustafson et al., 2008) [10]_ . It is important to point out that the CLUBB version used in SPCAM is an older version of CLUBB than what is used by CAM6.0 and this customized version of CLUBB resides in the CRM library.  The performance of these four compsets as they existed in CAM5.2 has been documented in detail [5]_ and [11]_.
+
+.. [5] Wang, M., V. Larson, S. Ghan, M. Ovchinnikov, D. Schanen, H. Xiao, X. Liu, Z.  Guo, and P. Rasch (2015), A multiscale modeling framework model (superparameterized CAM5) with a higher-order turbulence closure: Model description and low-cloud simulations, Journal of Advances in Modeling Earth Systems, 7, https://doi.org/10.1002/2014MS000375.
+
+.. [6] Khairoutdinov, M. F., and D. A. Randall (2001), A cloud resolving model as a cloud parameterization in the NCAR Community Climate System Model: Preliminary results, Geophys Res Lett, 28(18), 3617-3620.
+
+.. [7] Morrison, H., Curry, J. A., Khvorostyanov, V. I. (2005). A new double-moment microphysics parameterization for application in cloud and climate models. Part I: Description. Journal of the atmospheric sciences, 62(6), 1665-1677.
+
+.. [8] Wang, M., et al. (2011a), The multi-scale aerosol-climate model PNNL-MMF: model description and evaluation, Geosci. Model Dev., 4(1), 137–168, doi:10.5194/gmd-4-137-2011.
+
+.. [9] Wang, M., S. Ghan, M. Ovchinnikov, X. Liu, R. Easter, E. Kassianov, Y. Qian, and H. Morrison (2011b), Aerosol indirect effects in a multi-scale aerosol-climate model PNNL-MMF, Atmos. Chem. Phys., 11(11), 5431-5455.
+
+.. [10] Gustafson, W. I., L. K. Berg, R. C. Easter, and S. J. Ghan (2008), The Explicit- Cloud Parameterized-Pollutant hybrid approach for aerosol-cloud interactions in multiscale modeling framework models: tracer transport results, Environ Res Lett, 3(2), 025005.
+
+.. [11] Zhang, K., Fu, R., Shaikh, M. J., Ghan, S., Wang, M., Leung, L. R., … Marengo, J. (2017). Inﬂuence of superparameterization and a higher-order turbulence closure on rainfall bias over Amazonia in Community Atmosphere Model version 5. Journal of Geophysical Research: Atmosphere s, 122, 9879-9902, https://doi.org/10.1002/2017JD026576
+
+
+**SPCAM tested compsets**
+
+ - FSPCAMS: SPCAM using the single moment microphysics
+ - FSPCAMM: SPCAM using the double moment microphysics
+
+**SPCAM run-unsupported compsets**
+ - FSPCAMCLBS: SPCAM using the single moment microphysics and a custom version of CLUBB 
+ - FSPCAMCLBM: SPCAM using the double moment microphysics and a custom version of CLUBB 
+
+-------------------------------------------------------------------------------
+CAM-chem tested compsets
+-------------------------------------------------------------------------------
+CAM-chem tested compsets in CESM2.2:
+
+In CESM2.2 new compsets have been included and existing ones have been slightly changed with
+regard to starting dates and available resolutions.  In particular, new resolutions for running the spectral element dynamical core have been
+added and new compsets that use meteorological nudging using MERRA2 on CESM model levels, as described in Section 9.6.
+Starting dates have been changed to start in 2010-2014 using default CMIP6 emissions, besides for the regional refined grid over CONUS.
+Other anthropogenic and biomass burning emissions are available on cheyenne covering different periods, see Section 6.1.1. New emission
+regridding tools are available here (https://github.com/NCAR/IPT).
+These compsets are functional releases.
+
+
++--------------+------------------------------------+-----------------------------------------+-------------+
+| Compset Name | tested resolution                  |Description                              | Period      |
++==============+====================================+=========================================+=============+
+| FC2010climo  | f09_f09_mg17                       | Climatological CAM6-chem using TS1      | 2010        |
+|              | ne30_ne30_mg17                     | chemistry, 1 deg horizontal resolution, |             |
+|              | ne30pg3_ne30pg3_mg17               | different dycores, averaged SSTs, emis, |             |
+|              |                                    | lower boundary conditions (2005-2015)   |             |
++--------------+------------------------------------+-----------------------------------------+-------------+
+| FCHIST       | f09_f09_mg17                       | Historical CAM6-chem using TS1          | 2010-2014   |
+|              | ne30_ne30_mg17                     | chemistry, 1 deg horizontal resolution, |             |
+|              | ne30pg3_ne30pg3_mg17               | different dycores, CMIP6 emissions,     |             |
+|              |                                    | coupled to interactive land and MEGAN2.1|             |
++--------------+------------------------------------+-----------------------------------------+-------------+
+| FCnudged     | f09_f09_mg17                       | As FCHIST, but nudged to U,V,T from     | 2010-2014   |
+|              | ne30_ne30_mg17                     | MERRA2 analsysis with a 50-hours        |             |
+|              | ne30pg3_ne30pg3_mg17               | interpolated to CESM (32) model levels  |             |
++--------------+------------------------------------+-----------------------------------------+-------------+
+| FCts2nudged  | f09_f09_mg17                       | As FCnudged, but using TS2  chemistry   | 2010-2014   |
+|              | ne30_ne30_mg17                     |                                         |             |
+|              | ne30pg3_ne30pg3_mg17               |                                         |             |
++--------------+------------------------------------+-----------------------------------------+-------------+
+| FCnudged     | ne0CONUSne30x8_ne0CONUSne30x8_mt12 | As FCnudged for regional refined grid   | 2013        |
++--------------+------------------------------------+-----------------------------------------+-------------+
+| FCts2nudged  | ne0CONUSne30x8_ne0CONUSne30x8_mt12 | As FCts2nudged for regional refined grid| 2013        |
++--------------+------------------------------------+-----------------------------------------+-------------+
+| FCSD         | f09_f09_mg17                       | Historical CAM6-chem 1deg compset using |             |
+|              |                                    | MERRA2 analsysis with a 50-hour         | 1980 to 2015|
+|              |                                    | relaxation, using MERRA vertical levels |             |
++--------------+------------------------------------+-----------------------------------------+-------------+
+
+
+
+
+-------------------------------------------------------------------------------
+WACCM compsets
+-------------------------------------------------------------------------------
+
+========================================================
+Scientifically supported WACCM atmosphere compsets
+========================================================
+
+Scientifically supported WACCM atmosphere configurations for CESM2.0 use TSMLT1 chemistry 
+(see :ref:`chemical mechanisms <ug63-chemical-mechanisms>` ) and 
+0.95° latitude x 1.25° longitude horizontal resolution (f09_f09_mg17). 
+Additional scientifically validated configurations will be available in CESM2.1.
+
++---------+------------+-----------------------------------------+-------------+
+| Compset | Resolution | Description                             | Period      |
++=========+============+=========================================+=============+
+| FW1850  |f09_f09_mg17| Pre-industrial control WACCM6 using     | 1850        |
+|         |            | 1-degree FV dycore, TSMLT1, CMIP6       |             |
+|         |            | piControl emissions, year 1850 SSTs,    |             |
+|         |            | coupled to interactive land and MEGAN2.1|             |
++---------+------------+-----------------------------------------+-------------+
+| FWHIST  |f09_f09_mg17| Historical WACCM6 using 1-degree FV     | 1974 to 2015|
+|         |            | dycore, TSMLT1, CMIP6 emissions,        |             |
+|         |            | historical SSTs, coupled to interactive |             |
+|         |            | land and MEGAN2.1                       |             |
++---------+------------+-----------------------------------------+-------------+
+| FW2000  |f09_f09_mg17| Year 2000 WACCM6 1deg compset using     | 2000        |
+|         |            | 1-degree FV dycore, TSMLT1, year 2000   |             |
+|         |            | CMIP6 emissions, year 2000 SSTs, coupled|             |
+|         |            | to interactive land and MEGAN2.1        |             |
++---------+------------+-----------------------------------------+-------------+
+| FWSD    |f09_f09_mg17| Historical SD-WACCM6 using GEOS5        | 2005 to 2015|
+|         |            | analysis with a 50-hour relaxation,     |             |
+|         |            | TSMLT1, CMIP6 emissions,                |             |
+|         |            | historical SSTs, coupled to interactive |             |
+|         |            | land and MEGAN2.1                       |             |
++---------+------------+-----------------------------------------+-------------+
+| FWscHIST|f09_f09_mg17| Historical SC-WACCM6 using 1-degree FV  | 1976 to 2015|
+|         |            | dycore, specified chemistry, historical |             |
+|         |            | SSTs                                    |             |
++---------+------------+-----------------------------------------+-------------+
+
+========================================================
+Tested WACCM atmosphere compsets
+========================================================
+
+Tested WACCM atmosphere configurations for CESM2.0 use middle atmosphere (MA) and 
+middle atmosphere plus D-region (MAD) chemistry (see 
+:ref:`chemical mechanisms <ug63-chemical-mechanisms>` ) and 
+0.95° latitude x 1.25° longitude horizontal resolution (f09_f09_mg17).
+
++---------+------------+-----------------------------------------+-------------+
+| Compset | Resolution | Description                             | Period      |
++=========+============+=========================================+=============+
+| FWmaHIST|f09_f09_mg17| Historical WACCM6 using 1-degree FV     | 1974 to 2015|
+|         |            | dycore, MA chemistry, CMIP6 emissions,  |             |
+|         |            | historical SSTs, coupled to interactive |             |
+|         |            | land and MEGAN2.1                       |             |
++---------+------------+-----------------------------------------+-------------+
+|FWmadHIST|f09_f09_mg17| Historical WACCM6 using 1-degree FV     | 1974 to 2015|
+|         |            | dycore, MAD chemistry, CMIP6 emissions, |             |
+|         |            | historical SSTs, coupled to interactive |             |
+|         |            | land and MEGAN2.1                       |             |
++---------+------------+-----------------------------------------+-------------+
+| FWmaSD  |f09_f09_mg17| Historical SD-WACCM6 using GEOS5        | 2005 to 2015|
+|         |            | analysis with a 50-hour relaxation,     |             |
+|         |            | MA chemistry, CMIP6 emissions,          |             |
+|         |            | historical SSTs, coupled to interactive |             |
+|         |            | land and MEGAN2.1                       |             |
++---------+------------+-----------------------------------------+-------------+
+| FWmadSD |f09_f09_mg17| Historical SD-WACCM6 using GEOS5        | 2005 to 2015|
+|         |            | analysis with a 50-hour relaxation,     |             |
+|         |            | MAD chemistry, CMIP6 emissions,         |             |
+|         |            | historical SSTs, coupled to interactive |             |
+|         |            | land and MEGAN2.1                       |             |
++---------+------------+-----------------------------------------+-------------+
+
+-------------------------------------------------------------------------------
+WACCM-X compsets
+-------------------------------------------------------------------------------
+WACCM-X has three compsets/resolutions which are supported scientifically.  These compsets 
+are detailed in the following table.  A specific compset may be listed below, but unless 
+the resolution is also listed, that compset/resolution combination is not scientifically 
+supported.  Different resolutions exhibit different behavior and as a result require 
+different tunings.  The scientifically supported designation is limited to the specific 
+compset/resolution pairs listed in the following table.
+
+**Scientifically supported WACCM-X compsets**
+
++--------------+----------------------+-----------------------------------------+-------------+
+| Compset Name | Supported Resolution |Description                              | Period      |
++==============+======================+=========================================+=============+
+| FXHIST       | f19_f19_mg16         | Historical WACCM-X based on CAM4 using  | 2000 to 2015|
+|              |                      | 2 degree FV dycore, MA chemistry, CCMI  |             |
+|              |                      | emissions, historical SSTs, coupled to  |             |
+|              |                      | land, prescribed ice, river             |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| FX2000       | f19_f19_mg16         | Year 2000 WACCM-X based on CAM4 2 degree| 2000        |
+|              |                      | FV dycore, using MA chemistry, year 2000|             |
+|              |                      | CCMI emissions and SSTs, coupled to     |             |
+|              |                      | interactive land, prescribed ice, river |             |
++--------------+----------------------+-----------------------------------------+-------------+
+| FXSD         | f19_f19_mg16         | Historical SD-WACCM-X based on CAM4     | 2000 to 2015|
+|              |                      | using 2 degree FV dycore, MERRA1 with a |             |
+|              |                      | 50-hour relaxation, MA chemistry, CCMI  |             |
+|              |                      | emissions, historical SSTs, coupled to  |             |
+|              |                      | interactive land, prescribed ice, river |             |
++--------------+----------------------+-----------------------------------------+-------------+
+
+It should be noted that these WACCM-X compsets are based on the previous version 4 of 
+CAM/WACCM and therefore are not derivatives of the version 6 CAM/WACCM compsets described 
+above. 
 
 
