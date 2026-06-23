@@ -6,7 +6,7 @@
 Welcome to the CAM documentation
 ==================================
 
-Scientific Guidesabc123
+Scientific Guides
 ---------------------
 
    `CAM6 Scientific Summary <https://ncar.github.io/CAM_SciDoc/doc/build/html/cam6_scientific_summary/index.html>`_
