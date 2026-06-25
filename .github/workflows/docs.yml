@@ -6,12 +6,14 @@ on:
     branches: ['*']
     paths:
       - 'doc/**'
+      - '.github/workflows/docs.yml'
     # And also make sure to add any files that you "include" in your docs that live outside doc/
 
   pull_request:
     # Run on pull requests that change the listed files
     paths:
       - 'doc/**'
+      - '.github/workflows/docs.yml'
     # And also make sure to add any files that you "include" in your docs that live outside doc/
 
   workflow_dispatch:
